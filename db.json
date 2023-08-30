@@ -1,0 +1,64 @@
+{
+    "alunos": [
+      {
+        "id": 35210,
+        "name": "Enzo de Aguiar Rodrigues",
+        "curso": "Informatica p/ Internet"
+      },
+      {
+        "id": 35410,
+        "name": "Luana Fernandes da costa silva ",
+        "curso": "TI"
+      },
+      {
+        "name": "Catarina",
+        "curso": "Enfermagem",
+        "id": 3
+      },
+      {
+        "name": "Joana",
+        "curso": "Quimica",
+        "id": 4
+      },
+      {
+        "name": "Marcos",
+        "curso": "Analises Clinicas",
+        "id": 5
+      },
+      {
+        "name": "Luiza",
+        "curso": "Desing de Int.",
+        "id": 6
+      },
+      {
+        "id": 35210,
+        "name": "Enzo de Aguiar Rodrigues",
+        "curso": "Informatica p/ Internet"
+      },
+      {
+        "id": 35410,
+        "name": "Luana Fernandes da costa silva ",
+        "curso": "TI"
+      },
+      {
+        "name": "Catarina",
+        "curso": "Enfermagem",
+        "id": 3
+      },
+      {
+        "name": "Joana",
+        "curso": "Quimica",
+        "id": 4
+      },
+      {
+        "name": "Marcos",
+        "curso": "Analises Clinicas",
+        "id": 5
+      },
+      {
+        "name": "Luiza",
+        "curso": "Desing de Int.",
+        "id": 6
+      }
+    ]
+  }

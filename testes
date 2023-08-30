@@ -1,0 +1,5 @@
+  <article className="w-60 rounded-md p-2 shadow grid gap-y-2 bg-yellow-400">
+    <h2 className="text-lg font-bold">Título do cartão</h2>
+    <p className="text-white">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis excepturi minima doloremque?</p>
+    <button className="rounded p-2 bg-yellow-500 justify-self-center">Visualizar</button>
+</article>
