@@ -2,17 +2,17 @@ import "reflect-metadata";
 import { Column, Entity, PrimaryColumn } from "typeorm";
 
 @Entity()
-class Pessoa{
+class Frequencia{
         @PrimaryColumn()
         id_freq: number;
         @Column()
         lista_chamada: number;
         @Column()
-        id_turm: number;
+        id_turma: number;
         @Column()
         rm: number;
         @Column()
-        frequecia: number;
+        frequencia: number;
 }
 
-export default Pessoa;
+export default Frequencia;

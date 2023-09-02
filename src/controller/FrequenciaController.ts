@@ -23,7 +23,7 @@ export default class FrequenciaController {
         res.json(Frequenciascriadas)
     }
 
-    public async getFrequencia(req: Request,res: Response){
+    public async getFrequencias(req: Request,res: Response){
         const frequenciaService = FrequenciaService.getInstance();
         res.json(await frequenciaService.getFrequencias());
     }

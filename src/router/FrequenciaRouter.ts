@@ -1,12 +1,12 @@
 import {Router} from "express"
-import PessoaController from "../controller/PessoasController";
+import FrequenciaController from "../controller/FrequenciaController";
 
-const pessoaRouter= Router();
+const frequenciaRouter= Router();
 
-pessoaRouter.post('/',PessoaController.getInstance().savePessoa);
-pessoaRouter.get('/',PessoaController.getInstance().getPessoa);
-pessoaRouter.get('/:id',PessoaController.getInstance().getPessoaById);
-pessoaRouter.delete('/:id',PessoaController.getInstance().deletePessoaById);
-pessoaRouter.put('/:id',PessoaController.getInstance().updatePessoaById);
+frequenciaRouter.post('/',FrequenciaController.getInstance().saveFrequencia);
+frequenciaRouter.get('/',FrequenciaController.getInstance().getFrequencias);
+frequenciaRouter.get('/:id',FrequenciaController.getInstance().getFrequenciaById);
+frequenciaRouter.delete('/:id',FrequenciaController.getInstance().deleteFrequenciaById);
+frequenciaRouter.put('/:id',FrequenciaController.getInstance().updateFrequenciaById);
 
-export default pessoaRouter 
+export default frequenciaRouter 

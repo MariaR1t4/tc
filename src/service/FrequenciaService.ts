@@ -24,20 +24,20 @@ export default class FrequenciaService{
     public async getFrequencias():Promise<Frequencia[]>{
         return await FrequenciaRepositorie.find();
     }
-    public async getFrequenciaById(id:number) : Promise<Frequencia | null> {
-        return await FrequenciaRepositorie.findOneBy({randomNumber: id}); 
+    public async getFrequenciaById(id_freq:number) : Promise<Frequencia | null> {
+        return await FrequenciaRepositorie.findOneBy({id_freq}); 
     }
     public async deleteFrequenciaById(id:number):Promise<void>{
         await FrequenciaRepositorie.delete(id);
     }
-    public async updateFrequenciaById(id: number, Frequencia:Frequencia):Promise<void>{
-        const FrequenciaNow = await FrequenciaRepositorie.findOneBy(({randomNumber: id}));
+    public async updateFrequenciaById(id_freq: number, frequencia:Frequencia):Promise<void>{
+        const FrequenciaNow = await FrequenciaRepositorie.findOneBy({id_freq});
         if(FrequenciaNow){
-//            FrequenciaNow.rm = Frequencia.rm;
-            FrequenciaNow.name = Frequencia.name;
-            FrequenciaNow.email = Frequencia.email;
-            FrequenciaNow.telefone = Frequencia.telefone;
-            FrequenciaNow.password = Frequencia.password;
+            FrequenciaNow.id_freq = frequencia.id_freq;
+            FrequenciaNow.lista_chamada = frequencia.lista_chamada;
+            FrequenciaNow.id_turma = frequencia.id_turma;
+            FrequenciaNow.rm = frequencia.rm;
+            FrequenciaNow.frequencia = frequencia.frequencia;
             await FrequenciaRepositorie.save(FrequenciaNow);
         }
         Promise.resolve();

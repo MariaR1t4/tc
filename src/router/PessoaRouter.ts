@@ -1,5 +1,5 @@
 import {Router} from "express"
-import PessoaController from "../controller/FrequenciaController";
+import PessoaController from "../controller/PessoasController";
 
 const pessoaRouter= Router();
 
