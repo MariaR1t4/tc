@@ -1,4 +1,7 @@
 {
-  "/secretaria/professor/page": "app/secretaria/professor/page.js",
-  "/secretaria/turmas/page": "app/secretaria/turmas/page.js"
+  "/secretaria/page": "app/secretaria/page.js",
+  "/secretaria/turmas/page": "app/secretaria/turmas/page.js",
+  "/secretaria/professor/registrar/page": "app/secretaria/professor/registrar/page.js",
+  "/secretaria/turmas/registrar/page": "app/secretaria/turmas/registrar/page.js",
+  "/secretaria/turmas/editar/page": "app/secretaria/turmas/editar/page.js"
 }

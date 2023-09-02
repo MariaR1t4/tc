@@ -38,9 +38,9 @@ type Alunos = {
 
       <main className='w-full h-full'>
         <NavbarSec />
-      <h1 className=" text-center font-bold mt-12 text-4xl">Selecionar Pro</h1>
-      <table className='border-2 m-auto mt-32 w-1/2 h-64 border-black border-collapse text-center text-xl' >
-      <thead ><tr>
+        <h1 className=" text-center font-bold mt-20 text-4xl">Selecionar Aluno</h1>
+      <table className='border-2 m-auto mt-32 w-1/2 h-auto border-black border-collapse text-center text-2xl' >
+      <thead className=' bg-gray-400'><tr>
             <th className=' border border-black'>Rm</th>
             <th className=' border border-black'>Nome</th>
             <th className=' border border-black'>Curso</th>

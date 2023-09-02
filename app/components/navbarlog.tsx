@@ -23,9 +23,7 @@ export function NavbarLog(){
         <li>
           <a href="/config" className="py-2 pl-3 pr-4 text-gray-900 rounded ml-20 flex flex-row gap-1 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"><SettingsIcon /></a>
         </li>
-        <li className="pr-8">
-          <a href="/login" className=" py-2 pl-3 pr-4 text-gray-900 rounded flex flex-row gap-1 md:hover:bg-transparent md:border-0 md:p-0 dark:text-red-500 md:hover:text-red-700  dark:hover:bg-gray-700"> Sair <LogOutIcon /></a>
-        </li>
+      
       </ul>
     </div>
   </div>

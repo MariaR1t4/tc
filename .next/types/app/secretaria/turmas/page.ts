@@ -1,4 +1,4 @@
-// File: C:\Users\35210\Desktop\dwe3front1\dw3ee\app\secretaria\turmas\page.tsx
+// File: C:\Users\35210\Desktop\tcc\tc\app\secretaria\turmas\page.tsx
 import * as entry from '../../../../../app/secretaria/turmas/page.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

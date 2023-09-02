@@ -7,8 +7,8 @@ export default function ProfEditar(){
         <>
         <NavbarSec />
         <main className=" w-full h-full">
-            <h1 className=" text-center font-bold mt-12 text-4xl">Editar Professor</h1>
-<form className=" w-2/3 h-full gap-2 flex flex-col ml-auto mr-auto mt-32" >
+            <h1 className=" text-center font-bold mt-20 text-4xl">Editar Professor</h1>
+<form className=" w-1/2 h-full gap-2 flex flex-col ml-auto mr-auto mt-24" >
     
   <div className="relative z-0 w-full mb-6 group">
       <input type="text" name="nomeprof" id="nomeprof" className="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-white rounded-3xl pl-8 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
