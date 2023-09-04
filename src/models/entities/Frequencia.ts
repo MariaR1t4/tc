@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
 import Aluno from "./Aluno";
 import Disciplina from './Disciplina';
 
@@ -10,6 +10,7 @@ class Frequencia {
         @Column()
         lista_chamada: number;
         @ManyToOne(() => Aluno, (aluno) => aluno.rm)
+        @JoinColumn({ name: 'rm', referencedColumnName: 'rm' })
         rm: number;
         @ManyToOne(() => Disciplina, (disciplina) => disciplina.id_disciplina)
         id_disciplina: number;
