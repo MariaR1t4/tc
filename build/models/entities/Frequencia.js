@@ -8,31 +8,32 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
 const typeorm_1 = require("typeorm");
+const Aluno_1 = __importDefault(require("./Aluno"));
+const Disciplina_1 = __importDefault(require("./Disciplina"));
 let Frequencia = class Frequencia {
 };
 __decorate([
     (0, typeorm_1.PrimaryColumn)(),
     __metadata("design:type", Number)
-], Frequencia.prototype, "id_freq", void 0);
+], Frequencia.prototype, "id_frequencia", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
 ], Frequencia.prototype, "lista_chamada", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], Frequencia.prototype, "id_turma", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.ManyToOne)(() => Aluno_1.default, (aluno) => aluno.rm),
     __metadata("design:type", Number)
 ], Frequencia.prototype, "rm", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.ManyToOne)(() => Disciplina_1.default, (disciplina) => disciplina.id_disciplina),
     __metadata("design:type", Number)
-], Frequencia.prototype, "frequencia", void 0);
+], Frequencia.prototype, "id_disciplina", void 0);
 Frequencia = __decorate([
     (0, typeorm_1.Entity)()
 ], Frequencia);

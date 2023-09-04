@@ -31,33 +31,33 @@ class TurmaController {
             res.json(turmacreated);
         });
     }
-    getTurmas(req, res) {
+    listTurma(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const turmaService = TurmaService_1.default.getInstance();
-            res.json(yield turmaService.getTurmas());
+            res.json(yield turmaService.listTurma());
         });
     }
-    getTurmaById(req, res) {
+    findTurma(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const turmaService = TurmaService_1.default.getInstance();
             const { id_turma } = req.params;
-            res.json(yield turmaService.getTurmaById(parseInt(id_turma)));
+            res.json(yield turmaService.findTurma(parseInt(id_turma)));
         });
     }
-    deleteTurmaById(req, res) {
+    deleteTurma(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const turmaService = TurmaService_1.default.getInstance();
             const id_turma = req.params.id_turma;
-            yield turmaService.deleteTurmaById(parseInt(id_turma));
-            res.json('ok');
+            yield turmaService.deleteTurma(parseInt(id_turma));
+            res.json('Turma deletada');
         });
     }
-    updateTurmaById(req, res) {
+    updateTurma(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const turmaService = TurmaService_1.default.getInstance();
             const id_turma = req.params.id_turma;
             const Turma = req.body;
-            yield turmaService.updateTurmaById(parseInt(id_turma), Turma);
+            yield turmaService.updateTurma(parseInt(id_turma), Turma);
             res.json('ok');
         });
     }

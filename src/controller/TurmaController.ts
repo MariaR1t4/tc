@@ -24,29 +24,29 @@ class TurmaController {
         res.json(turmacreated)
     }
 
-    public async getTurmas(req: Request,res: Response){
+    public async listTurma(req: Request,res: Response){
         const turmaService = TurmaService.getInstance();
-        res.json(await turmaService.getTurmas());
+        res.json(await turmaService.listTurma());
     }
 
-    public async getTurmaById(req: Request,res:Response){
+    public async findTurma(req: Request,res:Response){
         const turmaService = TurmaService.getInstance();
         const {id_turma} = req.params;
-        res.json(await turmaService.getTurmaById(parseInt(id_turma)));
+        res.json(await turmaService.findTurma(parseInt(id_turma)));
     }
 
-    public async deleteTurmaById(req: Request,res:Response){
+    public async deleteTurma(req: Request,res:Response){
         const turmaService = TurmaService.getInstance();
         const id_turma = req.params.id_turma;
-        await turmaService.deleteTurmaById(parseInt(id_turma));
-        res.json('ok');
+        await turmaService.deleteTurma(parseInt(id_turma));
+        res.json('Turma deletada');
     }
 
-    public async updateTurmaById(req:Request,res:Response){
+    public async updateTurma(req:Request,res:Response){
         const turmaService = TurmaService.getInstance();
         const id_turma = req.params.id_turma;
         const Turma = req.body;
-        await turmaService.updateTurmaById(parseInt(id_turma), Turma);
+        await turmaService.updateTurma(parseInt(id_turma), Turma);
         res.json('ok');
     }
 }

@@ -31,34 +31,34 @@ class FrequenciaController {
             res.json(Frequenciascriadas);
         });
     }
-    getFrequencias(req, res) {
+    listFrequencia(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const frequenciaService = FrequenciaService_1.default.getInstance();
-            res.json(yield frequenciaService.getFrequencias());
+            res.json(yield frequenciaService.listFrequencia());
         });
     }
-    getFrequenciaById(req, res) {
+    findFrequencia(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const frequenciaService = FrequenciaService_1.default.getInstance();
             const id = req.params.id;
-            res.json(yield frequenciaService.getFrequenciaById(parseInt(id)));
+            res.json(yield frequenciaService.findFrequencia(parseInt(id)));
         });
     }
-    deleteFrequenciaById(req, res) {
+    deleteFrequencia(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const frequenciaService = FrequenciaService_1.default.getInstance();
-            const id = req.params.id;
-            yield frequenciaService.deleteFrequenciaById(parseInt(id));
-            res.json('ok');
+            const id_frequencia = req.params.id_frequencia;
+            yield frequenciaService.deleteFrequencia(parseInt(id_frequencia));
+            res.json('Frequencia deletada');
         });
     }
-    updateFrequenciaById(req, res) {
+    updateFrequencia(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const frequenciaService = FrequenciaService_1.default.getInstance();
-            const id = req.params.id;
+            const id_frequencia = req.params.id_frequencia;
             const frequencia = req.body;
-            yield frequenciaService.updateFrequenciaById(parseInt(id), frequencia);
-            res.json('ok');
+            yield frequenciaService.updateFrequencia(parseInt(id_frequencia), frequencia);
+            res.json('Lista de frequencia alterada');
         });
     }
 }

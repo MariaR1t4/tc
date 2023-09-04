@@ -7,7 +7,6 @@ class Disciplina{
         id_disciplina: number;
         @Column()
         descricao: string;
-       
 }
 
 export default Disciplina;

@@ -23,29 +23,29 @@ export default class FrequenciaController {
         res.json(Frequenciascriadas)
     }
 
-    public async getFrequencias(req: Request,res: Response){
+    public async listFrequencia(req: Request,res: Response){
         const frequenciaService = FrequenciaService.getInstance();
-        res.json(await frequenciaService.getFrequencias());
+        res.json(await frequenciaService.listFrequencia());
     }
 
-    public async getFrequenciaById(req: Request,res:Response){
+    public async findFrequencia(req: Request,res:Response){
         const frequenciaService = FrequenciaService.getInstance();
         const id = req.params.id;
-        res.json(await frequenciaService.getFrequenciaById(parseInt(id)));
+        res.json(await frequenciaService.findFrequencia(parseInt(id)));
     }
 
-    public async deleteFrequenciaById(req: Request,res:Response){
+    public async deleteFrequencia(req: Request,res:Response){
         const frequenciaService = FrequenciaService.getInstance();
-        const id = req.params.id;
-        await frequenciaService.deleteFrequenciaById(parseInt(id));
-        res.json('ok');
+        const id_frequencia = req.params.id_frequencia;
+        await frequenciaService.deleteFrequencia(parseInt(id_frequencia));
+        res.json('Frequencia deletada');
     }
 
-    public async updateFrequenciaById(req:Request,res:Response){
+    public async updateFrequencia(req:Request,res:Response){
         const frequenciaService = FrequenciaService.getInstance();
-        const id = req.params.id;
+        const id_frequencia = req.params.id_frequencia;
         const frequencia = req.body;
-        await frequenciaService.updateFrequenciaById(parseInt(id),frequencia);
-        res.json('ok');
+        await frequenciaService.updateFrequencia(parseInt(id_frequencia),frequencia);
+        res.json('Lista de frequencia alterada');
     }
 }

@@ -12,14 +12,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const TurmaRepositorie_1 = __importDefault(require("../models/entities/repositories/TurmaRepositorie"));
+const TurmaRepository_1 = __importDefault(require("../models/entities/repositories/TurmaRepository"));
 class TurmaService {
     constructor() {
     }
     criaTurma(turma) {
-        throw new Error('Turma was not implemented');
+        throw new Error('Turma não pôde ser criada');
     }
-    //create a new instance
     static getInstance() {
         if (!TurmaService.instance) {
             TurmaService.instance = new TurmaService();
@@ -27,38 +26,35 @@ class TurmaService {
         ;
         return TurmaService.instance;
     }
-    //save a instance
     saveTurma(obj) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield TurmaRepositorie_1.default.save(obj);
+            return yield TurmaRepository_1.default.save(obj);
         });
     }
-    getTurmas() {
+    listTurma() {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield TurmaRepositorie_1.default.find();
+            return yield TurmaRepository_1.default.find();
         });
     }
-    getTurmaById(id_turma) {
+    findTurma(id_turma) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield TurmaRepositorie_1.default.findOneBy({ id_turma });
+            return yield TurmaRepository_1.default.findOneBy({ id_turma });
         });
     }
-    deleteTurmaById(id_turma) {
+    deleteTurma(id_turma) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield TurmaRepositorie_1.default.delete(id_turma);
+            yield TurmaRepository_1.default.delete(id_turma);
         });
     }
-    updateTurmaById(id_turma, turma) {
+    updateTurma(id_turma, turma) {
         return __awaiter(this, void 0, void 0, function* () {
-            const TurmaNow = yield TurmaRepositorie_1.default.findOneBy({ id_turma });
-            if (TurmaNow) {
-                //            UserNow.rm = User.rm;
-                TurmaNow.id_turma = turma.id_turma;
-                TurmaNow.curso = turma.curso;
-                TurmaNow.periodo = turma.periodo;
-                TurmaNow.modulo = turma.modulo;
-                TurmaNow.descricao = turma.descricao;
-                yield TurmaRepositorie_1.default.save(TurmaNow);
+            const turmaAlterada = yield TurmaRepository_1.default.findOneBy(({ id_turma }));
+            if (turmaAlterada) {
+                turmaAlterada.curso = turma.curso;
+                turmaAlterada.periodo = turma.periodo;
+                turmaAlterada.modulo = turma.modulo;
+                turmaAlterada.descricao = turma.descricao;
+                yield TurmaRepository_1.default.save(turmaAlterada);
             }
             Promise.resolve();
         });

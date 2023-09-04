@@ -6,5 +6,5 @@ export default interface DisciplinaDto{
 }
 export const DisciplinaSchema = z.object({
     id_disciplina: z.number(),
-    descricao: z.string(),
+    descricao: z.string()
 })

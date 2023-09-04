@@ -1,5 +1,5 @@
-import TurmaRepositorie from "../models/entities/repositories/TurmaRepositorie";
 import Turma from "../models/entities/Turma";
+import TurmaRepository from "../models/entities/repositories/TurmaRepository";
 
 
 export default class TurmaService{
@@ -7,39 +7,35 @@ export default class TurmaService{
 
     }
     criaTurma(turma: Turma[]) {
-        throw new Error('Turma was not implemented');
+        throw new Error('Turma não pôde ser criada');
     }
     private static instance: TurmaService;
-    //create a new instance
     public static getInstance(){
         if(!TurmaService.instance){
             TurmaService.instance = new TurmaService();
         };
         return TurmaService.instance;
     }
-    //save a instance
     public async saveTurma(obj: Turma):Promise<Turma>{
-        return await TurmaRepositorie.save(obj);
+        return await TurmaRepository.save(obj);
     }
-    public async getTurmas():Promise<Turma[]>{
-        return await TurmaRepositorie.find();
+    public async listTurma():Promise<Turma[]>{
+        return await TurmaRepository.find();
     }
-    public async getTurmaById(id_turma:number) : Promise<Turma | null> {
-        return await TurmaRepositorie.findOneBy({id_turma}); 
+    public async findTurma(id_turma:number) : Promise<Turma | null> {
+        return await TurmaRepository.findOneBy({id_turma}); 
     }
-    public async deleteTurmaById(id_turma:number):Promise<void>{
-        await TurmaRepositorie.delete(id_turma);
+    public async deleteTurma(id_turma:number):Promise<void>{
+        await TurmaRepository.delete(id_turma);
     }
-    public async updateTurmaById(id_turma: number, turma:Turma):Promise<void>{
-        const TurmaNow = await TurmaRepositorie.findOneBy({id_turma});
-        if(TurmaNow){
-//            UserNow.rm = User.rm;
-            TurmaNow.id_turma = turma.id_turma;
-            TurmaNow.curso = turma.curso;
-            TurmaNow.periodo = turma.periodo;
-            TurmaNow.modulo = turma.modulo;
-            TurmaNow.descricao = turma.descricao;
-            await TurmaRepositorie.save(TurmaNow);
+    public async updateTurma(id_turma: number, turma:Turma):Promise<void>{
+        const turmaAlterada = await TurmaRepository.findOneBy(({id_turma}));
+        if(turmaAlterada){
+            turmaAlterada.curso = turma.curso;
+            turmaAlterada.periodo = turma.periodo;
+            turmaAlterada.modulo = turma.modulo;
+            turmaAlterada.descricao = turma.descricao;
+            await TurmaRepository.save(turmaAlterada);
         }
         Promise.resolve();
     }

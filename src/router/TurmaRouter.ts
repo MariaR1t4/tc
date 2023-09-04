@@ -5,9 +5,9 @@ import TurmaController from "../controller/TurmaController";
 const TurmaRouter= Router();
 
 TurmaRouter.post('/',TurmaController.getInstance().saveTurma);
-TurmaRouter.get('/',TurmaController.getInstance().getTurmas);
-TurmaRouter.get('/:id_turma',TurmaController.getInstance().getTurmaById);
-TurmaRouter.delete('/:id_turma',TurmaController.getInstance().deleteTurmaById);
-TurmaRouter.put('/:id_turma',TurmaController.getInstance().updateTurmaById);
+TurmaRouter.get('/',TurmaController.getInstance().listTurma);
+TurmaRouter.get('/:id_turma',TurmaController.getInstance().findTurma);
+TurmaRouter.delete('/:id_turma',TurmaController.getInstance().deleteTurma);
+TurmaRouter.put('/:id_turma',TurmaController.getInstance().updateTurma);
 
 export default TurmaRouter 

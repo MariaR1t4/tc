@@ -12,14 +12,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const FrequenciaRepositorie_1 = __importDefault(require("../models/entities/repositories/FrequenciaRepositorie"));
+const FrequenciaRepository_1 = __importDefault(require("../models/entities/repositories/FrequenciaRepository"));
 class FrequenciaService {
     constructor() {
     }
-    criaPessoas(Frequencia) {
-        throw new Error('Frequencia was not implemented');
+    Frequencia(frequencia) {
+        throw new Error('Professor não foi criado');
     }
-    //create a new instance
     static getInstance() {
         if (!FrequenciaService.instance) {
             FrequenciaService.instance = new FrequenciaService();
@@ -27,37 +26,32 @@ class FrequenciaService {
         ;
         return FrequenciaService.instance;
     }
-    //save a instance
     saveFrequencia(obj) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield FrequenciaRepositorie_1.default.save(obj);
+            return yield FrequenciaRepository_1.default.save(obj);
         });
     }
-    getFrequencias() {
+    listFrequencia() {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield FrequenciaRepositorie_1.default.find();
+            return yield FrequenciaRepository_1.default.find();
         });
     }
-    getFrequenciaById(id_freq) {
+    findFrequencia(id_frequencia) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield FrequenciaRepositorie_1.default.findOneBy({ id_freq });
+            return yield FrequenciaRepository_1.default.findOneBy({ id_frequencia });
         });
     }
-    deleteFrequenciaById(id) {
+    deleteFrequencia(id_frequencia) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield FrequenciaRepositorie_1.default.delete(id);
+            yield FrequenciaRepository_1.default.delete(id_frequencia);
         });
     }
-    updateFrequenciaById(id_freq, frequencia) {
+    updateFrequencia(id_frequencia, frequencia) {
         return __awaiter(this, void 0, void 0, function* () {
-            const FrequenciaNow = yield FrequenciaRepositorie_1.default.findOneBy({ id_freq });
-            if (FrequenciaNow) {
-                FrequenciaNow.id_freq = frequencia.id_freq;
-                FrequenciaNow.lista_chamada = frequencia.lista_chamada;
-                FrequenciaNow.id_turma = frequencia.id_turma;
-                FrequenciaNow.rm = frequencia.rm;
-                FrequenciaNow.frequencia = frequencia.frequencia;
-                yield FrequenciaRepositorie_1.default.save(FrequenciaNow);
+            const frequenciaAlterada = yield FrequenciaRepository_1.default.findOneBy(({ id_frequencia }));
+            if (frequenciaAlterada) {
+                frequenciaAlterada.lista_chamada = frequencia.lista_chamada;
+                yield FrequenciaRepository_1.default.save(frequenciaAlterada);
             }
             Promise.resolve();
         });

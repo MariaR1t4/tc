@@ -1,18 +1,18 @@
 import "reflect-metadata";
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm";
+import Aluno from "./Aluno";
+import Disciplina from './Disciplina';
 
 @Entity()
-class Frequencia{
+class Frequencia {
         @PrimaryColumn()
-        id_freq: number;
+        id_frequencia: number;
         @Column()
         lista_chamada: number;
-        @Column()
-        id_turma: number;
-        @Column()
+        @ManyToOne(() => Aluno, (aluno) => aluno.rm)
         rm: number;
-        @Column()
-        frequencia: number;
+        @ManyToOne(() => Disciplina, (disciplina) => disciplina.id_disciplina)
+        id_disciplina: number;
 }
 
 export default Frequencia;
