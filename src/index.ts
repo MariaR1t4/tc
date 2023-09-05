@@ -24,7 +24,7 @@ app.use(morgan('combined'));
 //app.use('/app', express.static(path.join(__dirname, 'src')))
 
 
-app.use('/app/frequencia/', alunoRouter);
+app.use('/app/aluno/', alunoRouter);
 
 app.use('/app/turma/', disciplinaRouter);
 
@@ -35,10 +35,6 @@ app.use('/app/disciplina-professor/', professorDisciplinaRouter);
 app.use('/app/professor/', professorRouter);
 
 app.use('/app/turma/', TurmaRouter);
-
-
-
-
 
 
 app.listen(port,()=>{

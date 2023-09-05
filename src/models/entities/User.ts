@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, PrimaryColumn, CreateDateColumn,UpdateDateColumn  } from "typeorm";
 
 @Entity()
     class User{
@@ -13,6 +13,11 @@ import { Column, Entity, PrimaryColumn } from "typeorm";
             password: string;
             @Column()
             telefone: string;
+            @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" })
+            public created_at: Date;
+
+            @UpdateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)" })
+            public updated_at: Date;
 }
 
 export default User;

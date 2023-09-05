@@ -43,7 +43,7 @@ class ProfessorController {
             res.json(yield professorService.findProfessor(parseInt(id_professor)));
         });
     }
-    deleteAluno(req, res) {
+    deleteProfessor(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const professorService = ProfessorService_1.default.getInstance();
             const id_professor = req.params.id_professor;
