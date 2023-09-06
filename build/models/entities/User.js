@@ -20,10 +20,6 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], User.prototype, "name", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
 ], User.prototype, "email", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
@@ -32,7 +28,11 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], User.prototype, "telefone", void 0);
+], User.prototype, "token", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], User.prototype, "ImageUrl", void 0);
 User = __decorate([
     (0, typeorm_1.Entity)()
 ], User);

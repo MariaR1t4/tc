@@ -12,18 +12,52 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const ProfessorDisciplinaRepository_1 = __importDefault(require("../models/entities/repositories/ProfessorDisciplinaRepository"));
+const ProfessorDisciplinaRepository_1 = __importDefault(require("../models/entities/dtos/repositories/ProfessorDisciplinaRepository"));
 class ProfessorDisciplinaService {
     constructor() {
     }
-    listProfe() {
+    criaProfessorDisciplina(professorDisciplina) {
+        throw new Error('Não foi criado');
+    }
+    static getInstance() {
+        if (!ProfessorDisciplinaService.instance) {
+            ProfessorDisciplinaService.instance = new ProfessorDisciplinaService();
+        }
+        ;
+        return ProfessorDisciplinaService.instance;
+    }
+    saveProfessorDisciplina(obj) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield ProfessorDisciplinaRepository_1.default.save(obj);
+        });
+    }
+    listProfessorDisciplina() {
         return __awaiter(this, void 0, void 0, function* () {
             return yield ProfessorDisciplinaRepository_1.default.find();
         });
     }
-    findAlunoById(professor_disciplina) {
+    findProfessorDisciplina(professor_disciplina) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield ProfessorDisciplinaRepository_1.default.findOneBy({ professor_disciplina });
+        });
+    }
+    deleteProfessorDisciplina(professor_disciplina) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield ProfessorDisciplinaRepository_1.default.delete(professor_disciplina);
+        });
+    }
+    updateProfessorDisciplina(professor_disciplina, professorDisciplina) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const professorDisciplinaAlterado = yield ProfessorDisciplinaRepository_1.default.findOneBy(({ professor_disciplina }));
+            if (professorDisciplinaAlterado) {
+                professorDisciplinaAlterado.professor_disciplina = professorDisciplina.professor_disciplina;
+                professorDisciplinaAlterado.id_turma = professorDisciplina.id_turma;
+                professorDisciplinaAlterado.id_disciplina = professorDisciplina.id_disciplina;
+                professorDisciplinaAlterado.id_tabela_professor = professorDisciplina.id_tabela_professor;
+                professorDisciplinaAlterado.carga_horaria = professorDisciplina.carga_horaria;
+                yield ProfessorDisciplinaRepository_1.default.save(professorDisciplinaAlterado);
+            }
+            Promise.resolve();
         });
     }
 }

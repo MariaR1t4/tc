@@ -27,7 +27,6 @@ class AlunoController {
             const alunoService = AlunoService_1.default.getInstance();
             const aluno = req.body;
             const alunoCriado = yield alunoService.saveAluno(aluno);
-            console.log(alunoCriado);
             res.json(alunoCriado);
         });
     }

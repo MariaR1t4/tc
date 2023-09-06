@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const userService_1 = __importDefault(require("../service/userService"));
+const UserService_1 = __importDefault(require("../service/UserService"));
 class UserController {
     constructor() {
     }
@@ -22,42 +22,41 @@ class UserController {
         }
         return UserController.instance;
     }
-    saveUser(req, res) {
+    saveuser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const userService = userService_1.default.getInstance();
+            const userService = UserService_1.default.getInstance();
             const user = req.body;
             const usercreated = yield userService.saveUser(user);
-            console.log(usercreated);
             res.json(usercreated);
         });
     }
-    getUsers(req, res) {
+    listUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const userService = userService_1.default.getInstance();
-            res.json(yield userService.getUsers());
+            const userService = UserService_1.default.getInstance();
+            res.json(yield userService.listUser());
         });
     }
     getUserById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const userService = userService_1.default.getInstance();
-            const { id } = req.params;
-            res.json(yield userService.getUserById(parseInt(id)));
+            const userService = UserService_1.default.getInstance();
+            const randomNumber = req.params.randomNumber;
+            res.json(yield userService.getUserById(randomNumber));
         });
     }
     deleteUserById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const userService = userService_1.default.getInstance();
-            const id = req.params.id;
-            yield userService.deleteUserById(parseInt(id));
-            res.json('ok');
+            const userService = UserService_1.default.getInstance();
+            const randomNumber = req.params.randomNumber;
+            yield userService.deleteUserById(parseInt(randomNumber));
+            res.json('user deletada');
         });
     }
     updateUserById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const userService = userService_1.default.getInstance();
-            const id = req.params.id;
+            const userService = UserService_1.default.getInstance();
+            const randomNumber = req.params.randomNumber;
             const user = req.body;
-            yield userService.updateUserById(parseInt(id), user);
+            yield userService.updateUserById(parseInt(randomNumber), user);
             res.json('ok');
         });
     }

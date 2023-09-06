@@ -1,5 +1,5 @@
 import Aluno from "../models/entities/Aluno";
-import AlunoRepository from "../models/entities/repositories/AlunoRepository";
+import AlunoRepository from "../models/entities/dtos/repositories/AlunoRepository";
 
 export default class AlunoService{
     private constructor(){

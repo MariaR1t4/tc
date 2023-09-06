@@ -1,5 +1,5 @@
 import Frequencia from "../models/entities/Frequencia";
-import FrequenciaRepository from "../models/entities/repositories/FrequenciaRepository";
+import FrequenciaRepository from "../models/entities/dtos/repositories/FrequenciaRepository";
 
 
 export default class FrequenciaService{

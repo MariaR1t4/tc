@@ -13,6 +13,7 @@ class Frequencia {
         @JoinColumn({ name: 'rm', referencedColumnName: 'rm' })
         rm: number;
         @ManyToOne(() => Disciplina, (disciplina) => disciplina.id_disciplina)
+        @JoinColumn({ name: 'id_disciplina', referencedColumnName: 'id_disciplina' })
         id_disciplina: number;
 }
 

@@ -1,8 +1,6 @@
 import "reflect-metadata";
-import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
-import { v4 as uuidv4 } from 'uuid';
+import { Column, Entity, PrimaryColumn } from "typeorm";
 
-uuidv4();
 @Entity()
 class Professor{
         @PrimaryColumn()
@@ -16,5 +14,5 @@ class Professor{
         @Column()
         password: string;
 }
-export default Professor;
+export default Professor
 

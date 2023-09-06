@@ -6,13 +6,13 @@ import { Column, Entity, PrimaryColumn } from "typeorm";
             @PrimaryColumn()
             randomNumber: number;
             @Column()
-            name: string;
-            @Column()
             email: string;
             @Column()
             password: string;
             @Column()
-            telefone: string;
-}
+            token: string
+            @Column({nullable: true})
+            ImageUrl: string
+        }
 
 export default User;

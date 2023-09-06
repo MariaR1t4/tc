@@ -28,10 +28,12 @@ __decorate([
 ], ProfessorDisciplina.prototype, "id_turma", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => Disciplina_1.default, (disciplina) => disciplina.id_disciplina),
+    (0, typeorm_1.JoinColumn)({ name: 'id_disciplina', referencedColumnName: 'id_disciplina' }),
     __metadata("design:type", Number)
 ], ProfessorDisciplina.prototype, "id_disciplina", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => Professor_1.default, (professor) => professor.id_tabela_professor),
+    (0, typeorm_1.JoinColumn)({ name: 'id_tabela_professor', referencedColumnName: 'id_tabela_professor' }),
     __metadata("design:type", Number)
 ], ProfessorDisciplina.prototype, "id_tabela_professor", void 0);
 __decorate([

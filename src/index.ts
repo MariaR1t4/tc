@@ -2,7 +2,7 @@ import "reflect-metadata";
 import express from "express";
 import morgan from "morgan";
 import cors from 'cors';
-import { AppDataSource } from "./models/config/Database";
+import { AppDataSource } from "./models/DataBase";
 import frequenciaRouter from "./router/FrequenciaRouter";
 import TurmaRouter from "./router/TurmaRouter";
 import alunoRouter from "./router/AlunoRouter";

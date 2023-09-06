@@ -1,5 +1,5 @@
 import Turma from "../models/entities/Turma";
-import TurmaRepository from "../models/entities/repositories/TurmaRepository";
+import TurmaRepository from "../models/entities/dtos/repositories/TurmaRepository";
 
 
 export default class TurmaService{

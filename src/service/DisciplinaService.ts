@@ -1,5 +1,5 @@
 import Disciplina from "../models/entities/Disciplina";
-import DisciplinaRepository from "../models/entities/repositories/DisciplinaRepository";
+import DisciplinaRepository from "../models/entities/dtos/repositories/DisciplinaRepository";
 
 export default class DisciplinaService{
     private constructor(){

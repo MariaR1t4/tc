@@ -28,10 +28,12 @@ __decorate([
 ], Frequencia.prototype, "lista_chamada", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => Aluno_1.default, (aluno) => aluno.rm),
+    (0, typeorm_1.JoinColumn)({ name: 'rm', referencedColumnName: 'rm' }),
     __metadata("design:type", Number)
 ], Frequencia.prototype, "rm", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => Disciplina_1.default, (disciplina) => disciplina.id_disciplina),
+    (0, typeorm_1.JoinColumn)({ name: 'id_disciplina', referencedColumnName: 'id_disciplina' }),
     __metadata("design:type", Number)
 ], Frequencia.prototype, "id_disciplina", void 0);
 Frequencia = __decorate([

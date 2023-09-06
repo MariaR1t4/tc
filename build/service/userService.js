@@ -1,48 +1,67 @@
 "use strict";
-/*import UserRepositorie from "../models/entities/repositories/UserRepository";
-import User from "../models/entities/User";
-
-
-export default class UserService{
-    private constructor(){
-
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const UserRepository_1 = __importDefault(require("../models/entities/dtos/repositories/UserRepository"));
+class UserService {
+    listUser() {
+        throw new Error("Method not implemented.");
     }
-    criaPessoas(user: User[]) {
+    constructor() {
+    }
+    criaPessoas(user) {
         throw new Error('User was not implemented');
     }
-    private static instance: UserService;
     //create a new instance
-    public static getInstance(){
-        if(!UserService.instance){
+    static getInstance() {
+        if (!UserService.instance) {
             UserService.instance = new UserService();
-        };
+        }
+        ;
         return UserService.instance;
     }
     //save a instance
-    public async saveUser(obj: User):Promise<User>{
-        return await UserRepositorie.save(obj);
+    saveUser(obj) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield UserRepository_1.default.save(obj);
+        });
     }
-    public async getUsers():Promise<User[]>{
-        return await UserRepositorie.find();
+    getUsers() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield UserRepository_1.default.find();
+        });
     }
-    public async getUserById(id:number) : Promise<User | null> {
-        return await UserRepositorie.findOneBy({randomNumber: id});
+    getUserById(randomNumber) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield UserRepository_1.default.findOneBy({ randomNumber });
+        });
     }
-    public async deleteUserById(id:number):Promise<void>{
-        await UserRepositorie.delete(id);
+    deleteUserById(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield UserRepository_1.default.delete(id);
+        });
     }
-    public async updateUserById(id: number, User:User):Promise<void>{
-        const UserNow = await UserRepositorie.findOneBy(({randomNumber: id}));
-        if(UserNow){
-//            UserNow.rm = User.rm;
-            UserNow.name = User.name;
-            UserNow.email = User.email;
-            UserNow.telefone = User.telefone;
-            UserNow.password = User.password;
-            await UserRepositorie.save(UserNow);
-        }
-        Promise.resolve();
+    updateUserById(randomNumber, User) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const UserNow = yield UserRepository_1.default.findOneBy(({ randomNumber }));
+            if (UserNow) {
+                //            UserNow.rm = User.rm;
+                UserNow.email = User.email;
+                UserNow.password = User.password;
+                yield UserRepository_1.default.save(UserNow);
+            }
+            Promise.resolve();
+        });
     }
-    
 }
- */ 
+exports.default = UserService;
