@@ -31,7 +31,7 @@ class UserController {
     public async getUserById(req: Request,res:Response){
         const userService = UserService.getInstance();
         const randomNumber = req.params.randomNumber;
-        res.json(await userService.getUserById(randomNumber));
+        res.json(await userService.getUserById(parseInt(randomNumber)));
     }
 
     public async deleteUserById(req: Request,res:Response){

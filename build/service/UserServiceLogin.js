@@ -97,8 +97,8 @@ class UserServiceLogin {
     updateUserImage(req) {
         return __awaiter(this, void 0, void 0, function* () {
             const file = req.file;
-            const randomNumber = req.params;
-            const foundUser = yield UserRepository_1.default.findOneBy({ randomNumber });
+            const ImageUrl = req.params.ImageUrl;
+            const foundUser = yield UserRepository_1.default.findOneBy({ ImageUrl });
             if (file != null && foundUser != null) {
                 const image = yield jimp_1.default.read(file.path);
                 yield image.resize(600, 600);

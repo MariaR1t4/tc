@@ -40,7 +40,7 @@ class UserController {
         return __awaiter(this, void 0, void 0, function* () {
             const userService = UserService_1.default.getInstance();
             const randomNumber = req.params.randomNumber;
-            res.json(yield userService.getUserById(randomNumber));
+            res.json(yield userService.getUserById(parseInt(randomNumber)));
         });
     }
     deleteUserById(req, res) {

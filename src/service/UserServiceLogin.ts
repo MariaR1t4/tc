@@ -61,8 +61,8 @@ class UserServiceLogin {
 
     async updateUserImage(req: Request){
         const file = req.file;
-        const randomNumber = req.params;
-        const foundUser = await UserRepository.findOneBy({randomNumber});
+        const ImageUrl = req.params.ImageUrl;
+        const foundUser = await UserRepository.findOneBy({ImageUrl});
         if(file != null && foundUser != null){
             const image = await Jimp.read(file.path);
             await image.resize(600,600);
