@@ -28,8 +28,8 @@ class UserLoginController {
     }
     signUpUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { email, password, name } = req.body;
-            yield new UserServiceLogin_1.default().signUpUser(name, email, password);
+            const { email, password } = req.body;
+            yield new UserServiceLogin_1.default().signUpUser(email, password);
             res.json('Bem criado!');
         });
     }

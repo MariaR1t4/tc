@@ -47,7 +47,7 @@ const logger_1 = __importDefault(require("../models/config/logger"));
 const UserRepository_1 = __importDefault(require("../models/entities/dtos/repositories/UserRepository"));
 const constants_1 = require("../auth/constants");
 class UserServiceLogin {
-    getUserFromData(name, email, password) {
+    getUserFromData(email, password) {
         const newUser = new User_1.default();
         newUser.email = email;
         newUser.password = password;
@@ -73,9 +73,9 @@ class UserServiceLogin {
             throw new Error("User not found");
         });
     }
-    signUpUser(name, email, password) {
+    signUpUser(email, password) {
         return __awaiter(this, void 0, void 0, function* () {
-            const newUser = this.getUserFromData(name, email, password);
+            const newUser = this.getUserFromData(email, password);
             yield UserRepository_1.default.save(newUser);
         });
     }
@@ -86,7 +86,7 @@ class UserServiceLogin {
             if (file != null) {
                 fs_1.default.createReadStream(file.path)
                     .pipe((0, csv_parser_1.default)())
-                    .on('data', (data) => users.push(this.getUserFromData(data.randomNumber, data.email, data.password)))
+                    .on('data', (data) => users.push(this.getUserFromData(data.email, data.password)))
                     .on('end', () => {
                     console.log(users);
                     UserRepository_1.default.insert(users);

@@ -13,8 +13,8 @@ class UserLoginController {
         }
 
         async signUpUser(req: Request, res: Response){
-            const {email, password, name} = req.body;
-            await new UserServiceLogin().signUpUser(name, email, password);
+            const {email, password} = req.body;
+            await new UserServiceLogin().signUpUser(email, password);
             res.json('Bem criado!');
         }
 

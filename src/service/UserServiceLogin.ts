@@ -14,7 +14,7 @@ import { SECRET } from "../auth/constants";
 
 class UserServiceLogin {
 
-    getUserFromData(name: string, email: string, password: string) : User{
+    getUserFromData(email: string, password: string) : User{
         const newUser = new User();
         newUser.email = email;
         newUser.password = password;
@@ -39,8 +39,8 @@ class UserServiceLogin {
         throw new Error("User not found");
     }
 
-    async signUpUser(name: string, email: string, password: string){
-        const newUser = this.getUserFromData(name, email, password);
+    async signUpUser( email: string, password: string){
+        const newUser = this.getUserFromData(email, password);
         await UserRepository.save(newUser);
     }
 
@@ -50,7 +50,7 @@ class UserServiceLogin {
         if(file != null) {
             fs.createReadStream(file.path)
                 .pipe(csvParser())
-                .on('data', (data) => users.push(this.getUserFromData(data.randomNumber, data.email, data.password)))
+                .on('data', (data) => users.push(this.getUserFromData(data.email, data.password)))
                 .on('end', () => {
                     console.log(users);
                     UserRepository.insert(users);

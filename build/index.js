@@ -21,7 +21,7 @@ app.use((0, cors_1.default)());
 //app.use(express.static('front'));
 app.use((0, morgan_1.default)('combined'));
 //app.use('/app', express.static(path.join(__dirname, 'src')))
-app.use('/app/frequencia/', AlunoRouter_1.default);
+app.use('/app/aluno', AlunoRouter_1.default);
 app.use('/app/turma/', DisciplinaRouter_1.default);
 app.use('/app/frequencia/', FrequenciaRouter_1.default);
 app.use('/app/disciplina-professor/', ProfessorDisciplinaRouter_1.default);
