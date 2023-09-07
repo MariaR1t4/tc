@@ -38,7 +38,7 @@ export default function Aluno() {
 
       <main className='w-full h-full'>
         <NavbarSec />
-      <h1 className=" text-center font-bold mt-12 text-7xl">Selecionar turma do aluno</h1>
+      <h1 className=" text-center text-gray-700 font-bold mt-12 text-7xl">Selecionar turma do aluno</h1>
       <table className='border-2 m-auto mt-32 w-2/3 h-96 border-black border-collapse text-center text-4xl' >
       <thead className=' bg-gray-400'><tr>
             <th className=' border border-black'>Rm</th>
@@ -57,6 +57,10 @@ export default function Aluno() {
           ))}
         </tbody>
       </table>
+      <div className='mt-3 flex justify-center gap-96 '>
+      <button className=' mr-80 bg-green-700 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white'>Selecionar Turma</button>
+      <button className=' bg-red-700 w-28 h-10 text-white hover:bg-red-800 rounded-md transition ease-in duration-100 hover:-translate-y-1'>Excluir Turma</button>
+      </div>
       </main>
     
   </>

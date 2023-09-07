@@ -14,6 +14,7 @@
     "@types/react": "18.2.16",
     "@types/react-dom": "18.2.7",
     "axios": "^1.5.0",
+    "cookies-next": "^3.0.0",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",
     "feather-icons": "^4.29.0",
@@ -24,9 +25,11 @@
     "react-datepicker": "^4.16.0",
     "react-dom": "18.2.0",
     "react-spinners": "^0.13.8",
+    "s": "^1.0.0",
     "typescript": "5.1.6"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/feather-icons": "^4.29.1",
     "@types/react-datepicker": "^4.15.0",
     "autoprefixer": "^10.4.14",

@@ -4,7 +4,6 @@ import Image from "next/image";
 import professorpgn from "../../public/professor.png";
 import alunopgn from "../../public/aluno.png";
 import turmapgn from "../../public/turma.png"
-import { Link } from "lucide-react";
 export default function HomeSec(){
 
     return(
@@ -12,7 +11,7 @@ export default function HomeSec(){
     
         <main>
             <NavbarSec />
-            <h1 className=" text-center font-bold mt-20 text-4xl">Home Secretaria</h1>
+            <h1 className=" text-center text-gray-700 font-bold mt-20 text-4xl">Home Secretaria</h1>
             <div className="justify-center flex gap-16 mt-32 first-letter: w-full h-full " >
         <div className="w-96 h-96 bg-gray-200 border-b-gray-950 rounded-md p-2 shadow gap-y-2 ">
             <Image className=" h-48 w-80 justify-center flex ml-5 mt-8"  alt="" src={turmapgn} />

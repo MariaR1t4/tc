@@ -7,8 +7,8 @@ export default function AlunoEditar(){
         <>
         <NavbarSec />
         <main className=" w-full h-full">
-            <h1 className=" text-center font-bold mt-20 text-4xl">Editar Aluno</h1>
-<form className=" w-1/2  h-full gap-2 flex flex-col ml-auto mr-auto mt-24" >
+            <h1 className=" text-center text-gray-700 font-bold mt-20 text-4xl">Editar Aluno</h1>
+<form className=" w-1/3  h-full gap-2 flex flex-col ml-auto mr-auto mt-24" >
     
   <div className="relative z-0 w-full mb-6 group">
       <input type="text" name="nomealuno" id="nomealuno" className="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-white rounded-3xl pl-8 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
@@ -34,7 +34,10 @@ export default function AlunoEditar(){
   
  
 
-  <button type="submit" className="text-white  hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-lg w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-700  dark:focus:ring-green-800">Editar Aluno</button>
+   <div className='mt-3 flex justify-center gap-96 '>
+      <button className=' bg-green-700 w-28 h-14 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white'>Editar Aluno</button>
+      <button className=' bg-red-700 w-28 h-14 text-white hover:bg-red-800 rounded-md transition ease-in duration-100 hover:-translate-y-1'>Excluir Aluno</button>
+      </div>
 </form >
 </main>
         </>

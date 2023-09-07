@@ -35,10 +35,10 @@ function Aluno() {
   
   return (
     <>
-
-      <main className='w-full h-full'>
-        <NavbarSec />
-        <h1 className=" text-center font-bold mt-20 text-4xl">Selecionar turma</h1>
+ <NavbarSec />      
+ <main className='w-full flex-col justify-center h-full'>
+       
+        <h1 className=" text-center text-gray-700 font-bold mt-20 text-4xl">Selecionar turma</h1>
       <table className='border-2 m-auto mt-32 w-1/2 h-auto border-black border-collapse text-center text-2xl' >
       <thead className=' bg-gray-400'><tr>
             <th className=' border border-black'>Rm</th>
@@ -57,9 +57,9 @@ function Aluno() {
         </tbody>
       
       </table>
-      <div className='inline-block pl-96 mt-4 mr-auto relative'>
-      <button className=' bg-green-700 w-28 h-9 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white'>Editar Turma</button>
-      <button className=' bg-red-700 w-28 h-9 hover:bg-red-800 rounded-md transition ease-in duration-100 hover:-translate-y-1'>Excluir Turma</button>
+      <div className='mt-3 flex justify-center gap-96 '>
+      <button className=' mr-80 bg-green-700 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white'>Editar Turma</button>
+      <button className=' bg-blue-700 w-28 h-10 text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1'>Ver Turma</button>
       </div>
     
       </main>
