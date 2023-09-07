@@ -1,4 +1,5 @@
 "use strict";
+<<<<<<< HEAD
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -15,3 +16,8 @@ userRouter.delete('/:rm', UserController_1.default.getInstance().deleteUserById)
 userRouter.put('/:rm', UserController_1.default.getInstance().updateUserById);
 userRouter.put('/update-image/:id', multer_config_1.upload.single('image'), new user_controller_1.default().updateUserImage);
 exports.default = userRouter;
+=======
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const userRouter = (0, express_1.Router)();
+>>>>>>> 8e71852d88985ae45487ec3c01bac48c82ef3b07

@@ -7,7 +7,11 @@ require("reflect-metadata");
 const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
+<<<<<<< HEAD
 const DataBase_1 = require("./models/DataBase");
+=======
+const Database_1 = require("./models/config/Database");
+>>>>>>> 8e71852d88985ae45487ec3c01bac48c82ef3b07
 const FrequenciaRouter_1 = __importDefault(require("./router/FrequenciaRouter"));
 const TurmaRouter_1 = __importDefault(require("./router/TurmaRouter"));
 const AlunoRouter_1 = __importDefault(require("./router/AlunoRouter"));
@@ -21,7 +25,11 @@ app.use((0, cors_1.default)());
 //app.use(express.static('front'));
 app.use((0, morgan_1.default)('combined'));
 //app.use('/app', express.static(path.join(__dirname, 'src')))
+<<<<<<< HEAD
 app.use('/app/aluno', AlunoRouter_1.default);
+=======
+app.use('/app/aluno/', AlunoRouter_1.default);
+>>>>>>> 8e71852d88985ae45487ec3c01bac48c82ef3b07
 app.use('/app/turma/', DisciplinaRouter_1.default);
 app.use('/app/frequencia/', FrequenciaRouter_1.default);
 app.use('/app/disciplina-professor/', ProfessorDisciplinaRouter_1.default);

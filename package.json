@@ -21,7 +21,10 @@
     "express": "^4.18.2",
     "jimp": "^0.22.8",
     "jsonwebtoken": "^9.0.2",
+<<<<<<< HEAD
     "logger": "^0.0.1",
+=======
+>>>>>>> 8e71852d88985ae45487ec3c01bac48c82ef3b07
     "meta-data": "^1.0.0",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",

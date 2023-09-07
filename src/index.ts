@@ -37,10 +37,6 @@ app.use('/app/professor/', professorRouter);
 app.use('/app/turma/', TurmaRouter);
 
 
-
-
-
-
 app.listen(port,()=>{
     console.log(`Servidor iniciado em http:/localhost:${port}`);
     AppDataSource.initialize().then(r => console.log('Banco de Dados iniciado'));

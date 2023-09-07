@@ -28,11 +28,23 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
+<<<<<<< HEAD
 ], User.prototype, "token", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", String)
 ], User.prototype, "ImageUrl", void 0);
+=======
+], User.prototype, "telefone", void 0);
+__decorate([
+    (0, typeorm_1.CreateDateColumn)({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" }),
+    __metadata("design:type", Date)
+], User.prototype, "created_at", void 0);
+__decorate([
+    (0, typeorm_1.UpdateDateColumn)({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)" }),
+    __metadata("design:type", Date)
+], User.prototype, "updated_at", void 0);
+>>>>>>> 8e71852d88985ae45487ec3c01bac48c82ef3b07
 User = __decorate([
     (0, typeorm_1.Entity)()
 ], User);
