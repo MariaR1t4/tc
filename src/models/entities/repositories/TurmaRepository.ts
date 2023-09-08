@@ -1,5 +1,5 @@
-import {AppDataSource} from "../../../DataBase"
-import Turma from "../../Turma"
+import {AppDataSource} from "../../DataBase"
+import Turma from "../Turma"
 
 
 const TurmaRepository = AppDataSource.getRepository(Turma)

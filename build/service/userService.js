@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const UserRepository_1 = __importDefault(require("../models/entities/dtos/repositories/UserRepository"));
+const UserRepository_1 = __importDefault(require("../models/entities/repositories/UserRepository"));
 class UserService {
     listUser() {
         throw new Error("Method not implemented.");

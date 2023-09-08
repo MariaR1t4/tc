@@ -9,9 +9,11 @@ import alunoRouter from "./router/AlunoRouter";
 import disciplinaRouter from "./router/DisciplinaRouter";
 import professorDisciplinaRouter from "./router/ProfessorDisciplinaRouter";
 import professorRouter from "./router/ProfessorRouter";
+import { Router } from 'express';
 
 const app = express();
 const port = 38000
+const authRouter = Router();
 
 app.use(express.json());
 
@@ -26,19 +28,20 @@ app.use(morgan('combined'));
 
 app.use('/app/aluno', alunoRouter);
 
-app.use('/app/turma/', disciplinaRouter);
+app.use('/app/disciplina', disciplinaRouter);
 
-app.use('/app/frequencia/', frequenciaRouter);
+app.use('/app/frequencia', frequenciaRouter);
 
-app.use('/app/disciplina-professor/', professorDisciplinaRouter);
+app.use('/app/disciplina-professor', professorDisciplinaRouter);
 
-app.use('/app/professor/', professorRouter);
+app.use('/app/professor', professorRouter);
 
-app.use('/app/turma/', TurmaRouter);
+app.use('/app/turma', TurmaRouter);
+
+app.use('/auth', authRouter);
 
 
 app.listen(port,()=>{
-    console.log(`Servidor iniciado em http:/localhost:${port}`);
+    console.log(`Servidor iniciado em http://localhost:${port}`);
     AppDataSource.initialize().then(r => console.log('Banco de Dados iniciado'));
-    console.log('Sucesso')
 });

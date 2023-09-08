@@ -1,7 +1,6 @@
 import { z } from "zod";
 
 export default interface AlunoDto {
-  rm: number;
   nome: string;
   telefone: string;
   email: string;
@@ -9,7 +8,6 @@ export default interface AlunoDto {
 } 
 
 export const AlunoSchema = z.object({
-  rm: z.number(),
   nome: z.string(),
   telefone: z.string().length(12, {message:"insira apenas números (ex: xx x xxxx xxxx"}),
   email: z.string().email(),

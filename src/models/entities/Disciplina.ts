@@ -1,9 +1,9 @@
 import "reflect-metadata";
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 class Disciplina{
-        @PrimaryColumn()
+        @PrimaryGeneratedColumn()
         id_disciplina: number;
         @Column()
         descricao: string;

@@ -7,10 +7,10 @@ import hmacSHA512 from 'crypto-js/hmac-sha512';
 import Base64 from 'crypto-js/enc-base64';
 import * as jwt from 'jsonwebtoken';
 import csvParser from "csv-parser";
-import User from "../models/entities/User";
-import logger from "../models/config/logger";
-import UserRepository from "../models/entities/dtos/repositories/UserRepository";
-import { SECRET } from "../auth/constants";
+import User from "../../models/entities/User";
+import UserRepository from "../../models/entities/repositories/UserRepository";
+import { SECRET } from "../../auth/constants";
+import logger from "../../configs/logger";
 
 class UserServiceLogin {
 
@@ -71,8 +71,6 @@ class UserServiceLogin {
             await UserRepository.save(foundUser);
         }
     }
-    //1b9f4cee-d5bb-4b09-851f-171595544fb6
-
 }
 
 export default UserServiceLogin;

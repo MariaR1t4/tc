@@ -1,11 +1,11 @@
 import "reflect-metadata";
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import Aluno from "./Aluno";
 import Disciplina from './Disciplina';
 
 @Entity()
 class Frequencia {
-        @PrimaryColumn()
+        @PrimaryGeneratedColumn()
         id_frequencia: number;
         @Column()
         lista_chamada: number;

@@ -1,5 +1,5 @@
 import User from "../models/entities/User";
-import UserRepository from "../models/entities/dtos/repositories/UserRepository";
+import UserRepository from "../models/entities/repositories/UserRepository";
 
 
 export default class UserService{

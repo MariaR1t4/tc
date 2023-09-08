@@ -1,5 +1,5 @@
 import Professor from "../models/entities/Professor";
-import ProfessorRepository from "../models/entities/dtos/repositories/ProfessorRepository";
+import ProfessorRepository from "../models/entities/repositories/ProfessorRepository";
 
 
 export default class ProfessorService{

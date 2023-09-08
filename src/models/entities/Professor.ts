@@ -1,9 +1,9 @@
 import "reflect-metadata";
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 class Professor{
-        @PrimaryColumn()
+        @PrimaryGeneratedColumn()
         id_tabela_professor: number;
         @Column()
         name: string;

@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const ProfessorDisciplinaRepository_1 = __importDefault(require("../models/entities/dtos/repositories/ProfessorDisciplinaRepository"));
+const ProfessorDisciplinaRepository_1 = __importDefault(require("../models/entities/repositories/ProfessorDisciplinaRepository"));
 class ProfessorDisciplinaService {
     constructor() {
     }
@@ -36,9 +36,9 @@ class ProfessorDisciplinaService {
             return yield ProfessorDisciplinaRepository_1.default.find();
         });
     }
-    findProfessorDisciplina(professor_disciplina) {
+    findProfessorDisciplina(id_professor_disciplina) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield ProfessorDisciplinaRepository_1.default.findOneBy({ professor_disciplina });
+            return yield ProfessorDisciplinaRepository_1.default.findOneBy({ id_professor_disciplina });
         });
     }
     deleteProfessorDisciplina(professor_disciplina) {
@@ -46,11 +46,10 @@ class ProfessorDisciplinaService {
             yield ProfessorDisciplinaRepository_1.default.delete(professor_disciplina);
         });
     }
-    updateProfessorDisciplina(professor_disciplina, professorDisciplina) {
+    updateProfessorDisciplina(id_professor_disciplina, professorDisciplina) {
         return __awaiter(this, void 0, void 0, function* () {
-            const professorDisciplinaAlterado = yield ProfessorDisciplinaRepository_1.default.findOneBy(({ professor_disciplina }));
+            const professorDisciplinaAlterado = yield ProfessorDisciplinaRepository_1.default.findOneBy(({ id_professor_disciplina }));
             if (professorDisciplinaAlterado) {
-                professorDisciplinaAlterado.professor_disciplina = professorDisciplina.professor_disciplina;
                 professorDisciplinaAlterado.id_turma = professorDisciplina.id_turma;
                 professorDisciplinaAlterado.id_disciplina = professorDisciplina.id_disciplina;
                 professorDisciplinaAlterado.id_tabela_professor = professorDisciplina.id_tabela_professor;

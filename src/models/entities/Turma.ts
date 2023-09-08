@@ -1,9 +1,9 @@
 import "reflect-metadata";
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
     class Turma{
-            @PrimaryColumn()
+            @PrimaryGeneratedColumn()
             id_turma: number;
             @Column()
             curso: string;

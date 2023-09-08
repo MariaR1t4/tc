@@ -19,7 +19,7 @@ const Disciplina_1 = __importDefault(require("./Disciplina"));
 let Frequencia = class Frequencia {
 };
 __decorate([
-    (0, typeorm_1.PrimaryColumn)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Frequencia.prototype, "id_frequencia", void 0);
 __decorate([

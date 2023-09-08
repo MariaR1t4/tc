@@ -1,5 +1,5 @@
 import ProfessorDisciplina from "../models/entities/ProfessorDisciplina";
-import ProfessorDisciplinaRepository from "../models/entities/dtos/repositories/ProfessorDisciplinaRepository";
+import ProfessorDisciplinaRepository from "../models/entities/repositories/ProfessorDisciplinaRepository";
 
 
 export default class ProfessorDisciplinaService{
@@ -22,16 +22,15 @@ export default class ProfessorDisciplinaService{
     public async listProfessorDisciplina() : Promise <ProfessorDisciplina[] | null> {
       return await ProfessorDisciplinaRepository.find();
     }
-    public async findProfessorDisciplina(professor_disciplina:number) : Promise<ProfessorDisciplina | null> {
-        return await ProfessorDisciplinaRepository.findOneBy({professor_disciplina}); 
+    public async findProfessorDisciplina(id_professor_disciplina:number) : Promise<ProfessorDisciplina | null> {
+        return await ProfessorDisciplinaRepository.findOneBy({id_professor_disciplina}); 
     }
     public async deleteProfessorDisciplina(professor_disciplina:number):Promise<void>{
       await ProfessorDisciplinaRepository.delete(professor_disciplina);
   }
-    public async updateProfessorDisciplina(professor_disciplina: number, professorDisciplina:ProfessorDisciplina):Promise<void>{
-      const professorDisciplinaAlterado = await ProfessorDisciplinaRepository.findOneBy(({professor_disciplina}));
+    public async updateProfessorDisciplina(id_professor_disciplina: number, professorDisciplina:ProfessorDisciplina):Promise<void>{
+      const professorDisciplinaAlterado = await ProfessorDisciplinaRepository.findOneBy(({id_professor_disciplina}));
       if(professorDisciplinaAlterado){
-          professorDisciplinaAlterado.professor_disciplina = professorDisciplina.professor_disciplina;
           professorDisciplinaAlterado.id_turma = professorDisciplina.id_turma;
           professorDisciplinaAlterado.id_disciplina = professorDisciplina.id_disciplina;
           professorDisciplinaAlterado.id_tabela_professor = professorDisciplina.id_tabela_professor;

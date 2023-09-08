@@ -1,5 +1,5 @@
-import {AppDataSource} from "../../../DataBase"
-import Aluno from "../../Aluno"
+import {AppDataSource} from "../../DataBase"
+import Aluno from "../Aluno"
 
 
 const AlunoRepository = AppDataSource.getRepository(Aluno)

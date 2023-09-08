@@ -1,8 +1,8 @@
-import { Entity, PrimaryColumn, Column } from "typeorm";
+import { Entity, PrimaryColumn, Column, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 class Aluno {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   rm: number;
   @Column()
   nome: string;

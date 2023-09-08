@@ -13,7 +13,7 @@ const typeorm_1 = require("typeorm");
 let Secretaria = class Secretaria {
 };
 __decorate([
-    (0, typeorm_1.PrimaryColumn)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Secretaria.prototype, "id_secretaria", void 0);
 __decorate([

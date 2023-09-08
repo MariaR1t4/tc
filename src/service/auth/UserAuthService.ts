@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import * as jwt from 'jsonwebtoken';
 
-import { SECRET } from "../auth/constants";
+import { SECRET } from "../../auth/constants";
 
 export  async function validator(req: Request, res: Response, next: NextFunction){
     const bearearHeader = req.headers['authorization'];

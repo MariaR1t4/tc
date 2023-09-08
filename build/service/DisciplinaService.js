@@ -12,11 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-<<<<<<< HEAD
-const DisciplinaRepository_1 = __importDefault(require("../models/entities/dtos/repositories/DisciplinaRepository"));
-=======
 const DisciplinaRepository_1 = __importDefault(require("../models/entities/repositories/DisciplinaRepository"));
->>>>>>> 8e71852d88985ae45487ec3c01bac48c82ef3b07
 class DisciplinaService {
     constructor() {
     }

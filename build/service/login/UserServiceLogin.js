@@ -42,10 +42,10 @@ const hmac_sha512_1 = __importDefault(require("crypto-js/hmac-sha512"));
 const enc_base64_1 = __importDefault(require("crypto-js/enc-base64"));
 const jwt = __importStar(require("jsonwebtoken"));
 const csv_parser_1 = __importDefault(require("csv-parser"));
-const User_1 = __importDefault(require("../models/entities/User"));
-const logger_1 = __importDefault(require("../models/config/logger"));
-const UserRepository_1 = __importDefault(require("../models/entities/repositories/UserRepository"));
-const constants_1 = require("../auth/constants");
+const User_1 = __importDefault(require("../../models/entities/User"));
+const UserRepository_1 = __importDefault(require("../../models/entities/repositories/UserRepository"));
+const constants_1 = require("../../auth/constants");
+const logger_1 = __importDefault(require("../../configs/logger"));
 class UserServiceLogin {
     getUserFromData(email, password) {
         const newUser = new User_1.default();

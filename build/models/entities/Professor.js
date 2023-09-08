@@ -14,7 +14,7 @@ const typeorm_1 = require("typeorm");
 let Professor = class Professor {
 };
 __decorate([
-    (0, typeorm_1.PrimaryColumn)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Professor.prototype, "id_tabela_professor", void 0);
 __decorate([

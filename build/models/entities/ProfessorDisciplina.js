@@ -19,27 +19,28 @@ const Professor_1 = __importDefault(require("./Professor"));
 let ProfessorDisciplina = class ProfessorDisciplina {
 };
 __decorate([
-    (0, typeorm_1.PrimaryColumn)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], ProfessorDisciplina.prototype, "professor_disciplina", void 0);
-__decorate([
-    (0, typeorm_1.ManyToOne)(() => Turma_1.default, (turma) => turma.id_turma),
-    __metadata("design:type", Number)
-], ProfessorDisciplina.prototype, "id_turma", void 0);
+], ProfessorDisciplina.prototype, "id_professor_disciplina", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => Disciplina_1.default, (disciplina) => disciplina.id_disciplina),
     (0, typeorm_1.JoinColumn)({ name: 'id_disciplina', referencedColumnName: 'id_disciplina' }),
     __metadata("design:type", Number)
 ], ProfessorDisciplina.prototype, "id_disciplina", void 0);
 __decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], ProfessorDisciplina.prototype, "carga_horaria", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => Turma_1.default, (turma) => turma.id_turma),
+    (0, typeorm_1.JoinColumn)({ name: 'id_turma', referencedColumnName: 'id_turma' }),
+    __metadata("design:type", Number)
+], ProfessorDisciplina.prototype, "id_turma", void 0);
+__decorate([
     (0, typeorm_1.ManyToOne)(() => Professor_1.default, (professor) => professor.id_tabela_professor),
     (0, typeorm_1.JoinColumn)({ name: 'id_tabela_professor', referencedColumnName: 'id_tabela_professor' }),
     __metadata("design:type", Number)
 ], ProfessorDisciplina.prototype, "id_tabela_professor", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Date)
-], ProfessorDisciplina.prototype, "carga_horaria", void 0);
 ProfessorDisciplina = __decorate([
     (0, typeorm_1.Entity)()
 ], ProfessorDisciplina);
