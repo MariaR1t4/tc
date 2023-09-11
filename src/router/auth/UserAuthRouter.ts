@@ -1,7 +1,8 @@
 import { Router } from "express";
-import UserLoginController from "../../controller/user.controller";
 import { upload } from "../../configs/multer-config";
 
+
+import UserLoginController from "../../controller/user.controller";
 
 const authRouter = Router();
 

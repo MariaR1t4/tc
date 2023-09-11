@@ -1,4 +1,6 @@
 import { Router } from "express";
+
+
 import ProfessorDisciplinaController from "../controller/ProfessorDisciplinaController";
 
 const professorDisciplinaRouter= Router();

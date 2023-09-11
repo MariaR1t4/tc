@@ -1,4 +1,6 @@
 import { Request, Response } from "express";
+
+
 import FrequenciaService from "../service/FrequenciaService";
 
 export default class FrequenciaController {

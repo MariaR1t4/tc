@@ -1,4 +1,6 @@
 import { Request, Response } from "express";
+
+
 import AlunoService from "../service/AlunoService";
 
 export default class AlunoController {

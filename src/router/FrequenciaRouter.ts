@@ -1,4 +1,6 @@
-import {Router} from "express"
+import {Router} from "express";
+
+
 import FrequenciaController from "../controller/FrequenciaController";
 
 const frequenciaRouter= Router();

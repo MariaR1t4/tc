@@ -67,7 +67,7 @@ class UserServiceLogin {
             const passwordHasehd = enc_base64_1.default.stringify((0, hmac_sha512_1.default)(hashDigest, privateKey));
             const foundUser = yield UserRepository_1.default.findOneBy({ email, password: passwordHasehd });
             if (foundUser) {
-                const token = jwt.sign({ email: foundUser === null || foundUser === void 0 ? void 0 : foundUser.email, id: foundUser === null || foundUser === void 0 ? void 0 : foundUser.randomNumber }, constants_1.SECRET, { expiresIn: 300 });
+                const token = jwt.sign({ email: foundUser === null || foundUser === void 0 ? void 0 : foundUser.email, id: foundUser === null || foundUser === void 0 ? void 0 : foundUser.randomNumber }, constants_1.hide, { expiresIn: 300 });
                 return token;
             }
             throw new Error("User not found");

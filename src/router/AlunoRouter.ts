@@ -1,4 +1,6 @@
 import { Router } from "express";
+
+
 import AlunoController from "../controller/AlunoController";
 
 

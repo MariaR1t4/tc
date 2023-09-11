@@ -1,5 +1,4 @@
-const SECRET = "FadaDoSono";
-
+const hide = "eudamonia";
 export {
-    SECRET
+    hide
 }

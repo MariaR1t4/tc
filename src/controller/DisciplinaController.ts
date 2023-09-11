@@ -1,4 +1,6 @@
 import { Request, Response } from "express";
+
+
 import DisciplinaService from "../service/DisciplinaService";
 
 export default class DisciplinaController {

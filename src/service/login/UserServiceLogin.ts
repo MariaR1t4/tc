@@ -7,9 +7,11 @@ import hmacSHA512 from 'crypto-js/hmac-sha512';
 import Base64 from 'crypto-js/enc-base64';
 import * as jwt from 'jsonwebtoken';
 import csvParser from "csv-parser";
+
+
 import User from "../../models/entities/User";
 import UserRepository from "../../models/entities/repositories/UserRepository";
-import { SECRET } from "../../auth/constants";
+import { hide } from "../../auth/constants";
 import logger from "../../configs/logger";
 
 class UserServiceLogin {
@@ -34,7 +36,7 @@ class UserServiceLogin {
         const passwordHasehd = Base64.stringify(hmacSHA512(hashDigest, privateKey ))
         const foundUser = await UserRepository.findOneBy({ email, password : passwordHasehd});
         if(foundUser){
-        const token = jwt.sign({email: foundUser?.email, id: foundUser?.randomNumber}, SECRET, {expiresIn: 300});
+        const token = jwt.sign({email: foundUser?.email, id: foundUser?.randomNumber}, hide, {expiresIn: 300});
         return token;}
         throw new Error("User not found");
     }

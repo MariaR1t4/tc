@@ -30,21 +30,21 @@ class UserLoginController {
         return __awaiter(this, void 0, void 0, function* () {
             const { email, password } = req.body;
             yield new UserServiceLogin_1.default().signUpUser(email, password);
-            res.json('Bem criado!');
+            res.json('Cadastro criado com sucesso!');
         });
     }
     signUpUsersInBatch(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.file);
             yield new UserServiceLogin_1.default().signUpUsersInBatch(req);
-            res.json('files');
+            res.json('OK!');
         });
     }
     updateUserImage(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.file);
             yield new UserServiceLogin_1.default().updateUserImage(req);
-            res.json('files');
+            res.json('OK!');
         });
     }
 }
