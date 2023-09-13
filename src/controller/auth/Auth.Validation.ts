@@ -10,9 +10,11 @@ export  async function validator(req: Request, res: Response, next: NextFunction
     const barearToken = !!bearer &&  bearer.length > 1 && bearer[1];
     try{
     const token = await jwt.verify(barearToken || '', hide) as any;
-    
-    (req as any).authUser = {id: token.id};
+    console.log(token);
+
+    (req as any).authUser = {id: token.id, randomNumber: token.randomNumber};
     console.log(req.headers.authUser);
+    req.body.authUser = {email: token.email, id: token.id}
 
     if(token) {
         next();

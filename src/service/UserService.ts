@@ -1,5 +1,6 @@
 import User from "../models/entities/User";
 import UserRepository from "../models/entities/repositories/UserRepository";
+import { Request } from "express";
 
 
 export default class UserService{
@@ -33,8 +34,9 @@ export default class UserService{
     public async deleteUserById(id:number):Promise<void>{
         await UserRepository.delete(id);
     }
-    public async updateUserById(randomNumber: number, User:User):Promise<void>{
+    public async updateUserById(randomNumber: number, User:User, req: Request):Promise<void>{
         const UserNow = await UserRepository.findOneBy(({randomNumber}));
+
         if(UserNow){
 //            UserNow.rm = User.rm;
             UserNow.email = User.email;

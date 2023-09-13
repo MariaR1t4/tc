@@ -1,3 +1,6 @@
+import {Request} from "express"
+
+
 import Aluno from "../models/entities/Aluno";
 import AlunoRepository from "../models/entities/repositories/AlunoRepository";
 
@@ -27,7 +30,8 @@ export default class AlunoService{
     public async deleteAluno(rm:number):Promise<void>{
         await AlunoRepository.delete(rm);
     }
-    public async updateAluno(rm: number, aluno:Aluno):Promise<void>{
+    public async updateAluno(aluno:Aluno, req: Request):Promise<void>{
+        const {rm} = (req as any).authUser;
         const alunoAlterado = await AlunoRepository.findOneBy(({rm}));
         if(alunoAlterado){
             alunoAlterado.nome = aluno.nome;
