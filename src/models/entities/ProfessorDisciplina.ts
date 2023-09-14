@@ -11,15 +11,15 @@ class ProfessorDisciplina{
   @Column()
   carga_horaria: number;
 
-  @ManyToOne(() => Disciplina, (disciplina) => disciplina.id)
+  @ManyToOne(() => Disciplina, (disciplina) => disciplina.id_disciplina)
   @JoinColumn({ name: 'id_disciplina', referencedColumnName: 'id_disciplina' })
   id_disciplina: number;
 
-  @ManyToOne(() => Turma, (turma) => turma.id)
+  @ManyToOne(() => Turma, (turma) => turma.id_turma)
   @JoinColumn({ name: 'id_turma', referencedColumnName: 'id_turma' })
   id_turma: number;
 
-  @ManyToOne(() => Professor, (professor) => professor.id)
+  @ManyToOne(() => Professor, (professor) => professor.id_professor)
   @JoinColumn({ name: 'id', referencedColumnName: 'id_professor' })
   id_professor: number;
   

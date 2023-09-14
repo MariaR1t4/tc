@@ -36,19 +36,19 @@ class ProfessorService {
             return yield ProfessorRepository_1.default.find();
         });
     }
-    findProfessor(id_tabela_professor) {
+    findProfessor(id_professor) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield ProfessorRepository_1.default.findOneBy({ id_tabela_professor });
+            return yield ProfessorRepository_1.default.findOneBy({ id_professor });
         });
     }
-    deleteProfessor(id_tabela_professor) {
+    deleteProfessor(id_professor) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield ProfessorRepository_1.default.delete(id_tabela_professor);
+            yield ProfessorRepository_1.default.delete(id_professor);
         });
     }
-    updateProfessor(id_tabela_professor, professor) {
+    updateProfessor(id_professor, professor) {
         return __awaiter(this, void 0, void 0, function* () {
-            const professorAlterado = yield ProfessorRepository_1.default.findOneBy(({ id_tabela_professor }));
+            const professorAlterado = yield ProfessorRepository_1.default.findOneBy(({ id_professor }));
             if (professorAlterado) {
                 professorAlterado.name = professor.name;
                 professorAlterado.telefone = professor.telefone;

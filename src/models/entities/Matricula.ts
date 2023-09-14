@@ -6,20 +6,16 @@ import Turma from "./Turma";
 
 @Entity()
 class Frequencia {
-        @PrimaryGeneratedColumn({name: 'id_frequencia'})
-        id: number;
+        @PrimaryGeneratedColumn()
+        id_frequencia: number;
         
-        @ManyToOne(() => Turma, (turma) => turma.id)
-        @JoinColumn({ name: 'id_turma', referencedColumnName: 'id' })
+        @ManyToOne(() => Turma, (turma) => turma.id_turma)
+        @JoinColumn({ name: 'id_turma', referencedColumnName: 'id_turma' })
         id_turma: number;
 
         @ManyToOne(() => Aluno, (aluno) => aluno.rm)
         @JoinColumn({ name: 'rm', referencedColumnName: 'rm' })
         rm: number;
-
-        @ManyToOne(() => Disciplina, (disciplina) => disciplina.id)
-        @JoinColumn({ name: 'id_disciplina', referencedColumnName: 'id_disciplina' })
-        id_disciplina: number;
 
         @Column()
         ano: number;

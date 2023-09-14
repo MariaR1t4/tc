@@ -16,12 +16,13 @@ require("reflect-metadata");
 const typeorm_1 = require("typeorm");
 const Aluno_1 = __importDefault(require("./Aluno"));
 const Disciplina_1 = __importDefault(require("./Disciplina"));
+const Turma_1 = __importDefault(require("./Turma"));
 let Frequencia = class Frequencia {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'id_frequencia' }),
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], Frequencia.prototype, "id", void 0);
+], Frequencia.prototype, "id_frequencia", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
@@ -32,10 +33,15 @@ __decorate([
     __metadata("design:type", Number)
 ], Frequencia.prototype, "rm", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => Disciplina_1.default, (disciplina) => disciplina.id),
+    (0, typeorm_1.ManyToOne)(() => Disciplina_1.default, (disciplina) => disciplina.id_disciplina),
     (0, typeorm_1.JoinColumn)({ name: 'id_disciplina', referencedColumnName: 'id_disciplina' }),
     __metadata("design:type", Number)
 ], Frequencia.prototype, "id_disciplina", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => Turma_1.default, (turma) => turma.id_turma),
+    (0, typeorm_1.JoinColumn)({ name: 'id_turma', referencedColumnName: 'id_turma' }),
+    __metadata("design:type", Number)
+], Frequencia.prototype, "id_turma", void 0);
 Frequencia = __decorate([
     (0, typeorm_1.Entity)()
 ], Frequencia);

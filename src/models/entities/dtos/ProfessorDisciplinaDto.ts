@@ -6,13 +6,13 @@ import ProfessorDto from "./ProfessorDto";
 export default interface ProfessorDisciplinato {
   id_turma: TurmaDto;
   id_disciplina: DisciplinaDto;
-  id_tabela_professor: ProfessorDto;
+  id_professor: ProfessorDto;
   carga_horaria: number;
 }
 
 export const ProfessorDisciplinaSchema = z.object({
   id_turma: z.number(),
   id_disciplina: z.number(),
-  id_tabela_professor: z.number(),
+  id_professor: z.number(),
   carga_horaria: z.number()
 })

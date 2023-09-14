@@ -22,14 +22,14 @@ export default class ProfessorService{
     public async listProfessor():Promise<Professor[]>{
         return await ProfessorRepository.find();
     }
-    public async findProfessor(id_tabela_professor:number) : Promise<Professor | null> {
-        return await ProfessorRepository.findOneBy({id_tabela_professor}); 
+    public async findProfessor(id_professor:number) : Promise<Professor | null> {
+        return await ProfessorRepository.findOneBy({id_professor}); 
     }
-    public async deleteProfessor(id_tabela_professor:number):Promise<void>{
-        await ProfessorRepository.delete(id_tabela_professor);
+    public async deleteProfessor(id_professor:number):Promise<void>{
+        await ProfessorRepository.delete(id_professor);
     }
-    public async updateProfessor(id_tabela_professor: number, professor:Professor):Promise<void>{
-        const professorAlterado = await ProfessorRepository.findOneBy(({id_tabela_professor}));
+    public async updateProfessor(id_professor: number, professor:Professor):Promise<void>{
+        const professorAlterado = await ProfessorRepository.findOneBy(({id_professor}));
         if(professorAlterado){
             professorAlterado.name = professor.name;
             professorAlterado.telefone = professor.telefone;

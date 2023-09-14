@@ -14,9 +14,9 @@ const typeorm_1 = require("typeorm");
 let Turma = class Turma {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'id_turma' }),
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], Turma.prototype, "id", void 0);
+], Turma.prototype, "id_turma", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
