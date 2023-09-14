@@ -14,9 +14,9 @@ const typeorm_1 = require("typeorm");
 let Disciplina = class Disciplina {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'id_disciplina' }),
     __metadata("design:type", Number)
-], Disciplina.prototype, "id_disciplina", void 0);
+], Disciplina.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)

@@ -7,6 +7,6 @@ import UserLoginController from "../controller/user.controller";
 
 const userRouter = Router();
 
-userRouter.put('/update-image', upload.single('image'), new UserLoginController().updateUserImage)
+userRouter.put('/update-image', upload.single('image'), new UserLoginController().updateAlunoImage)
 
 export default userRouter

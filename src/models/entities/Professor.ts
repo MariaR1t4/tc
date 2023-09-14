@@ -3,8 +3,8 @@ import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 class Professor{
-        @PrimaryGeneratedColumn()
-        id_tabela_professor: number;
+        @PrimaryGeneratedColumn({name: 'id_professor'})
+        id: number;
         @Column()
         name: string;
         @Column()

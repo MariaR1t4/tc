@@ -19,9 +19,9 @@ const Disciplina_1 = __importDefault(require("./Disciplina"));
 let Frequencia = class Frequencia {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'id_frequencia' }),
     __metadata("design:type", Number)
-], Frequencia.prototype, "id_frequencia", void 0);
+], Frequencia.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
@@ -32,7 +32,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Frequencia.prototype, "rm", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => Disciplina_1.default, (disciplina) => disciplina.id_disciplina),
+    (0, typeorm_1.ManyToOne)(() => Disciplina_1.default, (disciplina) => disciplina.id),
     (0, typeorm_1.JoinColumn)({ name: 'id_disciplina', referencedColumnName: 'id_disciplina' }),
     __metadata("design:type", Number)
 ], Frequencia.prototype, "id_disciplina", void 0);

@@ -1,37 +1,37 @@
 import { Request, Response } from "express";
 
 
-import UserServiceLogin from "../service/login/UserServiceLogin";
+import AlunoServiceLogin from "../service/login/AlunoServiceLogin";
 
-class UserLoginController {
-        async loginUser(req: Request, res: Response){
-            const {email, password} = req.body;
+class AlunoLoginController {
+        async loginAluno(req: Request, res: Response){
+            const {email, senha} = req.body;
             try{
-            const token = await new UserServiceLogin().loginUser(email, password);
+            const token = await new AlunoServiceLogin().loginAluno(email, senha);
             res.json({token});}
             catch(err){
                 res.status(401).send("Login failed");
             }
         }
 
-        async signUpUser(req: Request, res: Response){
-            const {email, password} = req.body;
-            await new UserServiceLogin().signUpUser(email, password);
+        async signUpAluno(req: Request, res: Response){
+            const {email, senha} = req.body;
+            await new AlunoServiceLogin().signUpAluno(email, senha);
             res.json('Cadastro criado com sucesso!');
         }
 
-        async signUpUsersInBatch(req:Request, res:Response) {
+        async signUpAlunosInBatch(req:Request, res:Response) {
             console.log(req.file);
-            await new UserServiceLogin().signUpUsersInBatch(req);
+            await new AlunoServiceLogin().signUpAlunosInBatch(req);
             res.json('OK!');
         }
 
-        async updateUserImage(req:Request, res:Response) {
+        async updateAlunoImage(req:Request, res:Response) {
             console.log(req.file);
-            await new UserServiceLogin().updateUserImage(req);
+            await new AlunoServiceLogin().updateAlunoImage(req);
             res.json('OK!');
         }
 
 }
 
-export default UserLoginController;
+export default AlunoLoginController;

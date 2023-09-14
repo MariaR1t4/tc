@@ -11,6 +11,8 @@ class Aluno {
   @Column()
   senha: string;
   @Column()
+  ImageUrl: string;
+  @Column()
   telefone: string;
 }
 export default Aluno;

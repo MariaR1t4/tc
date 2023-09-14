@@ -31,6 +31,10 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
+], Aluno.prototype, "ImageUrl", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
 ], Aluno.prototype, "telefone", void 0);
 Aluno = __decorate([
     (0, typeorm_1.Entity)()

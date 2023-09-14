@@ -42,71 +42,71 @@ const hmac_sha512_1 = __importDefault(require("crypto-js/hmac-sha512"));
 const enc_base64_1 = __importDefault(require("crypto-js/enc-base64"));
 const jwt = __importStar(require("jsonwebtoken"));
 const csv_parser_1 = __importDefault(require("csv-parser"));
-const User_1 = __importDefault(require("../../models/entities/User"));
-const UserRepository_1 = __importDefault(require("../../models/entities/repositories/UserRepository"));
+const Aluno_1 = __importDefault(require("../../models/entities/Aluno"));
+const AlunoRepository_1 = __importDefault(require("../../models/entities/repositories/AlunoRepository"));
 const constants_1 = require("../../auth/constants");
 const logger_1 = __importDefault(require("../../configs/logger"));
-class UserServiceLogin {
-    getUserFromData(email, password) {
-        const newUser = new User_1.default();
-        newUser.email = email;
-        newUser.password = password;
-        const hashDigest = (0, sha256_1.default)(password);
+class AlunoServiceLogin {
+    getAlunoFromData(email, senha) {
+        const newAluno = new Aluno_1.default();
+        newAluno.email = email;
+        newAluno.senha = senha;
+        const hashDigest = (0, sha256_1.default)(senha);
         logger_1.default.debug("HashAntes: ", hashDigest);
         const privateKey = "FIEC2023";
         const hmacDigest = enc_base64_1.default.stringify((0, hmac_sha512_1.default)(hashDigest, privateKey));
         logger_1.default.debug("HashDepos: ", hashDigest);
-        newUser.password = hmacDigest;
-        return newUser;
+        newAluno.senha = hmacDigest;
+        return newAluno;
     }
-    loginUser(email, password) {
+    loginAluno(email, senha) {
         return __awaiter(this, void 0, void 0, function* () {
-            const hashDigest = (0, sha256_1.default)(password);
+            const hashDigest = (0, sha256_1.default)(senha);
             logger_1.default.debug("HashAntes: ", hashDigest);
             const privateKey = "FIEC2023";
-            const passwordHasehd = enc_base64_1.default.stringify((0, hmac_sha512_1.default)(hashDigest, privateKey));
-            const foundUser = yield UserRepository_1.default.findOneBy({ email, password: passwordHasehd });
-            if (foundUser) {
-                const token = jwt.sign({ email: foundUser === null || foundUser === void 0 ? void 0 : foundUser.email, id: foundUser === null || foundUser === void 0 ? void 0 : foundUser.randomNumber }, constants_1.hide, { expiresIn: 300 });
+            const SenhaHasehd = enc_base64_1.default.stringify((0, hmac_sha512_1.default)(hashDigest, privateKey));
+            const foundAluno = yield AlunoRepository_1.default.findOneBy({ email, senha: SenhaHasehd });
+            if (foundAluno) {
+                const token = jwt.sign({ email: foundAluno === null || foundAluno === void 0 ? void 0 : foundAluno.email, id: foundAluno === null || foundAluno === void 0 ? void 0 : foundAluno.rm }, constants_1.hide, { expiresIn: 300 });
                 return token;
             }
-            throw new Error("User not found");
+            throw new Error("Aluno not found");
         });
     }
-    signUpUser(email, password) {
+    signUpAluno(email, senha) {
         return __awaiter(this, void 0, void 0, function* () {
-            const newUser = this.getUserFromData(email, password);
-            yield UserRepository_1.default.save(newUser);
+            const newAluno = this.getAlunoFromData(email, senha);
+            yield AlunoRepository_1.default.save(newAluno);
         });
     }
-    signUpUsersInBatch(req) {
+    signUpAlunosInBatch(req) {
         return __awaiter(this, void 0, void 0, function* () {
             const file = req.file;
-            const users = [];
+            const Alunos = [];
             if (file != null) {
                 fs_1.default.createReadStream(file.path)
                     .pipe((0, csv_parser_1.default)())
-                    .on('data', (data) => users.push(this.getUserFromData(data.email, data.password)))
+                    .on('data', (data) => Alunos.push(this.getAlunoFromData(data.email, data.senha)))
                     .on('end', () => {
-                    console.log(users);
-                    UserRepository_1.default.insert(users);
+                    console.log(Alunos);
+                    AlunoRepository_1.default.insert(Alunos);
                 });
             }
         });
     }
-    updateUserImage(req) {
+    updateAlunoImage(req) {
         return __awaiter(this, void 0, void 0, function* () {
             const file = req.file;
-            const ImageUrl = req.params.ImageUrl;
-            const foundUser = yield UserRepository_1.default.findOneBy({ ImageUrl });
-            if (file != null && foundUser != null) {
+            const { rm } = req.authAluno;
+            const foundAluno = yield AlunoRepository_1.default.findOneBy({ rm });
+            if (file != null && foundAluno != null) {
                 const image = yield jimp_1.default.read(file.path);
                 yield image.resize(600, 600);
                 yield image.write('uploads/' + file.originalname);
-                foundUser.ImageUrl = file.originalname;
-                yield UserRepository_1.default.save(foundUser);
+                foundAluno.ImageUrl = file.originalname;
+                yield AlunoRepository_1.default.save(foundAluno);
             }
         });
     }
 }
-exports.default = UserServiceLogin;
+exports.default = AlunoServiceLogin;

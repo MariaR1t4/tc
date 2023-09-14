@@ -12,13 +12,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const UserServiceLogin_1 = __importDefault(require("../service/login/UserServiceLogin"));
-class UserLoginController {
-    loginUser(req, res) {
+const AlunoServiceLogin_1 = __importDefault(require("../service/login/AlunoServiceLogin"));
+class AlunoLoginController {
+    loginAluno(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { email, password } = req.body;
+            const { email, senha } = req.body;
             try {
-                const token = yield new UserServiceLogin_1.default().loginUser(email, password);
+                const token = yield new AlunoServiceLogin_1.default().loginAluno(email, senha);
                 res.json({ token });
             }
             catch (err) {
@@ -26,26 +26,26 @@ class UserLoginController {
             }
         });
     }
-    signUpUser(req, res) {
+    signUpAluno(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { email, password } = req.body;
-            yield new UserServiceLogin_1.default().signUpUser(email, password);
+            const { email, senha } = req.body;
+            yield new AlunoServiceLogin_1.default().signUpAluno(email, senha);
             res.json('Cadastro criado com sucesso!');
         });
     }
-    signUpUsersInBatch(req, res) {
+    signUpAlunosInBatch(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.file);
-            yield new UserServiceLogin_1.default().signUpUsersInBatch(req);
+            yield new AlunoServiceLogin_1.default().signUpAlunosInBatch(req);
             res.json('OK!');
         });
     }
-    updateUserImage(req, res) {
+    updateAlunoImage(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.file);
-            yield new UserServiceLogin_1.default().updateUserImage(req);
+            yield new AlunoServiceLogin_1.default().updateAlunoImage(req);
             res.json('OK!');
         });
     }
 }
-exports.default = UserLoginController;
+exports.default = AlunoLoginController;

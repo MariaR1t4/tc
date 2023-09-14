@@ -12,36 +12,41 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+require("reflect-metadata");
 const typeorm_1 = require("typeorm");
-const Turma_1 = __importDefault(require("./Turma"));
+const Aluno_1 = __importDefault(require("./Aluno"));
 const Disciplina_1 = __importDefault(require("./Disciplina"));
-const Professor_1 = __importDefault(require("./Professor"));
-let ProfessorDisciplina = class ProfessorDisciplina {
+const Turma_1 = __importDefault(require("./Turma"));
+let Frequencia = class Frequencia {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'id_professor_disciplina' }),
+    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'id_frequencia' }),
     __metadata("design:type", Number)
-], ProfessorDisciplina.prototype, "id", void 0);
+], Frequencia.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.ManyToOne)(() => Turma_1.default, (turma) => turma.id),
+    (0, typeorm_1.JoinColumn)({ name: 'id_turma', referencedColumnName: 'id' }),
     __metadata("design:type", Number)
-], ProfessorDisciplina.prototype, "carga_horaria", void 0);
+], Frequencia.prototype, "id_turma", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => Aluno_1.default, (aluno) => aluno.rm),
+    (0, typeorm_1.JoinColumn)({ name: 'rm', referencedColumnName: 'rm' }),
+    __metadata("design:type", Number)
+], Frequencia.prototype, "rm", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => Disciplina_1.default, (disciplina) => disciplina.id),
     (0, typeorm_1.JoinColumn)({ name: 'id_disciplina', referencedColumnName: 'id_disciplina' }),
     __metadata("design:type", Number)
-], ProfessorDisciplina.prototype, "id_disciplina", void 0);
+], Frequencia.prototype, "id_disciplina", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => Turma_1.default, (turma) => turma.id),
-    (0, typeorm_1.JoinColumn)({ name: 'id_turma', referencedColumnName: 'id_turma' }),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
-], ProfessorDisciplina.prototype, "id_turma", void 0);
+], Frequencia.prototype, "ano", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => Professor_1.default, (professor) => professor.id),
-    (0, typeorm_1.JoinColumn)({ name: 'id', referencedColumnName: 'id_professor' }),
-    __metadata("design:type", Number)
-], ProfessorDisciplina.prototype, "id_professor", void 0);
-ProfessorDisciplina = __decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Frequencia.prototype, "semestre", void 0);
+Frequencia = __decorate([
     (0, typeorm_1.Entity)()
-], ProfessorDisciplina);
-exports.default = ProfessorDisciplina;
+], Frequencia);
+exports.default = Frequencia;

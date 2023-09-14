@@ -3,8 +3,8 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
     class Turma{
-            @PrimaryGeneratedColumn()
-            id_turma: number;
+            @PrimaryGeneratedColumn({name:'id_turma'})
+            id: number;
             @Column()
             curso: string;
             @Column()

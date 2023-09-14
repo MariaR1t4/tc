@@ -3,8 +3,9 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 class Disciplina{
-        @PrimaryGeneratedColumn()
-        id_disciplina: number;
+        @PrimaryGeneratedColumn({name:'id_disciplina'})
+        id: number;
+
         @Column()
         descricao: string;
 }

@@ -42,8 +42,10 @@ function validator(req, res, next) {
         const barearToken = !!bearer && bearer.length > 1 && bearer[1];
         try {
             const token = yield jwt.verify(barearToken || '', constants_1.hide);
-            req.authUser = { id: token.id };
+            console.log(token);
+            req.authUser = { id: token.id, randomNumber: token.randomNumber };
             console.log(req.headers.authUser);
+            req.body.authUser = { email: token.email, id: token.id };
             if (token) {
                 next();
                 return;
