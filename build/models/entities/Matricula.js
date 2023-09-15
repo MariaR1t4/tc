@@ -19,7 +19,7 @@ const Turma_1 = __importDefault(require("./Turma"));
 let Frequencia = class Frequencia {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)("increment"),
     __metadata("design:type", Number)
 ], Frequencia.prototype, "id_frequencia", void 0);
 __decorate([

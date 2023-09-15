@@ -2,7 +2,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 class Secretaria{
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn("increment") 
   id_secretaria: number
   @Column()
   nome: string

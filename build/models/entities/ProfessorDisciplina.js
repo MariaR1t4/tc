@@ -19,9 +19,9 @@ const Professor_1 = __importDefault(require("./Professor"));
 let ProfessorDisciplina = class ProfessorDisciplina {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'id_professor_disciplina' }),
+    (0, typeorm_1.PrimaryGeneratedColumn)("increment"),
     __metadata("design:type", Number)
-], ProfessorDisciplina.prototype, "id", void 0);
+], ProfessorDisciplina.prototype, "professor_disciplina", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)

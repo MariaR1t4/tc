@@ -3,7 +3,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 class Disciplina{
-        @PrimaryGeneratedColumn()
+        @PrimaryGeneratedColumn("increment") 
         id_disciplina: number;
 
         @Column()

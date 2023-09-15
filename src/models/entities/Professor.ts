@@ -3,7 +3,7 @@ import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 class Professor{
-        @PrimaryGeneratedColumn()
+        @PrimaryGeneratedColumn("increment") 
         id_professor: number;
         @Column()
         name: string;

@@ -47,9 +47,9 @@ const AlunoRepository_1 = __importDefault(require("../../models/entities/reposit
 const constants_1 = require("../../auth/constants");
 const logger_1 = __importDefault(require("../../configs/logger"));
 class AlunoServiceLogin {
-    getAlunoFromData(email, senha) {
+    getAlunoFromData(rm, senha) {
         const newAluno = new Aluno_1.default();
-        newAluno.email = email;
+        newAluno.rm = rm;
         newAluno.senha = senha;
         const hashDigest = (0, sha256_1.default)(senha);
         logger_1.default.debug("HashAntes: ", hashDigest);
@@ -59,23 +59,23 @@ class AlunoServiceLogin {
         newAluno.senha = hmacDigest;
         return newAluno;
     }
-    loginAluno(email, senha) {
+    loginAluno(rm, senha) {
         return __awaiter(this, void 0, void 0, function* () {
             const hashDigest = (0, sha256_1.default)(senha);
             logger_1.default.debug("HashAntes: ", hashDigest);
             const privateKey = "FIEC2023";
             const SenhaHasehd = enc_base64_1.default.stringify((0, hmac_sha512_1.default)(hashDigest, privateKey));
-            const foundAluno = yield AlunoRepository_1.default.findOneBy({ email, senha: SenhaHasehd });
+            const foundAluno = yield AlunoRepository_1.default.findOneBy({ rm, senha: SenhaHasehd });
             if (foundAluno) {
-                const token = jwt.sign({ email: foundAluno === null || foundAluno === void 0 ? void 0 : foundAluno.email, id: foundAluno === null || foundAluno === void 0 ? void 0 : foundAluno.rm }, constants_1.hide, { expiresIn: 300 });
+                const token = jwt.sign({ rm: foundAluno === null || foundAluno === void 0 ? void 0 : foundAluno.rm, id: foundAluno === null || foundAluno === void 0 ? void 0 : foundAluno.rm }, constants_1.hide, { expiresIn: 300 });
                 return token;
             }
             throw new Error("Aluno not found");
         });
     }
-    signUpAluno(email, senha) {
+    signUpAluno(rm, senha) {
         return __awaiter(this, void 0, void 0, function* () {
-            const newAluno = this.getAlunoFromData(email, senha);
+            const newAluno = this.getAlunoFromData(rm, senha);
             yield AlunoRepository_1.default.save(newAluno);
         });
     }
@@ -86,7 +86,7 @@ class AlunoServiceLogin {
             if (file != null) {
                 fs_1.default.createReadStream(file.path)
                     .pipe((0, csv_parser_1.default)())
-                    .on('data', (data) => Alunos.push(this.getAlunoFromData(data.email, data.senha)))
+                    .on('data', (data) => Alunos.push(this.getAlunoFromData(data.rm, data.senha)))
                     .on('end', () => {
                     console.log(Alunos);
                     AlunoRepository_1.default.insert(Alunos);

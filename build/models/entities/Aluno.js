@@ -13,7 +13,7 @@ const typeorm_1 = require("typeorm");
 let Aluno = class Aluno {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)("increment"),
     __metadata("design:type", Number)
 ], Aluno.prototype, "rm", void 0);
 __decorate([
@@ -29,7 +29,7 @@ __decorate([
     __metadata("design:type", String)
 ], Aluno.prototype, "senha", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ 'nullable': true }),
     __metadata("design:type", String)
 ], Aluno.prototype, "ImageUrl", void 0);
 __decorate([

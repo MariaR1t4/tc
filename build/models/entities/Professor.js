@@ -14,7 +14,7 @@ const typeorm_1 = require("typeorm");
 let Professor = class Professor {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)("increment"),
     __metadata("design:type", Number)
 ], Professor.prototype, "id_professor", void 0);
 __decorate([

@@ -6,7 +6,7 @@ import Turma from "./Turma";
 
 @Entity()
 class Frequencia {
-        @PrimaryGeneratedColumn()
+        @PrimaryGeneratedColumn("increment") 
         id_frequencia: number;
         
         @ManyToOne(() => Turma, (turma) => turma.id_turma)

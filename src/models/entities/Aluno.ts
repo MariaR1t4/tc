@@ -1,17 +1,25 @@
 import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { nullable } from "zod/lib";
+
+
 
 @Entity()
 class Aluno {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn("increment") 
   rm: number;
+
   @Column()
   nome: string;
+
   @Column()
   email: string;
+
   @Column()
   senha: string;
-  @Column()
+
+  @Column({'nullable': true})
   ImageUrl: string;
+
   @Column()
   telefone: string;
 }

@@ -3,7 +3,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
     class Turma{
-            @PrimaryGeneratedColumn()
+            @PrimaryGeneratedColumn("increment") 
             id_turma: number;
             @Column()
             curso: string;

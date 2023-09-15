@@ -12,13 +12,12 @@ import csvParser from "csv-parser";
 import Aluno from "../../models/entities/Aluno";
 import AlunoRepository from "../../models/entities/repositories/AlunoRepository";
 import { hide } from "../../auth/constants";
-import logger from "../../configs/logger";
-
+import logger from "../../configs/logger"
 class AlunoServiceLogin {
 
-    getAlunoFromData(email: string, senha: string) : Aluno{
+    getAlunoFromData(rm: number, senha: string) : Aluno{
         const newAluno = new Aluno();
-        newAluno.email = email;
+        newAluno.rm = rm;
         newAluno.senha = senha;
         const hashDigest = sha256(senha);
         logger.debug("HashAntes: ", hashDigest)
@@ -29,20 +28,20 @@ class AlunoServiceLogin {
         return newAluno;
     }
 
-    async loginAluno(email: string, senha: string) : Promise<string>{
+    async loginAluno(rm: number, senha: string) : Promise<string>{
         const hashDigest = sha256(senha);
         logger.debug("HashAntes: ", hashDigest)
         const privateKey = "FIEC2023"
         const SenhaHasehd = Base64.stringify(hmacSHA512(hashDigest, privateKey ))
-        const foundAluno = await AlunoRepository.findOneBy({ email, senha : SenhaHasehd});
+        const foundAluno = await AlunoRepository.findOneBy({ rm, senha : SenhaHasehd});
         if(foundAluno){
-        const token = jwt.sign({email: foundAluno?.email, id: foundAluno?.rm}, hide, {expiresIn: 300});
+        const token = jwt.sign({rm: foundAluno?.rm, id: foundAluno?.rm}, hide, {expiresIn: 300});
         return token;}
         throw new Error("Aluno not found");
     }
 
-    async signUpAluno( email: string, senha: string){
-        const newAluno = this.getAlunoFromData(email, senha);
+    async signUpAluno( rm: number, senha: string){
+        const newAluno = this.getAlunoFromData(rm, senha);
         await AlunoRepository.save(newAluno);
     }
 
@@ -52,7 +51,7 @@ class AlunoServiceLogin {
         if(file != null) {
             fs.createReadStream(file.path)
                 .pipe(csvParser())
-                .on('data', (data) => Alunos.push(this.getAlunoFromData(data.email, data.senha)))
+                .on('data', (data) => Alunos.push(this.getAlunoFromData(data.rm, data.senha)))
                 .on('end', () => {
                     console.log(Alunos);
                     AlunoRepository.insert(Alunos);

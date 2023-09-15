@@ -5,8 +5,8 @@ import Professor from "./Professor";
 
 @Entity()
 class ProfessorDisciplina{
-  @PrimaryGeneratedColumn({name: 'id_professor_disciplina'})
-  id: number;
+  @PrimaryGeneratedColumn("increment")
+  professor_disciplina: number;
 
   @Column()
   carga_horaria: number;
