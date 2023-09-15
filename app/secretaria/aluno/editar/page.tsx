@@ -1,3 +1,5 @@
+"use client"
+
 import { NavbarSec } from "@/app/components/navbarsec";
 
 

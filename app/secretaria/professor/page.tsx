@@ -1,9 +1,10 @@
 
 "use client"
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'next/navigation'
 import { NavbarSec } from '@/app/components/navbarsec'
+import axios from 'axios'
 
 type Alunos = {
   map(arg0: (Aluno: any) => React.JSX.Element): React.ReactNode
@@ -13,29 +14,27 @@ type Alunos = {
 }
  export default function ProfSec() {
   const {id} = useParams();
-  const [aluno, setAluno] = React.useState<Alunos|null>(null);
+  const [professor, setProfesor] = React.useState<Alunos|null>(null);
 
-  const carregaAluno = async () => {
-    
-    try{
-    const res = await fetch('http://localhost:38000/alunos');
-    const data = await res.json();
-    setAluno(data);
-    console.log(aluno)
-    }catch(err){
+  axios.interceptors.request.use(config => {
+    // loga(log) uma mensagem antes da requisição HTTP ser enviada
+    console.log('A requisição foi enviada');
+    return config;
+  });
+  useEffect(()=>{
+    axios.get('http://10.5.9.9:38000/app/professor/')
 
-      console.log(err);
-    }
-
-  }
-
-  React.useEffect(() => {
-    carregaAluno();
-  }, [])
+    .then(response => {
+      setProfesor (response.data);
+      console.log(response.data);
+    })
+  },[])
+  // faz uma requisição GET
+;
+  
   
   return (
     <>
-
       <main className='w-full h-full'>
         <NavbarSec />
         <h1 className=" text-center text-gray-700 font-bold mt-20 text-4xl">Selecionar Professor</h1>
@@ -43,21 +42,26 @@ type Alunos = {
       <thead className=' bg-gray-400'><tr>
             <th className=' border border-black'>Rm</th>
             <th className=' border border-black'>Nome</th>
-            <th className=' border border-black'>Curso</th>
+            <th className=' border border-black'>Email</th>
+            <th className=' border border-black'>Senha</th>
+            <th className=' border border-black'>Telefone</th>
+          
             </tr>
         </thead>
         <tbody >
-          {aluno && aluno.map(Aluno => (
+          {professor && professor.map(Professor => (
             <tr className=' border border-black'>
-              <td className=' border border-black'>{Aluno.id}</td>
-              <td className=' border border-black'>{Aluno.name}</td>
-              <td className=' border border-black'>{Aluno.curso}</td>
+              <td className=' border border-black'>{Professor.id_tabela_professor}</td>
+              <td className=' border border-black'>{Professor.name}</td>
+              <td className=' border border-black'>{Professor.email}</td>
+              <td className=' border border-black'>{Professor.password}</td>
+              <td className=' border border-black'>{Professor.telefone}</td>
             </tr>
           ))}
         </tbody>
       </table>
       <div className='mt-3 flex justify-center gap-96 '>
-      <button className='mr-80 bg-green-700 w-32 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white'>Editar Professor</button>
+      <a href="/secretaria/professor/editar?id=${p.rm}"><button className='mr-80 bg-green-700 w-32 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white'>Editar Professor</button></a>
       <button className=' bg-blue-700 w-28 h-10 text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1'>Ver Professor</button>
       </div>   
       </main>

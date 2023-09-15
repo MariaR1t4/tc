@@ -1,8 +1,27 @@
+"use client"
 import { NavbarSec } from "@/app/components/navbarsec";
+import axios from "axios";
+import { useParams } from "next/navigation";
+import React, {useEffect} from "react";
 
 
 export default function ProfEditar(){
-
+    const {id} = useParams();
+    const [professor, setProfessor] = React.useState<|null>(null);
+  
+    axios.interceptors.request.use(config => {
+      // loga(log) uma mensagem antes da requisição HTTP ser enviada
+      console.log('A requisição foi enviada');
+      return config;
+    });
+    useEffect(()=>{
+      axios.get('http://10.5.9.9:38000/app/professor/ ')
+  
+      .then(response => {
+        setProfessor(response.data);
+        console.log(response.data);
+      })
+    },[])
     return(
         <>
         <NavbarSec />

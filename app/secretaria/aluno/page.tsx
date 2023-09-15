@@ -1,9 +1,10 @@
 
 "use client"
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'next/navigation'
 import { NavbarSec } from '@/app/components/navbarsec'
+import axios from 'axios'
 
 type Alunos = {
   map(arg0: (Aluno: any) => React.JSX.Element): React.ReactNode
@@ -15,23 +16,19 @@ export default function TurmadoAluno() {
   const {id} = useParams();
   const [aluno, setAluno] = React.useState<Alunos|null>(null);
 
-  const carregaAluno = async () => {
-    
-    try{
-    const res = await fetch('http://localhost:38000/alunos');
-    const data = await res.json();
-    setAluno(data);
-    console.log(aluno)
-    }catch(err){
+  axios.interceptors.request.use(config => {
+    // loga(log) uma mensagem antes da requisição HTTP ser enviada
+    console.log('A requisição foi enviada');
+    return config;
+  });
+  useEffect(()=>{
+    axios.get('http://10.5.9.9:38000/app/aluno/')
 
-      console.log(err);
-    }
-
-  }
-
-  React.useEffect(() => {
-    carregaAluno();
-  }, [])
+    .then(response => {
+      setAluno (response.data);
+      console.log(response.data);
+    })
+  },[])
   
   return (
     <>
@@ -43,15 +40,21 @@ export default function TurmadoAluno() {
       <thead className=' bg-gray-400'><tr>
             <th className=' border border-black'>Rm</th>
             <th className=' border border-black'>Nome</th>
-            <th className=' border border-black'>Curso</th>
+            <th className=' border border-black'>Email</th>
+            <th className=' border border-black'>Telefone</th>
+            <th className=' border border-black'>Senha</th>
+
+
             </tr>
         </thead>
         <tbody >
           {aluno && aluno.map(Aluno => (
             <tr className=' border border-black'>
-              <td className=' border border-black'>{Aluno.id}</td>
-              <td className=' border border-black'>{Aluno.name}</td>
-              <td className=' border border-black'>{Aluno.curso}</td>
+              <td className=' border border-black'>{Aluno.rm}</td>
+              <td className=' border border-black'>{Aluno.nome}</td>
+              <td className=' border border-black'>{Aluno.email}</td>
+              <td className=' border border-black'>{Aluno.telefone}</td>
+              <td className=' border border-black'>{Aluno.senha}</td>
             </tr>
           ))}
         </tbody>
