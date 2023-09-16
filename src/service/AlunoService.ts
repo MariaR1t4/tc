@@ -30,8 +30,7 @@ export default class AlunoService{
     public async deleteAluno(rm:number):Promise<void>{
         await AlunoRepository.delete(rm);
     }
-    public async updateAluno(aluno:Aluno, req: Request):Promise<void>{
-        const {rm} = (req as any).authUser;
+    public async updateAluno(aluno:Aluno,rm:number):Promise<void>{
         const alunoAlterado = await AlunoRepository.findOneBy(({rm}));
         if(alunoAlterado){
             alunoAlterado.nome = aluno.nome;

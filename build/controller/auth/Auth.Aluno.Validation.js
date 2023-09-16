@@ -32,32 +32,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.validatorAluno = exports.validatorProfessor = void 0;
+exports.validatorAluno = void 0;
 const jwt = __importStar(require("jsonwebtoken"));
 const constants_1 = require("../../auth/constants");
-function validatorProfessor(req, res, next) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const bearerHeader = req.headers['authorization'];
-        const bearer = bearerHeader === null || bearerHeader === void 0 ? void 0 : bearerHeader.split(' ');
-        const barearToken = !!bearer && bearer.length > 1 && bearer[1];
-        try {
-            const token = yield jwt.verify(barearToken || '', constants_1.hide);
-            console.log(token);
-            req.authUser = { id: token.id };
-            console.log(req.headers.authUser);
-            req.body.authUser = { email: token.email, id: token.id };
-            if (token) {
-                next();
-                return;
-            }
-            res.status(403).send("User not allowed");
-        }
-        catch (err) {
-            res.status(403).send("User not allowed");
-        }
-    });
-}
-exports.validatorProfessor = validatorProfessor;
 function validatorAluno(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         const bearerHeader = req.headers['authorization'];
@@ -66,9 +43,9 @@ function validatorAluno(req, res, next) {
         try {
             const token = yield jwt.verify(barearToken || '', constants_1.hide);
             console.log(token);
-            req.authUser = { id: token.id, rm: token.rm };
+            req.authUser = { id: token.id, randomNumber: token.randomNumber };
             console.log(req.headers.authUser);
-            req.body.authUser = { rm: token.rm, id: token.id };
+            req.body.authUser = { email: token.email, id: token.id };
             if (token) {
                 next();
                 return;

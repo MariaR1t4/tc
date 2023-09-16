@@ -15,7 +15,6 @@ const DisciplinaRouter_1 = __importDefault(require("./router/DisciplinaRouter"))
 const ProfessorDisciplinaRouter_1 = __importDefault(require("./router/ProfessorDisciplinaRouter"));
 const ProfessorRouter_1 = __importDefault(require("./router/ProfessorRouter"));
 const UserAuthRouter_1 = __importDefault(require("./router/auth/UserAuthRouter"));
-const UserRouter_1 = __importDefault(require("./router/UserRouter"));
 const Auth_Validation_1 = require("./controller/auth/Auth.Validation");
 const app = (0, express_1.default)();
 const port = 38000;
@@ -25,15 +24,14 @@ app.use((0, cors_1.default)());
 app.use((0, morgan_1.default)('combined'));
 //app.use('/app', express.static(path.join(__dirname, 'src')))
 app.use('/app/aluno', AlunoRouter_1.default);
-app.use('/app/aluno', Auth_Validation_1.validator);
+app.use('/app/aluno', Auth_Validation_1.validatorAluno);
 app.use('/app/disciplina', DisciplinaRouter_1.default);
 app.use('/app/frequencia', FrequenciaRouter_1.default);
 app.use('/app/disciplina-professor', ProfessorDisciplinaRouter_1.default);
 app.use('/app/professor', ProfessorRouter_1.default);
+app.use('/app/professor', Auth_Validation_1.validatorProfessor);
 app.use('/app/turma', TurmaRouter_1.default);
 app.use('/auth', UserAuthRouter_1.default);
-app.use('/app/users', UserRouter_1.default);
-app.use('/app/users', Auth_Validation_1.validator);
 app.listen(port, () => {
     console.log(`Servidor iniciado em http://localhost:${port}`);
     DataBase_1.AppDataSource.initialize().then(r => console.log('Banco de Dados iniciado'));

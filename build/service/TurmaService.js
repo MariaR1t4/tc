@@ -28,6 +28,7 @@ class TurmaService {
     }
     saveTurma(obj) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(obj);
             return yield TurmaRepository_1.default.save(obj);
         });
     }

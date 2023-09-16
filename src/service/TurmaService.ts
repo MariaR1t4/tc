@@ -17,7 +17,9 @@ export default class TurmaService{
         return TurmaService.instance;
     }
     public async saveTurma(obj: Turma):Promise<Turma>{
+        console.log(obj);
         return await TurmaRepository.save(obj);
+
     }
     public async listTurma():Promise<Turma[]>{
         return await TurmaRepository.find();

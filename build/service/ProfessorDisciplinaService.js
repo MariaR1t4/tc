@@ -36,9 +36,9 @@ class ProfessorDisciplinaService {
             return yield ProfessorDisciplinaRepository_1.default.find();
         });
     }
-    findProfessorDisciplina(id_professor_disciplina) {
+    findProfessorDisciplina(professor_disciplina) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield ProfessorDisciplinaRepository_1.default.findOneBy({ id_professor_disciplina });
+            return yield ProfessorDisciplinaRepository_1.default.findOneBy({ professor_disciplina });
         });
     }
     deleteProfessorDisciplina(professor_disciplina) {
@@ -46,13 +46,14 @@ class ProfessorDisciplinaService {
             yield ProfessorDisciplinaRepository_1.default.delete(professor_disciplina);
         });
     }
-    updateProfessorDisciplina(id_professor_disciplina, professorDisciplina) {
+    updateProfessorDisciplina(professor_disciplina, professorDisciplina) {
         return __awaiter(this, void 0, void 0, function* () {
-            const professorDisciplinaAlterado = yield ProfessorDisciplinaRepository_1.default.findOneBy(({ id_professor_disciplina }));
+            const professorDisciplinaAlterado = yield ProfessorDisciplinaRepository_1.default.findOneBy(({ professor_disciplina }));
             if (professorDisciplinaAlterado) {
                 professorDisciplinaAlterado.id_turma = professorDisciplina.id_turma;
                 professorDisciplinaAlterado.id_disciplina = professorDisciplina.id_disciplina;
-                professorDisciplinaAlterado.id_tabela_professor = professorDisciplina.id_tabela_professor;
+                professorDisciplinaAlterado.professor_disciplina = professorDisciplina.professor_disciplina;
+                professorDisciplinaAlterado.id_professor = professorDisciplina.id_professor;
                 professorDisciplinaAlterado.carga_horaria = professorDisciplina.carga_horaria;
                 yield ProfessorDisciplinaRepository_1.default.save(professorDisciplinaAlterado);
             }

@@ -10,6 +10,6 @@ alunoRouter.post('/',AlunoController.getInstance().saveAluno);
 alunoRouter.get('/',AlunoController.getInstance().listAluno);
 alunoRouter.get('/:rm',AlunoController.getInstance().findAlunoById);
 alunoRouter.delete('/:rm',AlunoController.getInstance().deleteAluno);
-alunoRouter.put('/update',AlunoController.getInstance().updateAluno);
+/*alunoRouter.put('/:rm',AlunoController.getInstance().updateAluno);*/
 
 export default alunoRouter 

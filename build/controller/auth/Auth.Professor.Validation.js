@@ -43,7 +43,7 @@ function validatorProfessor(req, res, next) {
         try {
             const token = yield jwt.verify(barearToken || '', constants_1.hide);
             console.log(token);
-            req.authUser = { id: token.id };
+            req.authUser = { id: token.id, randomNumber: token.randomNumber };
             console.log(req.headers.authUser);
             req.body.authUser = { email: token.email, id: token.id };
             if (token) {
@@ -66,9 +66,9 @@ function validatorAluno(req, res, next) {
         try {
             const token = yield jwt.verify(barearToken || '', constants_1.hide);
             console.log(token);
-            req.authUser = { id: token.id, rm: token.rm };
+            req.authUser = { id: token.id, randomNumber: token.randomNumber };
             console.log(req.headers.authUser);
-            req.body.authUser = { rm: token.rm, id: token.id };
+            req.body.authUser = { email: token.email, id: token.id };
             if (token) {
                 next();
                 return;
