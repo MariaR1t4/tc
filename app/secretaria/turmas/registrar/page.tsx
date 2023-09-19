@@ -2,19 +2,19 @@
 
 
 import { NavbarSec } from "@/app/components/navbarsec";
-import React, { FormEvent } from "react";
+import axios, { post } from "axios";
+import React, { FormEvent, useEffect } from "react";
 
 
 
 export default function TurmaCadastro(){
   interface Alunos {
     curso:string,
-    id_turma: number,
     modulo:string,
     periodo:string,
     decricao:string
   }
-  const [form, setForm] = React.useState({curso: '', id_turma:'', modulo:'',periodo:'',decricao:''});
+  const [form, setForm] = React.useState({curso: '', modulo:'',periodo:'',decricao:''});
   const [loading, setLoading] = React.useState(false);
   const [ok, setOk] = React.useState(false);
   const [showFeed, setShowFeed] = React.useState(false);
@@ -26,42 +26,39 @@ export default function TurmaCadastro(){
     e.preventDefault();
     setLoading(true);
     try{
-        console.log(form)
-      const res = await fetch('http://10.5.9.9:38000/app/turma/cadastra/',{
-      method:'POST',
-      headers:{'content-type':'application/json'},
-      body: JSON.stringify(form)
+
+
+      const res = await axios.post('http ://10.5.9.9:38000/app/turma/', {
+        body: JSON.stringify(form),
+        headers:{
+        "Access-Control-Allow-Origin" : '*'
       }
-        );
-        setTimeout(()=>{
-          setLoading(false);
-          setOk(true);
-          setShowFeed(true);
-      
-        },2000);
-    }
-  catch(err){
-    setOk(false);
-    setShowFeed(true);
-    setLoading(false);
-  } 
-  };
-
-
+      });
+      setTimeout(() => {
+        setLoading(false);
+        setOk(true);
+        setShowFeed(true);
+       }, 2000);
+  
+      } catch(err) {
+        setOk(false);
+        setShowFeed(true);
+        setLoading(false);
+      }}
     return(
         <>
 
         <NavbarSec />
         <main className=" w-full h-full">
             <h1 className=" text-center text-gray-700 font-bold mt-20 text-4xl">Cadastrar Turma</h1>
-<form className=" w-1/3 h-full gap-2 flex flex-col ml-auto mr-auto mt-24" onSubmit={enviarParaoBd}>
+<form className=" w-1/3 h-full gap-2 flex flex-col ml-auto mr-auto mt-24" POS onSubmit={enviarParaoBd}>
     
   <div className="relative z-0 w-full mb-6 group">
       <input type="text" name="curso" id="curso" value={form.curso} onChange={atualizaForm} className="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-white rounded-3xl pl-8 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
       <label htmlFor="curso" className="peer-focus:font-medium pl-8 absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-9 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Curso:</label>
   </div>
   <div className="relative z-0 w-full mb-6 group">
-      <input type="number" name="id_turma" id="id_turma" value={form.id_turma} onChange={atualizaForm} className="block pl-8 rounded-3xl py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-gray-300 appearance-nblack dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+      <input type="number" name="id_turma" id="id_turma"  className="block pl-8 rounded-3xl py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-gray-300 appearance-nblack dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " disabled />
       <label htmlFor="id_turma" className="peer-focus:font-medium absolute pl-8 text-lg text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-9 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Código da Turma:</label>
   </div>
   <div className="relative z-0 w-full mb-6 group">

@@ -7,9 +7,9 @@ import {SettingsIcon } from "lucide-react";
 export function NavbarSec(){
     return(  
   
-<nav className="bg-white border-gray-200 w-full dark:bg-blue-800">
+<nav className=" border-gray-200 w-full bg-blue-800">
   <div className="w-full flex flex-wrap items-center justify-between mx-auto p-4">
-        <li className="self-center text-4xl font-semibold ml-40 whitespace-nowrap dark:text-white inline-block ">Secretaria</li>
+        <li className="self-center text-4xl font-semibold ml-40 whitespace-nowrap text-white inline-block ">Secretaria</li>
     <div className="hidden md:block md:w-auto" id="navbar-default">
       <ul className="font-medium flex flex-col md:p-0 mt-4 border text-lg  border-blue-500 rounded-lg bg-blue-500 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-blue-800 ">
         <li>

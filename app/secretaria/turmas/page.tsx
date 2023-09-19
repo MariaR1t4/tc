@@ -6,7 +6,7 @@ import { useParams } from 'next/navigation'
 import { NavbarSec } from '@/app/components/navbarsec'
 import axios from 'axios'
 
-type Alunos = {
+type Turma = {
   map(arg0: (Aluno: any) => React.JSX.Element): React.ReactNode
   id : string,
   name : string,
@@ -14,7 +14,7 @@ type Alunos = {
 }
 function Turma() {
   const {id} = useParams();
-  const [turma, setTurma] = React.useState<Alunos|null>(null);
+  const [turma, setTurma] = React.useState<Turma|null>(null);
 
   axios.interceptors.request.use(config => {
     // loga(log) uma mensagem antes da requisição HTTP ser enviada
@@ -22,7 +22,7 @@ function Turma() {
     return config;
   });
   useEffect(()=>{
-    axios.get('http://10.5.9.9:38000/app/turma/ ')
+    axios.get('http://10.5.9.9:38000/app/turma/list/ ')
 
     .then(response => {
       setTurma (response.data);
