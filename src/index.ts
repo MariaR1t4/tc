@@ -30,7 +30,7 @@ app.use(morgan('combined'));
 
 app.use('/app/aluno', alunoRouter);
 
-app.use('/app/aluno', validatorAluno)
+app.use('/auth/aluno', validatorAluno);
 
 app.use('/app/disciplina', disciplinaRouter);
 
@@ -40,7 +40,7 @@ app.use('/app/disciplina-professor', professorDisciplinaRouter);
 
 app.use('/app/professor', professorRouter);
 
-app.use('/app/professor', validatorProfessor);
+app.use('/auth/professor', validatorProfessor);
 
 app.use('/app/turma', TurmaRouter);
 

@@ -12,13 +12,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const AlunoServiceLogin_1 = __importDefault(require("../service/login/AlunoServiceLogin"));
-class AlunoLoginController {
-    loginAluno(req, res) {
+const ProfessorServiceLogin_1 = __importDefault(require("../../service/login/ProfessorServiceLogin"));
+class ProfessorLoginController {
+    loginProfessor(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { email, senha } = req.body;
+            const { email, password } = req.body;
             try {
-                const token = yield new AlunoServiceLogin_1.default().loginAluno(email, senha);
+                const token = yield new ProfessorServiceLogin_1.default().loginProf(email, password);
                 res.json({ token });
             }
             catch (err) {
@@ -26,26 +26,12 @@ class AlunoLoginController {
             }
         });
     }
-    signUpAluno(req, res) {
+    signUpProf(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { email, senha } = req.body;
-            yield new AlunoServiceLogin_1.default().signUpAluno(email, senha);
+            const { email, password } = req.body;
+            yield new ProfessorServiceLogin_1.default().signUpProf(email, password);
             res.json('Cadastro criado com sucesso!');
         });
     }
-    signUpAlunosInBatch(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.file);
-            yield new AlunoServiceLogin_1.default().signUpAlunosInBatch(req);
-            res.json('OK!');
-        });
-    }
-    updateAlunoImage(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.file);
-            yield new AlunoServiceLogin_1.default().updateAlunoImage(req);
-            res.json('OK!');
-        });
-    }
 }
-exports.default = AlunoLoginController;
+exports.default = ProfessorLoginController;

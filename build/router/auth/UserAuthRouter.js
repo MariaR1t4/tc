@@ -4,10 +4,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const multer_config_1 = require("../../configs/multer-config");
-const user_controller_1 = __importDefault(require("../../controller/user.controller"));
+const professor_controller_login_1 = __importDefault(require("../../controller/auth/professor.controller.login"));
+const aluno_controller_login_1 = __importDefault(require("../../controller/auth/aluno.controller.login"));
 const authRouter = (0, express_1.Router)();
-authRouter.post('/login', new user_controller_1.default().loginAluno);
-authRouter.post('/sign-up', new user_controller_1.default().signUpAluno);
-authRouter.post('/batch-sign-up', multer_config_1.upload.single('csvFile'), new user_controller_1.default().signUpAlunosInBatch);
+authRouter.post('/login/aluno', new aluno_controller_login_1.default().loginAluno);
+authRouter.post('/login/professor', new professor_controller_login_1.default().loginProfessor);
+/*authRouter.post('/sign-up', new UserLoginController().signUpAluno)
+authRouter.post('/batch-sign-up', upload.single('csvFile'), new UserLoginController().signUpAlunosInBatch)*/
 exports.default = authRouter;

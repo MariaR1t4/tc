@@ -24,12 +24,12 @@ app.use((0, cors_1.default)());
 app.use((0, morgan_1.default)('combined'));
 //app.use('/app', express.static(path.join(__dirname, 'src')))
 app.use('/app/aluno', AlunoRouter_1.default);
-app.use('/app/aluno', Auth_Validation_1.validatorAluno);
+app.use('/auth/aluno', Auth_Validation_1.validatorAluno);
 app.use('/app/disciplina', DisciplinaRouter_1.default);
 app.use('/app/frequencia', FrequenciaRouter_1.default);
 app.use('/app/disciplina-professor', ProfessorDisciplinaRouter_1.default);
 app.use('/app/professor', ProfessorRouter_1.default);
-app.use('/app/professor', Auth_Validation_1.validatorProfessor);
+app.use('/auth/professor', Auth_Validation_1.validatorProfessor);
 app.use('/app/turma', TurmaRouter_1.default);
 app.use('/auth', UserAuthRouter_1.default);
 app.listen(port, () => {

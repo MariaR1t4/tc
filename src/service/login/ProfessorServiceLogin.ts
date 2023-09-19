@@ -9,43 +9,43 @@ import * as jwt from 'jsonwebtoken';
 import csvParser from "csv-parser";
 
 
-import Aluno from "../../models/entities/Aluno";
-import AlunoRepository from "../../models/entities/repositories/AlunoRepository";
 import { hide } from "../../auth/constants";
 import logger from "../../configs/logger"
-class AlunoServiceLogin {
+import Professor from "../../models/entities/Professor";
+import ProfessorRepository from "../../models/entities/repositories/ProfessorRepository";
 
-    getAlunoFromData(rm: number, senha: string) : Aluno{
-        const newAluno = new Aluno();
-        newAluno.rm = rm;
-        newAluno.senha = senha;
-        const hashDigest = sha256(senha);
+class ProfessorServiceLogin {
+
+    getProfessorFromData(email: string, password: string) : Professor{
+        const newProf = new Professor();
+        newProf.email = email;
+        const hashDigest = sha256(password);
         logger.debug("HashAntes: ", hashDigest)
         const privateKey = "FIEC2023"
         const hmacDigest = Base64.stringify(hmacSHA512(hashDigest, privateKey ))
         logger.debug("HashDepos: ",hashDigest)
-        newAluno.senha = hmacDigest;
-        return newAluno;
+        newProf.password = hmacDigest;
+        return newProf;
     }
 
-    async loginAluno(rm: number, senha: string) : Promise<string>{
-        const hashDigest = sha256(senha);
+    async loginProf(email: string, password: string) : Promise<string>{
+        const hashDigest = sha256(password);
         logger.debug("HashAntes: ", hashDigest)
         const privateKey = "FIEC2023"
         const SenhaHasehd = Base64.stringify(hmacSHA512(hashDigest, privateKey ))
-        const foundAluno = await AlunoRepository.findOneBy({ rm, senha }); // quando for passar pra SenhaHashed (linha acima ☝️) colocar senha: SenhaHaseh
-        if(foundAluno){
-        const token = jwt.sign({rm: foundAluno?.rm, senha: foundAluno?.senha}, hide, {expiresIn: 300});
+        const foundProf = await ProfessorRepository.findOneBy({ email, password}); // quando for passar pra SenhaHashed (linha acima ☝️) colocar password: SenhaHaseh
+        if(foundProf){
+        const token = jwt.sign({email: foundProf?.email, password: foundProf?.password}, hide, {expiresIn: 300});
         return token;}
-        throw new Error("Aluno not found");
+        throw new Error("Professor not found");
     }
 
-    async signUpAluno( rm: number, senha: string){
-        const newAluno = this.getAlunoFromData(rm, senha);
-        await AlunoRepository.save(newAluno);
+    async signUpProf(email: string, password: string){
+        const newProf = this.getProfessorFromData(email, password);
+        await ProfessorRepository.save(newProf);
     }
 
-    async signUpAlunosInBatch(req: Request){
+    /*async signUpAlunosInBatch(req: Request){
         const file = req.file;
         const Alunos : Aluno[] = [];
         if(file != null) {
@@ -58,9 +58,9 @@ class AlunoServiceLogin {
                     
             });
         }
-    }
+    }*/
 
-    async updateAlunoImage(req: Request){
+    /*async updateAlunoImage(req: Request){
         const file = req.file;
         const {rm} = (req as any).authAluno;
         const foundAluno = await AlunoRepository.findOneBy({rm});
@@ -72,8 +72,7 @@ class AlunoServiceLogin {
             foundAluno.ImageUrl = file.originalname;
             await AlunoRepository.save(foundAluno);
         }
-    }
+    }*/
 }
 
-export default AlunoServiceLogin;
-
+export default ProfessorServiceLogin;

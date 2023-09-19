@@ -1,13 +1,12 @@
 import { Request, Response } from "express";
 
-
-import AlunoServiceLogin from "../service/login/AlunoServiceLogin";
+import AlunoServiceLogin from "../../service/login/AlunoServiceLogin";
 
 class AlunoLoginController {
         async loginAluno(req: Request, res: Response){
-            const {email, senha} = req.body;
+            const {rm, senha} = req.body;
             try{
-            const token = await new AlunoServiceLogin().loginAluno(email, senha);
+            const token = await new AlunoServiceLogin().loginAluno(rm, senha);
             res.json({token});}
             catch(err){
                 res.status(401).send("Login failed");
@@ -15,8 +14,8 @@ class AlunoLoginController {
         }
 
         async signUpAluno(req: Request, res: Response){
-            const {email, senha} = req.body;
-            await new AlunoServiceLogin().signUpAluno(email, senha);
+            const {rm, senha} = req.body;
+            await new AlunoServiceLogin().signUpAluno(rm, senha);
             res.json('Cadastro criado com sucesso!');
         }
 
@@ -33,5 +32,6 @@ class AlunoLoginController {
         }
 
 }
+
 
 export default AlunoLoginController;
