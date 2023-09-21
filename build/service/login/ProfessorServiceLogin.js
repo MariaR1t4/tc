@@ -35,44 +35,61 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const fs_1 = __importDefault(require("fs"));
 const sha256_1 = __importDefault(require("crypto-js/sha256"));
 const hmac_sha512_1 = __importDefault(require("crypto-js/hmac-sha512"));
 const enc_base64_1 = __importDefault(require("crypto-js/enc-base64"));
 const jwt = __importStar(require("jsonwebtoken"));
+const csv_parser_1 = __importDefault(require("csv-parser"));
 const constants_1 = require("../../auth/constants");
 const logger_1 = __importDefault(require("../../configs/logger"));
 const Professor_1 = __importDefault(require("../../models/entities/Professor"));
 const ProfessorRepository_1 = __importDefault(require("../../models/entities/repositories/ProfessorRepository"));
 class ProfessorServiceLogin {
-    getProfessorFromData(email, password) {
+    getProfessorFromData(email, senha) {
         const newProf = new Professor_1.default();
         newProf.email = email;
-        const hashDigest = (0, sha256_1.default)(password);
+        const hashDigest = (0, sha256_1.default)(senha);
         logger_1.default.debug("HashAntes: ", hashDigest);
         const privateKey = "FIEC2023";
         const hmacDigest = enc_base64_1.default.stringify((0, hmac_sha512_1.default)(hashDigest, privateKey));
         logger_1.default.debug("HashDepos: ", hashDigest);
-        newProf.password = hmacDigest;
+        newProf.senha = hmacDigest;
         return newProf;
     }
-    loginProf(email, password) {
+    loginProf(email, senha) {
         return __awaiter(this, void 0, void 0, function* () {
-            const hashDigest = (0, sha256_1.default)(password);
+            const hashDigest = (0, sha256_1.default)(senha);
             logger_1.default.debug("HashAntes: ", hashDigest);
             const privateKey = "FIEC2023";
             const SenhaHasehd = enc_base64_1.default.stringify((0, hmac_sha512_1.default)(hashDigest, privateKey));
-            const foundProf = yield ProfessorRepository_1.default.findOneBy({ email, password }); // quando for passar pra SenhaHashed (linha acima ☝️) colocar password: SenhaHaseh
+            const foundProf = yield ProfessorRepository_1.default.findOneBy({ email, senha }); // quando for passar pra SenhaHashed (linha acima ☝️) colocar senha: SenhaHaseh
             if (foundProf) {
-                const token = jwt.sign({ email: foundProf === null || foundProf === void 0 ? void 0 : foundProf.email, password: foundProf === null || foundProf === void 0 ? void 0 : foundProf.password }, constants_1.hide, { expiresIn: 300 });
+                const token = jwt.sign({ email: foundProf === null || foundProf === void 0 ? void 0 : foundProf.email, senha: foundProf === null || foundProf === void 0 ? void 0 : foundProf.senha }, constants_1.hide, { expiresIn: 300 });
                 return token;
             }
             throw new Error("Professor not found");
         });
     }
-    signUpProf(email, password) {
+    signUpProf(email, senha) {
         return __awaiter(this, void 0, void 0, function* () {
-            const newProf = this.getProfessorFromData(email, password);
+            const newProf = this.getProfessorFromData(email, senha);
             yield ProfessorRepository_1.default.save(newProf);
+        });
+    }
+    signUpProfessorInBatch(req) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const file = req.file;
+            const Professor = [];
+            if (file != null) {
+                fs_1.default.createReadStream(file.path)
+                    .pipe((0, csv_parser_1.default)())
+                    .on('data', (data) => Professor.push(this.getProfessorFromData(data.rm, data.senha)))
+                    .on('end', () => {
+                    console.log(Professor);
+                    ProfessorRepository_1.default.insert(Professor);
+                });
+            }
         });
     }
 }

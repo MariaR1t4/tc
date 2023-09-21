@@ -5,7 +5,7 @@ import { nullable } from "zod/lib";
 
 @Entity()
 class Aluno {
-  @PrimaryGeneratedColumn("increment") 
+  @PrimaryGeneratedColumn() 
   rm: number;
 
   @Column()

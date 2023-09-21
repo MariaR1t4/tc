@@ -16,21 +16,28 @@ const ProfessorServiceLogin_1 = __importDefault(require("../../service/login/Pro
 class ProfessorLoginController {
     loginProfessor(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { email, password } = req.body;
+            const { email, senha } = req.body;
             try {
-                const token = yield new ProfessorServiceLogin_1.default().loginProf(email, password);
+                const token = yield new ProfessorServiceLogin_1.default().loginProf(email, senha);
                 res.json({ token });
             }
             catch (err) {
-                res.status(401).send("Login failed");
+                res.status(401).send('Login failed');
             }
         });
     }
     signUpProf(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { email, password } = req.body;
-            yield new ProfessorServiceLogin_1.default().signUpProf(email, password);
+            const { email, senha } = req.body;
+            yield new ProfessorServiceLogin_1.default().signUpProf(email, senha);
             res.json('Cadastro criado com sucesso!');
+        });
+    }
+    signUpProfessorInBatch(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.file);
+            yield new ProfessorServiceLogin_1.default().signUpProfessorInBatch(req);
+            res.json('OK!');
         });
     }
 }

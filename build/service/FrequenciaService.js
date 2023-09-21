@@ -53,6 +53,9 @@ class FrequenciaService {
                 frequenciaAlterada.lista_chamada = frequencia.lista_chamada;
                 yield FrequenciaRepository_1.default.save(frequenciaAlterada);
             }
+            else {
+                console.log('usuario nao encontrado');
+            }
             Promise.resolve();
         });
     }

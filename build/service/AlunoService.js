@@ -46,7 +46,7 @@ class AlunoService {
             yield AlunoRepository_1.default.delete(rm);
         });
     }
-    updateAluno(aluno, rm) {
+    updateAluno(rm, aluno) {
         return __awaiter(this, void 0, void 0, function* () {
             const alunoAlterado = yield AlunoRepository_1.default.findOneBy(({ rm }));
             if (alunoAlterado) {

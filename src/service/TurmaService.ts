@@ -6,15 +6,15 @@ export default class TurmaService{
     private constructor(){
 
     }
-    criaTurma(turma: Turma[]) {
-        throw new Error('Turma não pôde ser criada');
-    }
     private static instance: TurmaService;
     public static getInstance(){
         if(!TurmaService.instance){
             TurmaService.instance = new TurmaService();
         };
         return TurmaService.instance;
+    }
+    public criaTurma(turma: Turma[]) {
+        throw new Error('Turma não pôde ser criada');
     }
     public async saveTurma(obj: Turma):Promise<Turma>{
         console.log(obj);

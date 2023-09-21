@@ -15,7 +15,7 @@ import authRouter from "./router/auth/UserAuthRouter";
 import { validatorAluno, validatorProfessor } from "./controller/auth/Auth.Validation";
 
 const app = express();
-const port = 38000
+const port = 38000;
 
 app.use(express.json());
 
@@ -26,7 +26,6 @@ app.use(cors());
 app.use(morgan('combined'));
 
 //app.use('/app', express.static(path.join(__dirname, 'src')))
-
 
 app.use('/app/aluno', alunoRouter);
 

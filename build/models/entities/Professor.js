@@ -32,7 +32,7 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Professor.prototype, "password", void 0);
+], Professor.prototype, "senha", void 0);
 Professor = __decorate([
     (0, typeorm_1.Entity)()
 ], Professor);

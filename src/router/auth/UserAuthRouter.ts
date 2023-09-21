@@ -9,8 +9,8 @@ const authRouter = Router();
 
 authRouter.post('/login/aluno', new AlunoLoginController().loginAluno)
 authRouter.post('/login/professor', new ProfessorLoginController().loginProfessor)
-/*authRouter.post('/sign-up', new UserLoginController().signUpAluno)
-authRouter.post('/batch-sign-up', upload.single('csvFile'), new UserLoginController().signUpAlunosInBatch)*/
+authRouter.post('/alunos/batch-sign-up', upload.single('csvFile'), new AlunoLoginController().signUpAlunosInBatch)
+authRouter.post('/professor/batch-sign-up', upload.single('csvFile'), new ProfessorLoginController().signUpProfessorInBatch)
 
 
 export default authRouter;

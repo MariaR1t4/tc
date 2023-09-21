@@ -12,7 +12,7 @@ class Professor{
         @Column()
         email: string;
         @Column()
-        password: string;
+        senha: string;
 }
 export default Professor
 

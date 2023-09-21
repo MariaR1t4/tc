@@ -16,63 +16,50 @@ import ProfessorRepository from "../../models/entities/repositories/ProfessorRep
 
 class ProfessorServiceLogin {
 
-    getProfessorFromData(email: string, password: string) : Professor{
+    getProfessorFromData(email: string, senha: string) : Professor{
         const newProf = new Professor();
         newProf.email = email;
-        const hashDigest = sha256(password);
+        const hashDigest = sha256(senha);
         logger.debug("HashAntes: ", hashDigest)
         const privateKey = "FIEC2023"
         const hmacDigest = Base64.stringify(hmacSHA512(hashDigest, privateKey ))
         logger.debug("HashDepos: ",hashDigest)
-        newProf.password = hmacDigest;
+        newProf.senha = hmacDigest;
         return newProf;
     }
 
-    async loginProf(email: string, password: string) : Promise<string>{
-        const hashDigest = sha256(password);
+    async loginProf(email: string, senha: string) : Promise<string>{
+        const hashDigest = sha256(senha);
         logger.debug("HashAntes: ", hashDigest)
         const privateKey = "FIEC2023"
         const SenhaHasehd = Base64.stringify(hmacSHA512(hashDigest, privateKey ))
-        const foundProf = await ProfessorRepository.findOneBy({ email, password}); // quando for passar pra SenhaHashed (linha acima ☝️) colocar password: SenhaHaseh
+        const foundProf = await ProfessorRepository.findOneBy({ email, senha}); // quando for passar pra SenhaHashed (linha acima ☝️) colocar senha: SenhaHaseh
         if(foundProf){
-        const token = jwt.sign({email: foundProf?.email, password: foundProf?.password}, hide, {expiresIn: 300});
+        const token = jwt.sign({email: foundProf?.email, senha: foundProf?.senha}, hide, {expiresIn: 300});
         return token;}
         throw new Error("Professor not found");
     }
 
-    async signUpProf(email: string, password: string){
-        const newProf = this.getProfessorFromData(email, password);
+    async signUpProf(email: string, senha: string){
+        const newProf = this.getProfessorFromData(email, senha);
         await ProfessorRepository.save(newProf);
     }
 
-    /*async signUpAlunosInBatch(req: Request){
+    async signUpProfessorInBatch(req: Request){
         const file = req.file;
-        const Alunos : Aluno[] = [];
+        const Professor : Professor[] = [];
         if(file != null) {
             fs.createReadStream(file.path)
                 .pipe(csvParser())
-                .on('data', (data) => Alunos.push(this.getAlunoFromData(data.rm, data.senha)))
+                .on('data', (data) => Professor.push(this.getProfessorFromData(data.rm, data.senha)))
                 .on('end', () => {
-                    console.log(Alunos);
-                    AlunoRepository.insert(Alunos);
+                    console.log(Professor);
+                    ProfessorRepository.insert(Professor);
                     
             });
         }
-    }*/
+    }
 
-    /*async updateAlunoImage(req: Request){
-        const file = req.file;
-        const {rm} = (req as any).authAluno;
-        const foundAluno = await AlunoRepository.findOneBy({rm});
-
-        if(file != null && foundAluno != null){
-            const image = await Jimp.read(file.path);
-            await image.resize(600,600);
-            await image.write('uploads/' + file.originalname);
-            foundAluno.ImageUrl = file.originalname;
-            await AlunoRepository.save(foundAluno);
-        }
-    }*/
 }
 
 export default ProfessorServiceLogin;

@@ -51,5 +51,14 @@ class AlunoController {
             res.json('Aluno deletado');
         });
     }
+    updateAluno(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const alunoService = AlunoService_1.default.getInstance();
+            const rm = req.params.rm;
+            const aluno = req.body;
+            yield alunoService.updateAluno(parseInt(rm), aluno);
+            res.json('Atualização feita com sucesso!');
+        });
+    }
 }
 exports.default = AlunoController;

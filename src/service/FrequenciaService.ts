@@ -33,6 +33,8 @@ export default class FrequenciaService{
         if(frequenciaAlterada){
           frequenciaAlterada.lista_chamada = frequencia.lista_chamada;
             await FrequenciaRepository.save(frequenciaAlterada);
+        }else{
+            console.log('usuario nao encontrado')
         }
         Promise.resolve();
     }

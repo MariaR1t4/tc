@@ -22,8 +22,8 @@ class TurmaController {
         const turmaService = TurmaService.getInstance();
         const Turma = req.body;
         const turmacreated = await turmaService.saveTurma(Turma);
-        console.log(turmacreated)
-        res.json(turmacreated)
+        return res.status(200).send({Response:"Turma cadastrda 🤠"})
+   
     }
 
     public async listTurma(req: Request,res: Response){

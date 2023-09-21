@@ -27,8 +27,7 @@ class TurmaController {
             const turmaService = TurmaService_1.default.getInstance();
             const Turma = req.body;
             const turmacreated = yield turmaService.saveTurma(Turma);
-            console.log(turmacreated);
-            res.json(turmacreated);
+            return res.status(200).send({ Response: "Turma cadastrda 🤠" });
         });
     }
     listTurma(req, res) {

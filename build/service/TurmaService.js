@@ -16,15 +16,15 @@ const TurmaRepository_1 = __importDefault(require("../models/entities/repositori
 class TurmaService {
     constructor() {
     }
-    criaTurma(turma) {
-        throw new Error('Turma não pôde ser criada');
-    }
     static getInstance() {
         if (!TurmaService.instance) {
             TurmaService.instance = new TurmaService();
         }
         ;
         return TurmaService.instance;
+    }
+    criaTurma(turma) {
+        throw new Error('Turma não pôde ser criada');
     }
     saveTurma(obj) {
         return __awaiter(this, void 0, void 0, function* () {

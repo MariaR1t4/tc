@@ -42,11 +42,11 @@ export default class AlunoController {
         res.json('Aluno deletado');
     }
 
-    /*public async updateAluno(req:Request,res:Response){
+    public async updateAluno(req:Request,res:Response){
         const alunoService = AlunoService.getInstance();
         const rm = req.params.rm;
         const aluno = req.body;
         await alunoService.updateAluno(parseInt(rm), aluno);
         res.json('Atualização feita com sucesso!');
-    }*/
+    }
 }
