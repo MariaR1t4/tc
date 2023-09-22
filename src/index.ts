@@ -39,7 +39,7 @@ app.use('/app/disciplina-professor', professorDisciplinaRouter);
 
 app.use('/app/professor', professorRouter);
 
-app.use('/auth/professor', validatorProfessor);
+app.use('/auth/rxs', validatorProfessor);
 
 app.use('/app/turma', TurmaRouter);
 

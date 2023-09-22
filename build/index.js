@@ -29,7 +29,7 @@ app.use('/app/disciplina', DisciplinaRouter_1.default);
 app.use('/app/frequencia', FrequenciaRouter_1.default);
 app.use('/app/disciplina-professor', ProfessorDisciplinaRouter_1.default);
 app.use('/app/professor', ProfessorRouter_1.default);
-app.use('/auth/professor', Auth_Validation_1.validatorProfessor);
+app.use('/auth/rxs', Auth_Validation_1.validatorProfessor);
 app.use('/app/turma', TurmaRouter_1.default);
 app.use('/auth', UserAuthRouter_1.default);
 app.listen(port, () => {

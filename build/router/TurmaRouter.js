@@ -10,5 +10,5 @@ TurmaRouter.post('/', TurmaController_1.default.getInstance().saveTurma);
 TurmaRouter.get('/list', TurmaController_1.default.getInstance().listTurma);
 TurmaRouter.get('/:id_turma', TurmaController_1.default.getInstance().findTurma);
 TurmaRouter.delete('/:id_turma', TurmaController_1.default.getInstance().deleteTurma);
-TurmaRouter.put('/:id_turma', TurmaController_1.default.getInstance().updateTurma);
+TurmaRouter.put('/edita/:id_turma', TurmaController_1.default.getInstance().updateTurma);
 exports.default = TurmaRouter;
