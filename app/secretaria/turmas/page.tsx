@@ -22,7 +22,7 @@ function Turma() {
     return config;
   });
   useEffect(()=>{
-    axios.get('http://10.5.9.9:38000/app/turma/list/ ')
+    axios.get('http://10.5.9.9:38000/app/turma/list/')
 
     .then(response => {
       setTurma (response.data);
@@ -41,8 +41,8 @@ function Turma() {
             <th className=' border border-black'>Id</th>
             <th className=' border border-black'>Curso</th>
             <th className=' border border-black'>Periodo</th>
-            <th className=' border border-black'>Modulo</th>
-            <th className=' border border-black'>Descricao</th>
+            <th className=' border border-black'>Módulo</th>
+            <th className=' border border-black'>Descrição</th>
             </tr>
         </thead>
         <tbody >

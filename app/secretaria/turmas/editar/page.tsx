@@ -1,21 +1,30 @@
 "use client"
 
 import { NavbarSec } from "@/app/components/navbarsec";
+import Turma from "@/app/professor/turmas/page";
 import axios from "axios";
 import { useParams } from "next/navigation";
 import React, { useEffect } from "react";
 
 
 type Turma = {
-    map(arg0: (Aluno: any) => React.JSX.Element): React.ReactNode
+    map(arg0: (Turma: any) => React.JSX.Element): React.ReactNode
     id_turma : string,
-    name : string,
-    curso: string
+    modulo : string,
+    curso: string,
+    descricao:string,
+    periodo:string
   }
 export default function TurmaEditar(){
     
-    const {id} = useParams();
-    const [turma, setTurma] = React.useState<|null>(null);
+    const id = useParams();
+    console.log(JSON.stringify(id));
+    const atualizaForm = (ev:{ target: HTMLInputElement; }) =>{
+      const {name, value} = ev.target;
+      setTurma({... turma, [name]:value})
+    }
+    const [turma, setTurma] = React.useState({modulo:"", curso:"", descricao:"",periodo:""});
+    const [dadosturma, setDadosTurma] = React.useState([]);
   
     axios.interceptors.request.use(config => {
       // loga(log) uma mensagem antes da requisição HTTP ser enviada
@@ -23,7 +32,7 @@ export default function TurmaEditar(){
       return config;
     });
     useEffect(()=>{
-      axios.get('http://10.5.9.9:38000/app/turma/')
+      axios.put(`http://10.5.9.9:38000/app/turma/edita/:id_turma}` )
   
       .then(response => {
         setTurma (response.data);
@@ -38,25 +47,21 @@ export default function TurmaEditar(){
 <form className=" w-1/3 h-full gap-2 flex flex-col ml-auto mr-auto mt-24" >
     
   <div className="relative z-0 w-full mb-6 group">
-      <input type="text" name="cursoturma" id="cursoturma" className="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-white rounded-3xl pl-8 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  required />
+      <input type="text" name="cursoturma" id="cursoturma" className="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-white rounded-3xl pl-8 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" value={turma.curso} placeholder=" " required />
       <label htmlFor="cursoturma" className="peer-focus:font-medium pl-8 absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Curso:</label>
   </div>
   <div className="relative z-0 w-full mb-6 group">
-      <input type="text" name="codturma" id="codturma" className="block rounded-3xl py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-gray-300 appearance-nblack dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-      <label htmlFor="codturma" className="peer-focus:font-medium absolute pl-8 text-lg text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Código da Turma:</label>
-  </div>
-  <div className="relative z-0 w-full mb-6 group">
-        <input type="text" name="salaturma" id="salaturma" className="block rounded-3xl py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-gray-300 appearance-nblack dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-        <label htmlFor="salaturma" className="peer-focus:font-medium pl-8 absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Sala:</label>
+        <input type="text" name="modulo" id="modulo" className="block rounded-3xl py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-gray-300 appearance-nblack dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " value={turma.modulo} required />
+        <label htmlFor="modulo" className="peer-focus:font-medium pl-8 absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Módulo:</label>
     </div>
   <div className="relative z-0 w-full mb-6 group">
-      <input type="text" name="repeat_password" id="floating_repeat_password" className="block rounded-3xl py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-gray-300 appearance-nblack dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-      <label htmlFor="floating_repeat_password" className="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 pl-8 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Turno:</label>
+      <input type="text" name="periodo" id="periodo" className="block rounded-3xl py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-gray-300 appearance-nblack dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " value={turma.periodo} required />
+      <label htmlFor="periodo" className="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 pl-8 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Período:</label>
       
   </div>
     <div className="relative z-0 w-full mb-6 group">
-        <input type="number" name="qntdalrturma" id="qntdalrturma" className="block rounded-3xl py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-gray-300 appearance-nblack dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-        <label htmlFor="qntdalrturma" className="peer-focus:font-medium pl-8 absolute text-lg text-black dark:text-gray-400 duration-300 transhtmlForm -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Quantidade de Alunos:</label>
+        <input type="number" name="descricao" id="descricao" className="block rounded-3xl py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-gray-300 appearance-nblack dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="" value={turma.descricao} required />
+        <label htmlFor="descricao" className="peer-focus:font-medium pl-8 absolute text-lg text-black dark:text-gray-400 duration-300 transhtmlForm -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Descrição:</label>
     </div>
     <div className='mt-3 flex justify-center gap-96 '>
       <button className=' bg-green-700 w-44 h-14 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white'>Editar Turma</button>
