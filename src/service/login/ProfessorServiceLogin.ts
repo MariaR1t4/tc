@@ -16,9 +16,11 @@ import ProfessorRepository from "../../models/entities/repositories/ProfessorRep
 
 class ProfessorServiceLogin {
 
-    getProfessorFromData(email: string, senha: string) : Professor{
+    getProfessorFromData(email: string, senha: string, name:string, telefone:string) : Professor{
         const newProf = new Professor();
         newProf.email = email;
+        newProf.name = name;
+        newProf.telefone = telefone;
         const hashDigest = sha256(senha);
         logger.debug("HashAntes: ", hashDigest)
         const privateKey = "FIEC2023"
@@ -28,7 +30,7 @@ class ProfessorServiceLogin {
         return newProf;
     }
 
-    async loginProf(email: string, senha: string) : Promise<string>{
+    async loginProf(email: string, senha: string, ) : Promise<string>{
         const hashDigest = sha256(senha);
         logger.debug("HashAntes: ", hashDigest)
         const privateKey = "FIEC2023"
@@ -40,8 +42,8 @@ class ProfessorServiceLogin {
         throw new Error("Professor not found");
     }
 
-    async signUpProf(email: string, senha: string){
-        const newProf = this.getProfessorFromData(email, senha);
+    async signUpProf(email: string, senha: string, name:string, telefone:string){
+        const newProf = this.getProfessorFromData(email, senha,name,telefone);
         await ProfessorRepository.save(newProf);
     }
 
@@ -50,11 +52,11 @@ class ProfessorServiceLogin {
         const Professor : Professor[] = [];
         if(file != null) {
             fs.createReadStream(file.path)
-                .pipe(csvParser())
-                .on('data', (data) => Professor.push(this.getProfessorFromData(data.rm, data.senha)))
+                .pipe(csvParser({separator: ';'}))
+                .on('data', (data) => Professor.push(this.getProfessorFromData(data.email, data.senha, data.name, data.telefone)))
                 .on('end', () => {
                     console.log(Professor);
-                    ProfessorRepository.insert(Professor);
+                    ProfessorRepository.save(Professor);
                     
             });
         }

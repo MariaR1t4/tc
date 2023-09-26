@@ -28,8 +28,8 @@ class ProfessorLoginController {
     }
     signUpProf(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { email, senha } = req.body;
-            yield new ProfessorServiceLogin_1.default().signUpProf(email, senha);
+            const { email, senha, name, telefone } = req.body;
+            yield new ProfessorServiceLogin_1.default().signUpProf(email, senha, name, telefone);
             res.json('Cadastro criado com sucesso!');
         });
     }

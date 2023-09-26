@@ -46,9 +46,11 @@ const logger_1 = __importDefault(require("../../configs/logger"));
 const Professor_1 = __importDefault(require("../../models/entities/Professor"));
 const ProfessorRepository_1 = __importDefault(require("../../models/entities/repositories/ProfessorRepository"));
 class ProfessorServiceLogin {
-    getProfessorFromData(email, senha) {
+    getProfessorFromData(email, senha, name, telefone) {
         const newProf = new Professor_1.default();
         newProf.email = email;
+        newProf.name = name;
+        newProf.telefone = telefone;
         const hashDigest = (0, sha256_1.default)(senha);
         logger_1.default.debug("HashAntes: ", hashDigest);
         const privateKey = "FIEC2023";
@@ -71,9 +73,9 @@ class ProfessorServiceLogin {
             throw new Error("Professor not found");
         });
     }
-    signUpProf(email, senha) {
+    signUpProf(email, senha, name, telefone) {
         return __awaiter(this, void 0, void 0, function* () {
-            const newProf = this.getProfessorFromData(email, senha);
+            const newProf = this.getProfessorFromData(email, senha, name, telefone);
             yield ProfessorRepository_1.default.save(newProf);
         });
     }
@@ -83,11 +85,11 @@ class ProfessorServiceLogin {
             const Professor = [];
             if (file != null) {
                 fs_1.default.createReadStream(file.path)
-                    .pipe((0, csv_parser_1.default)())
-                    .on('data', (data) => Professor.push(this.getProfessorFromData(data.rm, data.senha)))
+                    .pipe((0, csv_parser_1.default)({ separator: ';' }))
+                    .on('data', (data) => Professor.push(this.getProfessorFromData(data.email, data.senha, data.name, data.telefone)))
                     .on('end', () => {
                     console.log(Professor);
-                    ProfessorRepository_1.default.insert(Professor);
+                    ProfessorRepository_1.default.save(Professor);
                 });
             }
         });

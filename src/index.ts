@@ -18,7 +18,6 @@ const app = express();
 const port = 38000;
 
 app.use(express.json());
-
 app.use(cors());
 
 //app.use(express.static('front'));
@@ -27,23 +26,23 @@ app.use(morgan('combined'));
 
 //app.use('/app', express.static(path.join(__dirname, 'src')))
 
-app.use('/app/aluno', alunoRouter);
+app.use('/api/v1/aluno', alunoRouter);
 
-app.use('/auth/aluno', validatorAluno);
+app.use('/api/v1/aluno', validatorAluno);
 
-app.use('/app/disciplina', disciplinaRouter);
+app.use('/api/v1/disciplina', disciplinaRouter);
 
-app.use('/app/frequencia', frequenciaRouter);
+app.use('/api/v1/frequencia', frequenciaRouter);
 
-app.use('/app/disciplina-professor', professorDisciplinaRouter);
+app.use('/api/v1/disciplina-professor', professorDisciplinaRouter);
 
-app.use('/app/professor', professorRouter);
+app.use('/api/v1/professor', professorRouter);
 
-app.use('/auth/rxs', validatorProfessor);
+app.use('/api/v1/rxs', validatorProfessor);
 
-app.use('/app/turma', TurmaRouter);
+app.use('/api/v1/turma', TurmaRouter);
 
-app.use('/auth', authRouter);
+app.use('/api/v1//auth', authRouter);
 
 
 app.listen(port,()=>{

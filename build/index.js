@@ -23,15 +23,15 @@ app.use((0, cors_1.default)());
 //app.use(express.static('front'));
 app.use((0, morgan_1.default)('combined'));
 //app.use('/app', express.static(path.join(__dirname, 'src')))
-app.use('/app/aluno', AlunoRouter_1.default);
-app.use('/auth/aluno', Auth_Validation_1.validatorAluno);
-app.use('/app/disciplina', DisciplinaRouter_1.default);
-app.use('/app/frequencia', FrequenciaRouter_1.default);
-app.use('/app/disciplina-professor', ProfessorDisciplinaRouter_1.default);
-app.use('/app/professor', ProfessorRouter_1.default);
-app.use('/auth/rxs', Auth_Validation_1.validatorProfessor);
-app.use('/app/turma', TurmaRouter_1.default);
-app.use('/auth', UserAuthRouter_1.default);
+app.use('/api/v1/aluno', AlunoRouter_1.default);
+app.use('/api/v1/aluno', Auth_Validation_1.validatorAluno);
+app.use('/api/v1/disciplina', DisciplinaRouter_1.default);
+app.use('/api/v1/frequencia', FrequenciaRouter_1.default);
+app.use('/api/v1/disciplina-professor', ProfessorDisciplinaRouter_1.default);
+app.use('/api/v1/professor', ProfessorRouter_1.default);
+app.use('/api/v1/rxs', Auth_Validation_1.validatorProfessor);
+app.use('/api/v1/turma', TurmaRouter_1.default);
+app.use('/api/v1//auth', UserAuthRouter_1.default);
 app.listen(port, () => {
     console.log(`Servidor iniciado em http://localhost:${port}`);
     DataBase_1.AppDataSource.initialize().then(r => console.log('Banco de Dados iniciado'));

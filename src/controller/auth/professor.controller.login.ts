@@ -15,8 +15,8 @@ class ProfessorLoginController {
     }
 
     async signUpProf(req: Request, res: Response){
-        const {email, senha} = req.body;
-        await new ProfessorServiceLogin().signUpProf(email, senha);
+        const {email, senha, name, telefone} = req.body;
+        await new ProfessorServiceLogin().signUpProf(email, senha, name, telefone);
         res.json('Cadastro criado com sucesso!');
     }
 
