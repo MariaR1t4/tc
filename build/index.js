@@ -29,9 +29,9 @@ app.use('/api/v1/disciplina', DisciplinaRouter_1.default);
 app.use('/api/v1/frequencia', FrequenciaRouter_1.default);
 app.use('/api/v1/disciplina-professor', ProfessorDisciplinaRouter_1.default);
 app.use('/api/v1/professor', ProfessorRouter_1.default);
-app.use('/api/v1/rxs', Auth_Validation_1.validatorProfessor);
+app.use('/api/v1/professor', Auth_Validation_1.validatorProfessor);
 app.use('/api/v1/turma', TurmaRouter_1.default);
-app.use('/api/v1//auth', UserAuthRouter_1.default);
+app.use('/api/v1/auth', UserAuthRouter_1.default);
 app.listen(port, () => {
     console.log(`Servidor iniciado em http://localhost:${port}`);
     DataBase_1.AppDataSource.initialize().then(r => console.log('Banco de Dados iniciado'));

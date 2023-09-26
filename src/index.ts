@@ -38,11 +38,11 @@ app.use('/api/v1/disciplina-professor', professorDisciplinaRouter);
 
 app.use('/api/v1/professor', professorRouter);
 
-app.use('/api/v1/rxs', validatorProfessor);
+app.use('/api/v1/professor', validatorProfessor);
 
 app.use('/api/v1/turma', TurmaRouter);
 
-app.use('/api/v1//auth', authRouter);
+app.use('/api/v1/auth', authRouter);
 
 
 app.listen(port,()=>{

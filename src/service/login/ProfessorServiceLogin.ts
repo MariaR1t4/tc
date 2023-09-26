@@ -30,12 +30,12 @@ class ProfessorServiceLogin {
         return newProf;
     }
 
-    async loginProf(email: string, senha: string, ) : Promise<string>{
+    async loginProf(email: string, senha: string ) : Promise<string>{
         const hashDigest = sha256(senha);
         logger.debug("HashAntes: ", hashDigest)
         const privateKey = "FIEC2023"
         const SenhaHasehd = Base64.stringify(hmacSHA512(hashDigest, privateKey ))
-        const foundProf = await ProfessorRepository.findOneBy({ email, senha}); // quando for passar pra SenhaHashed (linha acima ☝️) colocar senha: SenhaHaseh
+        const foundProf = await ProfessorRepository.findOneBy({ email, senha:SenhaHasehd}); // quando for passar pra SenhaHashed (linha acima ☝️) colocar senha: SenhaHaseh
         if(foundProf){
         const token = jwt.sign({email: foundProf?.email, senha: foundProf?.senha}, hide, {expiresIn: 300});
         return token;}
