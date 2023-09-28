@@ -20,6 +20,7 @@ class AlunoLoginController {
             try {
                 const token = yield new AlunoServiceLogin_1.default().loginAluno(rm, senha);
                 res.json({ token });
+                console.log(token);
             }
             catch (err) {
                 res.status(401).send("Login failed");
@@ -28,8 +29,8 @@ class AlunoLoginController {
     }
     signUpAluno(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { rm, senha } = req.body;
-            yield new AlunoServiceLogin_1.default().signUpAluno(rm, senha);
+            const { rm, senha, telefone, nome, email } = req.body;
+            yield new AlunoServiceLogin_1.default().signUpAluno(rm, senha, telefone, nome, email);
             res.json('Cadastro criado com sucesso!');
         });
     }

@@ -12,4 +12,6 @@ authRouter.post('/login/aluno', new aluno_controller_login_1.default().loginAlun
 authRouter.post('/login/professor', new professor_controller_login_1.default().loginProfessor);
 authRouter.post('/alunos/batch-sign-up', multer_config_1.upload.single('csvFile'), new aluno_controller_login_1.default().signUpAlunosInBatch);
 authRouter.post('/professor/batch-sign-up', multer_config_1.upload.single('csvFile'), new professor_controller_login_1.default().signUpProfessorInBatch);
+authRouter.post('/sign-up/aluno', new aluno_controller_login_1.default().signUpAluno);
+authRouter.post('/sign-up/professor', new professor_controller_login_1.default().signUpProf);
 exports.default = authRouter;

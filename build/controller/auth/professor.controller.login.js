@@ -20,6 +20,7 @@ class ProfessorLoginController {
             try {
                 const token = yield new ProfessorServiceLogin_1.default().loginProf(email, senha);
                 res.json({ token });
+                console.log(token);
             }
             catch (err) {
                 res.status(401).send('Login failed');

@@ -8,7 +8,9 @@ class ProfessorLoginController {
         const {email, senha} = req.body;
         try{
         const token = await new ProfessorServiceLogin().loginProf(email, senha);
-        res.json({token});}
+        res.json({token});
+        console.log(token);
+    }
         catch(err){
             res.status(401).send('Login failed');
         }

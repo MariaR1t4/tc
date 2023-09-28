@@ -5,17 +5,19 @@ import AlunoServiceLogin from "../../service/login/AlunoServiceLogin";
 class AlunoLoginController {
         async loginAluno(req: Request, res: Response){
             const {rm, senha} = req.body;
+
             try{
             const token = await new AlunoServiceLogin().loginAluno(rm, senha);
-            res.json({token});}
+            res.json({token});
+            console.log(token);}
             catch(err){
                 res.status(401).send("Login failed");
             }
         }
 
         async signUpAluno(req: Request, res: Response){
-            const {rm, senha} = req.body;
-            await new AlunoServiceLogin().signUpAluno(rm, senha);
+            const {rm, senha, telefone, nome , email} = req.body;
+            await new AlunoServiceLogin().signUpAluno(rm, senha, telefone, nome, email);
             res.json('Cadastro criado com sucesso!');
         }
 

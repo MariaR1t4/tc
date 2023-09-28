@@ -15,7 +15,7 @@ import { hide } from "../../auth/constants";
 import logger from "../../configs/logger"
 class AlunoServiceLogin {
 
-    getAlunoFromData(rm: number, senha: string) : Aluno{
+    getAlunoFromData(rm: number, senha: string, telefone:string, nome:string, email:string) : Aluno{
         const newAluno = new Aluno();
         newAluno.rm = rm;
         newAluno.senha = senha;
@@ -25,6 +25,9 @@ class AlunoServiceLogin {
         const hmacDigest = Base64.stringify(hmacSHA512(hashDigest, privateKey ))
         logger.debug("HashDepos: ",hashDigest)
         newAluno.senha = hmacDigest;
+        newAluno.telefone = telefone;
+        newAluno.nome = nome;
+        newAluno.email = email;
         return newAluno;
     }
 
@@ -33,15 +36,15 @@ class AlunoServiceLogin {
         logger.debug("HashAntes: ", hashDigest)
         const privateKey = "FIEC2023"
         const SenhaHasehd = Base64.stringify(hmacSHA512(hashDigest, privateKey ))
-        const foundAluno = await AlunoRepository.findOneBy({ rm, senha }); // quando for passar pra SenhaHashed (linha acima ☝️) colocar senha: SenhaHaseh
+        const foundAluno = await AlunoRepository.findOneBy({ rm, senha:SenhaHasehd }); // quando for passar pra SenhaHashed (linha acima ☝️) colocar senha: SenhaHaseh
         if(foundAluno){
         const token = jwt.sign({rm: foundAluno?.rm, senha: foundAluno?.senha}, hide, {expiresIn: 300});
         return token;}
         throw new Error("Aluno not found");
     }
 
-    async signUpAluno( rm: number, senha: string){
-        const newAluno = this.getAlunoFromData(rm, senha);
+    async signUpAluno( rm: number, senha: string, telefone:string, nome:string, email:string){
+        const newAluno = this.getAlunoFromData(rm, senha,telefone,nome, email);
         await AlunoRepository.save(newAluno);
     }
 
@@ -51,7 +54,7 @@ class AlunoServiceLogin {
         if(file != null) {
             fs.createReadStream(file.path)
                 .pipe(csvParser())
-                .on('data', (data) => Alunos.push(this.getAlunoFromData(data.rm, data.senha)))
+                .on('data', (data) => Alunos.push(this.getAlunoFromData(data.rm, data.senha, data.telefone, data.nome, data.email)))
                 .on('end', () => {
                     console.log(Alunos);
                     AlunoRepository.insert(Alunos);
