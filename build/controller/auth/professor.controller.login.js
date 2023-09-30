@@ -17,6 +17,7 @@ class ProfessorLoginController {
     loginProfessor(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { email, senha } = req.body;
+            console.log({ "resopose": req.body });
             try {
                 const token = yield new ProfessorServiceLogin_1.default().loginProf(email, senha);
                 res.json({ token });

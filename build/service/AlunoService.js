@@ -38,7 +38,11 @@ class AlunoService {
     }
     findAlunoById(rm) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield AlunoRepository_1.default.findOneBy({ rm });
+            const response = yield AlunoRepository_1.default.findOneBy({ rm });
+            if (response == null) {
+                return { erro: "id não existente !" };
+            }
+            return response;
         });
     }
     deleteAluno(rm) {

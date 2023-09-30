@@ -32,7 +32,7 @@ export default class AlunoController {
     public async findAlunoById(req: Request,res:Response){
         const alunoService = AlunoService.getInstance();
         const rm = req.params.rm;
-        res.json(await alunoService.findAlunoById(parseInt(rm)));
+         res.json(await alunoService.findAlunoById(parseInt(rm)));
     }
 
     public async deleteAluno(req: Request,res:Response){

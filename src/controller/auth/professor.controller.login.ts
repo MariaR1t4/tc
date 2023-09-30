@@ -6,6 +6,7 @@ import ProfessorServiceLogin from "../../service/login/ProfessorServiceLogin";
 class ProfessorLoginController {
     async loginProfessor(req: Request, res: Response){
         const {email, senha} = req.body;
+        console.log({"resopose":req.body})
         try{
         const token = await new ProfessorServiceLogin().loginProf(email, senha);
         res.json({token});

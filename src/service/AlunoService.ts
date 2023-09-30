@@ -1,3 +1,4 @@
+import { error } from "console";
 import {Request} from "express"
 
 
@@ -24,8 +25,12 @@ export default class AlunoService{
     public async listAluno():Promise<Aluno[]>{
         return await AlunoRepository.find();
     }
-    public async findAlunoById(rm:number) : Promise<Aluno | null> {
-        return await AlunoRepository.findOneBy({rm}); 
+    public async findAlunoById(rm:number) : Promise<Aluno | any> {
+        const response =  await AlunoRepository.findOneBy({rm}); 
+        if(response == null){
+            return {erro:"id não existente !"}
+        }        
+        return response
     }
     public async deleteAluno(rm:number):Promise<void>{
         await AlunoRepository.delete(rm);
