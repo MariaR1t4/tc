@@ -2,7 +2,7 @@
 
 import { NavbarSec } from "@/app/components/navbarsec";
 import Turma from "@/app/professor/turmas/page";
-import axios from "axios";
+import api from "@/shared/utils/my-axios";
 import { useParams } from "next/navigation";
 import React, { useEffect } from "react";
 
@@ -26,14 +26,14 @@ export default function TurmaEditar(){
     const [turma, setTurma] = React.useState({modulo:"", curso:"", descricao:"",periodo:""});
     const [dadosturma, setDadosTurma] = React.useState([]);
   
-    axios.interceptors.request.use(config => {
+    api.interceptors.request.use(config => {
       // loga(log) uma mensagem antes da requisição HTTP ser enviada
       console.log('A requisição foi enviada');
       return config;
     });
     useEffect(()=>{
-      axios.put(`http://10.5.9.9:38000/app/turma/edita/:id_turma}` )
-  
+      api.put(`http://10.5.9.9:38000/app/turma/edita/:id_turma}` )
+         
       .then(response => {
         setTurma (response.data);
         console.log(response.data);

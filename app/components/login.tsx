@@ -1,5 +1,6 @@
 "use client"
-import axios from "axios";
+import { API_URL } from "@/shared/constants/api";
+import api from "@/shared/utils/my-axios";
 import Image from "next/image";
 import test from "node:test";
 import React, { FormEvent } from "react";
@@ -7,16 +8,16 @@ import logopng from "../../public/logo.png"
 export default function Login(){
     interface Login  {
         email:string,
-        password:string
+        senha:string
     }
     const [email, setEmail] = React.useState("");
-    const [password, setPassword] = React.useState("");
-    console.log(email, password);
+    const [senha, setSenha] = React.useState("");
+    console.log(email, senha);
     const validaEmail = new RegExp(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i
     );
-    const validaPassword = new RegExp("^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$")
+    const validasenha = new RegExp("^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$")
     const [emailErr, setEmailErr] = React.useState(false);
-    const [passwordErr, setPasswordErr] = React.useState(false);
+    const [senhaErr, setSenhaErr] = React.useState(false);
     const validatemail = ()=>{
       if(!validaEmail.test(email)){
         setEmailErr(true)
@@ -27,22 +28,22 @@ export default function Login(){
     }
     const validatePass = ()=>{
       if(!validaEmail.test(email)){
-        setPasswordErr(true)
+        setSenhaErr(true)
       }
       else{
-        setPasswordErr(false)
+        setSenhaErr(false)
       }
     }
     const [login, setLogin] = React.useState({
       email:"", 
-      password:""
+      senha:""
     });
   const [loading, setLoading] = React.useState(false);
   const [ok, setOk] = React.useState(false);
   const [showFeed, setShowFeed] = React.useState(false);
   const Loginn = (ev:{ target: HTMLInputElement; }) =>{
     const {name, value} = ev.target;
-    setLogin({... login, [name]:value})
+    setLogin({... login,[name]:value})
   }
 
   const pegaDoBd = async (e:FormEvent) => {
@@ -50,16 +51,10 @@ export default function Login(){
     setLoading(true);
     try{
 
-console.log(login)
-      const res = await axios.post('http://10.5.9.9:38000/auth/login/aluno', login)
-      localStorage.setItem("token", res.data.token)
-      if(res.status === 401){
-        console.log("Error")
-      }else{
-        console.log("Foi");
-        console.log(res);
-        return location.href = "http://localhost:3000/secretaria"
-      }
+      const res = await api.post(`${API_URL}/auth/login/professor`,login)
+      localStorage.setItem("token", res.data.token);
+      console.log({ "oi":res})
+    
       setTimeout(() => {
 
         setLoading(false);
@@ -68,14 +63,13 @@ console.log(login)
        }, 2000);
   
       } catch(err) {
+        console.log(err)
         setOk(false);
         setShowFeed(true);
         setLoading(false);
+      
       }}
-   const isEmailValid = (email:string)=>{
-    console.log( /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i.test(email))
-
-   }
+  
   return(
   <>
 <main>
@@ -94,13 +88,13 @@ console.log(login)
               <form className="space-y-4 md:space-y-6" onSubmit={pegaDoBd}>
                   <div>
                       <label  htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" >Digite seu email institucional:</label>
-                      <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="abc@mail.com" value={email} onChange={e=>setEmail(e.target.value)} required />
+                      <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="abc@mail.com" value={login.email} onChange={e=>Loginn(e)} required />
                       {!login.email && <span className="text-white text-xs" data-testid="email-requerid">Email é obrigatório</span>}
                    
                   </div>
                   <div>
-                      <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Insira sua senha:</label>
-                      <input type="password" name="password" id="password" placeholder="*******" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={e=>setPassword(e.target.value)} value={password} required />
+                      <label htmlFor="senha" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Insira sua senha:</label>
+                      <input type="password" name="senha" id="senha" placeholder="*******" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={e=>Loginn(e)} value={login.senha} required />
                   </div>
                   <div className="flex items-center justify-between">
                       <a href="#" className="text-sm -mt-4 font-medium text-primary-600 hover:underline text-white ">Esqueceu a senha?</a>

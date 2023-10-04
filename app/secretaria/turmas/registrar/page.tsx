@@ -2,7 +2,8 @@
 
 
 import { NavbarSec } from "@/app/components/navbarsec";
-import axios from "axios";
+import { API_URL } from "@/shared/constants/api";
+import api from "@/shared/utils/my-axios";
 import React, { FormEvent, useEffect } from "react";
 
 
@@ -28,7 +29,7 @@ export default function TurmaCadastro(){
     try{
 
 console.log(form)
-      const res = await axios.post('http://10.5.9.9:38000/app/turma/',form)
+      const res = await api.post(`${API_URL}/turma/`,form)
       console.log(res.data)
       setTimeout(() => {
         setLoading(false);

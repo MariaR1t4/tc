@@ -1,6 +1,8 @@
 "use client"
+import Feedback from "@/app/components/feedback";
 import { NavbarSec } from "@/app/components/navbarsec";
-import axios from "axios";
+import { API_URL } from "@/shared/constants/api";
+import api from "@/shared/utils/my-axios";
 import React, { FormEvent } from "react";
 
 
@@ -26,7 +28,7 @@ export default function AlunoCadastro(){
     try{
 
 console.log(form)
-      const res = await axios.post('http://10.5.9.9:38000/app/aluno/',form)
+      const res = await api.post(`${API_URL}/aluno/`,form)
       console.log(res.data)
       setTimeout(() => {
         setLoading(false);
@@ -42,6 +44,7 @@ console.log(form)
     return(
         <>
         <NavbarSec />
+        <Feedback open={loading} cancel={""}/>
         <main className=" w-full h-full">
             <h1 className=" text-center text-gray-700 font-bold mt-20 text-4xl">Cadastrar Aluno</h1>
 <form className=" w-1/3 h-full gap-2 flex flex-col ml-auto mr-auto mt-24" onSubmit={enviarParaoBd}>
@@ -69,6 +72,7 @@ console.log(form)
   <button type="submit" className="text-white  hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-lg w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-700  dark:focus:ring-green-800">Registrar Aluno</button>
 </form >
 </main>
+
         </>
     )
 }

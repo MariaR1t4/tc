@@ -4,7 +4,8 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'next/navigation'
 import { NavbarSec } from '@/app/components/navbarsec'
-import axios from 'axios'
+import { API_URL } from '@/shared/constants/api'
+import api from '@/shared/utils/my-axios'
 
 type Alunos = {
   map(arg0: (Aluno: any) => React.JSX.Element): React.ReactNode
@@ -16,13 +17,13 @@ type Alunos = {
   const {id} = useParams();
   const [professor, setProfesor] = React.useState<Alunos|null>(null);
 
-  axios.interceptors.request.use(config => {
+  api.interceptors.request.use(config => {
     // loga(log) uma mensagem antes da requisição HTTP ser enviada
     console.log('A requisição foi enviada');
     return config;
   });
   useEffect(()=>{
-    axios.get('http://10.5.9.9:38000/app/professor/')
+    api.get(`${API_URL}/professor/`)
 
     .then(response => {
       setProfesor (response.data);

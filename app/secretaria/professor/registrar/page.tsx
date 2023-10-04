@@ -1,8 +1,9 @@
 "use client"
 import { NavbarSec } from "@/app/components/navbarsec";
 import { useRouter } from "next/router";
-import axios from "axios";
 import React, { FormEvent } from "react";
+import { API_URL } from "@/shared/constants/api";
+import api from "@/shared/utils/my-axios";
 
 
 export default function ProfCadastro(){
@@ -26,7 +27,7 @@ export default function ProfCadastro(){
         try{
     
     console.log(form)
-          const res = await axios.post('http://10.5.9.9:38000/app/professor/',form)
+          const res = await api.post(`${API_URL}/professor/`,form)
           console.log(res.data)
           setTimeout(() => {
             setLoading(false);
