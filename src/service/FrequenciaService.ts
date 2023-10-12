@@ -22,16 +22,15 @@ export default class FrequenciaService{
     public async listFrequencia():Promise<Frequencia[]>{
         return await FrequenciaRepository.find();
     }
-    public async findFrequencia(id_frequencia:number) : Promise<Frequencia | null> {
-        return await FrequenciaRepository.findOneBy({id_frequencia}); 
+    public async findFrequencia(id_aula:number) : Promise<Frequencia | null> {
+        return await FrequenciaRepository.findOneBy({id_aula}); 
     }
-    public async deleteFrequencia(id_frequencia:number):Promise<void>{
-        await FrequenciaRepository.delete(id_frequencia);
+    public async deleteFrequencia(id_aula:number):Promise<void>{
+        await FrequenciaRepository.delete(id_aula);
     }
-    public async updateFrequencia(id_frequencia: number, frequencia:Frequencia):Promise<void>{
-        const frequenciaAlterada = await FrequenciaRepository.findOneBy(({id_frequencia}));
+    public async updateFrequencia(id_aula: number, frequencia:Frequencia):Promise<void>{
+        const frequenciaAlterada = await FrequenciaRepository.findOneBy(({id_aula}));
         if(frequenciaAlterada){
-          frequenciaAlterada.lista_chamada = frequencia.lista_chamada;
             await FrequenciaRepository.save(frequenciaAlterada);
         }else{
             console.log('usuario nao encontrado')

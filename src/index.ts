@@ -5,9 +5,8 @@ import cors from 'cors';
 
 
 import { AppDataSource } from "./models/DataBase";
-import frequenciaRouter from "./router/FrequenciaRouter";
 import TurmaRouter from "./router/TurmaRouter";
-import alunoRouter from "./router/AlunoRouter";
+import alunoRouter, { frequenciaRouter } from "./router/AlunoRouter";
 import disciplinaRouter from "./router/DisciplinaRouter";
 import professorDisciplinaRouter from "./router/ProfessorDisciplinaRouter";
 import professorRouter from "./router/ProfessorRouter";

@@ -2,15 +2,17 @@ import "reflect-metadata";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import Aluno from "./Aluno";
 import Disciplina from './Disciplina';
+import Professor from "./Professor";
 import Turma from "./Turma";
 
 @Entity()
-class Frequencia {
+class Aula {
         @PrimaryGeneratedColumn("increment") 
-        id_frequencia: number;
+        id_aula: number;
 
-        @Column()
-        lista_chamada: number;
+        @ManyToOne(() => Professor, (professor) => professor.id_professor)
+        @JoinColumn({ name: 'id_professor', referencedColumnName: 'id_professor' })
+        id_professor: number;
 
         @ManyToOne(() => Aluno, (aluno) => aluno.rm)
         @JoinColumn({ name: 'rm', referencedColumnName: 'rm' })
@@ -23,7 +25,16 @@ class Frequencia {
         @ManyToOne(() => Turma, (turma) => turma.id_turma)
         @JoinColumn({ name: 'id_turma', referencedColumnName: 'id_turma' })
         id_turma: number;
+
+        @Column()
+        descricao: string;
+
+        @Column()
+        token: number;
+
+        @Column()
+        token_aluno: number;
 }
 
 
-export default Frequencia;
+export default Aula;

@@ -16,33 +16,47 @@ require("reflect-metadata");
 const typeorm_1 = require("typeorm");
 const Aluno_1 = __importDefault(require("./Aluno"));
 const Disciplina_1 = __importDefault(require("./Disciplina"));
+const Professor_1 = __importDefault(require("./Professor"));
 const Turma_1 = __importDefault(require("./Turma"));
-let Frequencia = class Frequencia {
+let Aula = class Aula {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)("increment"),
     __metadata("design:type", Number)
-], Frequencia.prototype, "id_frequencia", void 0);
+], Aula.prototype, "id_aula", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.ManyToOne)(() => Professor_1.default, (professor) => professor.id_professor),
+    (0, typeorm_1.JoinColumn)({ name: 'id_professor', referencedColumnName: 'id_professor' }),
     __metadata("design:type", Number)
-], Frequencia.prototype, "lista_chamada", void 0);
+], Aula.prototype, "id_professor", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => Aluno_1.default, (aluno) => aluno.rm),
     (0, typeorm_1.JoinColumn)({ name: 'rm', referencedColumnName: 'rm' }),
     __metadata("design:type", Number)
-], Frequencia.prototype, "rm", void 0);
+], Aula.prototype, "rm", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => Disciplina_1.default, (disciplina) => disciplina.id_disciplina),
     (0, typeorm_1.JoinColumn)({ name: 'id_disciplina', referencedColumnName: 'id_disciplina' }),
     __metadata("design:type", Number)
-], Frequencia.prototype, "id_disciplina", void 0);
+], Aula.prototype, "id_disciplina", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => Turma_1.default, (turma) => turma.id_turma),
     (0, typeorm_1.JoinColumn)({ name: 'id_turma', referencedColumnName: 'id_turma' }),
     __metadata("design:type", Number)
-], Frequencia.prototype, "id_turma", void 0);
-Frequencia = __decorate([
+], Aula.prototype, "id_turma", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Aula.prototype, "descricao", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], Aula.prototype, "token", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], Aula.prototype, "token_aluno", void 0);
+Aula = __decorate([
     (0, typeorm_1.Entity)()
-], Frequencia);
-exports.default = Frequencia;
+], Aula);
+exports.default = Aula;

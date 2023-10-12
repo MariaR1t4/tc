@@ -36,21 +36,20 @@ class FrequenciaService {
             return yield FrequenciaRepository_1.default.find();
         });
     }
-    findFrequencia(id_frequencia) {
+    findFrequencia(id_aula) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield FrequenciaRepository_1.default.findOneBy({ id_frequencia });
+            return yield FrequenciaRepository_1.default.findOneBy({ id_aula });
         });
     }
-    deleteFrequencia(id_frequencia) {
+    deleteFrequencia(id_aula) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield FrequenciaRepository_1.default.delete(id_frequencia);
+            yield FrequenciaRepository_1.default.delete(id_aula);
         });
     }
-    updateFrequencia(id_frequencia, frequencia) {
+    updateFrequencia(id_aula, frequencia) {
         return __awaiter(this, void 0, void 0, function* () {
-            const frequenciaAlterada = yield FrequenciaRepository_1.default.findOneBy(({ id_frequencia }));
+            const frequenciaAlterada = yield FrequenciaRepository_1.default.findOneBy(({ id_aula }));
             if (frequenciaAlterada) {
-                frequenciaAlterada.lista_chamada = frequencia.lista_chamada;
                 yield FrequenciaRepository_1.default.save(frequenciaAlterada);
             }
             else {

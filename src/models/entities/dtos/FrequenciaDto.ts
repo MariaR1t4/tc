@@ -1,16 +1,20 @@
 import TurmaDto from "./TurmaDto";
 import AlunoDto from "./AlunoDto";
 import { z } from "zod";
+import ProfessorDto from "./ProfessorDto";
+import DisciplinaDto from "./DisciplinaDto";
 
 export default interface FrequenciaDto{
-    lista_chamada: number;
     id_turma: TurmaDto;
     rm: AlunoDto;
-    frequencia: number;
+    id_professor: ProfessorDto;
+    id_disciplina: DisciplinaDto;
+    descricao:string;
 }
 export const FrequenciaSchema = z.object({
-    lista_chamada: z.number(),
     id_turma: z.number(),
     rm: z.number(),
-    frequencia: z.number(),
+    id_professor: z.number(),
+    id_disciplina: z.number(),
+    descricao:z.string()
 })
