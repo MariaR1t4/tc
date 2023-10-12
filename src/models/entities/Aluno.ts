@@ -2,7 +2,6 @@ import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 import { nullable } from "zod/lib";
 
 
-
 @Entity()
 class Aluno {
   @PrimaryGeneratedColumn() 

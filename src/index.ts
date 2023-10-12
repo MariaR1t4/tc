@@ -12,7 +12,7 @@ import disciplinaRouter from "./router/DisciplinaRouter";
 import professorDisciplinaRouter from "./router/ProfessorDisciplinaRouter";
 import professorRouter from "./router/ProfessorRouter";
 import authRouter from "./router/auth/UserAuthRouter";
-import { validatorAluno, validatorProfessor } from "./controller/auth/Auth.Validation";
+import { validatorAluno, validatorProfessor, validatorSecretaria } from "./controller/auth/Auth.Validation";
 
 const app = express();
 const port = 38000;
