@@ -1,10 +1,5 @@
 {
-  "/not-found": "app/not-found.js",
-  "/aluno/page": "app/aluno/page.js",
-  "/professor/page": "app/professor/page.js",
-  "/aluno/perfil/page": "app/aluno/perfil/page.js",
-  "/professor/turmas/page": "app/professor/turmas/page.js",
-  "/professor/perfil/page": "app/professor/perfil/page.js",
-  "/aluno/registrar/page": "app/aluno/registrar/page.js",
-  "/secretaria/config/page": "app/secretaria/config/page.js"
+  "/secretaria/config/redsenha/page": "app/secretaria/config/redsenha/page.js",
+  "/secretaria/professor/registrar/page": "app/secretaria/professor/registrar/page.js",
+  "/professor/registraraula/page": "app/professor/registraraula/page.js"
 }
