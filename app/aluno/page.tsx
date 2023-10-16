@@ -9,7 +9,7 @@ export default function AlunoPage(){
         <>
         <main>
             <NavbarAluno/>
-            <h1 className=" text-center text-gray-700 font-bold mt-20 text-4xl">Home Secretaria</h1>
+            <h1 className=" text-center text-gray-700 font-bold mt-20 text-4xl">Home Aluno</h1>
             <div className="justify-center flex gap-16 mt-32 first-letter: w-full h-full " >
         <div className="w-96 h-96 bg-gray-200 border-b-gray-950 rounded-md p-2 shadow gap-y-2 ">
             <Image className=" h-48 w-80 justify-center flex ml-5 mt-8"  alt="" src={turmapgn} />

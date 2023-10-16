@@ -50,6 +50,7 @@ type Alunos = {
         </thead>
         <tbody >
           {professor && professor.map(Professor => (
+            // eslint-disable-next-line react/jsx-key
             <tr className=' border border-black'>
               <td className=' border border-black'>{Professor.id_tabela_professor}</td>
               <td className=' border border-black'>{Professor.name}</td>

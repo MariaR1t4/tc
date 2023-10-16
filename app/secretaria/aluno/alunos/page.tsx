@@ -48,11 +48,10 @@ export default function Aluno() {
         </thead>
         <tbody >
           {aluno && aluno.map(Aluno => (
-            <tr className=' border border-black'>
+            <tr className=' border border-black' key={Aluno.id}>
               <td className=' border border-black'>{Aluno.id}</td>
               <td className=' border border-black'>{Aluno.name}</td>
               <td className=' border border-black'>{Aluno.curso}</td>
-              
             </tr>
           ))}
         </tbody>

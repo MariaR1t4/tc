@@ -22,7 +22,7 @@ export function NavbarProf(){
           <a href="/professor/perfil" className="flex flex-row gap-1 py-2 pl-3 pr-4 text-gray-900 rounded  md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"><User2 />Perfil</a>
         </li>
         <li>
-          <a href="/professor/config" className="py-2 pl-3 pr-4 text-gray-900 mr-12 rounded ml-20 flex flex-row gap-1 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"><SettingsIcon /></a>
+          <a href="/secretaria/config" className="py-2 pl-3 pr-4 text-gray-900 mr-12 rounded ml-20 flex flex-row gap-1 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"><SettingsIcon /></a>
         </li>
        
       </ul>
