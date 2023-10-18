@@ -1,6 +1,6 @@
 {
   "/page": "app/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/professor/page": "app/professor/page.js",
-  "/professor/aula/page": "app/professor/aula/page.js"
+  "/login/page": "app/login/page.js",
+  "/secretaria/page": "app/secretaria/page.js",
+  "/secretaria/professor/registrar/page": "app/secretaria/professor/registrar/page.js"
 }

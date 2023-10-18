@@ -1,9 +1,22 @@
-import { execFile } from "child_process"
+// layout.tsx
+'use client'
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
-export default function LoginLayout({children,} : {children: React.ReactNode}) {
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-      <div>
-          {children}
-      </div>
-  )
+    <html lang="en">
+      <body>
+
+          
+          <GoogleOAuthProvider clientId="377869314621-7mu6efqci9ki98qmega0m2nqdt0ji15h.apps.googleusercontent.com">
+            {children}
+            </GoogleOAuthProvider>
+      </body>
+    </html>
+  );
 }
