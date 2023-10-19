@@ -1,4 +1,5 @@
-import axios from 'axios'
+import axios from 'axios';
+import React from 'react'
 import { setCookie, getCookie } from 'cookies-next';
  
 const API_URL = "http://10.5.9.9:38000/"
@@ -28,7 +29,8 @@ api.interceptors.response.use(resp =>{
 }, (error)=>{
     console.log("Não Autorizado");
     console.log(error.response);
-    if(error.response.status == 403){
+    if(error.response.status == 403)
+    {
         window.location.href="/login"
     }
    else if(error.response.status == 404){

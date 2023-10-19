@@ -34,12 +34,49 @@ type Alunos = {
 ;
   
   
-  return (
-    <>
-      <main className='w-full h-full'>
-        <NavbarSec />
-        <h1 className=" text-center text-gray-700 font-bold mt-20 text-4xl">Selecionar Professor</h1>
-      <table className='border-2 m-auto mt-32 w-1/2 h-auto border-black border-collapse text-center text-2xl' >
+return (
+  <>
+<NavbarSec />      
+<main className='w-full flex-col justify-center h-full'>
+
+      <h1 className=" text-center text-gray-700 font-bold mt-20 text-4xl">Selecionar turma</h1>
+
+        {professor && professor.map(Professor => (
+            <><div className='ml-24 mt-7 inline-block'>
+            <div className="max-w-sm rounded overflow-hidden shadow-lg inline-block ml-5 ">
+
+
+            <div className="px-6 py-4  ">
+              <div className="font-bold text-xl mb-2">Id:{Professor.id_tabela_professor}</div>
+              <p className="text-gray-700 text-base">Professor: {Professor.name}
+              </p>
+              <p>Email: {Professor.email}</p>
+              <p>Senha: {Professor.password}</p>
+              <p>Tel: {Professor.telefone}</p>
+              <div className='mt-3 flex justify-center gap-96 '>
+    <a href="/secretaria/turmas/editar?id={Turma.id_turma}"><button className=' mr-80 bg-green-700 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white' id='editarTurma'>Editar Turma</button></a>
+    <button className=' bg-blue-700 w-28 h-10 block text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1' id='verTurma'>Ver Turma</button>
+    </div>
+            </div>
+
+    
+          </div>
+          </div>
+            </>
+        ))}
+      
+    
+    
+   
+  
+    </main>
+  
+</>
+   
+
+)
+}
+/*<table className='border-2 m-auto mt-32 w-1/2 h-auto border-black border-collapse text-center text-2xl' >
       <thead className=' bg-gray-400'><tr>
             <th className=' border border-black'>Rm</th>
             <th className=' border border-black'>Nome</th>
@@ -60,15 +97,4 @@ type Alunos = {
             </tr>
           ))}
         </tbody>
-      </table>
-      <div className='mt-3 flex justify-center gap-96 '>
-      <a href="/secretaria/professor/editar?id=${p.rm}"><button className='mr-80 bg-green-700 w-32 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white'>Editar Professor</button></a>
-      <button className=' bg-blue-700 w-28 h-10 text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1'>Ver Professor</button>
-      </div>   
-      </main>
-    
-  </>
-     
-
-  )
-}
+      </table>*/

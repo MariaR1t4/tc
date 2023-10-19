@@ -2,6 +2,7 @@
 
 import { NavbarSec } from "@/app/components/navbarsec";
 import Turma from "@/app/professor/turmas/page";
+import { API_URL } from "@/shared/constants/api";
 import api from "@/shared/utils/my-axios";
 import { useParams } from "next/navigation";
 import React, { useEffect } from "react";
@@ -32,7 +33,7 @@ export default function TurmaEditar(){
       return config;
     });
     useEffect(()=>{
-      api.put(`http://10.5.9.9:38000/app/turma/edita/:id_turma}` )
+      api.put(`${API_URL}/turma/edita/:id_turma}` )
          
       .then(response => {
         setTurma (response.data);

@@ -1,7 +1,8 @@
-
 "use client"
 
-import React from 'react'
+import React from 'react';
+import Image from "next/image";
+import professorpgn from "../../../../public/professor.png"; 
 import { useParams } from 'next/navigation'
 import { NavbarSec } from '@/app/components/navbarsec'
 
@@ -39,6 +40,22 @@ export default function Aluno() {
       <main className='w-full h-full'>
         <NavbarSec />
       <h1 className=" text-center text-gray-700 font-bold mt-12 text-7xl">Selecionar turma do aluno</h1>
+      <div className="max-w-sm rounded overflow-hidden shadow-lg">
+       
+          <Image src={professorpgn} alt="" className="w-72 h-72" /> 
+
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
+            <p className="text-gray-700 text-base">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+            </p>
+          </div>
+          <div className="px-6 pt-4 pb-2">
+            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
+            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
+            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+          </div>
+        </div>
       <table className='border-2 m-auto mt-32 w-2/3 h-96 border-black border-collapse text-center text-4xl' >
       <thead className=' bg-gray-400'><tr>
             <th className=' border border-black'>Rm</th>
@@ -68,3 +85,4 @@ export default function Aluno() {
 
   )
 }
+
