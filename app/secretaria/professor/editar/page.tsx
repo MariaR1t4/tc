@@ -1,13 +1,22 @@
 "use client"
 import { NavbarSec } from "@/app/components/navbarsec";
+import { API_URL } from "@/shared/constants/api";
 import api from "@/shared/utils/my-axios";
 import { useParams } from "next/navigation";
+import { type } from "os";
 import React, {useEffect} from "react";
 
-
+type Professor = {
+  map(arg0: (Aluno: any) => React.JSX.Element): React.ReactNode
+  id_tabela_professor : string,
+  name : string,
+  email: string,
+  telefone:string,
+  password:string
+}
 export default function ProfEditar(){
     const {id} = useParams();
-    const [professor, setProfessor] = React.useState<|null>(null);
+    const [professor, setProfessor] = React.useState<Professor|null>(null);
   
     api.interceptors.request.use(config => {
       // loga(log) uma mensagem antes da requisição HTTP ser enviada
@@ -15,7 +24,7 @@ export default function ProfEditar(){
       return config;
     });
     useEffect(()=>{
-      api.get('http://10.5.9.9:38000/app/professor/ ')
+      api.put(`${API_URL}/professor/:id_tabela_professor/`)
   
       .then(response => {
         setProfessor(response.data);
@@ -30,26 +39,30 @@ export default function ProfEditar(){
 <form className=" w-1/3 h-full gap-2 flex flex-col ml-auto mr-auto mt-24" >
     
   <div className="relative z-0 w-full mb-6 group">
-      <input type="text" name="nomeprof" id="nomeprof" className="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-white rounded-3xl pl-8 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+      <input type="text" name="nomeprof" id="nomeprof" value={professor?.name} className="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-white rounded-3xl pl-8 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
       <label htmlFor="nomeprof" className="peer-focus:font-medium pl-8 absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-9 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Nome:</label>
   </div>
   <div className="relative z-0 w-full mb-6 group">
-      <input type="text" name="codprof" id="codprof" className="block rounded-3xl py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-gray-300 appearance-nblack dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+      <input type="text" name="codprof" id="codprof" value={professor?.id_tabela_professor} className="block rounded-3xl py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-gray-300 appearance-nblack dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
       <label htmlFor="codprof" className="peer-focus:font-medium absolute pl-8 text-lg text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-9 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Código do Professor:</label>
   </div>
+ 
   <div className="relative z-0 w-full mb-6 group">
-        <input type="text" name="aulasprof" id="aulasprof" className="block rounded-3xl py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-gray-300 appearance-nblack dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-        <label htmlFor="aulasprof" className="peer-focus:font-medium pl-8 absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-9 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Aulas Atribuidas:</label>
-    </div>
-  <div className="relative z-0 w-full mb-6 group">
-      <input type="email" name="emailprof" id="emailprof" className="block rounded-3xl py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-gray-300 appearance-nblack dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+      <input type="email" name="emailprof" id="emailprof" value={professor?.email} className="block rounded-3xl py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-gray-300 appearance-nblack dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
       <label htmlFor="emailprof" className="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-9 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 pl-8 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Email:</label>
       
   </div>
-    <div className="relative z-0 w-full mb-6 group">
-        <input type="number" name="disciplinaprof" id="disciplinaprof" className="block rounded-3xl py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-gray-300 appearance-nblack dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-        <label htmlFor="disciplinaprof" className="peer-focus:font-medium pl-8 absolute text-lg text-black dark:text-gray-400 duration-300 transhtmlForm -translate-y-9 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Disciplina:</label>
-    </div>
+  <div className="relative z-0 w-full mb-6 group">
+      <input type="number" name="telprof" id="telprof" value={professor?.telefone} className="block rounded-3xl py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-gray-300 appearance-nblack dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+      <label htmlFor="telprof" className="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-9 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 pl-8 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Telefone:</label>
+      
+  </div>
+  <div className="relative z-0 w-full mb-6 group">
+      <input type="password" name="senhaprof" id="senhaprof" value={professor?.password} className="block rounded-3xl py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-gray-300 appearance-nblack dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+      <label htmlFor="senhaprof" className="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-9 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 pl-8 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Senha:</label>
+      
+  </div>
+ 
   
  
 

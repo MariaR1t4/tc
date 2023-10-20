@@ -1,8 +1,7 @@
 {
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/login/page": "app/login/page.js",
-  "/secretaria/professor/page": "app/secretaria/professor/page.js",
-  "/secretaria/turmas/page": "app/secretaria/turmas/page.js",
+  "/page": "app/page.js",
+  "/secretaria/page": "app/secretaria/page.js",
   "/secretaria/aluno/page": "app/secretaria/aluno/page.js",
-  "/secretaria/turmas/editar/page": "app/secretaria/turmas/editar/page.js"
+  "/secretaria/turmas/page": "app/secretaria/turmas/page.js",
+  "/secretaria/professor/page": "app/secretaria/professor/page.js"
 }

@@ -24,7 +24,7 @@ export default function AlunodoAluno() {
     return config;
   });
   useEffect(()=>{
-    api.get(`${API_URL}/aluno/`)
+    api.get(`${API_URL}/aluno/lista-aluno/`)
 
     .then(response => {
       setAluno (response.data);
@@ -37,13 +37,12 @@ export default function AlunodoAluno() {
  <NavbarSec />      
  <main className='w-full flex-col justify-center h-full'>
  
-        <h1 className=" text-center text-gray-700 font-bold mt-20 text-4xl">Selecionar Aluno</h1>
+        <h1 className=" text-center drop-shadow-xl mb-16 text-gray-700 font-bold mt-20 text-4xl">Selecionar Aluno</h1>
   
           {aluno && aluno.map(Aluno => (
-              <><div className='ml-24 mt-7 inline-block'>
+              <>
+              <div className='ml-32 mt-7 inline-block'>
               <div className="max-w-sm rounded overflow-hidden shadow-lg inline-block ml-5 ">
-
-
               <div className="px-6 py-4  ">
                 <div className="font-bold text-xl mb-2">Aluno:{Aluno.rm}</div>
                 <p className="text-gray-700 text-base">Curso: {Aluno.nome}
@@ -51,24 +50,17 @@ export default function AlunodoAluno() {
                 <p>Periodo: {Aluno.email}</p>
                 <p>Módulo: {Aluno.telefone}</p>
                 <p>Descrição: {Aluno.senha}</p>
-                <div className='mt-3 flex justify-center gap-96 '>
+              <div className='mt-2'>
       <a href="/secretaria/alunos/editar?id={Aluno.id_Aluno}"><button className=' mr-80 bg-green-700 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white' id='editarAluno'>Editar Aluno</button></a>
       <button className=' bg-blue-700 w-28 h-10 block text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1' id='verAluno'>Ver Aluno</button>
       </div>
-              </div>
-
-      
+      </div>
+              
             </div>
             </div>
               </>
-          ))}
-        
-      
-      
-     
-    
+          ))}  
       </main>
-    
   </>
      
 

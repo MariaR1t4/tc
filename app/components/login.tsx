@@ -5,6 +5,7 @@ import logopng from "../../public/logo.png"
 import { CredentialResponse, GoogleOAuthProvider } from "@react-oauth/google";
 import Image from "next/image";
 import React from "react";
+import { API_URL } from '@/shared/constants/api';
 
 const Login = () => {
   const [willLogin, setWillLogin] = React.useState(false)
@@ -17,7 +18,7 @@ const Login = () => {
       const tokenId = response.credential;
       const clientId = response.clientId;
       const fcmToken = localStorage.getItem('fcmToken');
-      fetch('http://localhost:38000/login', {
+      fetch(`${API_URL}/login`, {
         method: 'POST',
         headers: {'content-type': 'application/json'},
         body: JSON.stringify({token: tokenId, fcmToken})

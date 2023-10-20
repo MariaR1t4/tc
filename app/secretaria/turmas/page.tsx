@@ -36,7 +36,7 @@ function Turma() {
  <NavbarSec />      
  <main className='w-full flex-col justify-center h-full'>
  
-        <h1 className=" text-center text-gray-700 font-bold mt-20 text-4xl">Selecionar turma</h1>
+        <h1 className=" text-center drop-shadow-xl text-gray-700 font-bold mt-20 mb-16 text-4xl">Selecionar turma</h1>
   
           {turma && turma.map(Turma => (
               <><div className='ml-24 mt-7 inline-block'>
@@ -50,9 +50,9 @@ function Turma() {
                 <p>Periodo: {Turma.periodo}</p>
                 <p>Módulo: {Turma.modulo}</p>
                 <p>Descrição: {Turma.descricao}</p>
-                <div className='mt-3 flex justify-center gap-96 '>
+               <div className=' inline-block gap-10'>
       <a href="/secretaria/turmas/editar?id={Turma.id_turma}"><button className=' mr-80 bg-green-700 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white' id='editarTurma'>Editar Turma</button></a>
-      <button className=' bg-blue-700 w-28 h-10 block text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1' id='verTurma'>Ver Turma</button>
+      <button className=' bg-blue-700 w-28 h-10 mt text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1' id='verTurma'>Ver Turma</button>
       </div>
               </div>
 

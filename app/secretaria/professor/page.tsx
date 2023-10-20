@@ -7,15 +7,17 @@ import { NavbarSec } from '@/app/components/navbarsec'
 import { API_URL } from '@/shared/constants/api'
 import api from '@/shared/utils/my-axios'
 
-type Alunos = {
+type Professor = {
   map(arg0: (Aluno: any) => React.JSX.Element): React.ReactNode
-  id : string,
+  id_tabela_professor : string,
   name : string,
-  curso: string
+  email: string,
+  telefone:string,
+  password:string
 }
  export default function ProfSec() {
   const {id} = useParams();
-  const [professor, setProfesor] = React.useState<Alunos|null>(null);
+  const [professor, setProfesor] = React.useState<Professor|null>(null);
 
   api.interceptors.request.use(config => {
     // loga(log) uma mensagem antes da requisição HTTP ser enviada
@@ -37,13 +39,13 @@ type Alunos = {
 return (
   <>
 <NavbarSec />      
-<main className='w-full flex-col justify-center h-full'>
+<main className='w-full mb-6 flex-col justify-center h-full'>
 
-      <h1 className=" text-center text-gray-700 font-bold mt-20 text-4xl">Selecionar turma</h1>
+      <h1 className=" text-center drop-shadow-xl text-gray-700 font-bold mt-20 mb-16 text-4xl">Selecionar Professor</h1>
 
         {professor && professor.map(Professor => (
-            <><div className='ml-24 mt-7 inline-block'>
-            <div className="max-w-sm rounded overflow-hidden shadow-lg inline-block ml-5 ">
+            <><div className='ml-32 mb-8 justify-center inline-block'>
+            <div className="max-w-sm rounded overflow-hidden shadow-lg inline-block ml-12 ">
 
 
             <div className="px-6 py-4  ">
@@ -51,11 +53,10 @@ return (
               <p className="text-gray-700 text-base">Professor: {Professor.name}
               </p>
               <p>Email: {Professor.email}</p>
-              <p>Senha: {Professor.password}</p>
               <p>Tel: {Professor.telefone}</p>
-              <div className='mt-3 flex justify-center gap-96 '>
-    <a href="/secretaria/turmas/editar?id={Turma.id_turma}"><button className=' mr-80 bg-green-700 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white' id='editarTurma'>Editar Turma</button></a>
-    <button className=' bg-blue-700 w-28 h-10 block text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1' id='verTurma'>Ver Turma</button>
+              <div className='mt-2'>
+    <a href="/secretaria/professor/editar/"><button className=' mr-80 bg-green-700 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white' id='editarProfessor'>Editar Professor</button></a>
+    <button className=' bg-blue-700 w-28 h-10 block text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1' id='verProfessor'>Ver Professor</button>
     </div>
             </div>
 
