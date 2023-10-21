@@ -22,7 +22,7 @@ const client = new google_auth_library_1.OAuth2Client();
 google_login.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const ticket = yield client.verifyIdToken({
         idToken: req.body.token,
-        audience: "368441154494-7ol8baksev6n3lgra7n6a0lcclqt3v82.apps.googleusercontent.com", // Specify the CLIENT_ID of the app that accesses the backend
+        audience: "368441154494-3vdnb96fu0l592uau5bgrmpcqnc164de.apps.googleusercontent.com", // Specify the CLIENT_ID of the app that accesses the backend
         // Or, if multiple clients access the backend:
         //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
     });

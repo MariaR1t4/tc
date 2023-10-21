@@ -8,32 +8,39 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
-const Usuario_1 = __importDefault(require("./Usuario"));
-let Aluno = class Aluno {
+let Usuario = class Usuario {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], Aluno.prototype, "rm", void 0);
+], Usuario.prototype, "rm", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Aluno.prototype, "nome", void 0);
-__decorate([
-    (0, typeorm_1.OneToOne)(() => Usuario_1.default),
-    (0, typeorm_1.JoinColumn)(),
-    __metadata("design:type", Usuario_1.default)
-], Aluno.prototype, "usuario", void 0);
+], Usuario.prototype, "nome", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Aluno.prototype, "telefone", void 0);
-Aluno = __decorate([
+], Usuario.prototype, "email", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ 'nullable': true }),
+    __metadata("design:type", String)
+], Usuario.prototype, "ImageUrl", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Usuario.prototype, "telefone", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Usuario.prototype, "googleId", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Usuario.prototype, "fcmToken", void 0);
+Usuario = __decorate([
     (0, typeorm_1.Entity)()
-], Aluno);
+], Usuario);
 exports.default = Aluno;

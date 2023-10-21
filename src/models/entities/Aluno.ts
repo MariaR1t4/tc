@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from "typeorm";
 import { nullable } from "zod/lib";
+import Usuario from "./Usuario";
 
 
 @Entity()
@@ -10,22 +11,12 @@ class Aluno {
   @Column()
   nome: string;
 
-  @Column()
-  email: string;
-
-  /*@Column()
-  senha: string;*/
-
-  @Column({'nullable': true})
-  ImageUrl: string;
+  @OneToOne(() => Usuario)
+  @JoinColumn()
+  usuario: Usuario
 
   @Column()
   telefone: string;
 
-  @Column()
-  googleId: string;
-
-  @Column()
-  fcmToken: string;
 }
 export default Aluno;
