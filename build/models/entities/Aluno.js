@@ -25,10 +25,6 @@ __decorate([
     __metadata("design:type", String)
 ], Aluno.prototype, "email", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], Aluno.prototype, "senha", void 0);
-__decorate([
     (0, typeorm_1.Column)({ 'nullable': true }),
     __metadata("design:type", String)
 ], Aluno.prototype, "ImageUrl", void 0);
@@ -36,6 +32,14 @@ __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Aluno.prototype, "telefone", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Aluno.prototype, "googleId", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Aluno.prototype, "fcmToken", void 0);
 Aluno = __decorate([
     (0, typeorm_1.Entity)()
 ], Aluno);

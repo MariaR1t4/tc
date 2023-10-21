@@ -50,15 +50,12 @@ class AlunoServiceLogin {
     getAlunoFromData(rm, senha, telefone, nome, email) {
         const newAluno = new Aluno_1.default();
         newAluno.rm = rm;
-        newAluno.senha = senha;
         const hashDigest = (0, sha256_1.default)(senha);
         logger_1.default.debug("HashAntes: ", hashDigest);
         const privateKey = "FIEC2023";
         const hmacDigest = enc_base64_1.default.stringify((0, hmac_sha512_1.default)(hashDigest, privateKey));
         logger_1.default.debug("HashDepos: ", hashDigest);
-        newAluno.senha = hmacDigest;
         newAluno.telefone = telefone;
-        newAluno.nome = nome;
         newAluno.email = email;
         return newAluno;
     }
@@ -68,9 +65,9 @@ class AlunoServiceLogin {
             logger_1.default.debug("HashAntes: ", hashDigest);
             const privateKey = "FIEC2023";
             const SenhaHasehd = enc_base64_1.default.stringify((0, hmac_sha512_1.default)(hashDigest, privateKey));
-            const foundAluno = yield AlunoRepository_1.default.findOneBy({ rm, senha: SenhaHasehd }); // quando for passar pra SenhaHashed (linha acima ☝️) colocar senha: SenhaHaseh
+            const foundAluno = yield AlunoRepository_1.default.findOneBy({ rm, }); // quando for passar pra SenhaHashed (linha acima ☝️) colocar senha: SenhaHaseh
             if (foundAluno) {
-                const token = jwt.sign({ rm: foundAluno === null || foundAluno === void 0 ? void 0 : foundAluno.rm, senha: foundAluno === null || foundAluno === void 0 ? void 0 : foundAluno.senha }, constants_1.hide, { expiresIn: 300 });
+                const token = jwt.sign({ rm: foundAluno === null || foundAluno === void 0 ? void 0 : foundAluno.rm }, constants_1.hide, { expiresIn: 300 });
                 return token;
             }
             throw new Error("Aluno not found");

@@ -38,10 +38,8 @@ export default class AlunoService{
     public async updateAluno(rm:number,aluno:Aluno):Promise<void>{
         const alunoAlterado = await AlunoRepository.findOneBy(({rm}));
         if(alunoAlterado){
-            alunoAlterado.nome = aluno.nome;
             alunoAlterado.telefone = aluno.telefone;
             alunoAlterado.email = aluno.email;
-            alunoAlterado.senha = aluno.senha;
             await AlunoRepository.save(alunoAlterado);
         }
         Promise.resolve();

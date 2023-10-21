@@ -54,10 +54,8 @@ class AlunoService {
         return __awaiter(this, void 0, void 0, function* () {
             const alunoAlterado = yield AlunoRepository_1.default.findOneBy(({ rm }));
             if (alunoAlterado) {
-                alunoAlterado.nome = aluno.nome;
                 alunoAlterado.telefone = aluno.telefone;
                 alunoAlterado.email = aluno.email;
-                alunoAlterado.senha = aluno.senha;
                 yield AlunoRepository_1.default.save(alunoAlterado);
             }
             Promise.resolve();
