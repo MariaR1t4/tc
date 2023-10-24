@@ -56,7 +56,6 @@ class AlunoServiceLogin {
         const hmacDigest = enc_base64_1.default.stringify((0, hmac_sha512_1.default)(hashDigest, privateKey));
         logger_1.default.debug("HashDepos: ", hashDigest);
         newAluno.telefone = telefone;
-        newAluno.email = email;
         return newAluno;
     }
     loginAluno(rm, senha) {
@@ -103,7 +102,6 @@ class AlunoServiceLogin {
                 const image = yield jimp_1.default.read(file.path);
                 yield image.resize(600, 600);
                 yield image.write('uploads/' + file.originalname);
-                foundAluno.ImageUrl = file.originalname;
                 yield AlunoRepository_1.default.save(foundAluno);
             }
         });

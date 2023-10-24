@@ -24,7 +24,6 @@ class AlunoServiceLogin {
         const hmacDigest = Base64.stringify(hmacSHA512(hashDigest, privateKey ))
         logger.debug("HashDepos: ",hashDigest)
         newAluno.telefone = telefone;
-        newAluno.email = email;
         return newAluno;
     }
 
@@ -69,7 +68,6 @@ class AlunoServiceLogin {
             const image = await Jimp.read(file.path);
             await image.resize(600,600);
             await image.write('uploads/' + file.originalname);
-            foundAluno.ImageUrl = file.originalname;
             await AlunoRepository.save(foundAluno);
         }
     }

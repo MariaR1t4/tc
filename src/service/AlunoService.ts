@@ -39,7 +39,6 @@ export default class AlunoService{
         const alunoAlterado = await AlunoRepository.findOneBy(({rm}));
         if(alunoAlterado){
             alunoAlterado.telefone = aluno.telefone;
-            alunoAlterado.email = aluno.email;
             await AlunoRepository.save(alunoAlterado);
         }
         Promise.resolve();

@@ -13,6 +13,7 @@ import professorRouter from "./router/ProfessorRouter";
 import authRouter from "./router/auth/UserAuthRouter";
 import { validatorAluno, validatorProfessor, validatorSecretaria } from "./controller/auth/Auth.Validation";
 import google_login from "./router/auth/login_google";
+import fire from "./router/auth/firebase";
 
 
 const app = express();
@@ -47,6 +48,8 @@ app.use('/api/v1/turma', TurmaRouter);
 app.use('/api/v1/auth', authRouter);
 
 app.use('/api/v1', google_login)
+
+app.use('/api/v1', fire)
 
 app.listen(port,()=>{
     console.log(`Servidor iniciado em http://localhost:${port}`);
