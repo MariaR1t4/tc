@@ -4,8 +4,8 @@ import { OAuth2Client } from "google-auth-library";
 import jwt from 'jsonwebtoken';
 import { v4 } from "uuid";
 import { number } from "zod";
-import Aluno from "../../models/entities/Aluno";
-import AlunoRepository from "../../models/entities/repositories/AlunoRepository";
+import UsuarioRepository from "../../models/entities/repositories/UsuarioRepository";
+import Usuario from "../../models/entities/Usuario";
 
 const google_login = Router();
 const client = new OAuth2Client();
@@ -27,20 +27,18 @@ google_login.post('/login',async (req, res) => {
         return;
     }
    
-    let foundUser = await AlunoRepository.findOneBy({ email });
+    let foundUser = await UsuarioRepository.findOneBy({ email });
     if (!foundUser) {
-        const user = new Aluno();
+        const user = new Usuario();
         user.fcmToken = req.body.fcmToken;
         user.email = email || '';
-        user.nome = payload?.name || '';
         user.googleId = userId || '';
         user.ImageUrl = payload?.picture || '';
-        //user.rm = rm || number;
-        foundUser = await AlunoRepository.save(user);
+        foundUser = await UsuarioRepository.save(user);
        
     }
     // 300s => 5 minutos . voce pode colocar mais tempo se quiser
-    const jwtToken = jwt.sign({ email: foundUser?.email, rm: foundUser?.rm }, "SUA_SENHA", { expiresIn: 300 })
+    const jwtToken = jwt.sign({ email: foundUser?.email}, "SUA_SENHA", { expiresIn: 300 })
     res.json({ token: jwtToken });
 
 })

@@ -55,7 +55,6 @@ class AlunoService {
             const alunoAlterado = yield AlunoRepository_1.default.findOneBy(({ rm }));
             if (alunoAlterado) {
                 alunoAlterado.telefone = aluno.telefone;
-                alunoAlterado.email = aluno.email;
                 yield AlunoRepository_1.default.save(alunoAlterado);
             }
             Promise.resolve();
