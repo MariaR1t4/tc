@@ -33,26 +33,27 @@ function Turma() {
   
   return (
     <>
+                <title>Secretaria</title>
  <NavbarSec />      
  <main className='w-full flex-col justify-center h-full'>
  
         <h1 className=" text-center drop-shadow-xl text-gray-700 font-bold mt-20 mb-16 text-4xl">Selecionar turma</h1>
   
           {turma && turma.map(Turma => (
-              <><div className='ml-24 mt-7 inline-block'>
-              <div className="max-w-sm rounded overflow-hidden shadow-lg inline-block ml-5 ">
+              <><div className='ml-32 mt-5 mb-6 justify-center inline-block'>
+              <div className="max-w-sm rounded overflow-hidden shadow-lg inline-block ml-12 ">
 
 
               <div className="px-6 py-4  ">
                 <div className="font-bold text-xl mb-2">Turma:{Turma.id_turma}</div>
-                <p className="text-gray-700 text-base">Curso: {Turma.curso}
+                <p className='text-lg'>Curso: {Turma.curso}
                 </p>
-                <p>Periodo: {Turma.periodo}</p>
-                <p>Módulo: {Turma.modulo}</p>
-                <p>Descrição: {Turma.descricao}</p>
-               <div className=' inline-block gap-10'>
-      <a href="/secretaria/turmas/editar?id={Turma.id_turma}"><button className=' mr-80 bg-green-700 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white' id='editarTurma'>Editar Turma</button></a>
-      <button className=' bg-blue-700 w-28 h-10 mt text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1' id='verTurma'>Ver Turma</button>
+                <p className='text-lg'>Periodo: {Turma.periodo}</p>
+                <p className='text-lg'>Módulo: {Turma.modulo}</p>
+                <p className='text-lg'>Descrição: {Turma.descricao}</p>
+            <div className='inline-block justify-start'>
+      <a href="/secretaria/turmas/editar?id={Turma.id_turma}"><button className=' mr-80 bg-green-700 mt-4 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white'  id='editarTurma'>Editar Turma</button></a>
+      <button className=' bg-blue-700 w-28 h-10 float-right mr-24 gap-7 text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1' id='verTurma'>Ver Turma</button>
       </div>
               </div>
 

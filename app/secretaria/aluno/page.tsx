@@ -10,12 +10,13 @@ import Aluno from './alunos/page'
 
 type Alunos = {
   map(arg0: (Aluno: any) => React.JSX.Element): React.ReactNode
-  id : string,
+  rm : string,
   name : string,
-  curso: string
+  email: string,
+  telefone:string
 }
 export default function AlunodoAluno() {
-  const {id} = useParams();
+  const {rm} = useParams();
   const [aluno, setAluno] = React.useState<Alunos|null>(null);
 
   api.interceptors.request.use(config => {
@@ -34,6 +35,7 @@ export default function AlunodoAluno() {
   
   return (
     <>
+    <title>Secretaria</title>
  <NavbarSec />      
  <main className='w-full flex-col justify-center h-full'>
  
@@ -41,17 +43,16 @@ export default function AlunodoAluno() {
   
           {aluno && aluno.map(Aluno => (
               <>
-              <div className='ml-32 mt-7 inline-block'>
-              <div className="max-w-sm rounded overflow-hidden shadow-lg inline-block ml-5 ">
+              <div className='ml-32 mt-5 mb-6 justify-center inline-block'>
+              <div className="max-w-sm rounded overflow-hidden shadow-lg inline-block ml-12 ">
               <div className="px-6 py-4  ">
-                <div className="font-bold text-xl mb-2">Aluno:{Aluno.rm}</div>
-                <p className="text-gray-700 text-base">Curso: {Aluno.nome}
-                </p>
-                <p>Periodo: {Aluno.email}</p>
-                <p>Módulo: {Aluno.telefone}</p>
-                <p>Descrição: {Aluno.senha}</p>
+                <div className="font-bold text-xl mb-2">Aluno: {Aluno.nome}</div>
+                <h2 className='text-lg'>Rm: {Aluno.rm}
+                </h2>
+                <h2 className='text-lg'>Email: {Aluno.email}</h2>
+                <h2 className='text-lg'>Telefone: {Aluno.telefone}</h2>
               <div className='mt-2'>
-      <a href="/secretaria/alunos/editar?id={Aluno.id_Aluno}"><button className=' mr-80 bg-green-700 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white' id='editarAluno'>Editar Aluno</button></a>
+      <a href="/secretaria/alunos/editar?id={Aluno.rm}"><button className=' mr-80 bg-green-700 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white' id='editarAluno'>Editar Aluno</button></a>
       <button className=' bg-blue-700 w-28 h-10 block text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1' id='verAluno'>Ver Aluno</button>
       </div>
       </div>

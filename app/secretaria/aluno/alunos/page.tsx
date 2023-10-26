@@ -1,88 +1,73 @@
 "use client"
+import Feedback from "@/app/components/feedback";
+import { NavbarSec } from "@/app/components/navbarsec";
+import { API_URL } from "@/shared/constants/api";
+import api from "@/shared/utils/my-axios";
+import React, { FormEvent } from "react";
 
-import React from 'react';
-import Image from "next/image";
-import professorpgn from "../../../../public/professor.png"; 
-import { useParams } from 'next/navigation'
-import { NavbarSec } from '@/app/components/navbarsec'
 
-type Alunos = {
-  map(arg0: (Aluno: any) => React.JSX.Element): React.ReactNode
-  id : string,
-  name : string,
-  curso: string
-}
-export default function Aluno() {
-  const {id} = useParams();
-  const [aluno, setAluno] = React.useState<Alunos|null>(null);
-
-  const carregaAluno = async () => {
-    
-    try{
-    const res = await fetch('http://localhost:38000/alunos');
-    const data = await res.json();
-    setAluno(data);
-    console.log(aluno)
-    }catch(err){
-
-      console.log(err);
-    }
-
+export default function AlunoCadastro(){
+  interface Aluno {
+    rm:string,
+    nome:string,
+    email:string,
+    telefone:string 
   }
+  const [form, setForm] = React.useState({name:'', telefone:'', email:''});
+  const [loading, setLoading] = React.useState(false);
+  const [ok, setOk] = React.useState(false);
+  const [showFeed, setShowFeed] = React.useState(false);
+  const atualizaForm = (ev:{ target: HTMLInputElement; }) =>{
+    const {name, value} = ev.target;
+    setForm({... form, [name]:value})
+  }
+  const enviarParaoBd = async (e:FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    try{
 
-  React.useEffect(() => {
-    carregaAluno();
-  }, [])
+console.log(form)
+      const res = await api.post(`${API_URL}/usurio/cria-aluno`,form)
+      console.log(res.data)
+      setTimeout(() => {
+        setLoading(false);
+        setOk(true);
+        setShowFeed(true);
+       }, 2000);
   
-  return (
-    <>
-
-      <main className='w-full h-full'>
+      } catch(err) {
+        setOk(false);
+        setShowFeed(true);
+        setLoading(false);
+      }}
+    return(
+        <>
         <NavbarSec />
-      <h1 className=" text-center text-gray-700 font-bold mt-12 text-7xl">Selecionar turma do aluno</h1>
-      <div className="max-w-sm rounded overflow-hidden shadow-lg">
-       
-          <Image src={professorpgn} alt="" className="w-72 h-72" /> 
-
-          <div className="px-6 py-4">
-            <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
-            <p className="text-gray-700 text-base">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-            </p>
-          </div>
-          <div className="px-6 pt-4 pb-2">
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
-          </div>
-        </div>
-      <table className='border-2 m-auto mt-32 w-2/3 h-96 border-black border-collapse text-center text-4xl' >
-      <thead className=' bg-gray-400'><tr>
-            <th className=' border border-black'>Rm</th>
-            <th className=' border border-black'>Nome</th>
-            <th className=' border border-black'>Curso</th>
-            </tr>
-        </thead>
-        <tbody >
-          {aluno && aluno.map(Aluno => (
-            <tr className=' border border-black'>
-              <td className=' border border-black'>{Aluno.id}</td>
-              <td className=' border border-black'>{Aluno.name}</td>
-              <td className=' border border-black'>{Aluno.curso}</td>
-              
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className='mt-3 flex justify-center gap-96 '>
-      <button className=' mr-80 bg-green-700 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white'>Selecionar Turma</button>
-      <button className=' bg-red-700 w-28 h-10 text-white hover:bg-red-800 rounded-md transition ease-in duration-100 hover:-translate-y-1'>Excluir Turma</button>
-      </div>
-      </main>
+        <Feedback open={loading} cancel={""}/>
+        <main className=" w-full h-full">
+            <h1 className=" text-center text-gray-700 font-bold mt-20 text-4xl">Cadastrar Aluno</h1>
+<form className=" w-1/3 h-full gap-2 flex flex-col ml-auto mr-auto mt-24" onSubmit={enviarParaoBd}>
     
-  </>
-     
+  <div className="relative z-0 w-full mb-6 group">
+      <input type="text" name="nome" id="nome" className="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-white rounded-3xl pl-8 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " onChange={atualizaForm} required />
+      <label htmlFor="nome" className="peer-focus:font-medium pl-8 absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-9 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Nome:</label>
+  </div>
+  <div className="relative z-0 w-full mb-6 group">
+      <input type="email" name="email" id="email" className="block pl-8 rounded-3xl py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-gray-300 appearance-nblack dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " onChange={atualizaForm} required />
+      <label htmlFor="email" className="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-9 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 pl-8 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Email:</label>
+  </div>
+    <div className="relative z-0 w-full mb-6 group">
+        <input type="tel" name="telefone" id="telefone" className="block rounded-3xl py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 pl-8 border-gray-300 appearance-nblack dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " onChange={atualizaForm} required />
+        <label htmlFor="telefone" className="peer-focus:font-medium pl-8 absolute text-lg text-black dark:text-gray-400 duration-300 transhtmlForm -translate-y-9 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Telefone do Aluno:</label>
+    </div>
+   
+ 
 
-  )
+  <button type="submit" className="text-white  hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-lg w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-700  dark:focus:ring-green-800">Registrar Aluno</button>
+</form >
+</main>
+
+        </>
+    )
 }
 

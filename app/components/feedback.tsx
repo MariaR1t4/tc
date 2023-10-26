@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import Loading from '../../public/icons8-loading.gif'
+import LoadingImg from '../../public/icons8-loading.gif'
 
 
 function Feedback(props:any) {
@@ -20,18 +20,15 @@ const imageStyle = {
 }
 
 
-    React.useEffect(() => {
-        const setOpen = (props.open)
-    }, [])
+
     return (
     <div >
-        {open==true ? <Image src={Loading} alt='ok' /> : null}
     </div> 
     );  
 
 }
 
-}
+
 
 
 export default Feedback;

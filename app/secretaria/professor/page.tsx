@@ -9,7 +9,7 @@ import api from '@/shared/utils/my-axios'
 
 type Professor = {
   map(arg0: (Aluno: any) => React.JSX.Element): React.ReactNode
-  id_tabela_professor : string,
+  id_professor : string,
   name : string,
   email: string,
   telefone:string,
@@ -38,22 +38,25 @@ type Professor = {
   
 return (
   <>
+<title>Secretaria</title>
+ 
 <NavbarSec />      
 <main className='w-full mb-6 flex-col justify-center h-full'>
 
       <h1 className=" text-center drop-shadow-xl text-gray-700 font-bold mt-20 mb-16 text-4xl">Selecionar Professor</h1>
 
         {professor && professor.map(Professor => (
-            <><div className='ml-32 mb-8 justify-center inline-block'>
+            <>
+            <div className='ml-32 mt-5 mb-6 justify-center inline-block'>
             <div className="max-w-sm rounded overflow-hidden shadow-lg inline-block ml-12 ">
 
 
             <div className="px-6 py-4  ">
-              <div className="font-bold text-xl mb-2">Id:{Professor.id_tabela_professor}</div>
-              <p className="text-gray-700 text-base">Professor: {Professor.name}
+              <div className="font-bold text-xl mb-2">Id:{Professor.id_professor}</div>
+              <p className='text-lg'>Professor: {Professor.name}
               </p>
-              <p>Email: {Professor.email}</p>
-              <p>Tel: {Professor.telefone}</p>
+              <p className='text-lg'>Email: {Professor.email}</p>
+              <p className='text-lg'>Tel: {Professor.telefone}</p>
               <div className='mt-2'>
     <a href="/secretaria/professor/editar/"><button className=' mr-80 bg-green-700 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white' id='editarProfessor'>Editar Professor</button></a>
     <button className=' bg-blue-700 w-28 h-10 block text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1' id='verProfessor'>Ver Professor</button>

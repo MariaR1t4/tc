@@ -11,10 +11,9 @@ export default function AlunoCadastro(){
     rm:string,
     nome:string,
     email:string,
-    senha:string,
     telefone:string 
   }
-  const [form, setForm] = React.useState({name:'', telefone:'', email:'', password:''});
+  const [form, setForm] = React.useState({name:'', telefone:'', email:''});
   const [loading, setLoading] = React.useState(false);
   const [ok, setOk] = React.useState(false);
   const [showFeed, setShowFeed] = React.useState(false);
@@ -28,7 +27,7 @@ export default function AlunoCadastro(){
     try{
 
 console.log(form)
-      const res = await api.post(`${API_URL}/aluno/`,form)
+      const res = await api.post(`${API_URL}/aluno/cria-aluno`,form)
       console.log(res.data)
       setTimeout(() => {
         setLoading(false);
@@ -57,11 +56,6 @@ console.log(form)
       <input type="email" name="email" id="email" className="block pl-8 rounded-3xl py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-gray-300 appearance-nblack dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " onChange={atualizaForm} required />
       <label htmlFor="email" className="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-9 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 pl-8 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Email:</label>
   </div>
-  <div className="relative z-0 w-full mb-6 group">
-        <input type="password" name="senha" id="senha" className="block pl-8 rounded-3xl py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-gray-300 appearance-nblack dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " onChange={atualizaForm} required />
-        <label htmlFor="senha" className="peer-focus:font-medium pl-8 absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-9 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Senha:</label>
-    </div>
-  
     <div className="relative z-0 w-full mb-6 group">
         <input type="tel" name="telefone" id="telefone" className="block rounded-3xl py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 pl-8 border-gray-300 appearance-nblack dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " onChange={atualizaForm} required />
         <label htmlFor="telefone" className="peer-focus:font-medium pl-8 absolute text-lg text-black dark:text-gray-400 duration-300 transhtmlForm -translate-y-9 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Telefone do Aluno:</label>

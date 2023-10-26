@@ -42,6 +42,7 @@ export default function TurmaEditar(){
     },[])
     return(
         <>
+ <title>Secretaria</title>
         <NavbarSec />
         <main className=" w-full h-full">
             <h1 className=" text-center text-gray-700 font-bold mt-20 text-4xl">Editar Turma</h1>

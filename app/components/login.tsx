@@ -35,6 +35,8 @@ const Login = () => {
 
   return(
   <>
+  <title>Alumnus</title>
+  <link rel="stylesheet" href='' />
 <main>
     <section className=" w-1/2 float-left">
         <Image src={logopng} alt="" className=" relative w-5/6 ml-16 mt-12" />

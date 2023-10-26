@@ -10,6 +10,7 @@ export default function HomeSec(){
         <>
     
         <main>
+            <title>Secretaria</title>
             <NavbarSec />
             <h1 className=" text-center text-gray-700 font-bold mt-20 text-4xl">Home Secretaria</h1>
             <div className="justify-center flex gap-16 mt-32 first-letter: w-full h-full " >
