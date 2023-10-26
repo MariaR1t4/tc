@@ -56,7 +56,6 @@ class ProfessorServiceLogin {
         const privateKey = "FIEC2023";
         const hmacDigest = enc_base64_1.default.stringify((0, hmac_sha512_1.default)(hashDigest, privateKey));
         logger_1.default.debug("HashDepos: ", hashDigest);
-        newProf.senha = hmacDigest;
         return newProf;
     }
     loginProf(email, senha) {
@@ -65,9 +64,9 @@ class ProfessorServiceLogin {
             logger_1.default.debug("HashAntes: ", hashDigest);
             const privateKey = "FIEC2023";
             const SenhaHasehd = enc_base64_1.default.stringify((0, hmac_sha512_1.default)(hashDigest, privateKey));
-            const foundProf = yield ProfessorRepository_1.default.findOneBy({ email, senha: SenhaHasehd }); // quando for passar pra SenhaHashed (linha acima ☝️) colocar senha: SenhaHaseh
+            const foundProf = yield ProfessorRepository_1.default.findOneBy({ email }); // quando for passar pra SenhaHashed (linha acima ☝️) colocar senha: SenhaHaseh
             if (foundProf) {
-                const token = jwt.sign({ email: foundProf === null || foundProf === void 0 ? void 0 : foundProf.email, senha: foundProf === null || foundProf === void 0 ? void 0 : foundProf.senha }, constants_1.hide, { expiresIn: 300 });
+                const token = jwt.sign({ email: foundProf === null || foundProf === void 0 ? void 0 : foundProf.email, }, constants_1.hide, { expiresIn: 300 });
                 return token;
             }
             throw new Error("Professor not found");

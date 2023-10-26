@@ -31,7 +31,7 @@ app.use(morgan('combined'));
 
 app.use('/api/v1/aluno', alunoRouter);
 
-app.use('/api/v1/aluno', validatorAluno);
+//app.use('/api/v1/aluno', validatorAluno);
 
 app.use('/api/v1/disciplina', disciplinaRouter);
 
@@ -41,7 +41,7 @@ app.use('/api/v1/disciplina-professor', professorDisciplinaRouter);
 
 app.use('/api/v1/professor', professorRouter);
 
-app.use('/api/v1/professor', validatorProfessor);
+//app.use('/api/v1/professor', validatorProfessor);
 
 app.use('/api/v1/turma', TurmaRouter);
 

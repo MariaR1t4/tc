@@ -13,7 +13,7 @@ class Usuario {
   @Column({nullable: true})
   googleId: string;
   
-  @Column({'nullable': true})
+  @Column({nullable: true})
   ImageUrl: string;
 
   @Column()

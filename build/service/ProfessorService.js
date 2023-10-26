@@ -53,7 +53,6 @@ class ProfessorService {
                 professorAlterado.name = professor.name;
                 professorAlterado.telefone = professor.telefone;
                 professorAlterado.email = professor.email;
-                professorAlterado.senha = professor.senha;
                 yield ProfessorRepository_1.default.save(professorAlterado);
             }
             Promise.resolve();

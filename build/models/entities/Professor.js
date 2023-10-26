@@ -29,10 +29,6 @@ __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Professor.prototype, "email", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], Professor.prototype, "senha", void 0);
 Professor = __decorate([
     (0, typeorm_1.Entity)()
 ], Professor);

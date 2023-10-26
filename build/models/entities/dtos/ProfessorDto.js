@@ -6,5 +6,4 @@ exports.ProfessorSchema = zod_1.z.object({
     name: zod_1.z.string(),
     telefone: zod_1.z.string().length(12, { message: "insira apenas números (ex: xx x xxxx xxxx" }),
     email: zod_1.z.string().email(),
-    password: zod_1.z.string().min(8, { message: "insira uma senha de pelo menos 8 caracteres" })
 });

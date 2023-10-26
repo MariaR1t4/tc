@@ -26,7 +26,6 @@ class ProfessorServiceLogin {
         const privateKey = "FIEC2023"
         const hmacDigest = Base64.stringify(hmacSHA512(hashDigest, privateKey ))
         logger.debug("HashDepos: ",hashDigest)
-        newProf.senha = hmacDigest;
         return newProf;
     }
 
@@ -35,9 +34,9 @@ class ProfessorServiceLogin {
         logger.debug("HashAntes: ", hashDigest)
         const privateKey = "FIEC2023"
         const SenhaHasehd = Base64.stringify(hmacSHA512(hashDigest, privateKey ))
-        const foundProf = await ProfessorRepository.findOneBy({ email, senha:SenhaHasehd}); // quando for passar pra SenhaHashed (linha acima ☝️) colocar senha: SenhaHaseh
+        const foundProf = await ProfessorRepository.findOneBy({ email}); // quando for passar pra SenhaHashed (linha acima ☝️) colocar senha: SenhaHaseh
         if(foundProf){
-        const token = jwt.sign({email: foundProf?.email, senha: foundProf?.senha}, hide, {expiresIn: 300});
+        const token = jwt.sign({email: foundProf?.email, }, hide, {expiresIn: 300});
         return token;}
         throw new Error("Professor not found");
     }

@@ -37,7 +37,6 @@ const DisciplinaRouter_1 = __importDefault(require("./router/DisciplinaRouter"))
 const ProfessorDisciplinaRouter_1 = __importDefault(require("./router/ProfessorDisciplinaRouter"));
 const ProfessorRouter_1 = __importDefault(require("./router/ProfessorRouter"));
 const UserAuthRouter_1 = __importDefault(require("./router/auth/UserAuthRouter"));
-const Auth_Validation_1 = require("./controller/auth/Auth.Validation");
 const login_google_1 = __importDefault(require("./router/auth/login_google"));
 const firebase_1 = __importDefault(require("./router/auth/firebase"));
 const app = (0, express_1.default)();
@@ -48,12 +47,12 @@ app.use((0, cors_1.default)());
 app.use((0, morgan_1.default)('combined'));
 //app.use('/app', express.static(path.join(__dirname, 'src')))
 app.use('/api/v1/aluno', AlunoRouter_1.default);
-app.use('/api/v1/aluno', Auth_Validation_1.validatorAluno);
+//app.use('/api/v1/aluno', validatorAluno);
 app.use('/api/v1/disciplina', DisciplinaRouter_1.default);
 app.use('/api/v1/frequencia', AlunoRouter_1.frequenciaRouter);
 app.use('/api/v1/disciplina-professor', ProfessorDisciplinaRouter_1.default);
 app.use('/api/v1/professor', ProfessorRouter_1.default);
-app.use('/api/v1/professor', Auth_Validation_1.validatorProfessor);
+//app.use('/api/v1/professor', validatorProfessor);
 app.use('/api/v1/turma', TurmaRouter_1.default);
 app.use('/api/v1/auth', UserAuthRouter_1.default);
 app.use('/api/v1', login_google_1.default);

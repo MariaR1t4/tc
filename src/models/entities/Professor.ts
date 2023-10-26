@@ -11,8 +11,6 @@ class Professor{
         telefone: string;
         @Column()
         email: string;
-        @Column()
-        senha: string;
 }
 export default Professor
 

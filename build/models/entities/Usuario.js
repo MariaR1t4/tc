@@ -25,7 +25,7 @@ __decorate([
     __metadata("design:type", String)
 ], Usuario.prototype, "googleId", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ 'nullable': true }),
+    (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", String)
 ], Usuario.prototype, "ImageUrl", void 0);
 __decorate([
