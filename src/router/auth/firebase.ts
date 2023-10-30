@@ -5,10 +5,10 @@ import admin from 'firebase-admin';
 import {Router, Request, Response} from 'express';
 
 
-const serviceAccount = require ('../auth/serviceAccount.json');
 import UsuarioRepository from "../../models/entities/repositories/UsuarioRepository";
 
-
+const serviceAccount = require ('../auth/serviceAccount.json');
+    
 const firebaseConfig = {
   apiKey: "AIzaSyDFdan43fXzt2fHF7ep6qfcMlm907W-vMk",
   authDomain: "alumnus-402118.firebaseapp.com",
@@ -30,7 +30,7 @@ const messaging = getMessaging(firebaseApp);
 
 const fire = Router();
 
-fire.post('/notification/send/:id', async (req: Request, res: Response) => {
+fire.post('/notification', async (req: Request, res: Response) => {
     const email = req.params.email;
     const notification = req.body;
     const foundUser = await UsuarioRepository.findOneBy({ email });

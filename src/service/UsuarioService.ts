@@ -6,7 +6,7 @@ export default class UsuarioService{
 
     }
     criaUsuario(usuario: Usuario[]) {
-        throw new Error('Aluno não foi criado');
+        throw new Error('Usuario não foi criado');
     }
     private static instance: UsuarioService;
     public static getInstance(){
@@ -17,4 +17,17 @@ export default class UsuarioService{
     }
     public async saveUsuario(obj: Usuario):Promise<Usuario>{
         return await UsuarioRepository.save(obj);
-    }}
+    }
+
+    public async listUsuario():Promise<Usuario[]>{
+        return await UsuarioRepository.find();
+    }
+
+    public async deleteUsuario(email:string):Promise<void>{
+        await UsuarioRepository.delete(email);
+    }
+
+
+}
+
+  

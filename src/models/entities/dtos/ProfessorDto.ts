@@ -1,7 +1,7 @@
 import {z} from "zod";
 
 export default interface ProfessorDto{
-    name: string;
+    nome: string;
     telefone: string;
     email: string;
 }

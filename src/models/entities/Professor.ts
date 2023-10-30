@@ -6,7 +6,7 @@ class Professor{
         @PrimaryGeneratedColumn("increment") 
         id_professor: number;
         @Column()
-        name: string;
+        nome: string;
         @Column()
         telefone: string;
         @Column()

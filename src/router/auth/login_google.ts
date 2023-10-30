@@ -10,7 +10,7 @@ import Usuario from "../../models/entities/Usuario";
 const google_login = Router();
 const client = new OAuth2Client();
 
-google_login.post('/login',async (req, res) => {
+google_login.put('/login',async (req, res) => {
     const ticket = await client.verifyIdToken({
         idToken: req.body.token,
         audience: "368441154494-3vdnb96fu0l592uau5bgrmpcqnc164de.apps.googleusercontent.com",  // Specify the CLIENT_ID of the app that accesses the backend
@@ -27,15 +27,13 @@ google_login.post('/login',async (req, res) => {
         return;
     }
    
-    let foundUser = await UsuarioRepository.findOneBy({ email });
-    if (!foundUser) {
-        const usuario = new Usuario();
-        usuario.fcmToken = req.body.fcmToken;
-        usuario.email = email || '';
-        usuario.googleId = userId || '';
-        usuario.ImageUrl = payload?.picture || '';
-        //usuario.tipo = ;
-        foundUser = await UsuarioRepository.save(usuario);
+    let foundUser = await UsuarioRepository.findOneBy(({ email }));
+    if (foundUser) {
+        foundUser.fcmToken = req.body.fcmToken;
+        foundUser.email = email || '';
+        foundUser.googleId = userId || '';
+        foundUser.ImageUrl = payload?.picture || '';
+        foundUser = await UsuarioRepository.save(foundUser);
        
     }
     // 300s => 5 minutos . voce pode colocar mais tempo se quiser

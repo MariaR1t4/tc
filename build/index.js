@@ -39,6 +39,7 @@ const ProfessorRouter_1 = __importDefault(require("./router/ProfessorRouter"));
 const UserAuthRouter_1 = __importDefault(require("./router/auth/UserAuthRouter"));
 const login_google_1 = __importDefault(require("./router/auth/login_google"));
 const firebase_1 = __importDefault(require("./router/auth/firebase"));
+const UsuarioRouter_1 = __importDefault(require("./router/UsuarioRouter"));
 const app = (0, express_1.default)();
 const port = 38000;
 app.use(express_1.default.json());
@@ -57,6 +58,7 @@ app.use('/api/v1/turma', TurmaRouter_1.default);
 app.use('/api/v1/auth', UserAuthRouter_1.default);
 app.use('/api/v1', login_google_1.default);
 app.use('/api/v1', firebase_1.default);
+app.use('/api/v1', UsuarioRouter_1.default);
 app.listen(port, () => {
     console.log(`Servidor iniciado em http://localhost:${port}`);
     DataBase_1.AppDataSource.initialize().then(r => console.log('Banco de Dados iniciado'));

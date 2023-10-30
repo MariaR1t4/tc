@@ -17,7 +17,7 @@ const app_1 = require("firebase-admin/app");
 const messaging_1 = require("firebase-admin/messaging");
 const firebase_admin_1 = __importDefault(require("firebase-admin"));
 const express_1 = require("express");
-const UsuarioRepository_1 = __importDefault(require("../../models/entities/repositories/UsuarioRepository"));
+const UsuarioRepository_1 = __importDefault(require("../../../models/entities/repositories/UsuarioRepository"));
 const serviceAccount = require('../auth/serviceAccount.json');
 const firebaseConfig = {
     apiKey: "AIzaSyDFdan43fXzt2fHF7ep6qfcMlm907W-vMk",
@@ -35,7 +35,7 @@ const firebaseApp = (0, app_1.initializeApp)({
 });
 const messaging = (0, messaging_1.getMessaging)(firebaseApp);
 const fire = (0, express_1.Router)();
-fire.post('/notification', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+fire.post('/notification/send/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const email = req.params.email;
     const notification = req.body;
     const foundUser = yield UsuarioRepository_1.default.findOneBy({ email });

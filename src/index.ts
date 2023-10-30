@@ -14,11 +14,11 @@ import authRouter from "./router/auth/UserAuthRouter";
 import { validatorAluno, validatorProfessor, validatorSecretaria } from "./controller/auth/Auth.Validation";
 import google_login from "./router/auth/login_google";
 import fire from "./router/auth/firebase";
+import usuarioRouter from "./router/UsuarioRouter";
 
 
 const app = express();
 const port = 38000;
-
 
 app.use(express.json());
 app.use(cors());
@@ -50,6 +50,8 @@ app.use('/api/v1/auth', authRouter);
 app.use('/api/v1', google_login)
 
 app.use('/api/v1', fire)
+
+app.use('/api/v1', usuarioRouter)
 
 app.listen(port,()=>{
     console.log(`Servidor iniciado em http://localhost:${port}`);

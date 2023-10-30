@@ -16,10 +16,9 @@ const express_1 = require("express");
 const google_auth_library_1 = require("google-auth-library");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const UsuarioRepository_1 = __importDefault(require("../../models/entities/repositories/UsuarioRepository"));
-const Usuario_1 = __importDefault(require("../../models/entities/Usuario"));
 const google_login = (0, express_1.Router)();
 const client = new google_auth_library_1.OAuth2Client();
-google_login.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+google_login.put('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const ticket = yield client.verifyIdToken({
         idToken: req.body.token,
         audience: "368441154494-3vdnb96fu0l592uau5bgrmpcqnc164de.apps.googleusercontent.com", // Specify the CLIENT_ID of the app that accesses the backend
@@ -35,15 +34,13 @@ google_login.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, func
         res.status(401).send();
         return;
     }
-    let foundUser = yield UsuarioRepository_1.default.findOneBy({ email });
-    if (!foundUser) {
-        const usuario = new Usuario_1.default();
-        usuario.fcmToken = req.body.fcmToken;
-        usuario.email = email || '';
-        usuario.googleId = userId || '';
-        usuario.ImageUrl = (payload === null || payload === void 0 ? void 0 : payload.picture) || '';
-        //usuario.tipo = ;
-        foundUser = yield UsuarioRepository_1.default.save(usuario);
+    let foundUser = yield UsuarioRepository_1.default.findOneBy(({ email }));
+    if (foundUser) {
+        foundUser.fcmToken = req.body.fcmToken;
+        foundUser.email = email || '';
+        foundUser.googleId = userId || '';
+        foundUser.ImageUrl = (payload === null || payload === void 0 ? void 0 : payload.picture) || '';
+        foundUser = yield UsuarioRepository_1.default.save(foundUser);
     }
     // 300s => 5 minutos . voce pode colocar mais tempo se quiser
     const jwtToken = jsonwebtoken_1.default.sign({ email: foundUser === null || foundUser === void 0 ? void 0 : foundUser.email }, "SUA_SENHA", { expiresIn: 300 });

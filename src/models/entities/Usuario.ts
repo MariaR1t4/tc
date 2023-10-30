@@ -7,7 +7,7 @@ class Usuario {
   @PrimaryColumn() 
   email: string;
 
-  @Column()
+  @Column({nullable: true})
   fcmToken: string;
 
   @Column({nullable: true})
@@ -16,7 +16,7 @@ class Usuario {
   @Column({nullable: true})
   ImageUrl: string;
 
-  @Column()
+  @Column({nullable: true})
   tipo: string;
  
 }

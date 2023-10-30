@@ -17,7 +17,7 @@ class UsuarioService {
     constructor() {
     }
     criaUsuario(usuario) {
-        throw new Error('Aluno não foi criado');
+        throw new Error('Usuario não foi criado');
     }
     static getInstance() {
         if (!UsuarioService.instance) {
@@ -29,6 +29,16 @@ class UsuarioService {
     saveUsuario(obj) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield UsuarioRepository_1.default.save(obj);
+        });
+    }
+    listUsuario() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield UsuarioRepository_1.default.find();
+        });
+    }
+    deleteUsuario(email) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield UsuarioRepository_1.default.delete(email);
         });
     }
 }
