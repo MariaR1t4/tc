@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 import UsuarioService from "../service/UsuarioService";
 import { Request, Response } from "express";
 
 export default class UsuarioController {
+=======
+import { Request, Response } from "express";
+
+import UsuarioService from "../service/login/UsuarioService";
+
+export default class UsuarioController{
+>>>>>>> 77ac77d474ff17f04e0afbdfa8e0abf6542ff096
     private static instance: UsuarioController;
 
     private constructor(){

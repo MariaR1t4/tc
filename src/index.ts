@@ -13,7 +13,10 @@ import professorRouter from "./router/ProfessorRouter";
 import authRouter from "./router/auth/UserAuthRouter";
 import { validatorAluno, validatorProfessor, validatorSecretaria } from "./controller/auth/Auth.Validation";
 import google_login from "./router/auth/login_google";
+<<<<<<< HEAD
 import fire from "./router/auth/firebase";
+=======
+>>>>>>> 77ac77d474ff17f04e0afbdfa8e0abf6542ff096
 import usuarioRouter from "./router/UsuarioRouter";
 
 

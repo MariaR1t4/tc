@@ -65,4 +65,4 @@ admin.auth().signInWithEmailAndPassword(email, password)
   .catch(error => {
     // Authentication failed
     console.error('Authentication failed:', error);
-  })*/ 
+  })*/
