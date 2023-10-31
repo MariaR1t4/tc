@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.aulaRouter = void 0;
 const express_1 = require("express");
 const AulaController_1 = __importDefault(require("../controller/AulaController"));
-//AULA ROUTER
 exports.aulaRouter = (0, express_1.Router)();
 exports.aulaRouter.post('/cria-aula', AulaController_1.default.getInstance().saveAula);
 exports.aulaRouter.get('/lista-aula', AulaController_1.default.getInstance().listAula);

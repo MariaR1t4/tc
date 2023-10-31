@@ -12,26 +12,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+require("reflect-metadata");
 const typeorm_1 = require("typeorm");
-const uuid_1 = require("uuid");
 const ProfessorDisciplina_1 = __importDefault(require("./ProfessorDisciplina"));
-(0, uuid_1.v4)();
 let Aula = class Aula {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)('uuid'),
+    (0, typeorm_1.PrimaryColumn)({ type: 'varchar' }),
     __metadata("design:type", String)
 ], Aula.prototype, "id_aula", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => ProfessorDisciplina_1.default, (profDisciplina) => profDisciplina.professor_disciplina),
-    (0, typeorm_1.JoinColumn)({
-        name: "professor_disciplina",
-        referencedColumnName: "professor_disciplina",
-    }),
+    (0, typeorm_1.JoinColumn)({ name: "professor_disciplina", referencedColumnName: "professor_disciplina" }),
     __metadata("design:type", String)
 ], Aula.prototype, "professor_disciplina", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: "descricao" }),
+    (0, typeorm_1.Column)({ 'name': 'descricao' }),
     __metadata("design:type", String)
 ], Aula.prototype, "descricao", void 0);
 __decorate([

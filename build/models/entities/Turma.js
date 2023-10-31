@@ -16,7 +16,7 @@ const uuid_1 = require("uuid");
 let Turma = class Turma {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)('uuid'),
+    (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
     __metadata("design:type", String)
 ], Turma.prototype, "id_turma", void 0);
 __decorate([
@@ -35,6 +35,18 @@ __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Turma.prototype, "descricao", void 0);
+__decorate([
+    (0, typeorm_1.CreateDateColumn)(),
+    __metadata("design:type", Date)
+], Turma.prototype, "created_at", void 0);
+__decorate([
+    (0, typeorm_1.UpdateDateColumn)(),
+    __metadata("design:type", Date)
+], Turma.prototype, "update_at", void 0);
+__decorate([
+    (0, typeorm_1.DeleteDateColumn)(),
+    __metadata("design:type", Date)
+], Turma.prototype, "deleted_at", void 0);
 Turma = __decorate([
     (0, typeorm_1.Entity)()
 ], Turma);

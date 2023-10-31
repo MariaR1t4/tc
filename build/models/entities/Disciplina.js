@@ -16,13 +16,25 @@ const uuid_1 = require("uuid");
 let Disciplina = class Disciplina {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)('uuid'),
+    (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
     __metadata("design:type", String)
 ], Disciplina.prototype, "id_disciplina", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Disciplina.prototype, "descricao", void 0);
+__decorate([
+    (0, typeorm_1.CreateDateColumn)(),
+    __metadata("design:type", Date)
+], Disciplina.prototype, "created_at", void 0);
+__decorate([
+    (0, typeorm_1.UpdateDateColumn)(),
+    __metadata("design:type", Date)
+], Disciplina.prototype, "update_at", void 0);
+__decorate([
+    (0, typeorm_1.DeleteDateColumn)(),
+    __metadata("design:type", Date)
+], Disciplina.prototype, "deleted_at", void 0);
 Disciplina = __decorate([
     (0, typeorm_1.Entity)()
 ], Disciplina);

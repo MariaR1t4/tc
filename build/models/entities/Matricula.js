@@ -18,31 +18,43 @@ const Aluno_1 = __importDefault(require("./Aluno"));
 const Turma_1 = __importDefault(require("./Turma"));
 const uuid_1 = require("uuid");
 (0, uuid_1.v4)();
-let Frequencia = class Frequencia {
+let Matricula = class Matricula {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)('uuid'),
+    (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
     __metadata("design:type", String)
-], Frequencia.prototype, "id_frequencia", void 0);
+], Matricula.prototype, "id_matricula", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => Turma_1.default, (turma) => turma.id_turma),
-    (0, typeorm_1.JoinColumn)({ name: 'id_turma', referencedColumnName: 'id_turma' }),
-    __metadata("design:type", Number)
-], Frequencia.prototype, "id_turma", void 0);
+    (0, typeorm_1.JoinColumn)({ name: "id_turma", referencedColumnName: "id_turma" }),
+    __metadata("design:type", String)
+], Matricula.prototype, "id_turma", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => Aluno_1.default, (aluno) => aluno.rm),
-    (0, typeorm_1.JoinColumn)({ name: 'rm', referencedColumnName: 'rm' }),
+    (0, typeorm_1.JoinColumn)({ name: "rm", referencedColumnName: "rm" }),
     __metadata("design:type", Number)
-], Frequencia.prototype, "rm", void 0);
+], Matricula.prototype, "rm", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
-], Frequencia.prototype, "ano", void 0);
+], Matricula.prototype, "ano", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Frequencia.prototype, "semestre", void 0);
-Frequencia = __decorate([
+], Matricula.prototype, "semestre", void 0);
+__decorate([
+    (0, typeorm_1.CreateDateColumn)(),
+    __metadata("design:type", Date)
+], Matricula.prototype, "created_at", void 0);
+__decorate([
+    (0, typeorm_1.UpdateDateColumn)(),
+    __metadata("design:type", Date)
+], Matricula.prototype, "update_at", void 0);
+__decorate([
+    (0, typeorm_1.DeleteDateColumn)(),
+    __metadata("design:type", Date)
+], Matricula.prototype, "deleted_at", void 0);
+Matricula = __decorate([
     (0, typeorm_1.Entity)()
-], Frequencia);
-exports.default = Frequencia;
+], Matricula);
+exports.default = Matricula;

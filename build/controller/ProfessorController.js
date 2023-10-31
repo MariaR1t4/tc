@@ -14,8 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const ProfessorService_1 = __importDefault(require("../service/ProfessorService"));
 class ProfessorController {
-    constructor() {
-    }
+    constructor() { }
     static getInstance() {
         if (!ProfessorController.instance) {
             ProfessorController.instance = new ProfessorController();
@@ -24,40 +23,67 @@ class ProfessorController {
     }
     saveProfessor(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const professorService = ProfessorService_1.default.getInstance();
-            const professor = req.body;
-            const professorCriado = yield professorService.saveProfessor(professor);
-            res.json(professorCriado);
+            try {
+                const professorService = ProfessorService_1.default.getInstance();
+                const professor = req.body;
+                const professorCriado = yield professorService.saveProfessor(professor);
+                res.json(professorCriado);
+            }
+            catch (err) {
+                return res.json(400).send({ erro: "Não foi possivel criar professor" });
+            }
         });
     }
     listProfessor(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const professorService = ProfessorService_1.default.getInstance();
-            res.json(yield professorService.listProfessor());
+            try {
+                const professorService = ProfessorService_1.default.getInstance();
+                res.json(yield professorService.listProfessor());
+            }
+            catch (err) {
+                return res.json(400).send({ erro: "Não foi possivel listar professor" });
+            }
         });
     }
     findProfessor(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const professorService = ProfessorService_1.default.getInstance();
-            const id_professor = req.params.id_professor;
-            res.json(yield professorService.findProfessor(id_professor));
+            try {
+                const professorService = ProfessorService_1.default.getInstance();
+                const id_professor = req.params.id_professor;
+                res.json(yield professorService.findProfessor(id_professor));
+            }
+            catch (err) {
+                return res
+                    .json(400)
+                    .send({ erro: "Não foi possivel encontrar professor" });
+            }
         });
     }
     deleteProfessor(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const professorService = ProfessorService_1.default.getInstance();
-            const id_professor = req.params.id_professor;
-            yield professorService.deleteProfessor((id_professor));
-            res.json('Professor deletado');
+            try {
+                const professorService = ProfessorService_1.default.getInstance();
+                const id_professor = req.params.id_professor;
+                yield professorService.deleteProfessor(id_professor);
+                res.json("Professor deletado");
+            }
+            catch (err) {
+                return res.json(400).send({ erro: "Não foi possivel criar professor" });
+            }
         });
     }
     updateProfessor(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const professorService = ProfessorService_1.default.getInstance();
-            const id_professor = req.params.id_professor;
-            const professor = req.body;
-            yield professorService.updateProfessor((id_professor), professor);
-            res.json('Update feito');
+            try {
+                const professorService = ProfessorService_1.default.getInstance();
+                const id_professor = req.params.id_professor;
+                const professor = req.body;
+                yield professorService.updateProfessor(id_professor, professor);
+                res.json("Update feito");
+            }
+            catch (err) {
+                return res.json(400).send({ erro: "Não foi possivel criar professor" });
+            }
         });
     }
 }

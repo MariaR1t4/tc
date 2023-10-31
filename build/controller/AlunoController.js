@@ -14,8 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const AlunoService_1 = __importDefault(require("../service/AlunoService"));
 class AlunoController {
-    constructor() {
-    }
+    constructor() { }
     static getInstance() {
         if (!AlunoController.instance) {
             AlunoController.instance = new AlunoController();
@@ -24,40 +23,72 @@ class AlunoController {
     }
     saveAluno(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const alunoService = AlunoService_1.default.getInstance();
-            const aluno = req.body;
-            const alunoCriado = yield alunoService.saveAluno(aluno);
-            res.json(alunoCriado);
+            try {
+                const alunoService = AlunoService_1.default.getInstance();
+                const aluno = req.body;
+                const alunoCriado = yield alunoService.saveAluno(aluno);
+                res.json(alunoCriado);
+            }
+            catch (err) {
+                console.log(err);
+                return res.status(400).send({ err: "nao foi possivel criar aluno" });
+            }
         });
     }
     listAluno(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const alunoService = AlunoService_1.default.getInstance();
-            res.json(yield alunoService.listAluno());
+            try {
+                const alunoService = AlunoService_1.default.getInstance();
+                res.json(yield alunoService.listAluno());
+            }
+            catch (err) {
+                return res.json(400).send({ erro: "Não foi possivel listar aluno" });
+            }
         });
     }
     findAlunoById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const alunoService = AlunoService_1.default.getInstance();
-            const rm = req.params.rm;
-            res.json(yield alunoService.findAlunoById(parseInt(rm)));
+            try {
+                const alunoService = AlunoService_1.default.getInstance();
+                const rm = req.params.rm;
+                if (!rm) {
+                    res.status(400).send({ err: "rm nao encontrado" });
+                }
+                res.json(yield alunoService.findAlunoById(parseInt(rm)));
+            }
+            catch (err) {
+                console.log(err);
+                return res.status(400).send({ err: "nao foi possivel encontrar aluno" });
+            }
         });
     }
     deleteAluno(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const alunoService = AlunoService_1.default.getInstance();
-            const rm = req.params.rm;
-            yield alunoService.deleteAluno(parseInt(rm));
-            res.json('Aluno deletado');
+            try {
+                const alunoService = AlunoService_1.default.getInstance();
+                const rm = req.params.rm;
+                yield alunoService.deleteAluno(parseInt(rm));
+                res.json("Aluno deletado");
+            }
+            catch (err) {
+                console.log(err);
+                return res.status(400).send({ err: "nao foi possivel encontrar aluno" });
+            }
         });
     }
     updateAluno(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const alunoService = AlunoService_1.default.getInstance();
-            const rm = req.params.rm;
-            const aluno = req.body;
-            yield alunoService.updateAluno(parseInt(rm), aluno);
-            res.json('Atualização feita com sucesso!');
+            try {
+                const alunoService = AlunoService_1.default.getInstance();
+                const rm = req.params.rm;
+                const aluno = req.body;
+                yield alunoService.updateAluno(parseInt(rm), aluno);
+                res.json("Atualização feita com sucesso!");
+            }
+            catch (err) {
+                console.log(err);
+                return res.status(400).send({ err: "nao foi possivel encontrar aluno" });
+            }
         });
     }
 }

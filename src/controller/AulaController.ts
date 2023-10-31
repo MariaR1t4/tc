@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 
 
+import Aula from "../models/entities/Aula";
 import AulaService from "../service/AulaService";
 
 export default class AulaController {

@@ -3,8 +3,6 @@ import AulaRepository from "../models/entities/repositories/AulaRepository";
 import generateToken from "../models/generateToken";
 
 
-
-
 export default class AulaService{
     private constructor(){
 
@@ -22,7 +20,7 @@ export default class AulaService{
     public async saveAula(aula: Aula):Promise<Aula>{
       try{
         const newAula = new Aula();
-        const token = await generateToken();
+        const token = await generateToken()
 
         newAula.id_aula = token;
         newAula.professor_disciplina = aula.professor_disciplina;

@@ -16,7 +16,7 @@ const uuid_1 = require("uuid");
 let Professor = class Professor {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)('uuid'),
+    (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
     __metadata("design:type", String)
 ], Professor.prototype, "id_professor", void 0);
 __decorate([
@@ -31,6 +31,22 @@ __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Professor.prototype, "email", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Professor.prototype, "senha", void 0);
+__decorate([
+    (0, typeorm_1.CreateDateColumn)(),
+    __metadata("design:type", Date)
+], Professor.prototype, "created_at", void 0);
+__decorate([
+    (0, typeorm_1.UpdateDateColumn)(),
+    __metadata("design:type", Date)
+], Professor.prototype, "update_at", void 0);
+__decorate([
+    (0, typeorm_1.DeleteDateColumn)(),
+    __metadata("design:type", Date)
+], Professor.prototype, "deleted_at", void 0);
 Professor = __decorate([
     (0, typeorm_1.Entity)()
 ], Professor);

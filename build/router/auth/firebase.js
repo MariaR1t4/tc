@@ -18,7 +18,7 @@ const messaging_1 = require("firebase-admin/messaging");
 const firebase_admin_1 = __importDefault(require("firebase-admin"));
 const express_1 = require("express");
 const UsuarioRepository_1 = __importDefault(require("../../models/entities/repositories/UsuarioRepository"));
-const serviceAccount = require('../auth/serviceAccount.json');
+const serviceAccount = require('../auth/ServiceAccount.json');
 const firebaseConfig = {
     apiKey: "AIzaSyDFdan43fXzt2fHF7ep6qfcMlm907W-vMk",
     authDomain: "alumnus-402118.firebaseapp.com",

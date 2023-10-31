@@ -17,7 +17,7 @@ const Usuario_1 = __importDefault(require("./Usuario"));
 let Aluno = class Aluno {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)('increment'),
+    (0, typeorm_1.PrimaryGeneratedColumn)("increment"),
     __metadata("design:type", Number)
 ], Aluno.prototype, "rm", void 0);
 __decorate([
@@ -33,6 +33,18 @@ __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Aluno.prototype, "telefone", void 0);
+__decorate([
+    (0, typeorm_1.CreateDateColumn)(),
+    __metadata("design:type", Date)
+], Aluno.prototype, "created_at", void 0);
+__decorate([
+    (0, typeorm_1.UpdateDateColumn)(),
+    __metadata("design:type", Date)
+], Aluno.prototype, "update_at", void 0);
+__decorate([
+    (0, typeorm_1.DeleteDateColumn)(),
+    __metadata("design:type", Date)
+], Aluno.prototype, "deleted_at", void 0);
 Aluno = __decorate([
     (0, typeorm_1.Entity)()
 ], Aluno);

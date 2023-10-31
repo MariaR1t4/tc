@@ -22,7 +22,7 @@ const ProfessorDisciplina_1 = __importDefault(require("./ProfessorDisciplina"));
 let Frequencia = class Frequencia {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)('uuid'),
+    (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
     __metadata("design:type", String)
 ], Frequencia.prototype, "id_frequencia", void 0);
 __decorate([
@@ -43,7 +43,11 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Boolean)
-], Frequencia.prototype, "frequencia", void 0);
+], Frequencia.prototype, "qtd_frequencia", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Frequencia.prototype, "data_frequencia", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)

@@ -9,7 +9,7 @@ const generateToken = () => {
             num = 0;
         id_aula[i] = String.fromCharCode(num + 48);
     }
-    return id_aula.join("");
+    return id_aula.join('');
 }; //:string[] | undefined{
 //atributo estatico
 exports.default = generateToken;

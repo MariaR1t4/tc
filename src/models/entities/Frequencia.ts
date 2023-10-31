@@ -19,7 +19,7 @@ v4();
 
 @Entity()
 class Frequencia {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn("uuid")
   id_frequencia: string;
 
   @ManyToOne(() => Aula, (aula) => aula.id_aula)
@@ -44,7 +44,10 @@ class Frequencia {
   rm: number;
 
   @Column()
-  frequencia: Boolean;
+  qtd_frequencia: boolean;
+
+  @Column()
+  data_frequencia:string;
 
   @CreateDateColumn()
   created_at: Date;

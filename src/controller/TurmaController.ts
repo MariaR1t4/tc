@@ -22,8 +22,8 @@ class TurmaController {
         const turmaService = TurmaService.getInstance();
         const Turma = req.body;
         const turmacreated = await turmaService.saveTurma(Turma);
-        return res.status(200).send({Response:"Turma cadastrda 🤠"})
-   
+        res.status(200).send({Response:"Turma cadastrda 🤠"})
+        return turmacreated
     }
 
     public async listTurma(req: Request,res: Response){
@@ -34,13 +34,13 @@ class TurmaController {
     public async findTurma(req: Request,res:Response){
         const turmaService = TurmaService.getInstance();
         const {id_turma} = req.params;
-        res.json(await turmaService.findTurma((id_turma)));
+        res.json(await turmaService.findTurma(id_turma));
     }
 
     public async deleteTurma(req: Request,res:Response){
         const turmaService = TurmaService.getInstance();
         const id_turma = req.params.id_turma;
-        await turmaService.deleteTurma((id_turma));
+        await turmaService.deleteTurma(id_turma);
         res.json('Turma deletada');
     }
 

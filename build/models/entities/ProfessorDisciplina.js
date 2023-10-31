@@ -21,7 +21,7 @@ const uuid_1 = require("uuid");
 let ProfessorDisciplina = class ProfessorDisciplina {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)('uuid'),
+    (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
     __metadata("design:type", String)
 ], ProfessorDisciplina.prototype, "professor_disciplina", void 0);
 __decorate([
@@ -30,19 +30,31 @@ __decorate([
 ], ProfessorDisciplina.prototype, "carga_horaria", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => Disciplina_1.default, (disciplina) => disciplina.id_disciplina),
-    (0, typeorm_1.JoinColumn)({ name: 'id_disciplina', referencedColumnName: 'id_disciplina' }),
+    (0, typeorm_1.JoinColumn)({ name: "id_disciplina", referencedColumnName: "id_disciplina" }),
     __metadata("design:type", String)
 ], ProfessorDisciplina.prototype, "id_disciplina", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => Turma_1.default, (turma) => turma.id_turma),
-    (0, typeorm_1.JoinColumn)({ name: 'id_turma', referencedColumnName: 'id_turma' }),
+    (0, typeorm_1.JoinColumn)({ name: "id_turma", referencedColumnName: "id_turma" }),
     __metadata("design:type", String)
 ], ProfessorDisciplina.prototype, "id_turma", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => Professor_1.default, (professor) => professor.id_professor),
-    (0, typeorm_1.JoinColumn)({ name: 'id', referencedColumnName: 'id_professor' }),
+    (0, typeorm_1.JoinColumn)({ name: "id_professor", referencedColumnName: "id_professor" }),
     __metadata("design:type", String)
 ], ProfessorDisciplina.prototype, "id_professor", void 0);
+__decorate([
+    (0, typeorm_1.CreateDateColumn)(),
+    __metadata("design:type", Date)
+], ProfessorDisciplina.prototype, "created_at", void 0);
+__decorate([
+    (0, typeorm_1.UpdateDateColumn)(),
+    __metadata("design:type", Date)
+], ProfessorDisciplina.prototype, "update_at", void 0);
+__decorate([
+    (0, typeorm_1.DeleteDateColumn)(),
+    __metadata("design:type", Date)
+], ProfessorDisciplina.prototype, "deleted_at", void 0);
 ProfessorDisciplina = __decorate([
     (0, typeorm_1.Entity)()
 ], ProfessorDisciplina);

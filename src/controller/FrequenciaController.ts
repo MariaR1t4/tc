@@ -1,9 +1,6 @@
-
-/*import { Request, Response } from "express";
+import { Request, Response } from "express";
 
 import FrequenciaService from "../service/FrequenciaService";
-
-
 export default class FrequenciaController {
   private static instance: FrequenciaController;
 
@@ -19,7 +16,7 @@ export default class FrequenciaController {
   public async saveFrequencia(req: Request, res: Response) {
     const frequenciaService = FrequenciaService.getInstance()
     const { token_aluno, rm } = req.body;
-    if(token_aluno || rm){
+    if(token_aluno && rm){
       const frequenciaCriada = await frequenciaService.saveFrequencia(token_aluno, rm)
       res.json(frequenciaCriada);
     }else
@@ -61,4 +58,4 @@ export default class FrequenciaController {
     await frequenciaService.frequencia(id_aula, token);
   }
 }
-*/
+*/}
