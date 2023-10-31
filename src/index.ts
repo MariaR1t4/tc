@@ -11,6 +11,8 @@ import { AppDataSource } from "./models/DataBase";
 import turmaRouter from "./router/TurmaRouter";
 import frequenciaRouter from "./router/FrequenciaRouter";
 import aulaRouter from "./router/AulaRouter";
+import google_login from "./router/auth/login_google";
+import fire from "./router/auth/firebase";
 
 
 const app = express();
@@ -45,6 +47,10 @@ app.use('/api/v1/secretaria/professor', professorRouter);
 app.use('/api/v1/secretaria/turma', turmaRouter)
 
 app.use('/api/v1', usuarioRouter)
+
+app.use('/api/v1', google_login)
+
+//app.use('/api/v1', fire)
 
 app.listen(port,()=>{
     console.log(`Servidor iniciado em http://localhost:${port}`);
