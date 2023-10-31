@@ -16,11 +16,13 @@ require("reflect-metadata");
 const typeorm_1 = require("typeorm");
 const Aluno_1 = __importDefault(require("./Aluno"));
 const Turma_1 = __importDefault(require("./Turma"));
+const uuid_1 = require("uuid");
+(0, uuid_1.v4)();
 let Frequencia = class Frequencia {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)("increment"),
-    __metadata("design:type", Number)
+    (0, typeorm_1.PrimaryGeneratedColumn)('uuid'),
+    __metadata("design:type", String)
 ], Frequencia.prototype, "id_frequencia", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => Turma_1.default, (turma) => turma.id_turma),

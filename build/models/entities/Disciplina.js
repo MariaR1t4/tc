@@ -11,11 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
 const typeorm_1 = require("typeorm");
+const uuid_1 = require("uuid");
+(0, uuid_1.v4)();
 let Disciplina = class Disciplina {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)("increment"),
-    __metadata("design:type", Number)
+    (0, typeorm_1.PrimaryGeneratedColumn)('uuid'),
+    __metadata("design:type", String)
 ], Disciplina.prototype, "id_disciplina", void 0);
 __decorate([
     (0, typeorm_1.Column)(),

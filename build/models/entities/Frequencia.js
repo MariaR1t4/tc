@@ -15,48 +15,48 @@ Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
 const typeorm_1 = require("typeorm");
 const Aluno_1 = __importDefault(require("./Aluno"));
-const Disciplina_1 = __importDefault(require("./Disciplina"));
-const Professor_1 = __importDefault(require("./Professor"));
-const Turma_1 = __importDefault(require("./Turma"));
-let Aula = class Aula {
+const uuid_1 = require("uuid");
+const Aula_1 = __importDefault(require("./Aula"));
+const ProfessorDisciplina_1 = __importDefault(require("./ProfessorDisciplina"));
+(0, uuid_1.v4)();
+let Frequencia = class Frequencia {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)("increment"),
-    __metadata("design:type", Number)
-], Aula.prototype, "id_aula", void 0);
+    (0, typeorm_1.PrimaryGeneratedColumn)('uuid'),
+    __metadata("design:type", String)
+], Frequencia.prototype, "id_frequencia", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => Professor_1.default, (professor) => professor.id_professor),
-    (0, typeorm_1.JoinColumn)({ name: 'id_professor', referencedColumnName: 'id_professor' }),
-    __metadata("design:type", Number)
-], Aula.prototype, "id_professor", void 0);
+    (0, typeorm_1.ManyToOne)(() => Aula_1.default, (aula) => aula.id_aula),
+    (0, typeorm_1.JoinColumn)({ name: "id_aula", referencedColumnName: "id_aula" }),
+    __metadata("design:type", String)
+], Frequencia.prototype, "id_aula", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => ProfessorDisciplina_1.default, (profDisciplina) => profDisciplina.professor_disciplina),
+    (0, typeorm_1.JoinColumn)({ name: "professor_disciplina", referencedColumnName: "professor_disciplina" }),
+    __metadata("design:type", String)
+], Frequencia.prototype, "professor_disciplina", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => Aluno_1.default, (aluno) => aluno.rm),
-    (0, typeorm_1.JoinColumn)({ name: 'rm', referencedColumnName: 'rm' }),
+    (0, typeorm_1.JoinColumn)({ name: "rm", referencedColumnName: "rm" }),
     __metadata("design:type", Number)
-], Aula.prototype, "rm", void 0);
-__decorate([
-    (0, typeorm_1.ManyToOne)(() => Disciplina_1.default, (disciplina) => disciplina.id_disciplina),
-    (0, typeorm_1.JoinColumn)({ name: 'id_disciplina', referencedColumnName: 'id_disciplina' }),
-    __metadata("design:type", Number)
-], Aula.prototype, "id_disciplina", void 0);
-__decorate([
-    (0, typeorm_1.ManyToOne)(() => Turma_1.default, (turma) => turma.id_turma),
-    (0, typeorm_1.JoinColumn)({ name: 'id_turma', referencedColumnName: 'id_turma' }),
-    __metadata("design:type", Number)
-], Aula.prototype, "id_turma", void 0);
+], Frequencia.prototype, "rm", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], Aula.prototype, "descricao", void 0);
+    __metadata("design:type", Boolean)
+], Frequencia.prototype, "frequencia", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], Aula.prototype, "token", void 0);
+    (0, typeorm_1.CreateDateColumn)(),
+    __metadata("design:type", Date)
+], Frequencia.prototype, "created_at", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], Aula.prototype, "token_aluno", void 0);
-Aula = __decorate([
+    (0, typeorm_1.UpdateDateColumn)(),
+    __metadata("design:type", Date)
+], Frequencia.prototype, "update_at", void 0);
+__decorate([
+    (0, typeorm_1.DeleteDateColumn)(),
+    __metadata("design:type", Date)
+], Frequencia.prototype, "deleted_at", void 0);
+Frequencia = __decorate([
     (0, typeorm_1.Entity)()
-], Aula);
-exports.default = Aula;
+], Frequencia);
+exports.default = Frequencia;

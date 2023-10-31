@@ -1,8 +1,5 @@
 import { Router } from "express";
-
-
 import AlunoController from "../controller/AlunoController";
-import FrequenciaController from "../controller/FrequenciaController";
 
 
 const alunoRouter= Router();
@@ -13,8 +10,6 @@ alunoRouter.get('/find-aluno/:rm',AlunoController.getInstance().findAlunoById);
 alunoRouter.delete('/delete-aluno/:rm',AlunoController.getInstance().deleteAluno);
 alunoRouter.put('/update-aluno/:rm',AlunoController.getInstance().updateAluno);
 
-export const frequenciaRouter= Router();
-
-frequenciaRouter.post('/',FrequenciaController.getInstance().saveFrequencia);
+//frequenciaRouter.post('/',FrequenciaController.getInstance().saveFrequencia);
 
 export default alunoRouter

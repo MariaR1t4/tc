@@ -22,13 +22,13 @@ export default class ProfessorDisciplinaService{
     public async listProfessorDisciplina() : Promise <ProfessorDisciplina[] | null> {
       return await ProfessorDisciplinaRepository.find();
     }
-    public async findProfessorDisciplina(professor_disciplina:number) : Promise<ProfessorDisciplina | null> {
+    public async findProfessorDisciplina(professor_disciplina:string) : Promise<ProfessorDisciplina | null> {
         return await ProfessorDisciplinaRepository.findOneBy({professor_disciplina}); 
     }
-    public async deleteProfessorDisciplina(professor_disciplina:number):Promise<void>{
+    public async deleteProfessorDisciplina(professor_disciplina:string):Promise<void>{
       await ProfessorDisciplinaRepository.delete(professor_disciplina);
   }
-    public async updateProfessorDisciplina(professor_disciplina: number, professorDisciplina:ProfessorDisciplina):Promise<void>{
+    public async updateProfessorDisciplina(professor_disciplina: string, professorDisciplina:ProfessorDisciplina):Promise<void>{
       const professorDisciplinaAlterado = await ProfessorDisciplinaRepository.findOneBy(({professor_disciplina}));
       if(professorDisciplinaAlterado){
           professorDisciplinaAlterado.id_turma = professorDisciplina.id_turma;

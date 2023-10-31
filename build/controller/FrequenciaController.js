@@ -1,65 +1,64 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const FrequenciaService_1 = __importDefault(require("../service/FrequenciaService"));
-class FrequenciaController {
-    constructor() {
+/*import { Request, Response } from "express";
+
+import FrequenciaService from "../service/FrequenciaService";
+
+
+export default class FrequenciaController {
+  private static instance: FrequenciaController;
+
+  private constructor() {}
+
+  public static getInstance() {
+    if (!FrequenciaController.instance) {
+      FrequenciaController.instance = new FrequenciaController();
     }
-    static getInstance() {
-        if (!FrequenciaController.instance) {
-            FrequenciaController.instance = new FrequenciaController();
-        }
-        return FrequenciaController.instance;
+    return FrequenciaController.instance;
+  }
+
+  public async saveFrequencia(req: Request, res: Response) {
+    const frequenciaService = FrequenciaService.getInstance()
+    const { token_aluno, rm } = req.body;
+    if(token_aluno || rm){
+      const frequenciaCriada = await frequenciaService.saveFrequencia(token_aluno, rm)
+      res.json(frequenciaCriada);
+    }else
+      res.json("gerar novo token");
+  }
+
+  public async listFrequencia(req: Request, res: Response) {
+    const frequenciaService = FrequenciaService.getInstance();
+    res.json(await frequenciaService.listFrequencia());
+  }
+
+  public async findFrequencia(req: Request, res: Response) {
+    const frequenciaService = FrequenciaService.getInstance();
+    const id_frequencia = req.params.id_frequencia;
+    res.json(await frequenciaService.findFrequencia(id_frequencia));
+  }
+
+  public async deleteFrequencia(req: Request, res: Response) {
+    const frequenciaService = FrequenciaService.getInstance();
+    const id_frequencia = req.params.id_frequencia;
+    await frequenciaService.deleteFrequencia(id_frequencia);
+    res.json("Frequencia deletada");
+  }
+
+  public async updateFrequencia(req: Request, res: Response) {
+    const frequenciaService = FrequenciaService.getInstance();
+    const id_frequencia = req.params.id_frequencia;
+    const frequencia = req.body;
+    await frequenciaService.updateFrequencia(id_frequencia, frequencia);
+    res.json("Lista de frequencia alterada");
+  }
+/*  public async frequencia(req: Request, res: Response) {
+    const { token } = req.body;
+    if (!token) {
+      res.json("token invalido");
     }
-    saveFrequencia(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const frequenciaService = FrequenciaService_1.default.getInstance();
-            const frequencia = req.body;
-            const Frequenciascriadas = yield frequenciaService.saveFrequencia(frequencia);
-            console.log(Frequenciascriadas);
-            res.json(Frequenciascriadas);
-        });
-    }
-    listFrequencia(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const frequenciaService = FrequenciaService_1.default.getInstance();
-            res.json(yield frequenciaService.listFrequencia());
-        });
-    }
-    findFrequencia(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const frequenciaService = FrequenciaService_1.default.getInstance();
-            const id = req.params.id;
-            res.json(yield frequenciaService.findFrequencia(parseInt(id)));
-        });
-    }
-    deleteFrequencia(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const frequenciaService = FrequenciaService_1.default.getInstance();
-            const id_frequencia = req.params.id_frequencia;
-            yield frequenciaService.deleteFrequencia(parseInt(id_frequencia));
-            res.json('Frequencia deletada');
-        });
-    }
-    updateFrequencia(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const frequenciaService = FrequenciaService_1.default.getInstance();
-            const id_frequencia = req.params.id_frequencia;
-            const frequencia = req.body;
-            yield frequenciaService.updateFrequencia(parseInt(id_frequencia), frequencia);
-            res.json('Lista de frequencia alterada');
-        });
-    }
+    const id_aula = req.params.id_aula;
+    const frequenciaService = FrequenciaService.getInstance();
+    await frequenciaService.frequencia(id_aula, token);
+  }
 }
-exports.default = FrequenciaController;
+*/ 

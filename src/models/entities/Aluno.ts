@@ -2,10 +2,9 @@ import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from "ty
 import { nullable } from "zod/lib";
 import Usuario from "./Usuario";
 
-
 @Entity()
 class Aluno {
-  @PrimaryGeneratedColumn() 
+  @PrimaryGeneratedColumn('increment') 
   rm: number;
 
   @Column()

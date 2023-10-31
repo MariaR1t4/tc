@@ -50,7 +50,7 @@ class ProfessorService {
         return __awaiter(this, void 0, void 0, function* () {
             const professorAlterado = yield ProfessorRepository_1.default.findOneBy(({ id_professor }));
             if (professorAlterado) {
-                professorAlterado.name = professor.name;
+                professorAlterado.nome = professor.nome;
                 professorAlterado.telefone = professor.telefone;
                 professorAlterado.email = professor.email;
                 yield ProfessorRepository_1.default.save(professorAlterado);

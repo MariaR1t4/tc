@@ -40,14 +40,14 @@ class ProfessorDisciplinaController {
         return __awaiter(this, void 0, void 0, function* () {
             const professorDisciplinaService = ProfessorDisciplinaService_1.default.getInstance();
             const id_professor_disciplina = req.params.id_professor_disciplina;
-            res.json(yield professorDisciplinaService.findProfessorDisciplina(parseInt(id_professor_disciplina)));
+            res.json(yield professorDisciplinaService.findProfessorDisciplina((id_professor_disciplina)));
         });
     }
     deleteProfessorDisciplina(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const professorDisciplinaService = ProfessorDisciplinaService_1.default.getInstance();
             const id_professor_disciplina = req.params.id_professor_disciplina;
-            yield professorDisciplinaService.deleteProfessorDisciplina(parseInt(id_professor_disciplina));
+            yield professorDisciplinaService.deleteProfessorDisciplina((id_professor_disciplina));
             res.json('Aluno deletado');
         });
     }
@@ -56,7 +56,7 @@ class ProfessorDisciplinaController {
             const professorDisciplinaService = ProfessorDisciplinaService_1.default.getInstance();
             const id_professor_disciplina = req.params.id_professor_disciplina;
             const professorDisciplina = req.body;
-            yield professorDisciplinaService.updateProfessorDisciplina(parseInt(id_professor_disciplina), professorDisciplina);
+            yield professorDisciplinaService.updateProfessorDisciplina((id_professor_disciplina), professorDisciplina);
             res.json('Atualização feita com sucesso!');
         });
     }

@@ -4,20 +4,19 @@ import morgan from "morgan";
 import cors from 'cors';
 
 
-import { AppDataSource } from "./models/DataBase";
-import TurmaRouter from "./router/TurmaRouter";
-import alunoRouter, { frequenciaRouter } from "./router/AlunoRouter";
+
+
+import alunoRouter from "./router/AlunoRouter";
 import disciplinaRouter from "./router/DisciplinaRouter";
 import professorDisciplinaRouter from "./router/ProfessorDisciplinaRouter";
 import professorRouter from "./router/ProfessorRouter";
 import authRouter from "./router/auth/UserAuthRouter";
 import { validatorAluno, validatorProfessor, validatorSecretaria } from "./controller/auth/Auth.Validation";
 import google_login from "./router/auth/login_google";
-<<<<<<< HEAD
 import fire from "./router/auth/firebase";
-=======
->>>>>>> 77ac77d474ff17f04e0afbdfa8e0abf6542ff096
 import usuarioRouter from "./router/UsuarioRouter";
+import { AppDataSource } from "./models/DataBase";
+import turmaRouter from "./router/TurmaRouter";
 
 
 const app = express();
@@ -38,7 +37,7 @@ app.use('/api/v1/aluno', alunoRouter);
 
 app.use('/api/v1/disciplina', disciplinaRouter);
 
-app.use('/api/v1/frequencia', frequenciaRouter);
+//app.use('/api/v1/frequencia', frequenciaRouter);
 
 app.use('/api/v1/disciplina-professor', professorDisciplinaRouter);
 
@@ -46,7 +45,7 @@ app.use('/api/v1/professor', professorRouter);
 
 //app.use('/api/v1/professor', validatorProfessor);
 
-app.use('/api/v1/turma', TurmaRouter);
+app.use('api/v1/turma', turmaRouter)
 
 app.use('/api/v1/auth', authRouter);
 

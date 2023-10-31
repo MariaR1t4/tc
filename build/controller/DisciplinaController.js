@@ -40,14 +40,14 @@ class DisciplinaController {
         return __awaiter(this, void 0, void 0, function* () {
             const disciplinaService = DisciplinaService_1.default.getInstance();
             const id_disciplina = req.params.id_disciplina;
-            res.json(yield disciplinaService.findDisciplina(parseInt(id_disciplina)));
+            res.json(yield disciplinaService.findDisciplina(id_disciplina));
         });
     }
     deleteDisciplina(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const disciplinaService = DisciplinaService_1.default.getInstance();
             const id_disciplina = req.params.id_disciplina;
-            yield disciplinaService.deleteDisciplina(parseInt(id_disciplina));
+            yield disciplinaService.deleteDisciplina((id_disciplina));
             res.json('Disciplina deletada');
         });
     }
@@ -56,7 +56,7 @@ class DisciplinaController {
             const disciplinaService = DisciplinaService_1.default.getInstance();
             const id_disciplina = req.params.id_disciplina;
             const disciplina = req.body;
-            yield disciplinaService.updateDisciplina(parseInt(id_disciplina), disciplina);
+            yield disciplinaService.updateDisciplina((id_disciplina), disciplina);
             res.json('Atualização feita com sucesso!');
         });
     }

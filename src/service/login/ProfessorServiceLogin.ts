@@ -19,7 +19,6 @@ class ProfessorServiceLogin {
     getProfessorFromData(email: string, senha: string, name:string, telefone:string) : Professor{
         const newProf = new Professor();
         newProf.email = email;
-        newProf.name = name;
         newProf.telefone = telefone;
         const hashDigest = sha256(senha);
         logger.debug("HashAntes: ", hashDigest)

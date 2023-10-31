@@ -1,4 +1,4 @@
-import {Router} from "express";
+/*import {Router} from "express";
 
 
 import FrequenciaController from "../controller/FrequenciaController";
@@ -11,4 +11,4 @@ frequenciaRouter.get('/:id_frequencia',FrequenciaController.getInstance().findFr
 frequenciaRouter.delete('/:id_frequencia',FrequenciaController.getInstance().deleteFrequencia);
 frequenciaRouter.put('/:id_frequencia',FrequenciaController.getInstance().updateFrequencia);
 
-export default frequenciaRouter 
+export default frequenciaRouter */

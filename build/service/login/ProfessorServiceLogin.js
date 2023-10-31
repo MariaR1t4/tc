@@ -49,7 +49,6 @@ class ProfessorServiceLogin {
     getProfessorFromData(email, senha, name, telefone) {
         const newProf = new Professor_1.default();
         newProf.email = email;
-        newProf.name = name;
         newProf.telefone = telefone;
         const hashDigest = (0, sha256_1.default)(senha);
         logger_1.default.debug("HashAntes: ", hashDigest);

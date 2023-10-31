@@ -31,13 +31,13 @@ export default class ProfessorDisciplinaController {
     public async findProfessorDisciplina(req: Request,res:Response){
         const professorDisciplinaService = ProfessorDisciplinaService.getInstance();
         const id_professor_disciplina = req.params.id_professor_disciplina;
-        res.json(await professorDisciplinaService.findProfessorDisciplina(parseInt(id_professor_disciplina)));
+        res.json(await professorDisciplinaService.findProfessorDisciplina((id_professor_disciplina)));
     }
 
     public async deleteProfessorDisciplina(req: Request,res:Response){
         const professorDisciplinaService = ProfessorDisciplinaService.getInstance();
         const id_professor_disciplina = req.params.id_professor_disciplina;
-        await professorDisciplinaService.deleteProfessorDisciplina(parseInt(id_professor_disciplina));
+        await professorDisciplinaService.deleteProfessorDisciplina((id_professor_disciplina));
         res.json('Aluno deletado');
     }
 
@@ -45,7 +45,7 @@ export default class ProfessorDisciplinaController {
         const professorDisciplinaService = ProfessorDisciplinaService.getInstance();
         const id_professor_disciplina = req.params.id_professor_disciplina;
         const professorDisciplina = req.body;
-        await professorDisciplinaService.updateProfessorDisciplina(parseInt(id_professor_disciplina), professorDisciplina);
+        await professorDisciplinaService.updateProfessorDisciplina((id_professor_disciplina), professorDisciplina);
         res.json('Atualização feita com sucesso!');
     }
     }

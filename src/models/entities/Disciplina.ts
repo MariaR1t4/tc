@@ -1,10 +1,13 @@
 import "reflect-metadata";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { v4 } from "uuid";
+
+v4();
 
 @Entity()
 class Disciplina{
-        @PrimaryGeneratedColumn("increment") 
-        id_disciplina: number;
+        @PrimaryGeneratedColumn('uuid') 
+        id_disciplina: string;
 
         @Column()
         descricao: string;

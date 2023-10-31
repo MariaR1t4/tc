@@ -1,9 +1,12 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { v4 } from "uuid";
+
+v4();
 
 @Entity()
 class Secretaria{
-  @PrimaryGeneratedColumn("increment") 
-  id_secretaria: number
+  @PrimaryGeneratedColumn('uuid') 
+  id_secretaria: string
   @Column()
   nome: string
   @Column()

@@ -33,13 +33,13 @@ export default class ProfessorController {
     public async findProfessor(req: Request,res:Response){
         const professorService = ProfessorService.getInstance();
         const id_professor = req.params.id_professor;
-        res.json(await professorService.findProfessor(parseInt(id_professor)));
+        res.json(await professorService.findProfessor(id_professor));
     }
 
     public async deleteProfessor(req: Request,res:Response){
         const professorService = ProfessorService.getInstance();
         const id_professor = req.params.id_professor;
-        await professorService.deleteProfessor(parseInt(id_professor));
+        await professorService.deleteProfessor((id_professor));
         res.json('Professor deletado');
     }
 
@@ -47,7 +47,7 @@ export default class ProfessorController {
         const professorService = ProfessorService.getInstance();
         const id_professor = req.params.id_professor;
         const professor = req.body;
-        await professorService.updateProfessor(parseInt(id_professor), professor);
+        await professorService.updateProfessor((id_professor), professor);
         res.json('Update feito');
     }
 }

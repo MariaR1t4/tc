@@ -7,7 +7,7 @@ import {Router, Request, Response} from 'express';
 
 import UsuarioRepository from "../../models/entities/repositories/UsuarioRepository";
 
-const serviceAccount = require ('../auth/serviceAccount.json');
+const serviceAccount = require ('../auth/serviceAccount.json')
     
 const firebaseConfig = {
   apiKey: "AIzaSyDFdan43fXzt2fHF7ep6qfcMlm907W-vMk",

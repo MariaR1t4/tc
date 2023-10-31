@@ -40,14 +40,14 @@ class ProfessorController {
         return __awaiter(this, void 0, void 0, function* () {
             const professorService = ProfessorService_1.default.getInstance();
             const id_professor = req.params.id_professor;
-            res.json(yield professorService.findProfessor(parseInt(id_professor)));
+            res.json(yield professorService.findProfessor(id_professor));
         });
     }
     deleteProfessor(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const professorService = ProfessorService_1.default.getInstance();
             const id_professor = req.params.id_professor;
-            yield professorService.deleteProfessor(parseInt(id_professor));
+            yield professorService.deleteProfessor((id_professor));
             res.json('Professor deletado');
         });
     }
@@ -56,7 +56,7 @@ class ProfessorController {
             const professorService = ProfessorService_1.default.getInstance();
             const id_professor = req.params.id_professor;
             const professor = req.body;
-            yield professorService.updateProfessor(parseInt(id_professor), professor);
+            yield professorService.updateProfessor((id_professor), professor);
             res.json('Update feito');
         });
     }

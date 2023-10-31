@@ -1,7 +1,3 @@
-import { error } from "console";
-import {Request} from "express"
-
-
 import Aluno from "../models/entities/Aluno";
 import AlunoRepository from "../models/entities/repositories/AlunoRepository";
 

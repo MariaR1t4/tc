@@ -40,14 +40,14 @@ class TurmaController {
         return __awaiter(this, void 0, void 0, function* () {
             const turmaService = TurmaService_1.default.getInstance();
             const { id_turma } = req.params;
-            res.json(yield turmaService.findTurma(parseInt(id_turma)));
+            res.json(yield turmaService.findTurma((id_turma)));
         });
     }
     deleteTurma(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const turmaService = TurmaService_1.default.getInstance();
             const id_turma = req.params.id_turma;
-            yield turmaService.deleteTurma(parseInt(id_turma));
+            yield turmaService.deleteTurma((id_turma));
             res.json('Turma deletada');
         });
     }
@@ -56,7 +56,7 @@ class TurmaController {
             const turmaService = TurmaService_1.default.getInstance();
             const id_turma = req.params.id_turma;
             const Turma = req.body;
-            yield turmaService.updateTurma(parseInt(id_turma), Turma);
+            yield turmaService.updateTurma((id_turma), Turma);
             res.json('ok');
         });
     }

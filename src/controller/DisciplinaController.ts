@@ -32,13 +32,13 @@ export default class DisciplinaController {
     public async findDisciplina(req: Request,res:Response){
         const disciplinaService = DisciplinaService.getInstance();
         const id_disciplina = req.params.id_disciplina;
-        res.json(await disciplinaService.findDisciplina(parseInt(id_disciplina)));
+        res.json(await disciplinaService.findDisciplina(id_disciplina));
     }
 
     public async deleteDisciplina(req: Request,res:Response){
         const disciplinaService = DisciplinaService.getInstance();
         const id_disciplina = req.params.id_disciplina;
-        await disciplinaService.deleteDisciplina(parseInt(id_disciplina));
+        await disciplinaService.deleteDisciplina((id_disciplina));
         res.json('Disciplina deletada');
     }
 
@@ -46,7 +46,7 @@ export default class DisciplinaController {
         const disciplinaService = DisciplinaService.getInstance();
         const id_disciplina = req.params.id_disciplina;
         const disciplina = req.body;
-        await disciplinaService.updateDisciplina(parseInt(id_disciplina), disciplina);
+        await disciplinaService.updateDisciplina((id_disciplina), disciplina);
         res.json('Atualização feita com sucesso!');
     }
 }

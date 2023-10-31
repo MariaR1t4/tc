@@ -21,13 +21,13 @@ export default class DisciplinaService{
     public async listDisciplina():Promise<Disciplina[]>{
         return await DisciplinaRepository.find();
     }
-    public async findDisciplina(id_disciplina:number) : Promise<Disciplina | null> {
+    public async findDisciplina(id_disciplina:string) : Promise<Disciplina | null> {
         return await DisciplinaRepository.findOneBy({id_disciplina}); 
     }
-    public async deleteDisciplina(id_disciplina:number):Promise<void>{
+    public async deleteDisciplina(id_disciplina:string):Promise<void>{
         await DisciplinaRepository.delete(id_disciplina);
     }
-    public async updateDisciplina(id_disciplina: number, disciplina:Disciplina):Promise<void>{
+    public async updateDisciplina(id_disciplina: string, disciplina:Disciplina):Promise<void>{
         const disciplinaAlterada = await DisciplinaRepository.findOneBy(({id_disciplina}));
         if(disciplinaAlterada){
             disciplinaAlterada.descricao = disciplina.descricao;

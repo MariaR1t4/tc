@@ -35,6 +35,7 @@
     "reflect-metadata": "^0.1.13",
     "serve-favicon": "^2.5.0",
     "uuid": "^9.0.0",
+    "v4": "^0.0.1",
     "winston": "^3.10.0",
     "zod": "^3.21.4",
     "zod-express-middleware": "^1.4.0"

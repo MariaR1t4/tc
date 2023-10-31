@@ -4,12 +4,12 @@ import {Router} from "express"
 import TurmaController from "../controller/TurmaController";
 
 
-const TurmaRouter= Router();
+const turmaRouter= Router();
 
-TurmaRouter.post('/',TurmaController.getInstance().saveTurma);
-TurmaRouter.get('/list',TurmaController.getInstance().listTurma);
-TurmaRouter.get('/:id_turma',TurmaController.getInstance().findTurma);
-TurmaRouter.delete('/:id_turma',TurmaController.getInstance().deleteTurma);
-TurmaRouter.put('/edita/:id_turma',TurmaController.getInstance().updateTurma);
+turmaRouter.post('/',TurmaController.getInstance().saveTurma);
+turmaRouter.get('/list',TurmaController.getInstance().listTurma);
+turmaRouter.get('/:id_turma',TurmaController.getInstance().findTurma);
+turmaRouter.delete('/:id_turma',TurmaController.getInstance().deleteTurma);
+turmaRouter.put('/edita/:id_turma',TurmaController.getInstance().updateTurma);
 
-export default TurmaRouter 
+export default turmaRouter 

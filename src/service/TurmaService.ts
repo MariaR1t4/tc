@@ -24,13 +24,13 @@ export default class TurmaService{
     public async listTurma():Promise<Turma[]>{
         return await TurmaRepository.find();
     }
-    public async findTurma(id_turma:number) : Promise<Turma | null> {
+    public async findTurma(id_turma:string) : Promise<Turma | null> {
         return await TurmaRepository.findOneBy({id_turma}); 
     }
-    public async deleteTurma(id_turma:number):Promise<void>{
+    public async deleteTurma(id_turma:string):Promise<void>{
         await TurmaRepository.delete(id_turma);
     }
-    public async updateTurma(id_turma: number, turma:Turma):Promise<void>{
+    public async updateTurma(id_turma: string, turma:Turma):Promise<void>{
         const turmaAlterada = await TurmaRepository.findOneBy(({id_turma}));
         if(turmaAlterada){
             turmaAlterada.curso = turma.curso;

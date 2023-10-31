@@ -3,11 +3,14 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn, PrimaryGeneratedC
 import Aluno from "./Aluno";
 import Disciplina from './Disciplina';
 import Turma from "./Turma";
+import { v4 } from "uuid";
+
+v4();
 
 @Entity()
 class Frequencia {
-        @PrimaryGeneratedColumn("increment") 
-        id_frequencia: number;
+        @PrimaryGeneratedColumn('uuid') 
+        id_frequencia: string;
         
         @ManyToOne(() => Turma, (turma) => turma.id_turma)
         @JoinColumn({ name: 'id_turma', referencedColumnName: 'id_turma' })

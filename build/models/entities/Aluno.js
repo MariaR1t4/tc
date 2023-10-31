@@ -17,7 +17,7 @@ const Usuario_1 = __importDefault(require("./Usuario"));
 let Aluno = class Aluno {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)('increment'),
     __metadata("design:type", Number)
 ], Aluno.prototype, "rm", void 0);
 __decorate([

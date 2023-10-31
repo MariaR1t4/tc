@@ -22,16 +22,16 @@ export default class ProfessorService{
     public async listProfessor():Promise<Professor[]>{
         return await ProfessorRepository.find();
     }
-    public async findProfessor(id_professor:number) : Promise<Professor | null> {
+    public async findProfessor(id_professor:string) : Promise<Professor | null> {
         return await ProfessorRepository.findOneBy({id_professor}); 
     }
-    public async deleteProfessor(id_professor:number):Promise<void>{
+    public async deleteProfessor(id_professor:string):Promise<void>{
         await ProfessorRepository.delete(id_professor);
     }
-    public async updateProfessor(id_professor: number, professor:Professor):Promise<void>{
+    public async updateProfessor(id_professor: string, professor:Professor):Promise<void>{
         const professorAlterado = await ProfessorRepository.findOneBy(({id_professor}));
         if(professorAlterado){
-            professorAlterado.name = professor.name;
+            professorAlterado.nome = professor.nome;
             professorAlterado.telefone = professor.telefone;
             professorAlterado.email = professor.email;
             await ProfessorRepository.save(professorAlterado);
