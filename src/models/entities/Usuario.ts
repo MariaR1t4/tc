@@ -1,5 +1,4 @@
 import { Entity, Column, PrimaryGeneratedColumn, PrimaryColumn } from "typeorm";
-import { nullable } from "zod/lib";
 
 
 @Entity()
