@@ -10,7 +10,7 @@ export default interface MatriculaDto{
   ano: string;
 }
 export const Matricula = z.object({
-  id_matricula: z.number(),
+  id_matricula: z.string(),
   rm: z.number(),
   id_turma: z.string(),
   semestre: z.number(),

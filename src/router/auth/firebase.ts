@@ -3,10 +3,10 @@ import { initializeApp } from "firebase-admin/app";
 import { getMessaging } from "firebase-admin/messaging";
 import admin from 'firebase-admin';
 import {Router, Request, Response} from 'express';
-
-
-const serviceAccount = require ('../auth/serviceAccount.json');
 import UsuarioRepository from "../../models/entities/repositories/UsuarioRepository";
+
+
+const serviceAccount = require ('../../../serviceAccount.json');
 
 
 const firebaseConfig = {

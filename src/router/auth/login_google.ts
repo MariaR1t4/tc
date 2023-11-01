@@ -30,7 +30,6 @@ google_login.put('/login',async (req, res) => {
         foundUser.fcmToken = req.body.fcmToken;
         foundUser.googleId = googleId || '';
         foundUser.ImageUrl =  ImageUrl || '';
-
         await UsuarioRepository.save(foundUser);
 
     }

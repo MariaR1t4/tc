@@ -12,7 +12,7 @@ v4();
 
 @Entity()
 class Turma {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id_turma: string;
 
   @Column()

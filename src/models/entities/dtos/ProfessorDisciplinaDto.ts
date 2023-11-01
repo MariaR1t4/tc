@@ -11,8 +11,8 @@ export default interface ProfessorDisciplinaDto {
 }
 
 export const ProfessorDisciplinaSchema = z.object({
-  id_turma: z.number(),
-  id_disciplina: z.number(),
-  id_professor: z.number(),
+  id_turma: z.string(),
+  id_disciplina: z.string(),
+  id_professor: z.string(),
   carga_horaria: z.number()
 })

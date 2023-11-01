@@ -27,22 +27,19 @@ app.use(morgan('combined'));
 
 //app.use('/app', express.static(path.join(__dirname, 'src')))
 
-//app.use('/api/v1/aluno', validatorAluno);
-
 app.use('/api/v1/secretaria/aluno', alunoRouter);
 
 app.use('/api/v1/aluno/frequencia', frequenciaRouter);
-app.use('/api/v1/secretaria/professor/aula', aulaRouter);
+
+app.use('/api/v1/professor/aula', aulaRouter);
 
 app.use('/api/v1/secretaria/disciplina', disciplinaRouter);
 
-//app.use('/api/v1/frequencia', frequenciaRouter);
+app.use('/api/v1/frequencia', frequenciaRouter);
 
 app.use('/api/v1/secretaria/prof-disciplina', professorDisciplinaRouter);
 
 app.use('/api/v1/secretaria/professor', professorRouter);
-
-//app.use('/api/v1/professor', validatorProfessor);
 
 app.use('/api/v1/secretaria/turma', turmaRouter)
 
@@ -50,7 +47,7 @@ app.use('/api/v1', usuarioRouter)
 
 app.use('/api/v1', google_login)
 
-//app.use('/api/v1', fire)
+app.use('/api/v1', fire)
 
 app.listen(port,()=>{
     console.log(`Servidor iniciado em http://localhost:${port}`);

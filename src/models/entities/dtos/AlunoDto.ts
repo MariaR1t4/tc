@@ -1,11 +1,11 @@
 import { z } from "zod";
+import Usuario from "../Usuario";
 
 export default interface AlunoDto {
   nome: string;
   telefone: string;
-  email: string;
+  usuario: Usuario
   //senha: string;
-  ImageUrl: string;
 } 
 
 export const AlunoSchema = z.object({

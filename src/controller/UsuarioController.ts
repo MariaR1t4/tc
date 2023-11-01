@@ -1,5 +1,6 @@
-import UsuarioService from "../service/UsuarioService";
+
 import { Request, Response } from "express";
+import UsuarioService from "../service/login/UsuarioService";
 
 export default class UsuarioController {
     private static instance: UsuarioController;
@@ -26,7 +27,7 @@ export default class UsuarioController {
 
     public async listUsuario(req: Request,res: Response){
       const usuario = UsuarioService.getInstance();
-      res.json(await usuario.listUsuario());
+      res.json(await usuario.listaUsuario());
      }
 
      public async deleteusuario(req: Request,res:Response){
@@ -36,6 +37,11 @@ export default class UsuarioController {
       res.json('Usuario deletado');
   }
 
+    public async cadastroBatch(req: Request,res:Response){
+      console.log(req.file);
+      await UsuarioService.getInstance().signUpInBatch(req);
+      res.json('usuario');
+    }
 }
 
 /*

@@ -3,7 +3,7 @@ import { Entity, Column, PrimaryGeneratedColumn, PrimaryColumn } from "typeorm";
 
 @Entity()
 class Usuario {
-  @PrimaryColumn() 
+  @PrimaryGeneratedColumn() 
   email: string;
 
   @Column({nullable: true})
