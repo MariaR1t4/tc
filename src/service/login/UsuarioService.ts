@@ -28,16 +28,25 @@ class UsuarioService {
     return UsuarioService.instance;
   }
 
-  public async saveUsuario(obj: Usuario): Promise<Usuario> {
+   async saveUsuario(obj: Usuario): Promise<Usuario> {
     return await UsuarioRepository.save(obj);
   }
 
-  public async listaUsuario(): Promise<Usuario[]> {
+   async listaUsuario(): Promise<Usuario[]> {
     return await UsuarioRepository.find();
   }
 
-  public async deleteUsuario(email: string): Promise<void> {
+   async deleteUsuario(email: string): Promise<void> {
     await UsuarioRepository.delete(email);
+  }
+
+  async updateUsuario(email:string, usuario: Usuario): Promise<void>{
+    const usuarioAlterado = await UsuarioRepository.findOneBy(({email}));
+    if(usuarioAlterado){
+      usuarioAlterado.email = usuario.email;
+      await UsuarioRepository.save(usuarioAlterado);
+    }
+    Promise.resolve();
   }
 
   async signUpInBatch(req: Request) {
@@ -45,17 +54,14 @@ class UsuarioService {
     const usuario: Usuario[] = [];
     if (file != null) {
       fs.createReadStream(file.path)
-        .pipe(csvParser({ separator: ";" }))
+        .pipe(csvParser({separator : ';'}))
         .on("data", (data) =>
           usuario.push(this.getUserfromData(data.email, data.tipo))
-        )
-        .on("end", () => {
-          console.log(usuario);
-          UsuarioRepository.save(usuario);
+          )
+          .on("end", () => {
+            console.log(usuario);
+            UsuarioRepository.insert(usuario);
         })
-        .on("error", () => {
-          console.log("Deu ruim amigão");
-        });
     }
   }
 }

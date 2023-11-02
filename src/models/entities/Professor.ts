@@ -1,6 +1,17 @@
 import "reflect-metadata";
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  PrimaryColumn,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+  JoinColumn,
+  OneToOne,
+} from "typeorm";
 import { v4 } from "uuid";
+import Usuario from "./Usuario";
 v4();
 
 @Entity()
@@ -14,11 +25,9 @@ class Professor {
   @Column()
   telefone: string;
 
-  @Column()
-  email: string;
-  
-  @Column()
-  senha: string;
+  @OneToOne(() => Usuario)
+  @JoinColumn()
+  usuario: Usuario;
 
   @CreateDateColumn()
   created_at: Date;

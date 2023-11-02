@@ -1,6 +1,7 @@
 import ProfessorService from "../service/ProfessorService";
 
 import { Request, Response } from "express";
+import ProfessorServiceLogin from "../service/login/ProfessorServiceLogin";
 
 export default class ProfessorController {
   private static instance: ProfessorController;
@@ -67,5 +68,11 @@ export default class ProfessorController {
     } catch (err) {
       return res.json(400).send({ erro: "Não foi possivel criar professor" });
     }
+  }
+
+  public async singUpBatchProfessor(req: Request, res: Response){
+    console.log(req.file);
+    await new ProfessorServiceLogin().signUpProfessorInBatch(req);
+    res.json('ok')
   }
 }

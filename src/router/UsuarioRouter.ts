@@ -7,6 +7,7 @@ const usuarioRouter = Router();
 usuarioRouter.post('/cadastro', UsuarioController.getInstance().saveUsuario);
 usuarioRouter.post('/cadastro-batch', upload.single('csvFile'), UsuarioController.getInstance().cadastroBatch);
 usuarioRouter.get('/lista-usuario', UsuarioController.getInstance().listUsuario);
+usuarioRouter.put('/update/:email', UsuarioController.getInstance().updateUsuario)
 usuarioRouter.delete('/delete-usuario/:email', UsuarioController.getInstance().deleteusuario);
 
 export default usuarioRouter

@@ -1,11 +1,10 @@
 import {z} from 'zod'
+import UsuarioDto from './UsuarioDto';
+
 export default interface SecretariaDto{
   nome: string;
-  email: string;
-  senha: string;
+  email: UsuarioDto;
 }
 export const SecretariaSchema = z.object({
   nome: z.string(),
-  email: z.string().email(),
-  senha: z.string().min(8, {message: "insira uma senha de pelo menos 8 caracteres"}),
 })

@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 
 import AlunoService from "../service/AlunoService";
+import AlunoServiceLogin from "../service/login/AlunoServiceLogin";
 
 export default class AlunoController {
   private static instance: AlunoController;
@@ -70,5 +71,11 @@ export default class AlunoController {
       console.log(err);
       return res.status(400).send({ err: "nao foi possivel encontrar aluno" });
     }
+  }
+
+  public async singUpBatchAluno(req: Request, res: Response){
+    console.log(req.file);
+    await new AlunoServiceLogin().signUpAlunosInBatch(req);
+    res.json('ok')
   }
 }

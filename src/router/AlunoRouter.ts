@@ -5,6 +5,7 @@ import AlunoController from "../controller/AlunoController";
 const alunoRouter= Router();
 //secretaria quem faz
 alunoRouter.post('/cria-aluno',AlunoController.getInstance().saveAluno);
+//alunoRouter.post('/cria_aluno/batch', AlunoController)
 alunoRouter.get('/lista-aluno',AlunoController.getInstance().listAluno);
 alunoRouter.get('/find-aluno/:rm',AlunoController.getInstance().findAlunoById);
 alunoRouter.delete('/delete-aluno/:rm',AlunoController.getInstance().deleteAluno);

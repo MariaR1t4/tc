@@ -1,9 +1,8 @@
 import { Entity, Column, PrimaryGeneratedColumn, PrimaryColumn } from "typeorm";
 
-
 @Entity()
 class Usuario {
-  @PrimaryGeneratedColumn() 
+  @PrimaryColumn() 
   email: string;
 
   @Column({nullable: true})

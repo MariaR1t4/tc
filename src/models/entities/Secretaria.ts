@@ -5,8 +5,11 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
+  OneToOne,
+  JoinColumn,
 } from "typeorm";
 import { v4 } from "uuid";
+import Usuario from "./Usuario";
 v4();
 
 @Entity()
@@ -17,14 +20,12 @@ class Secretaria {
   @Column()
   nome: string;
 
-  @Column()
-  email: string;
+  @OneToOne(() => Usuario)
+  @JoinColumn()
+  usuario: Usuario;
 
   @Column()
   cpf: string;
-
-  @Column()
-  senha: string;
 
   @Column({ nullable: true })
   imageUrl: string;

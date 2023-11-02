@@ -9,9 +9,10 @@ export default interface UsuarioDto {
 } 
 
 export const UsuarioSchema = z.object({
-    email: z.string().email(),
+    email: z.string(),
     fcmToken: z.string(),
     googleId: z.string(),
     ImageUrl: z.string(),
     tipo: z.string()
 })
+

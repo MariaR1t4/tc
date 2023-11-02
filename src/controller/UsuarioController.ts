@@ -30,6 +30,19 @@ export default class UsuarioController {
       res.json(await usuario.listaUsuario());
      }
 
+     public async updateUsuario(req: Request, res: Response) {
+      try {
+        const usuarioService = UsuarioService.getInstance();
+        const email = req.params.rm;
+        const usuario = req.body;
+        await usuarioService.updateUsuario(email, usuario);
+        res.json("Atualização feita com sucesso!");
+      } catch (err) {
+        console.log(err);
+        return res.status(400).send({ err: "nao foi possivel encontrar aluno" });
+      }
+    }
+
      public async deleteusuario(req: Request,res:Response){
       const usuario = UsuarioService.getInstance();
       const email = req.params.email;
