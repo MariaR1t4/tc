@@ -18,38 +18,62 @@ type Turma = {
   }
 export default function TurmaEditar(){
     
-    const id = useParams();
-    console.log(JSON.stringify(id));
-    const atualizaForm = (ev:{ target: HTMLInputElement; }) =>{
-      const {name, value} = ev.target;
-      setTurma({... turma, [name]:value})
-    }
-    const [turma, setTurma] = React.useState({modulo:"", curso:"", descricao:"",periodo:""});
-    const [dadosturma, setDadosTurma] = React.useState([]);
+    const {id_turma} = useParams();
+    const [turma, setTurma] = React.useState({
+      modulo: "",
+      curso: "",
+      descricao: "",
+      periodo: "",
+    });
   
-    api.interceptors.request.use(config => {
+    useEffect(() => {
+      // Fazer uma solicitação GET para obter os detalhes da turma a ser editada
+      api.get(`${API_URL}/secretaria/turma/encontra-turma/${id_turma}`)
+        .then((response) => {
+          setTurma(response.data);
+        })
+        .catch((error) => {
+          console.error("Erro ao carregar os dados da turma:", error);
+        });
+    }, [id_turma]);
+  
+    const atualizaForm = (ev: { target: HTMLInputElement }) => {
+      const { name, value } = ev.target;
+      setTurma({ ...turma, [name]: value });
+    };
+    const handleEditarTurma = (event: React.FormEvent) => {
+      event.preventDefault();
+      api.put(`${API_URL}/secretaria/turma/edita-turma/${id_turma}`, turma)
+      .then((response) => {
+        console.log("Turma editada com sucesso:", response.data);
+      })
+      .catch((error) => {
+        console.error("Erro ao editar a turma:", error);
+      });
+  };
+    /*api.interceptors.request.use(config => {
       // loga(log) uma mensagem antes da requisição HTTP ser enviada
       console.log('A requisição foi enviada');
       return config;
     });
     useEffect(()=>{
-      api.put(`${API_URL}/turma/edita/:id_turma}` )
+      api.put(`${API_URL}/secretaria/turma/edita-turma/:id_turma}` )
          
       .then(response => {
         setTurma (response.data);
         console.log(response.data);
       })
-    },[])
+    },[])*/
     return(
         <>
  <title>Secretaria</title>
         <NavbarSec />
         <main className=" w-full h-full">
             <h1 className=" text-center text-gray-700 font-bold mt-20 text-4xl">Editar Turma</h1>
-<form className=" w-1/3 h-full gap-2 flex flex-col ml-auto mr-auto mt-24" >
+<form className=" w-1/3 h-full gap-2 flex flex-col ml-auto mr-auto mt-24" onSubmit={handleEditarTurma} >
     
   <div className="relative z-0 w-full mb-6 group">
-      <input type="text" name="cursoturma" id="cursoturma" className="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-white rounded-3xl pl-8 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" value={turma.curso} placeholder=" " required />
+      <input type="text" name="cursoturma" id="cursoturma" className="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-white rounded-3xl pl-8 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" value={turma.curso} placeholder="" required />
       <label htmlFor="cursoturma" className="peer-focus:font-medium pl-8 absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Curso:</label>
   </div>
   <div className="relative z-0 w-full mb-6 group">
@@ -66,7 +90,7 @@ export default function TurmaEditar(){
         <label htmlFor="descricao" className="peer-focus:font-medium pl-8 absolute text-lg text-black dark:text-gray-400 duration-300 transhtmlForm -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9">Descrição:</label>
     </div>
     <div className='mt-3 flex justify-center gap-96 '>
-      <button className=' bg-green-700 w-44 h-14 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white'>Editar Turma</button>
+      <button type="submit" className=' bg-green-700 w-44 h-14 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white'> Editar Turma</button>
       <button className=' bg-red-700 w-48 h-14 text-white hover:bg-red-800 rounded-md transition ease-in duration-100 hover:-translate-y-1'>Excluir Turma</button>
       </div>
 </form >

@@ -27,7 +27,7 @@ export default function AlunoCadastro(){
     try{
 
 console.log(form)
-      const res = await api.post(`${API_URL}/usurio/cria-aluno`,form)
+      const res = await api.post(`${API_URL}/secretaria/usurio/cria-aluno`,form)
       console.log(res.data)
       setTimeout(() => {
         setLoading(false);

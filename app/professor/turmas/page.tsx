@@ -1,66 +1,76 @@
 
 "use client"
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'next/navigation'
+import { NavbarSec } from '@/app/components/navbarsec'
+import { API_URL } from '@/shared/constants/api'
+import api from '@/shared/utils/my-axios'
 
-import { NavbarProf } from '@/app/components/navbarprof'
 
-type Alunos = {
+type Turma = {
   map(arg0: (Aluno: any) => React.JSX.Element): React.ReactNode
-  id : string,
-  name : string,
-  curso: string
-}
-export default function Turma() {
-  const {id} = useParams();
-  const [aluno, setAluno] = React.useState<Alunos|null>(null);
-
-  const carregaAluno = async () => {
-    
-    try{
-    const res = await fetch('http://localhost:38000/alunos');
-    const data = await res.json();
-    setAluno(data);
-    console.log(aluno)
-    }catch(err){
-
-      console.log(err);
-    }
-
+    id_turma: number,
+    modulo: string,
+    curso: string,
+    descricao: string,
+    periodo: string
   }
+function TurmaProf() {
+  const {id_turma} = useParams();
+  const [turma, setTurma] = React.useState<Turma|null>(null);
 
-  React.useEffect(() => {
-    carregaAluno();
-  }, [])
+  api.interceptors.request.use(config => {
+    // loga(log) uma mensagem antes da requisição HTTP ser enviada
+    console.log('A requisição foi enviada');
+    return config;
+  });
+  useEffect(()=>{
+    api.get( `${API_URL}/secretaria/turma/lista-turma/`)
+
+    .then(response => {
+      setTurma (response.data);
+      console.log(response.data);
+    })
+  },[])
   
   return (
     <>
+                <title>Professor</title>
+ <NavbarSec />      
+ <main className='w-full flex-col justify-center h-full'>
+ 
+        <h1 className=" text-center drop-shadow-xl text-gray-700 font-bold mt-20 mb-16 text-4xl">Selecionar turma</h1>
+  
+          {turma && turma.map(Turma => (
+              <><div className='ml-32 mt-5 mb-6 justify-center inline-block'>
+              <div className="max-w-sm rounded overflow-hidden shadow-lg inline-block ml-12 ">
 
-      <main className='w-full h-full'>
-        <NavbarProf />
-        <h1 className=" text-center text-gray-700 font-bold mt-20 text-4xl">Selecionar turma</h1>
-      <table className='border-2 m-auto mt-32 w-1/2 h-auto border-black border-collapse text-center text-2xl' >
-      <thead className=' bg-gray-400'><tr>
-            <th className=' border border-black'>Id</th>
-            <th className=' border border-black'>Nome da Turma</th>
-            <th className=' border border-black'>Curso</th>
-            </tr>
-        </thead>
-        <tbody >
-          {aluno && aluno.map(Aluno => (
-            <tr className=' border border-black'>
-              <td className=' border border-black'>{Aluno.id}</td>
-              <td className=' border border-black'>{Aluno.name}</td>
-              <td className=' border border-black'>{Aluno.curso}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className='mt-3 flex justify-center gap-96'>
-      <button className=' mr-80 bg-green-700 w-28 h-12 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white'>Selecionar Turma</button>
-      <button className=' bg-blue-700 w-28 h-12 text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1'>Voltar</button>
+
+              <div className="px-6 py-4  ">
+                <div className="font-bold text-xl mb-2">Turma:{Turma.id_turma}</div>
+                <p className='text-lg'>Curso: {Turma.curso}
+                </p>
+                <p className='text-lg'>Periodo: {Turma.periodo}</p>
+                <p className='text-lg'>Módulo: {Turma.modulo}</p>
+                <p className='text-lg'>Descrição: {Turma.descricao}</p>
+            <div className='flex justify-center '>
+              
+            <a href={`/secretaria/turmas/editar?id_turma=${id_turma}`}>
+      <button className=' bg-blue-700 w-28 h-10 float-right mt-4 text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1'   id='verTurma'>Ver Turma</button></a>
       </div>
+              </div>
+
+      
+            </div>
+            </div>
+              </>
+          ))}
+        
+      
+      
+     
+    
       </main>
     
   </>
@@ -68,3 +78,5 @@ export default function Turma() {
 
   )
 }
+export default TurmaProf;
+      

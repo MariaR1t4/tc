@@ -6,6 +6,7 @@ import { useParams } from 'next/navigation'
 import { NavbarSec } from '@/app/components/navbarsec'
 import { API_URL } from '@/shared/constants/api'
 import api from '@/shared/utils/my-axios'
+import { Router, useRouter } from 'next/router'
 
 type Professor = {
   map(arg0: (Aluno: any) => React.JSX.Element): React.ReactNode
@@ -16,6 +17,7 @@ type Professor = {
   password:string
 }
  export default function ProfSec() {
+  const router = useRouter;
   const {id} = useParams();
   const [professor, setProfesor] = React.useState<Professor|null>(null);
 
@@ -25,7 +27,7 @@ type Professor = {
     return config;
   });
   useEffect(()=>{
-    api.get(`${API_URL}/professor/`)
+    api.get(`${API_URL}/secretaria/professor/lista-professor`)
 
     .then(response => {
       setProfesor (response.data);
@@ -57,9 +59,9 @@ return (
               </p>
               <p className='text-lg'>Email: {Professor.email}</p>
               <p className='text-lg'>Tel: {Professor.telefone}</p>
-              <div className='mt-2'>
-    <a href="/secretaria/professor/editar/"><button className=' mr-80 bg-green-700 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white' id='editarProfessor'>Editar Professor</button></a>
-    <button className=' bg-blue-700 w-28 h-10 block text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1' id='verProfessor'>Ver Professor</button>
+              <div className='flex justify-center '>
+    <a href="{`/secretaria/professor/editar/${Professor.id_professor}`}"><button className=' mr-32 bg-green-700 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white' id='editarProfessor' onClick={()=>{}}>Editar Professor</button></a>
+    <button className=' bg-blue-700 w-28 h-10  text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1' id='verProfessor'>Ver Professor</button>
     </div>
             </div>
 

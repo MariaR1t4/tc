@@ -19,10 +19,12 @@ const Login = () => {
       const tokenId = response.credential;
       const clientId = response.clientId;
       const fcmToken = localStorage.getItem('fcmToken');
-     await api.post(`${API_URL}/login`, 
-      {token: tokenId, fcmToken}
+     await api.put(`${API_URL}/login`, 
+      {token: tokenId, fcmToken},
+      
     )
-    } finally {
+    window.location.href="/secretaria"
+  } finally {
       setLoading(false);
     }
     

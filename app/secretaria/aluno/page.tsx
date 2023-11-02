@@ -6,7 +6,10 @@ import { useParams } from 'next/navigation'
 import { NavbarSec } from '@/app/components/navbarsec'
 import { API_URL } from '@/shared/constants/api'
 import api from '@/shared/utils/my-axios'
+import Image from "next/image";
 import Aluno from './alunos/page'
+import turmapgn from "../../../public/turma.png"
+
 
 type Alunos = {
   map(arg0: (Aluno: any) => React.JSX.Element): React.ReactNode
@@ -25,7 +28,7 @@ export default function AlunodoAluno() {
     return config;
   });
   useEffect(()=>{
-    api.get(`${API_URL}/aluno/lista-aluno/`)
+    api.get(`${API_URL}/secretaria/aluno/lista-aluno/`)
 
     .then(response => {
       setAluno (response.data);
@@ -35,7 +38,9 @@ export default function AlunodoAluno() {
   
   return (
     <>
+    
     <title>Secretaria</title>
+
  <NavbarSec />      
  <main className='w-full flex-col justify-center h-full'>
  
@@ -51,9 +56,9 @@ export default function AlunodoAluno() {
                 </h2>
                 <h2 className='text-lg'>Email: {Aluno.email}</h2>
                 <h2 className='text-lg'>Telefone: {Aluno.telefone}</h2>
-              <div className='mt-2'>
-      <a href="/secretaria/alunos/editar?id={Aluno.rm}"><button className=' mr-80 bg-green-700 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white' id='editarAluno'>Editar Aluno</button></a>
-      <button className=' bg-blue-700 w-28 h-10 block text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1' id='verAluno'>Ver Aluno</button>
+                <div className='flex justify-center '>
+      <a href="/secretaria/alunos/editar?id={Aluno.rm}"><button className=' mr-32 bg-green-700 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white' id='editarAluno'>Editar Aluno</button></a>
+      <button className=' bg-blue-700 w-28 h-10  text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1' id='verAluno'>Ver Aluno</button>
       </div>
       </div>
               

@@ -29,7 +29,7 @@ export default function TurmaCadastro(){
     try{
 
 console.log(form)
-      const res = await api.post(`${API_URL}/turma/`,form)
+      const res = await api.post(`${API_URL}/secretaria/turma/cria-turma`,form)
       console.log(res.data)
       setTimeout(() => {
         setLoading(false);

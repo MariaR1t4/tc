@@ -27,7 +27,7 @@ export default function ProfCadastro(){
         try{
     
     console.log(form)
-          const res = await api.post(`${API_URL}/professor/`,form)
+          const res = await api.post(`${API_URL}/secretaria/professor/cria-professor`,form)
           console.log(res.data)
           setTimeout(() => {
             setLoading(false);

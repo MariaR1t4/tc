@@ -14,7 +14,7 @@ const Login = () => {
       const tokenId = response.credential;
       const clientId = response.clientId;
       const fcmToken = localStorage.getItem('fcmToken');
-      fetch(`${API_URL}/auth/login/professor/`, {
+      fetch(`${API_URL}/notification`, {
         method: 'POST',
         headers: {'content-type': 'application/json'},
         body: JSON.stringify({token: tokenId, fcmToken})
@@ -35,7 +35,7 @@ const Login = () => {
     <div className="google">
           {willLogin ? 
           <GoogleLogin onSuccess={responseGoogle} ></GoogleLogin> :
-          <button onClick={login} type="submit">Login com <img   /></button> }
+          <button onClick={login} type="submit"></button> }
         </div>
   )
 

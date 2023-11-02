@@ -7,14 +7,17 @@ import { NavbarSec } from '@/app/components/navbarsec'
 import { API_URL } from '@/shared/constants/api'
 import api from '@/shared/utils/my-axios'
 
+
 type Turma = {
   map(arg0: (Aluno: any) => React.JSX.Element): React.ReactNode
-  id : string,
-  name : string,
-  curso: string
-}
+    id_turma: number,
+    modulo: string,
+    curso: string,
+    descricao: string,
+    periodo: string
+  }
 function Turma() {
-  const {id} = useParams();
+  const {id_turma} = useParams();
   const [turma, setTurma] = React.useState<Turma|null>(null);
 
   api.interceptors.request.use(config => {
@@ -23,7 +26,7 @@ function Turma() {
     return config;
   });
   useEffect(()=>{
-    api.get( `${API_URL}/turma/list/`)
+    api.get( `${API_URL}/secretaria/turma/lista-turma/`)
 
     .then(response => {
       setTurma (response.data);
@@ -51,9 +54,11 @@ function Turma() {
                 <p className='text-lg'>Periodo: {Turma.periodo}</p>
                 <p className='text-lg'>Módulo: {Turma.modulo}</p>
                 <p className='text-lg'>Descrição: {Turma.descricao}</p>
-            <div className='inline-block justify-start'>
-      <a href="/secretaria/turmas/editar?id={Turma.id_turma}"><button className=' mr-80 bg-green-700 mt-4 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white'  id='editarTurma'>Editar Turma</button></a>
-      <button className=' bg-blue-700 w-28 h-10 float-right mr-24 gap-7 text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1' id='verTurma'>Ver Turma</button>
+            <div className='flex justify-center '>
+              
+            <a href={`/secretaria/turmas/editar?id_turma=${id_turma}`}>
+<button className=' mr-32 bg-green-700 mt-4 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white'  id='editarTurma'>Editar Turma</button></a>
+      <button className=' bg-blue-700 w-28 h-10 float-right mt-4 text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1'   id='verTurma'>Ver Turma</button>
       </div>
               </div>
 

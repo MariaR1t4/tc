@@ -4,6 +4,10 @@ import { NavbarSec } from "@/app/components/navbarsec";
 import { API_URL } from "@/shared/constants/api";
 import api from "@/shared/utils/my-axios";
 import React, { FormEvent } from "react";
+import { ClipLoader } from "react-spinners";
+
+import MyFade from "@/app/components/my-fade";
+import MyBackdrop from "@/app/components/backdrop";
 
 
 export default function AlunoCadastro(){
@@ -27,7 +31,7 @@ export default function AlunoCadastro(){
     try{
 
 console.log(form)
-      const res = await api.post(`${API_URL}/aluno/cria-aluno`,form)
+      const res = await api.post(`${API_URL}/secretaria/aluno/cria-aluno`,form)
       console.log(res.data)
       setTimeout(() => {
         setLoading(false);
@@ -62,8 +66,19 @@ console.log(form)
     </div>
    
  
+    {loading && <div style={{position: "absolute", zIndex: 1000, top: "55vh", left: "46vw", width: "20vw", height: "20vh"}} ><ClipLoader
+        color={"black"}
+        loading={loading}
+        size={150}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+        
+      /></div>}
 
-  <button type="submit" className="text-white  hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-lg w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-700  dark:focus:ring-green-800">Registrar Aluno</button>
+     { showFeed && <MyBackdrop feed={ok} show={showFeed} cancelShow={() => setShowFeed(false)}  /> }
+      <MyFade in={showFeed} cancelShow={() => setShowFeed(false)}/>
+
+         <button type="submit" className="text-white  hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-lg w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-700  dark:focus:ring-green-800" onClick={enviarParaoBd}>Registrar Aluno</button>
 </form >
 </main>
 
