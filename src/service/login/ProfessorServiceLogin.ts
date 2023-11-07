@@ -17,9 +17,10 @@ import Usuario from "../../models/entities/Usuario";
 
 class ProfessorServiceLogin {
 
-    getProfessorFromData(usuario: Usuario, senha: string, name:string, telefone:string) : Professor{
+    getProfessorFromData(email: Usuario, senha: string, nome:string, telefone:string) : Professor{
         const newProf = new Professor();
-        newProf.usuario = usuario;
+        newProf.nome = nome;
+        newProf.email = email;
         newProf.telefone = telefone;
         const hashDigest = sha256(senha);
         logger.debug("HashAntes: ", hashDigest)
@@ -29,14 +30,14 @@ class ProfessorServiceLogin {
         return newProf;
     }
 
-    async loginProf(usuario: Usuario, senha: string ) : Promise<string>{
+    async loginProf(email: Usuario, senha: string ) : Promise<string>{
         const hashDigest = sha256(senha);
         logger.debug("HashAntes: ", hashDigest)
         const privateKey = "FIEC2023"
         const SenhaHasehd = Base64.stringify(hmacSHA512(hashDigest, privateKey ))
-        const foundProf = await ProfessorRepository.findOneBy({ usuario}); // quando for passar pra SenhaHashed (linha acima ☝️) colocar senha: SenhaHaseh
+        const foundProf = await ProfessorRepository.findOneBy({ email}); // quando for passar pra SenhaHashed (linha acima ☝️) colocar senha: SenhaHaseh
         if(foundProf){
-        const token = jwt.sign({usuario: foundProf?.usuario, }, hide, {expiresIn: 300});
+        const token = jwt.sign({email: foundProf?.email, }, hide, {expiresIn: 300});
         return token;}
         throw new Error("Professor not found");
     }
@@ -52,7 +53,7 @@ class ProfessorServiceLogin {
         if(file != null) {
             fs.createReadStream(file.path)
                 .pipe(csvParser({separator: ';'}))
-                .on('data', (data) => Professor.push(this.getProfessorFromData(data.email, data.senha, data.name, data.telefone)))
+                //.on('data', (data) => Professor.push(this.getProfessorFromData(data.nome, data.telefone, data.email)))
                 .on('end', () => {
                     console.log(Professor);
                     ProfessorRepository.save(Professor);
