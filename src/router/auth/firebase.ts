@@ -30,7 +30,7 @@ const messaging = getMessaging(firebaseApp);
 
 const fire = Router();
 
-fire.post('/notification/send/:id', async (req: Request, res: Response) => {
+fire.post('/notification', async (req: Request, res: Response) => {
     const email = req.params.email;
     const notification = req.body;
     const foundUser = await UsuarioRepository.findOneBy({ email });

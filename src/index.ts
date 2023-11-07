@@ -28,21 +28,21 @@ app.use(morgan('combined'));
 
 //app.use('/app', express.static(path.join(__dirname, 'src')))
 
-app.use('/api/v1/secretaria/aluno', alunoRouter, validatorSecretaria);
+app.use('/api/v1/secretaria/aluno', alunoRouter,  );
 
-app.use('/api/v1/aluno/frequencia', frequenciaRouter, validatorAluno);
+app.use('/api/v1/aluno/frequencia', frequenciaRouter, );
 
-app.use('/api/v1/professor/aula', aulaRouter, validatorProfessor);
+app.use('/api/v1/professor/aula', aulaRouter, validatorProfessor );
 
-app.use('/api/v1/secretaria/disciplina', disciplinaRouter, validatorSecretaria);
+app.use('/api/v1/secretaria/disciplina', disciplinaRouter,  );
 
-app.use('/api/v1/frequencia', frequenciaRouter, validatorAluno);
+app.use('/api/v1/frequencia', frequenciaRouter, );
 
-app.use('/api/v1/secretaria/prof-disciplina', professorDisciplinaRouter, validatorSecretaria);
+app.use('/api/v1/secretaria/prof-disciplina', professorDisciplinaRouter, );
 
-app.use('/api/v1/secretaria/professor', professorRouter, validatorSecretaria);
+app.use('/api/v1/secretaria/professor', professorRouter, );
 
-app.use('/api/v1/secretaria/turma', turmaRouter, validatorSecretaria)
+app.use('/api/v1/secretaria/turma', turmaRouter, )
 
 app.use('/api/v1', usuarioRouter)
 

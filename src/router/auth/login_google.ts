@@ -20,22 +20,26 @@ google_login.put('/login',async (req, res) => {
     console.log(payload);
     console.log(googleId);
     const email = payload?.email;
+
     if(!email) {
         res.status(401).send();
         return;
     }
 
     const foundUser = await UsuarioRepository.findOneBy({ email });
+
     if (foundUser) {
         foundUser.fcmToken = req.body.fcmToken;
         foundUser.googleId = googleId || '';
         foundUser.ImageUrl =  ImageUrl || '';
+        
         await UsuarioRepository.save(foundUser);
-
     }
     // 300s => 5 minutos . voce pode colocar mais tempo se quiser
-    const jwtToken = jwt.sign({ email: foundUser?.email }, "SUA_SENHA", { expiresIn: 300 })
-    res.json({ token: jwtToken });
+    const jwtToken = jwt.sign({ email: foundUser?.email }, "SUA_SENHA", { expiresIn: 300 });
+    const usuario = foundUser?.tipo;
+    console.log(usuario)
+    res.json({ token: jwtToken, tipo: usuario})
 
 })
 export default google_login

@@ -13,12 +13,13 @@ import { hide } from "../../auth/constants";
 import logger from "../../configs/logger"
 import Professor from "../../models/entities/Professor";
 import ProfessorRepository from "../../models/entities/repositories/ProfessorRepository";
+import Usuario from "../../models/entities/Usuario";
 
 class ProfessorServiceLogin {
 
-    getProfessorFromData(email: string, senha: string, name:string, telefone:string) : Professor{
+    getProfessorFromData(usuario: Usuario, senha: string, name:string, telefone:string) : Professor{
         const newProf = new Professor();
-        newProf.email = email;
+        newProf.usuario = usuario;
         newProf.telefone = telefone;
         const hashDigest = sha256(senha);
         logger.debug("HashAntes: ", hashDigest)
@@ -28,20 +29,20 @@ class ProfessorServiceLogin {
         return newProf;
     }
 
-    async loginProf(email: string, senha: string ) : Promise<string>{
+    async loginProf(usuario: Usuario, senha: string ) : Promise<string>{
         const hashDigest = sha256(senha);
         logger.debug("HashAntes: ", hashDigest)
         const privateKey = "FIEC2023"
         const SenhaHasehd = Base64.stringify(hmacSHA512(hashDigest, privateKey ))
-        const foundProf = await ProfessorRepository.findOneBy({ email}); // quando for passar pra SenhaHashed (linha acima ☝️) colocar senha: SenhaHaseh
+        const foundProf = await ProfessorRepository.findOneBy({ usuario}); // quando for passar pra SenhaHashed (linha acima ☝️) colocar senha: SenhaHaseh
         if(foundProf){
-        const token = jwt.sign({email: foundProf?.email, }, hide, {expiresIn: 300});
+        const token = jwt.sign({usuario: foundProf?.usuario, }, hide, {expiresIn: 300});
         return token;}
         throw new Error("Professor not found");
     }
 
-    async signUpProf(email: string, senha: string, name:string, telefone:string){
-        const newProf = this.getProfessorFromData(email, senha,name,telefone);
+    async signUpProf(usuario: Usuario, senha: string, name:string, telefone:string){
+        const newProf = this.getProfessorFromData(usuario, senha,name,telefone);
         await ProfessorRepository.save(newProf);
     }
 

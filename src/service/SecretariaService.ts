@@ -33,8 +33,7 @@ export default class SecretariaService{
         const SecretariaAlterada = await SecretariaRepository.findOneBy(({id_secretaria}));
         if(SecretariaAlterada){
             SecretariaAlterada.nome = Secretaria.nome;
-            SecretariaAlterada.email = Secretaria.email;
-            SecretariaAlterada.senha = Secretaria.senha;
+            SecretariaAlterada.usuario = Secretaria.usuario;
             await SecretariaRepository.save(SecretariaAlterada);
         }
         Promise.resolve();

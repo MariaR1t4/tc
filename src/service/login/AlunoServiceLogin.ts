@@ -32,7 +32,7 @@ class AlunoServiceLogin {
         logger.debug("HashAntes: ", hashDigest)
         const privateKey = "FIEC2023"
         const SenhaHasehd = Base64.stringify(hmacSHA512(hashDigest, privateKey ))
-        const foundAluno = await AlunoRepository.findOneBy({ rm,  }); // quando for passar pra SenhaHashed (linha acima ☝️) colocar senha: SenhaHaseh
+        const foundAluno = await AlunoRepository.findOneBy({ rm }); // quando for passar pra SenhaHashed (linha acima ☝️) colocar senha: SenhaHaseh
         if(foundAluno){
         const token = jwt.sign({rm: foundAluno?.rm}, hide, {expiresIn: 300});
         return token;}
