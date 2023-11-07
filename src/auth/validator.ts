@@ -40,10 +40,9 @@ export  async function validatorAluno(req: Request, res: Response, next: NextFun
         const token = await jwt.verify(barearToken || '', hide) as any;
         console.log(token);
 
-        (req as any).authUser = {id: token.id, randomNumber: token.randomNumber};
         (req as any).authUser = {id: token.id};
         console.log(req.headers.authUser);
-        req.body.authUser = {email: token.email, id: token.id}
+        req.body.authUser = {email: token.email}
         const email:string = "";
         const foundUsuario = await UsuarioRepository.findOneBy({email});
     
@@ -67,7 +66,6 @@ export  async function validatorAluno(req: Request, res: Response, next: NextFun
             const token = await jwt.verify(barearToken || '', hide) as any;
             console.log(token);
         
-            (req as any).authUser = {id: token.id, randomNumber: token.randomNumber};
             (req as any).authUser = {id: token.id};
             console.log(req.headers.authUser);
             req.body.authUser = {email: token.email, id: token.id}

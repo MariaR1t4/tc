@@ -32,7 +32,7 @@ app.use('/api/v1/secretaria/aluno', alunoRouter,  );
 
 app.use('/api/v1/aluno/frequencia', frequenciaRouter, );
 
-app.use('/api/v1/professor/aula', aulaRouter, validatorProfessor );
+app.use('/api/v1/professor/aula', aulaRouter );
 
 app.use('/api/v1/secretaria/disciplina', disciplinaRouter,  );
 
