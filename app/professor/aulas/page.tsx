@@ -40,7 +40,6 @@ type Professor = {
   ];
   
 
-
 export default function RegistroAula(){
     const [form, setForm] = React.useState({id_aula: '', id_professor:'',id_disciplina:'',id_turma:'', descricao:''});
     const [aulas, setAulas]= React.useState()
@@ -65,6 +64,11 @@ export default function RegistroAula(){
             setShowFeed(true);
             setLoading(false);
           }}
+        /*  api.interceptors.request.use(config => {
+            // loga(log) uma mensagem antes da requisição HTTP ser enviada
+            console.log('A requisição foi enviada');
+            return config;
+          });*/
 const [selectedTeacher, setSelectedTeacher] = useState<number | null>(null);
   const [selectedSubject, setSelectedSubject] = useState<number | null>(null);
   const [description, setDescription] = useState('');
@@ -72,10 +76,8 @@ const [selectedTeacher, setSelectedTeacher] = useState<number | null>(null);
     return(
         <>
         <NavbarProf />
-        
-        
         <main className=" w-full h-full">
-            <h1 className=" text-center text-gray-700 font-bold mt-20 text-4xl">Cadastrar Aluno</h1>
+            <h1 className=" text-center text-gray-700 font-bold mt-20 text-4xl">Cadastrar Aula</h1>
 <form className=" w-1/3 h-full gap-2 flex flex-col ml-auto mr-auto mt-24" onSubmit={enviarParaoBd}>
     
   <div className="relative z-0 w-full mb-6 group">

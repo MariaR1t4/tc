@@ -7,16 +7,13 @@ const API_URL = "http://10.5.9.9:38000/"
 const api = axios.create({
     baseURL: API_URL
 });
-
 api.interceptors.request.use(
     (config) => {
-      
             const token = getCookie('token')
             if(token){
                 config.headers['Authorization'] = `Bearer ${token}`;
+                console.log(token)
             }
-            
-        
         return config
     },
     (error) => {
@@ -32,7 +29,7 @@ api.interceptors.response.use(resp =>{
     if(error.response.status == 403)
     {
         console.log(error)
-        window.location.href="/login"
+        window.location.href="/"
     }
    else if(error.response.status == 404){
     console.log("Deu ruim")
