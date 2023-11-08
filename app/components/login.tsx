@@ -21,8 +21,20 @@ const Login = () => {
       const fcmToken = localStorage.getItem('fcmToken');
      await api.post(`${API_URL}/login`, 
       {token: tokenId, fcmToken},
-      
     )
+<<<<<<< HEAD
+=======
+    
+    if(response.tipo === "Secretaria" || "secretaria"){
+      window.location.href="/secretaria";
+    } else if (response.tipo === "Professor" || "professor"){
+      window.location.href="/professor";
+    }else(response.tipo === "Aluno" || "aluno");{
+      window.location.href="/aluno"
+    }
+
+    
+>>>>>>> 284c44b289377bd916f36a1bbfe971d538ba5789
   } finally {
       setLoading(false);
     }
