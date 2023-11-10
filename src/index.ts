@@ -46,6 +46,22 @@ app.use('/api/v1/secretaria/turma', turmaRouter, )
 
 app.use('/api/v1', usuarioRouter)
 
+/*app.use('/api/v1/secretaria/aluno', validatorSecretaria  );
+
+app.use('/api/v1/aluno/frequencia', validatorAluno);
+
+app.use('/api/v1/professor/aula', validatorProfessor);
+
+app.use('/api/v1/secretaria/disciplina', validatorSecretaria );
+
+app.use('/api/v1/frequencia', validatorProfessor );
+
+app.use('/api/v1/secretaria/prof-disciplina', validatorSecretaria );
+
+app.use('/api/v1/secretaria/professor', validatorSecretaria );
+
+app.use('/api/v1/secretaria/turma', validatorSecretaria )*/
+
 app.use('/api/v1', google_login)
 
 app.use('/api/v1', fire)

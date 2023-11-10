@@ -22,17 +22,17 @@ class ProfessorDisciplina {
   @Column()
   carga_horaria: number;
 
-  @ManyToOne(() => Disciplina, (disciplina) => disciplina.id_disciplina)
-  @JoinColumn({ name: "id_disciplina", referencedColumnName: "id_disciplina" })
-  id_disciplina: string;
+  @ManyToOne(() => Disciplina, { nullable: false, eager: true })
+  @JoinColumn()
+  id_disciplina: Disciplina;
 
-  @ManyToOne(() => Turma, (turma) => turma.id_turma)
-  @JoinColumn({ name: "id_turma", referencedColumnName: "id_turma" })
-  id_turma: string;
+  @ManyToOne(() => Turma,  { nullable: false, eager: true })
+  @JoinColumn()
+  id_turma: Turma;
 
-  @ManyToOne(() => Professor, (professor) => professor.id_professor)
-  @JoinColumn({ name: "id_professor", referencedColumnName: "id_professor" })
-  id_professor: string;
+  @ManyToOne(() => Professor, { nullable: false, eager: true })
+  @JoinColumn()
+  id_professor: Professor;
 
   @CreateDateColumn()
   created_at: Date;

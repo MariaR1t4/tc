@@ -34,8 +34,21 @@ export default class AulaService{
 
     }
     }
-    public async listAula():Promise<Aula[]>{
-        return await AulaRepository.find();
+    public async listAula(){
+        const res =  await AulaRepository.find();
+
+        const mapRes = res.map(res => ({
+            id: res.id_aula,
+            description: res.descricao,
+            nomeProfessor: res.professor_disciplina.id_professor.nome,
+            nomeDisciplina: res.professor_disciplina.id_disciplina.descricao,
+            nomeAula: res.professor_disciplina.id_turma.descricao,
+        }));
+        
+        
+        return mapRes
+        
+
     }
     public async findAulaById(id_aula:string) : Promise<Aula | null> {
         return await AulaRepository.findOneBy({id_aula}); 
