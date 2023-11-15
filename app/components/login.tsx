@@ -7,11 +7,13 @@ import Image from "next/image";
 import React from "react";
 import { API_URL } from '@/shared/constants/api';
 import api from '@/shared/utils/my-axios';
+import { useRouter } from 'next/navigation';
 
 const Login = () => {
   const [willLogin, setWillLogin] = React.useState(false)
   const [loading, setLoading] = React.useState(false)
 
+  const Router = useRouter()
   const responseGoogle = async (response: any) => {
     setLoading(true)
     
@@ -19,22 +21,23 @@ const Login = () => {
       const tokenId = response.credential;
       const clientId = response.clientId;
       const fcmToken = localStorage.getItem('fcmToken');
-     await api.post(`${API_URL}/login`, 
-      {token: tokenId, fcmToken},
-    )
-<<<<<<< HEAD
-=======
-    
-    if(response.tipo === "Secretaria" || "secretaria"){
-      window.location.href="/secretaria";
-    } else if (response.tipo === "Professor" || "professor"){
-      window.location.href="/professor";
-    }else(response.tipo === "Aluno" || "aluno");{
-      window.location.href="/aluno"
-    }
 
-    
->>>>>>> 284c44b289377bd916f36a1bbfe971d538ba5789
+    const logar = await api.post(`${API_URL}/login`, 
+    {token: tokenId, fcmToken}
+  )
+    const tipo_user = logar.data.tipo;
+    console.log(logar.data)
+    console.log(logar.data.tipo)
+
+    if (tipo_user == "Aluno" || "aluno") {
+      Router.push('/aluno')
+    } else if (tipo_user == "Professor" || "professor") {
+      Router.push('/professor')
+    } else if (tipo_user == "Secretaria" || "secretaria" ) {
+      Router.push('/secretaria')  
+    } else 
+      console.log("Deu ruim em irmão")
+
   } finally {
       setLoading(false);
     }
