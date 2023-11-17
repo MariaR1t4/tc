@@ -1,5 +1,7 @@
+import { string } from "zod";
 import Aula from "../models/entities/Aula";
 import AulaRepository from "../models/entities/repositories/AulaRepository";
+import ProfessorRepository from "../models/entities/repositories/ProfessorRepository";
 import generateToken from "../models/generateToken";
 
 
@@ -51,7 +53,8 @@ export default class AulaService{
 
     }
     public async findAulaById(id_aula:string) : Promise<Aula | null> {
-        return await AulaRepository.findOneBy({id_aula}); 
+        const aula = await AulaRepository.findOneBy({id_aula}); 
+        return aula
     }
     public async deleteAula(id_aula:string):Promise<void>{
         await AulaRepository.delete(id_aula);

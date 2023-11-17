@@ -28,39 +28,23 @@ app.use(morgan('combined'));
 
 //app.use('/app', express.static(path.join(__dirname, 'src')))
 
-app.use('/api/v1/secretaria/aluno', alunoRouter,  );
+app.use('/api/v1/secretaria/aluno', validatorSecretaria,alunoRouter  );
 
-app.use('/api/v1/aluno/frequencia', frequenciaRouter, );
+app.use('/api/v1/aluno/frequencia', validatorAluno , frequenciaRouter, );
 
-app.use('/api/v1/professor/aula', aulaRouter );
+app.use('/api/v1/professor/aula', validatorProfessor,aulaRouter );
 
-app.use('/api/v1/secretaria/disciplina', disciplinaRouter,  );
+app.use('/api/v1/secretaria/disciplina',validatorSecretaria, disciplinaRouter,  );
 
-app.use('/api/v1/frequencia', frequenciaRouter, );
+app.use('/api/v1/frequencia',validatorProfessor, frequenciaRouter, );
 
-app.use('/api/v1/secretaria/prof-disciplina', professorDisciplinaRouter, );
+app.use('/api/v1/secretaria/prof-disciplina', validatorSecretaria,professorDisciplinaRouter, );
 
-app.use('/api/v1/secretaria/professor', professorRouter, );
+app.use('/api/v1/secretaria/professor',validatorSecretaria, professorRouter, );
 
-app.use('/api/v1/secretaria/turma', turmaRouter, )
+app.use('/api/v1/secretaria/turma', validatorSecretaria,turmaRouter, )
 
 app.use('/api/v1', usuarioRouter)
-
-/*app.use('/api/v1/secretaria/aluno', validatorSecretaria  );
-
-app.use('/api/v1/aluno/frequencia', validatorAluno);
-
-app.use('/api/v1/professor/aula', validatorProfessor);
-
-app.use('/api/v1/secretaria/disciplina', validatorSecretaria );
-
-app.use('/api/v1/frequencia', validatorProfessor );
-
-app.use('/api/v1/secretaria/prof-disciplina', validatorSecretaria );
-
-app.use('/api/v1/secretaria/professor', validatorSecretaria );
-
-app.use('/api/v1/secretaria/turma', validatorSecretaria )*/
 
 app.use('/api/v1', google_login)
 
