@@ -36,7 +36,7 @@ export default function AlunoEditar() {
     .then((response) => {
       setPost(response.data);
     });
-  }, []);
+  }, [rm]);
 
   function updatePost() {
     axios

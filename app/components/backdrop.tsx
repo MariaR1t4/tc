@@ -21,7 +21,7 @@ const imageStyle = {
 const MyBackdrop = (feed: any, cancelShow:any) => {
     React.useEffect(() => {
         setTimeout(() => cancelShow() ,1000)
-    }, [])
+    }, [cancelShow])
     return (
     <div >
         {feed ? <Image src={OkImage} alt='ok' /> : <Image style={imageStyle} src={CancelImage} alt='cancel'/>}
