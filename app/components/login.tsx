@@ -29,13 +29,20 @@ const Login = () => {
     console.log(logar.data)
     console.log(logar.data.tipo)
 
-    if (tipo_user == "Aluno" || "aluno") {
+    if (tipo_user == "Aluno") {
       Router.push('/aluno')
-    } else if (tipo_user == "Professor" || "professor") {
-      Router.push('/professor')
-    } else if (tipo_user == "Secretaria" || "secretaria" ) {
+    } else if (tipo_user == "aluno") {
+      Router.push('/aluno')
+    } else if (tipo_user == "Secretaria" ) {
       Router.push('/secretaria')  
-    } else 
+    } else if (tipo_user == "secretaria" ) {
+      Router.push('/secretaria')
+    } else if (tipo_user == "Professor" ) {
+      Router.push('/professor')
+    } else if (tipo_user == "professor" ) {
+      Router.push('/professor')
+    }
+      else 
       console.log("Deu ruim em irmão")
 
   } finally {
