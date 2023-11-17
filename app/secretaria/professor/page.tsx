@@ -9,12 +9,11 @@ import api from '@/shared/utils/my-axios'
 import { Router, useRouter } from 'next/router'
 
 type Professor = {
-  map(arg0: (Aluno: any) => React.JSX.Element): React.ReactNode
+  map(arg0: (Professor: any) => React.JSX.Element): React.ReactNode
   id_professor : string,
   name : string,
   email: string,
   telefone:string,
-  password:string
 }
  export default function ProfSec() {
   const router = useRouter;

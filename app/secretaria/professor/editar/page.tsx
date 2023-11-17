@@ -7,12 +7,11 @@ import { type } from "os";
 import React, {useEffect} from "react";
 
 type Professor = {
-  map(arg0: (Aluno: any) => React.JSX.Element): React.ReactNode
+  map(arg0: (Professor: any) => React.JSX.Element): React.ReactNode
   id_professor : string,
   nome : string,
   email: string,
   telefone:string,
-  senha:string
 }
 export default function ProfEditar(){
     const {id} = useParams();
@@ -24,7 +23,7 @@ export default function ProfEditar(){
       return config;
     });
     useEffect(()=>{
-      api.put(`${API_URL}/secretaria/professor/edita-professor/:id_professor`)
+      api.put(`${API_URL}/secretaria/professor/edita-professor/:id_tabela_professor`)
   
       .then(response => {
         setProfessor(response.data);

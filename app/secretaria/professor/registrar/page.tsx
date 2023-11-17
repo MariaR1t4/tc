@@ -8,12 +8,11 @@ import api from "@/shared/utils/my-axios";
 
 export default function ProfCadastro(){
     interface Professor {
-        name:string,
+        nome:string,
         telefone:string,
-        email:string,
-        senha:string
+        email:string
       }
-      const [form, setForm] = React.useState({name:'', telefone:'', email:'', password:''});
+      const [form, setForm] = React.useState({nome:'', telefone:'', email:''});
       const [loading, setLoading] = React.useState(false);
       const [ok, setOk] = React.useState(false);
       const [showFeed, setShowFeed] = React.useState(false);
