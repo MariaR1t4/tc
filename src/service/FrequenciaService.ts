@@ -50,6 +50,7 @@ export default class FrequenciaService {
       
      const mapRes = res.map((res) => ({
         data: res.data_frequencia,
+        rm: res.rm
       }));
       
       console.log(mapRes.length);
