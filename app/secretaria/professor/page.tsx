@@ -11,7 +11,7 @@ import { Router, useRouter } from 'next/router'
 type Professor = {
   map(arg0: (Aluno: any) => React.JSX.Element): React.ReactNode
   id_professor : string,
-  name : string,
+  nome : string,
   email: string,
   telefone:string,
   password:string
@@ -55,9 +55,8 @@ return (
 
             <div className="px-6 py-4  ">
               <div className="font-bold text-xl mb-2">Id:{Professor.id_professor}</div>
-              <p className='text-lg'>Professor: {Professor.name}
+              <p className='text-lg'>Professor: {Professor.nome}
               </p>
-              <p className='text-lg'>Email: {Professor.email}</p>
               <p className='text-lg'>Tel: {Professor.telefone}</p>
               <div className='flex justify-center '>
     <a href="{`/secretaria/professor/editar/${Professor.id_professor}`}"><button className=' mr-32 bg-green-700 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white' id='editarProfessor' onClick={()=>{}}>Editar Professor</button></a>

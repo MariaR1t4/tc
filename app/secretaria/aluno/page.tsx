@@ -54,7 +54,6 @@ export default function AlunodoAluno() {
                 <div className="font-bold text-xl mb-2">Aluno: {Aluno.nome}</div>
                 <h2 className='text-lg'>Rm: {Aluno.rm}
                 </h2>
-                <h2 className='text-lg'>Email: {Aluno.email}</h2>
                 <h2 className='text-lg'>Telefone: {Aluno.telefone}</h2>
                 <div className='flex justify-center '>
       <a href="/secretaria/aluno/editar/id={Aluno.rm}"><button className=' mr-32 bg-green-700 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white' id='editarAluno'>Editar Aluno</button></a>

@@ -30,7 +30,7 @@ export default function HomeProf(){
     <Image className=" h-48 w-80 justify-center flex ml-5 mt-8"  alt="" src={professorpgn} />
     <div className="mt-8 justify-center">
     <a href="/professor/aulas"><button className=" dark:bg-green-700 hover:bg-green-800 text-white rounded-md h-10 w-full" type="button">Registrar Aula</button></a>
-       <a href="/secretaria/professor"><button className=" dark:bg-blue-600 hover:bg-blue-700 mt-4 text-white rounded-md h-10 w-full" type="button">Ver aulas registradas</button> </a>
+       <a href="/professor/aulas/registradas"><button className=" dark:bg-blue-600 hover:bg-blue-700 mt-4 text-white rounded-md h-10 w-full" type="button">Ver aulas registradas</button> </a>
        </div>
     </div>
     </div>

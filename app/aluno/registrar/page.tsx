@@ -1,9 +1,11 @@
 'use client'
-import React from "react";
+import React, { useEffect } from "react";
 import MyFade from "@/app/components/my-fade";
 import { ClipLoader } from "react-spinners";
 import MyBackdrop from "@/app/components/backdrop";
 import { NavbarAluno } from "@/app/components/navbar-aluno";
+import { API_URL } from "@/shared/constants/api";
+import api from "@/shared/utils/my-axios";
 
 
 export default function RegFrequencia(){
@@ -12,6 +14,19 @@ export default function RegFrequencia(){
     const [loading, setLoading] = React.useState(false);
         const [ok, setOk] = React.useState(false);
         const [showFeed, setShowFeed] = React.useState(false);
+        api.interceptors.request.use(config => {
+          // loga(log) uma mensagem antes da requisição HTTP ser enviada
+          console.log('A requisição foi enviada');
+          return config;
+        });
+        useEffect(()=>{
+          api.post(`${API_URL}/frequencia/cria-frequencia`)
+      
+          .then(response => {
+            setForm (response.data);
+            console.log(response.data);
+          })
+        },[])
         const atualizaForm = (e: { target: { nome: any; value: any; }; }) => {
           const { nome, value } = e.target;
           setForm({ ...form, [nome]: value })
@@ -20,7 +35,6 @@ export default function RegFrequencia(){
           e.preventDefault();
           setLoading(true);
           try{
-          const res = 
           
           setTimeout(() => {
             setLoading(false);

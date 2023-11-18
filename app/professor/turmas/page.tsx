@@ -3,9 +3,9 @@
 
 import React, { useEffect } from 'react'
 import { useParams } from 'next/navigation'
-import { NavbarSec } from '@/app/components/navbarsec'
 import { API_URL } from '@/shared/constants/api'
 import api from '@/shared/utils/my-axios'
+import { NavbarProf } from '@/app/components/navbarprof'
 
 
 type Turma = {
@@ -37,7 +37,7 @@ function TurmaProf() {
   return (
     <>
                 <title>Professor</title>
- <NavbarSec />      
+ <NavbarProf />      
  <main className='w-full flex-col justify-center h-full'>
  
         <h1 className=" text-center drop-shadow-xl text-gray-700 font-bold mt-20 mb-16 text-4xl">Selecionar turma</h1>
