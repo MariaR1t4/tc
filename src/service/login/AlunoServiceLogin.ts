@@ -34,7 +34,7 @@ class AlunoServiceLogin {
         const SenhaHasehd = Base64.stringify(hmacSHA512(hashDigest, privateKey ))
         const foundAluno = await AlunoRepository.findOneBy({ rm }); // quando for passar pra SenhaHashed (linha acima ☝️) colocar senha: SenhaHaseh
         if(foundAluno){
-        const token = jwt.sign({rm: foundAluno?.rm}, hide, {expiresIn: 300});
+        const token = jwt.sign({rm: foundAluno?.rm}, 'sua_senha', {expiresIn: 300});
         return token;}
         throw new Error("Aluno not found");
     }

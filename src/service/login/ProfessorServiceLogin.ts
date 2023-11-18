@@ -37,7 +37,7 @@ class ProfessorServiceLogin {
         const SenhaHasehd = Base64.stringify(hmacSHA512(hashDigest, privateKey ))
         const foundProf = await ProfessorRepository.findOneBy({ usuario}); // quando for passar pra SenhaHashed (linha acima ☝️) colocar senha: SenhaHaseh
         if(foundProf){
-        const token = jwt.sign({email: foundProf?.usuario, }, hide, {expiresIn: 300});
+        const token = jwt.sign({email: foundProf?.usuario, }, 'sua_senha', {expiresIn: 300});
         return token;}
         throw new Error("Professor not found");
     }

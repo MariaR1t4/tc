@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 import { hide } from "../../auth/constants";
 import UsuarioRepository from "../../models/entities/repositories/UsuarioRepository";
 import Usuario from "../../models/entities/Usuario";
+import { token } from "morgan";
 
 const google_login = Router();
 const client = new OAuth2Client();
@@ -37,9 +38,10 @@ google_login.post('/login',async (req, res) => {
         await UsuarioRepository.save(foundUser);
     }
     // 300s => 5 minutos . voce pode colocar mais tempo se quiser
-    const jwtToken = jwt.sign({ email: foundUser?.email, tipo: foundUser?.tipo }, hide, { expiresIn: 300 })
+    const jwtToken = jwt.sign({ email: foundUser?.email, tipo: foundUser?.tipo }, 'sua_senha', { expiresIn: 300 })
     const type = foundUser?.tipo
     res.json({ token: jwtToken, tipo: type})
+    })
 
-})
+    
 export default google_login
