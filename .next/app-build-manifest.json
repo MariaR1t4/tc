@@ -1,35 +1,15 @@
 {
   "pages": {
-    "/secretaria/turmas/layout": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/secretaria/turmas/layout.js"
+      "static/chunks/app/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
-    ],
-    "/secretaria/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/secretaria/layout.js"
-    ],
-    "/secretaria/turmas/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/secretaria/turmas/page.js"
-    ],
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
-    ],
-    "/secretaria/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/secretaria/page.js"
     ],
     "/professor/page": [
       "static/chunks/webpack.js",
@@ -41,55 +21,45 @@
       "static/chunks/main-app.js",
       "static/chunks/app/professor/layout.js"
     ],
-    "/secretaria/turmas/editar/page": [
+    "/aluno/registrar/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/secretaria/turmas/editar/page.js"
-    ],
-    "/professor/turmas/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/professor/turmas/page.js"
-    ],
-    "/professor/turmas/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/professor/turmas/layout.js"
-    ],
-    "/professor/aulas/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/professor/aulas/page.js"
-    ],
-    "/secretaria/turmas/editar/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/secretaria/turmas/editar/layout.js"
-    ],
-    "/professor/aulas/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/professor/aulas/layout.js"
-    ],
-    "/aluno/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/aluno/page.js"
+      "static/chunks/app/aluno/registrar/page.js"
     ],
     "/aluno/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/aluno/layout.js"
     ],
-    "/aluno/registrar/page": [
+    "/aluno/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/aluno/registrar/page.js"
+      "static/chunks/app/aluno/page.js"
     ],
     "/aluno/registrar/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/aluno/registrar/layout.js"
+    ],
+    "/secretaria/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/secretaria/layout.js"
+    ],
+    "/secretaria/professor/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/secretaria/professor/page.js"
+    ],
+    "/secretaria/professor/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/secretaria/professor/layout.js"
+    ],
+    "/secretaria/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/secretaria/page.js"
     ]
   }
 }
