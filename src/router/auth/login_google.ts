@@ -36,8 +36,9 @@ google_login.post('/login',async (req, res) => {
         await UsuarioRepository.save(foundUser);
     }
     // 300s => 5 minutos . voce pode colocar mais tempo se quiser
-    const jwtToken = jwt.sign({ email: foundUser?.email, tipo: foundUser?.tipo }, "SUA_SENHA", { expiresIn: 300 });
-    res.json({ token: jwtToken})
+    const jwtToken = jwt.sign({ email: foundUser?.email }, "SUA_SENHA", { expiresIn: 300 });
+    const tipos = foundUser?.tipo
+    res.json({ token: jwtToken, tipo:tipos})
 
 })
 export default google_login

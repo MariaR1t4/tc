@@ -44,9 +44,9 @@ app.use('/api/v1/secretaria/professor', professorRouter, );
 
 app.use('/api/v1/secretaria/turma', turmaRouter, )
 
-app.use('/api/v1', usuarioRouter)
+app.use('/api/v1/secretaria/usuario', usuarioRouter)
 
-/*app.use('/api/v1/secretaria/aluno', validatorSecretaria  );
+app.use('/api/v1/secretaria/aluno', validatorSecretaria  );
 
 app.use('/api/v1/aluno/frequencia', validatorAluno);
 
@@ -60,7 +60,10 @@ app.use('/api/v1/secretaria/prof-disciplina', validatorSecretaria );
 
 app.use('/api/v1/secretaria/professor', validatorSecretaria );
 
-app.use('/api/v1/secretaria/turma', validatorSecretaria )*/
+app.use('/api/v1/secretaria/turma', validatorSecretaria );
+
+app.use('/api/v1/secretaria/usuario', validatorSecretaria)
+
 
 app.use('/api/v1', google_login)
 

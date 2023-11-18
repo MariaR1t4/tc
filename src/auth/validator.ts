@@ -17,7 +17,7 @@ export  async function validatorAluno(req: Request, res: Response, next: NextFun
     (req as any).authUser = {id: token.id, rm: token.rm};
     console.log(req.headers.authUser);
     req.body.authUser = {rm: token.rm, id: token.id}
-    const email:string = "";
+    const email = req.params;
     const foundUsuario = await UsuarioRepository.findOneBy({email});
 
     if(foundUsuario){
@@ -43,7 +43,7 @@ export  async function validatorAluno(req: Request, res: Response, next: NextFun
         (req as any).authUser = {id: token.id};
         console.log(req.headers.authUser);
         req.body.authUser = {email: token.email}
-        const email:string = "";
+        const email = req.params;
         const foundUsuario = await UsuarioRepository.findOneBy({email});
     
         if(foundUsuario){
@@ -69,7 +69,7 @@ export  async function validatorAluno(req: Request, res: Response, next: NextFun
             (req as any).authUser = {id: token.id};
             console.log(req.headers.authUser);
             req.body.authUser = {email: token.email, id: token.id}
-            const email:string = "";
+            const email = req.params;
             const foundUsuario = await UsuarioRepository.findOneBy({email});
     
             if(foundUsuario){
