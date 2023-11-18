@@ -16,25 +16,25 @@
       "static/chunks/main-app.js",
       "static/chunks/app/professor/layout.js"
     ],
-    "/aluno/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/aluno/page.js"
-    ],
     "/aluno/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/aluno/layout.js"
     ],
-    "/aluno/registrar/page": [
+    "/aluno/frequencia/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/aluno/registrar/page.js"
+      "static/chunks/app/aluno/frequencia/page.js"
     ],
-    "/aluno/registrar/layout": [
+    "/aluno/frequencia/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/aluno/registrar/layout.js"
+      "static/chunks/app/aluno/frequencia/layout.js"
+    ],
+    "/not-found": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/not-found.js"
     ]
   }
 }
