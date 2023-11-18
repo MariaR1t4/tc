@@ -46,7 +46,7 @@ app.use('/api/v1/secretaria/professor', secretariaauth,professorRouter );
 
 app.use('/api/v1/secretaria/turma', secretariaauth,turmaRouter )
 
-app.use('/api/v1/secretaria/usuario',usuarioRouter)
+app.use('/api/v1/secretaria/usuario',secretariaauth ,usuarioRouter)
 
 app.use('/api/v1', google_login)
 

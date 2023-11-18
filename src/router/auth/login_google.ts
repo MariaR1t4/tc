@@ -1,7 +1,6 @@
 import { Router } from "express";
 import { OAuth2Client } from "google-auth-library";
 import jwt from 'jsonwebtoken';
-import { hide } from "../../auth/constants";
 import UsuarioRepository from "../../models/entities/repositories/UsuarioRepository";
 import Usuario from "../../models/entities/Usuario";
 import { token } from "morgan";
