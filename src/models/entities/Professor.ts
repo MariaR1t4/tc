@@ -27,7 +27,7 @@ class Professor {
 
   @OneToOne(() => Usuario)
   @JoinColumn()
-  N: Usuario;
+  usuario: Usuario;
 
   @CreateDateColumn()
   created_at: Date;

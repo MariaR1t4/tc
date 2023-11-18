@@ -33,7 +33,7 @@ export default class ProfessorService{
         if(professorAlterado){
             professorAlterado.nome = professor.nome;
             professorAlterado.telefone = professor.telefone;
-            professorAlterado.email = professor.email;
+            professorAlterado.usuario = professor.usuario;
             await ProfessorRepository.save(professorAlterado);
         }
         Promise.resolve();

@@ -13,10 +13,10 @@ import Aula from "./entities/Aula";
 
 export const AppDataSource = new DataSource({
     type: "mysql",
-    host: "localhost",
+    host: "fiectcc.c6hic1eh5cuk.us-east-1.rds.amazonaws.com",
     port: 3306,
-    username: "root",
-    password: "1234",
+    username: "admin",
+    password: "Fiec2023",
     database: "alumnus",
     synchronize: true,
     logging: true,

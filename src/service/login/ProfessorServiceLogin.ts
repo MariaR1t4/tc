@@ -20,7 +20,7 @@ class ProfessorServiceLogin {
     getProfessorFromData(email: Usuario, senha: string, nome:string, telefone:string) : Professor{
         const newProf = new Professor();
         newProf.nome = nome;
-        newProf.email = email;
+        newProf.usuario = email;
         newProf.telefone = telefone;
         const hashDigest = sha256(senha);
         logger.debug("HashAntes: ", hashDigest)
@@ -30,14 +30,14 @@ class ProfessorServiceLogin {
         return newProf;
     }
 
-    async loginProf(email: Usuario, senha: string ) : Promise<string>{
+    async loginProf(usuario: Usuario, senha: string ) : Promise<string>{
         const hashDigest = sha256(senha);
         logger.debug("HashAntes: ", hashDigest)
         const privateKey = "FIEC2023"
         const SenhaHasehd = Base64.stringify(hmacSHA512(hashDigest, privateKey ))
-        const foundProf = await ProfessorRepository.findOneBy({ email}); // quando for passar pra SenhaHashed (linha acima ☝️) colocar senha: SenhaHaseh
+        const foundProf = await ProfessorRepository.findOneBy({ usuario}); // quando for passar pra SenhaHashed (linha acima ☝️) colocar senha: SenhaHaseh
         if(foundProf){
-        const token = jwt.sign({email: foundProf?.email, }, hide, {expiresIn: 300});
+        const token = jwt.sign({email: foundProf?.usuario, }, hide, {expiresIn: 300});
         return token;}
         throw new Error("Professor not found");
     }
