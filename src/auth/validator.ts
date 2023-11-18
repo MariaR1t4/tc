@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import * as jwt from 'jsonwebtoken';
+import { string } from "zod/lib";
 import UsuarioRepository from "../models/entities/repositories/UsuarioRepository";
 import Usuario from "../models/entities/Usuario";
 
@@ -14,14 +15,17 @@ export  async function validatorAluno(req: Request, res: Response, next: NextFun
     const token = await jwt.verify(barearToken || '', hide) as any;
     console.log(token);
 
-    (req as any).authUser = {id: token.id, rm: token.rm};
+    (req as any).authUser = {id: token.id};
     console.log(req.headers.authUser);
-    req.body.authUser = {rm: token.rm, id: token.id}
-    const email = req.params;
+    req.body.authUser = {email: token.email}
+    const email = token.email;
     const foundUsuario = await UsuarioRepository.findOneBy({email});
 
     if(foundUsuario){
-        if(foundUsuario.tipo === "Aluno" || "aluno"){
+        if(foundUsuario.tipo == "Aluno"){
+        }
+        if(foundUsuario.tipo =="aluno"){
+        }{
             if(token) {
                 next();
                 return;
@@ -43,11 +47,18 @@ export  async function validatorAluno(req: Request, res: Response, next: NextFun
         (req as any).authUser = {id: token.id};
         console.log(req.headers.authUser);
         req.body.authUser = {email: token.email}
+<<<<<<< HEAD
         const email = req.params;
+=======
+        const email = token.email;
+>>>>>>> ce4c1bc4edd2913fc0829682b53ac18a7ff84e3e
         const foundUsuario = await UsuarioRepository.findOneBy({email});
     
         if(foundUsuario){
-            if(foundUsuario.tipo === "Professor" || "Professor"){
+            if(foundUsuario.tipo == "Professor"){
+            }
+            if(foundUsuario.tipo =="professor"){
+            }{
                 if(token) {
                     next();
                     return;
@@ -69,11 +80,18 @@ export  async function validatorAluno(req: Request, res: Response, next: NextFun
             (req as any).authUser = {id: token.id};
             console.log(req.headers.authUser);
             req.body.authUser = {email: token.email, id: token.id}
+<<<<<<< HEAD
             const email = req.params;
+=======
+            const email = token.email;
+>>>>>>> ce4c1bc4edd2913fc0829682b53ac18a7ff84e3e
             const foundUsuario = await UsuarioRepository.findOneBy({email});
     
             if(foundUsuario){
-                if(foundUsuario.tipo === "Secreataria" || "Secretaria"){
+                if(foundUsuario.tipo == "Secreataria"){
+                }
+                if(foundUsuario.tipo =="secretaria"){
+                }{
                     if(token) {
                         next();
                         return;

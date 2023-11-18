@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { AppDataSource } from "../models/DataBase";
 
 
 import Aula from "../models/entities/Aula";
