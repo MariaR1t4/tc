@@ -1,8 +1,11 @@
 {
   "/page": "app/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/secretaria/page": "app/secretaria/page.js",
   "/aluno/page": "app/aluno/page.js",
   "/professor/page": "app/professor/page.js",
-  "/secretaria/page": "app/secretaria/page.js",
-  "/secretaria/professor/page": "app/secretaria/professor/page.js",
-  "/aluno/registrar/page": "app/aluno/registrar/page.js"
+  "/secretaria/aluno/page": "app/secretaria/aluno/page.js",
+  "/secretaria/turmas/page": "app/secretaria/turmas/page.js",
+  "/aluno/registrar/page": "app/aluno/registrar/page.js",
+  "/secretaria/professor/page": "app/secretaria/professor/page.js"
 }

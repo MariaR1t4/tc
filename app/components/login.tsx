@@ -1,6 +1,7 @@
 "use client";
 
 import { GoogleLogin } from '@react-oauth/google';
+
 import logopng from "../../public/logo.png"
 import { CredentialResponse, GoogleOAuthProvider } from "@react-oauth/google";
 import Image from "next/image";
@@ -8,39 +9,50 @@ import React from "react";
 import { API_URL } from '@/shared/constants/api';
 import api from '@/shared/utils/my-axios';
 import { useRouter } from 'next/navigation';
+import { setCookie } from 'cookies-next';
+import { headers } from 'next/dist/client/components/headers';
 
 const Login = () => {
   const [willLogin, setWillLogin] = React.useState(false)
   const [loading, setLoading] = React.useState(false)
 
   const Router = useRouter()
+  
   const responseGoogle = async (response: any) => {
     setLoading(true)
+    
     
     try{console.log(response);
       const tokenId = response.credential;
       const clientId = response.clientId;
-      const fcmToken = localStorage.getItem('fcmToken');
+      const fcmToken = localStorage.getItem('fcmToken');   
+      
+      
 
     const logar = await api.post(`${API_URL}/login`, 
-    {token: tokenId, fcmToken}
+    {token: tokenId},{
+      headers: {
+        "authorization": response.token,
+        "tipo":response.tipo,
+      }
+    }
   )
-    const tipo_user = logar.data.tipo;
-    console.log(logar.data)
-    console.log(logar.data.tipo)
+    
 
-    if (tipo_user == "Aluno") {
+    const tipo_user = logar.data.tipo;
+    console.log(logar.data.token)
+    console.log(logar.data)
+    console.log(tipo_user)
+
+    setCookie('token', logar.data.token)
+    setCookie('tipo', logar.data.tipo)
+
+    if (tipo_user == "Aluno" || tipo_user == "aluno") {
       Router.push('/aluno')
-    } else if (tipo_user == "aluno") {
-      Router.push('/aluno')
-    } else if (tipo_user == "Secretaria" ) {
-      Router.push('/secretaria')  
-    } else if (tipo_user == "secretaria" ) {
+    } else if (tipo_user == "Secretaria" || tipo_user == "secretaria") {
       Router.push('/secretaria')
-    } else if (tipo_user == "Professor" ) {
-      Router.push('/professor')
-    } else if (tipo_user == "professor" ) {
-      Router.push('/professor')
+    } else if (tipo_user == "Professor" || tipo_user == "professor" ) {
+      Router.push('/professor')  
     }
       else 
       console.log("Deu ruim em irmão")

@@ -26,7 +26,7 @@ function Page(){
     const submit = async (e: any) => {
         setLoading(true);
         e.preventDefault();
-        const tokenResponse: TokenResponse = await axios.post(`${API_URL}/auth/login/professor`, form);
+        const tokenResponse: TokenResponse = await axios.post(`${API_URL}/login`);
 
        // localStorage.setItem("token", tokenResponse.data.token);
        setCookie('token', tokenResponse.data.token);

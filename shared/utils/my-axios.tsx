@@ -2,17 +2,18 @@ import axios from 'axios';
 import React from 'react'
 import { setCookie, getCookie } from 'cookies-next';
  
-const API_URL = "http://10.5.9.9:38000/"
+const API_URL = "http://192.168.15.5:38000/"
 
 const api = axios.create({
     baseURL: API_URL
 });
 api.interceptors.request.use(
     (config) => {
+            const tipo = getCookie('tipo')
             const token = getCookie('token')
             if(token){
-                config.headers['Authorization'] = `Bearer ${token}`;
-                console.log(token)
+                config.headers['authorization'] = `${token}`;
+                config.headers['tipo'] = `${tipo}`
             }
         return config
     },
@@ -21,7 +22,7 @@ api.interceptors.request.use(
     }
 )
 api.interceptors.response.use(resp =>{
-    console.log("OK");
+    console.log("Autorizado");
     return resp;
 }, (error)=>{
     console.log("Não Autorizado");
