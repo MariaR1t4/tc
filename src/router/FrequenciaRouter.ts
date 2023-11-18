@@ -7,7 +7,7 @@ const frequenciaRouter= Router();
 
 frequenciaRouter.post('/cria-frequencia',FrequenciaController.getInstance().saveFrequencia);
 frequenciaRouter.get('/lista-frequencia',FrequenciaController.getInstance().listFrequencia);
-frequenciaRouter.get('/encontra-frequencia/:id_frequencia',FrequenciaController.getInstance().findFrequencia);
+frequenciaRouter.get('/encontra-frequencia/:rm',FrequenciaController.getInstance().findFrequenciaByRm);
 frequenciaRouter.delete('/deleta-frequencia/:id_frequencia',FrequenciaController.getInstance().deleteFrequencia);
 frequenciaRouter.put('/edita-frequencia/:id_frequencia',FrequenciaController.getInstance().updateFrequencia);
 

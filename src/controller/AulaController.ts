@@ -41,7 +41,7 @@ export default class AulaController {
          res.json(await aulaService.findAulaById(id_aula));
     }catch(err){
         console.log(err)
-        return res.status(400).send({err:"nao foi possivel encontrar rm"})
+        return res.status(400).send({err:"nao foi possivel encontrar aula"})
     }
 }
     public async deleteAula(req: Request,res:Response){
