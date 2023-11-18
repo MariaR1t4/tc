@@ -3,27 +3,28 @@ import { initializeApp } from "firebase-admin/app";
 import { getMessaging } from "firebase-admin/messaging";
 import admin from 'firebase-admin';
 import {Router, Request, Response} from 'express';
+import dotenv from 'dotenv';
 import UsuarioRepository from "../../models/entities/repositories/UsuarioRepository";
 
-
+dotenv.config();
 const serviceAccount = require ('../../../serviceAccount.json');
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDFdan43fXzt2fHF7ep6qfcMlm907W-vMk",
-  authDomain: "alumnus-402118.firebaseapp.com",
-  projectId: "alumnus-402118",
-  storageBucket: "alumnus-402118.appspot.com",
-  messagingSenderId: "368441154494",
-  appId: "1:368441154494:web:2965eb0b8470d7ec7a77ef",
-  measurementId: "G-3M6SPN6028"
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECTID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASURMENT_ID
 };
 
 // Initialize Firebase
 
 const firebaseApp = initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://alumnus-402118-default-rtdb.firebaseio.com/"
+    databaseURL: process.env.FIREBASE_DATABASE
 });
 
 const messaging = getMessaging(firebaseApp);

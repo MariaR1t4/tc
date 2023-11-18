@@ -10,13 +10,16 @@ import ProfessorDisciplina from "./entities/ProfessorDisciplina";
 import  Matricula  from "./entities/Matricula";
 import Usuario from "./entities/Usuario";
 import Aula from "./entities/Aula";
+import dotenv from 'dotenv'
+
+dotenv.config();
 
 export const AppDataSource = new DataSource({
     type: "mysql",
-    host: "fiectcc.c6hic1eh5cuk.us-east-1.rds.amazonaws.com",
+    host: process.env.DB_HOST,
     port: 3306,
-    username: "admin",
-    password: "Fiec2023",
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
     database: "alumnus",
     synchronize: true,
     logging: true,

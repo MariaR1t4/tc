@@ -27,6 +27,8 @@ export default class ProfessorController {
   }
 
   public async listProfessor(req: Request, res: Response) {
+    
+
     try {
       const professorService = ProfessorService.getInstance();
       res.json(await professorService.listProfessor());
