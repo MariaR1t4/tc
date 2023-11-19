@@ -84,25 +84,13 @@ const Login = () => {
                 {"Entre em sua conta"}  
               </h1>
               <form className="space-y-4 md:space-y-6" >
-                  <div className='-mt-3'> 
-                      <label  htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" >Digite seu email institucional:</label>
-                      <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="abc@mail.com"  required />
-                  </div>
-                  <div>
-                      <label htmlFor="senha" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Insira sua senha:</label>
-                      <input type="password" name="senha" id="senha" placeholder="*******" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  required />
-                  </div>
-                  <div className="flex items-center justify-between">
-                      <a href="#" className="text-sm -mt-4 font-medium text-primary-600 hover:underline text-white ">Esqueceu a senha?</a>
-                  </div>
-        
                   <div className=" rounded-md border-solid w-full h-12">
-                <button type="submit" className="w-full text-white h-full bg-green-500 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Ingressar</button>
                   </div>
                   <div className="ml-20 mb-10">
           {willLogin ? 
           <GoogleLogin onSuccess={responseGoogle} ></GoogleLogin> :
-          <button onClick={login} type="submit" className='text-sm -mt-8 font-medium text-primary-600 hover:underline text-white'>Login com </button> }
+          <button onClick={login} type="submit" className='text-sm -mt-8 font-medium text-primary-600 hover:underline text-white'>Login com </button> 
+          }
         </div>
               </form>
           </div>

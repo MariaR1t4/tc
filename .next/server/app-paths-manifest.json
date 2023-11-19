@@ -1,4 +1,40 @@
 {
+<<<<<<< HEAD
   "/page": "app/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js"
+=======
+<<<<<<< HEAD
+  "/page": "app/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/auth/page": "app/auth/page.js",
+  "/about/page": "app/about/page.js",
+  "/aluno/page": "app/aluno/page.js",
+  "/cadastro/page": "app/cadastro/page.js",
+  "/secretaria/page": "app/secretaria/page.js",
+  "/professor/page": "app/professor/page.js",
+  "/teste/page": "app/teste/page.js",
+  "/aluno/frequencia/page": "app/aluno/frequencia/page.js",
+  "/aluno/perfil/page": "app/aluno/perfil/page.js",
+  "/aluno/registrar/page": "app/aluno/registrar/page.js",
+  "/professor/aulas/page": "app/professor/aulas/page.js",
+  "/professor/perfil/page": "app/professor/perfil/page.js",
+  "/professor/turmas/page": "app/professor/turmas/page.js",
+  "/secretaria/aluno/page": "app/secretaria/aluno/page.js",
+  "/secretaria/config/page": "app/secretaria/config/page.js",
+  "/secretaria/professor/page": "app/secretaria/professor/page.js",
+  "/secretaria/turmas/page": "app/secretaria/turmas/page.js",
+  "/professor/aulas/registradas/page": "app/professor/aulas/registradas/page.js",
+  "/secretaria/aluno/editar/page": "app/secretaria/aluno/editar/page.js",
+  "/secretaria/aluno/alunos/page": "app/secretaria/aluno/alunos/page.js",
+  "/secretaria/aluno/registrar/page": "app/secretaria/aluno/registrar/page.js",
+  "/secretaria/config/suporte/page": "app/secretaria/config/suporte/page.js",
+  "/secretaria/config/redsenha/page": "app/secretaria/config/redsenha/page.js",
+  "/secretaria/professor/editar/page": "app/secretaria/professor/editar/page.js",
+  "/secretaria/professor/registrar/page": "app/secretaria/professor/registrar/page.js",
+  "/secretaria/turmas/editar/page": "app/secretaria/turmas/editar/page.js",
+  "/secretaria/turmas/registrar/page": "app/secretaria/turmas/registrar/page.js"
+
+  "/page": "app/page.js"
+
+
 }

@@ -1,15 +1,450 @@
 {
   "pages": {
+    "/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/3222-8aa0d52b0494149c.js",
+      "static/chunks/6750-07747bad4d3771a3.js",
+      "static/chunks/3034-c2e95304e6632c56.js",
+      "static/chunks/app/page-b4ff7fd255c6d6ae.js"
+    ],
     "/layout": [
+<<<<<<< HEAD
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/css/9c7f925376eb93fc.css",
+      "static/chunks/app/layout-a45d74953dc04b65.js"
+    ],
+    "/auth/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/auth/page-18d5732d720f541a.js"
+    ],
+    "/about/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/about/page-3267da8691a314b6.js"
+    ],
+    "/about/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/about/layout-34a9415a983c99f7.js"
+    ],
+    "/aluno/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/3222-8aa0d52b0494149c.js",
+      "static/chunks/app/aluno/page-95a51800f4318ba9.js"
+    ],
+    "/aluno/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/aluno/layout-3d60f2e17def91eb.js"
+    ],
+    "/cadastro/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/cadastro/page-78423b8e4ac8e32c.js"
+    ],
+    "/cadastro/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/cadastro/layout-61294159b35179be.js"
+    ],
+    "/secretaria/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/3222-8aa0d52b0494149c.js",
+      "static/chunks/app/secretaria/page-f9373c11343a3d30.js"
+    ],
+    "/secretaria/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/secretaria/layout-d2fedec29f33cf9e.js"
+    ],
+    "/professor/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/3222-8aa0d52b0494149c.js",
+      "static/chunks/app/professor/page-55b7b0798b7bae75.js"
+    ],
+    "/professor/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/professor/layout-ab105e2592705a16.js"
+    ],
+    "/teste/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/teste/page-baf2f2a2a79b9e8d.js"
+    ],
+    "/teste/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/teste/layout-9b2fd299c7a9ffd7.js"
+    ],
+    "/aluno/frequencia/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/3222-8aa0d52b0494149c.js",
+      "static/chunks/6750-07747bad4d3771a3.js",
+      "static/chunks/app/aluno/frequencia/page-77b8c5a8bfa56765.js"
+    ],
+    "/aluno/frequencia/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/aluno/frequencia/layout-992534d851ce9c5f.js"
+    ],
+    "/aluno/perfil/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/3222-8aa0d52b0494149c.js",
+      "static/chunks/6750-07747bad4d3771a3.js",
+      "static/chunks/app/aluno/perfil/page-f2aaf5064bcb0c98.js"
+    ],
+    "/aluno/perfil/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/aluno/perfil/layout-34d77e3000377f85.js"
+    ],
+    "/aluno/registrar/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/3222-8aa0d52b0494149c.js",
+      "static/chunks/8973-fa1cdb3f547b7294.js",
+      "static/chunks/app/aluno/registrar/page-2ec3d853e1765f84.js"
+    ],
+    "/aluno/registrar/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/aluno/registrar/layout-7a26815ef417d7ef.js"
+    ],
+    "/professor/aulas/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/professor/aulas/layout-086d0cb072966597.js"
+    ],
+    "/professor/aulas/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/6750-07747bad4d3771a3.js",
+      "static/chunks/app/professor/aulas/page-5ddb9ffe67f43bdc.js"
+    ],
+    "/professor/perfil/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/professor/perfil/page-5a75615b9e206af4.js"
+    ],
+    "/professor/perfil/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/professor/perfil/layout-75d7dac670041806.js"
+    ],
+    "/professor/turmas/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/3222-8aa0d52b0494149c.js",
+      "static/chunks/6750-07747bad4d3771a3.js",
+      "static/chunks/app/professor/turmas/page-9d397d0025b5259d.js"
+    ],
+    "/professor/turmas/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/professor/turmas/layout-468de6b1540545a0.js"
+    ],
+    "/secretaria/aluno/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/3222-8aa0d52b0494149c.js",
+      "static/chunks/6750-07747bad4d3771a3.js",
+      "static/chunks/app/secretaria/aluno/page-c2240a89706994fa.js"
+    ],
+    "/secretaria/aluno/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/secretaria/aluno/layout-0fc0938bc3867efb.js"
+    ],
+    "/secretaria/config/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/3222-8aa0d52b0494149c.js",
+      "static/chunks/app/secretaria/config/page-9e347fa7e033965d.js"
+    ],
+    "/secretaria/config/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/secretaria/config/layout-fddea0cc2b35f56f.js"
+    ],
+    "/secretaria/professor/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/3222-8aa0d52b0494149c.js",
+      "static/chunks/6750-07747bad4d3771a3.js",
+      "static/chunks/1283-06185210515008d4.js",
+      "static/chunks/app/secretaria/professor/page-defe7f1eb55c2a12.js"
+    ],
+    "/secretaria/professor/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/secretaria/professor/layout-5ebbeed27a5211df.js"
+    ],
+    "/secretaria/turmas/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/3222-8aa0d52b0494149c.js",
+      "static/chunks/6750-07747bad4d3771a3.js",
+      "static/chunks/app/secretaria/turmas/page-dda326703eaa4f11.js"
+    ],
+    "/secretaria/turmas/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/secretaria/turmas/layout-fadba9d12fda867e.js"
+    ],
+    "/professor/aulas/registradas/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/3222-8aa0d52b0494149c.js",
+      "static/chunks/6750-07747bad4d3771a3.js",
+      "static/chunks/app/professor/aulas/registradas/page-3913e997aeae64f5.js"
+    ],
+    "/professor/aulas/registradas/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/professor/aulas/registradas/layout-b041978b1eb4c375.js"
+    ],
+    "/secretaria/aluno/editar/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/4b1a69f1-e696a071f352243c.js",
+      "static/chunks/3222-8aa0d52b0494149c.js",
+      "static/chunks/6750-07747bad4d3771a3.js",
+      "static/chunks/5942-20eaa5bbf48f6e93.js",
+      "static/chunks/app/secretaria/aluno/editar/page-ff32c2b40d331595.js"
+    ],
+    "/secretaria/aluno/editar/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/secretaria/aluno/editar/layout-5ea6c0cfc69076e7.js"
+    ],
+    "/secretaria/aluno/alunos/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/3222-8aa0d52b0494149c.js",
+      "static/chunks/6750-07747bad4d3771a3.js",
+      "static/chunks/app/secretaria/aluno/alunos/page-24f3d611bac5065e.js"
+    ],
+    "/secretaria/aluno/alunos/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/secretaria/aluno/alunos/layout-2061a87b8c32bba7.js"
+    ],
+    "/secretaria/aluno/registrar/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/3222-8aa0d52b0494149c.js",
+      "static/chunks/6750-07747bad4d3771a3.js",
+      "static/chunks/8973-fa1cdb3f547b7294.js",
+      "static/chunks/app/secretaria/aluno/registrar/page-4af0b4cad9fa31c0.js"
+    ],
+    "/secretaria/aluno/registrar/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/secretaria/aluno/registrar/layout-cd4f69b62ff2b92a.js"
+    ],
+    "/secretaria/config/suporte/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/3222-8aa0d52b0494149c.js",
+      "static/chunks/app/secretaria/config/suporte/page-b53454f00f793c2f.js"
+    ],
+    "/secretaria/config/suporte/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/secretaria/config/suporte/layout-9bd7fc905111d970.js"
+    ],
+    "/secretaria/config/redsenha/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/3222-8aa0d52b0494149c.js",
+      "static/chunks/app/secretaria/config/redsenha/page-1754597389ad13fe.js"
+    ],
+    "/secretaria/config/redsenha/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/secretaria/config/redsenha/layout-8c3c47893a752837.js"
+    ],
+    "/secretaria/professor/editar/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/3222-8aa0d52b0494149c.js",
+      "static/chunks/6750-07747bad4d3771a3.js",
+      "static/chunks/app/secretaria/professor/editar/page-6903654ebbf05a3a.js"
+    ],
+    "/secretaria/professor/editar/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/secretaria/professor/editar/layout-6997a1efe33ec74c.js"
+    ],
+    "/secretaria/professor/registrar/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/3222-8aa0d52b0494149c.js",
+      "static/chunks/6750-07747bad4d3771a3.js",
+      "static/chunks/8973-fa1cdb3f547b7294.js",
+      "static/chunks/app/secretaria/professor/registrar/page-04eb80437bf49541.js"
+    ],
+    "/secretaria/professor/registrar/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/secretaria/professor/registrar/layout-a169af1396e31966.js"
+    ],
+    "/secretaria/turmas/editar/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/3222-8aa0d52b0494149c.js",
+      "static/chunks/6750-07747bad4d3771a3.js",
+      "static/chunks/app/secretaria/turmas/editar/page-c35612f28207bb22.js"
+    ],
+    "/secretaria/turmas/editar/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/secretaria/turmas/editar/layout-9c15236814501d7f.js"
+    ],
+    "/secretaria/turmas/registrar/page": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/3222-8aa0d52b0494149c.js",
+      "static/chunks/6750-07747bad4d3771a3.js",
+      "static/chunks/app/secretaria/turmas/registrar/page-d3082c58ab560cdf.js"
+    ],
+    "/secretaria/turmas/registrar/layout": [
+      "static/chunks/webpack-32f393fd1f05e5ec.js",
+      "static/chunks/fd9d1056-2f994a1e9cf19410.js",
+      "static/chunks/596-c78e1daa94b6573e.js",
+      "static/chunks/main-app-316b14640fe1c0af.js",
+      "static/chunks/app/secretaria/turmas/registrar/layout-e2e7151a647af796.js"
+=======
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
+<<<<<<< HEAD
     ],
     "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/page.js"
+=======
+>>>>>>> f3fe6402911bb1d16908356a7c3f0beeb9e3ee99
+>>>>>>> 3772983bb3b37f15d015cfbb432b3c1373a35cf4
     ]
   }
 }
