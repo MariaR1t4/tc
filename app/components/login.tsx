@@ -10,7 +10,6 @@ import { API_URL } from '@/shared/constants/api';
 import api from '@/shared/utils/my-axios';
 import { useRouter } from 'next/navigation';
 import { setCookie } from 'cookies-next';
-import { headers } from 'next/dist/client/components/headers';
 
 const Login = () => {
   const [willLogin, setWillLogin] = React.useState(false)

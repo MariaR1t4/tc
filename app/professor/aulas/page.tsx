@@ -25,6 +25,15 @@ type Professor = {
     name: string;
     teacherId: number;
   };
+
+
+  useEffect(()=>{
+    api.get( `${API_URL}/secretaria/professor/lista-professor`)
+
+    .then(response => {
+      console.log(response.data);
+    })
+  },[])
   
   const professores: Professor[] = [
     { id: 1, name: 'Adileine' },
