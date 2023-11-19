@@ -15,28 +15,29 @@ type Aulas = {
 };
 
 type Professor = {
-  id: number;
-  name: string;
-};
-
-type Materias = {
-  id: number;
-  name: string;
-  teacherId: number;
-};
-
-const professores: Professor[] = [
-  { id: 1, name: "Adileine" },
-  { id: 2, name: "Fillipe" },
-  { id: 3, name: "Robson" },
-];
-
-const materias: Materias[] = [
-  { id: 1, name: "Banco de Dados", teacherId: 1 },
-  { id: 2, name: "Projetos", teacherId: 1 },
-  { id: 3, name: "LPIII", teacherId: 2 },
-  { id: 4, name: "Segurança", teacherId: 3 },
-];
+    id: number;
+    name: string;
+  };
+  
+  type Materias = {
+    id: number;
+    name: string;
+    teacherId: number;
+  };
+  
+  const professores: Professor[] = [
+    { id: 1, name: 'Adileine' },
+    { id: 2, name: 'Fillipe' },
+    { id: 3, name: 'Robson' },
+  ];
+  
+  const materias: Materias[] = [
+    { id: 1, name: 'Banco de Dados', teacherId: 1 },
+    { id: 2, name: 'Projetos', teacherId: 1 },
+    { id: 3, name: 'LPIII', teacherId: 2 },
+    { id: 4, name: 'Segurança', teacherId: 3 },
+  ];
+  
 
 export default function RegistroAula() {
   const [form, setForm] = React.useState({
@@ -84,8 +85,7 @@ export default function RegistroAula() {
         <h1 className=" text-center text-gray-700 font-bold mt-20 text-4xl">
           Cadastrar Aula
         </h1>
-        <form
-          className=" w-1/3 h-full gap-2 flex flex-col ml-auto mr-auto mt-24"
+        <form className=" w-1/3 h-full gap-2 flex flex-col ml-auto mr-auto mt-24"
           onSubmit={enviarParaoBd}
         >
           <div className="relative z-0 w-full mb-6 group">

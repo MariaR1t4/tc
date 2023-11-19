@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "/page": "app/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
   "/auth/page": "app/auth/page.js",
@@ -28,4 +29,7 @@
   "/secretaria/professor/registrar/page": "app/secretaria/professor/registrar/page.js",
   "/secretaria/turmas/editar/page": "app/secretaria/turmas/editar/page.js",
   "/secretaria/turmas/registrar/page": "app/secretaria/turmas/registrar/page.js"
+=======
+  "/page": "app/page.js"
+>>>>>>> f3fe6402911bb1d16908356a7c3f0beeb9e3ee99
 }

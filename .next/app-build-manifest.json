@@ -11,6 +11,7 @@
       "static/chunks/app/page-b4ff7fd255c6d6ae.js"
     ],
     "/layout": [
+<<<<<<< HEAD
       "static/chunks/webpack-32f393fd1f05e5ec.js",
       "static/chunks/fd9d1056-2f994a1e9cf19410.js",
       "static/chunks/596-c78e1daa94b6573e.js",
@@ -430,6 +431,12 @@
       "static/chunks/596-c78e1daa94b6573e.js",
       "static/chunks/main-app-316b14640fe1c0af.js",
       "static/chunks/app/secretaria/turmas/registrar/layout-e2e7151a647af796.js"
+=======
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+>>>>>>> f3fe6402911bb1d16908356a7c3f0beeb9e3ee99
     ]
   }
 }
