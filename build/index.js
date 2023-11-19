@@ -1,0 +1,45 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+require("reflect-metadata");
+const express_1 = __importDefault(require("express"));
+const morgan_1 = __importDefault(require("morgan"));
+const cors_1 = __importDefault(require("cors"));
+const AlunoRouter_1 = __importDefault(require("./router/AlunoRouter"));
+const DisciplinaRouter_1 = __importDefault(require("./router/DisciplinaRouter"));
+const ProfessorDisciplinaRouter_1 = __importDefault(require("./router/ProfessorDisciplinaRouter"));
+const ProfessorRouter_1 = __importDefault(require("./router/ProfessorRouter"));
+const UsuarioRouter_1 = __importDefault(require("./router/UsuarioRouter"));
+const DataBase_1 = require("./models/DataBase");
+const TurmaRouter_1 = __importDefault(require("./router/TurmaRouter"));
+const FrequenciaRouter_1 = __importDefault(require("./router/FrequenciaRouter"));
+const AulaRouter_1 = __importDefault(require("./router/AulaRouter"));
+const login_google_1 = __importDefault(require("./router/auth/login_google"));
+const firebase_1 = __importDefault(require("./router/auth/firebase"));
+const auth_1 = require("./auth/auth");
+const cookie_parser_1 = __importDefault(require("cookie-parser"));
+const app = (0, express_1.default)();
+const port = 38000;
+app.use(express_1.default.json());
+app.use((0, cors_1.default)());
+app.use((0, cookie_parser_1.default)());
+//app.use(express.static('front'));
+app.use((0, morgan_1.default)('combined'));
+//app.use('/app', express.static(path.join(__dirname, 'src')))
+app.use('/api/v1/secretaria/aluno', auth_1.secretariaauth, AlunoRouter_1.default);
+app.use('/api/v1/aluno/frequencia', auth_1.alunoAtuh, FrequenciaRouter_1.default);
+app.use('/api/v1/professor/aula', auth_1.professorauth, AulaRouter_1.default);
+app.use('/api/v1/secretaria/disciplina', auth_1.secretariaauth, DisciplinaRouter_1.default);
+app.use('/api/v1/frequencia', auth_1.professorauth, FrequenciaRouter_1.default);
+app.use('/api/v1/secretaria/prof-disciplina', ProfessorDisciplinaRouter_1.default);
+app.use('/api/v1/secretaria/professor', auth_1.secretariaauth, ProfessorRouter_1.default);
+app.use('/api/v1/secretaria/turma', auth_1.secretariaauth, TurmaRouter_1.default);
+app.use('/api/v1/secretaria/usuario', auth_1.secretariaauth, UsuarioRouter_1.default);
+app.use('/api/v1', login_google_1.default);
+app.use('/api/v1', firebase_1.default);
+app.listen(port, () => {
+    console.log(`Servidor iniciado em http://localhost:${port}`);
+    DataBase_1.AppDataSource.initialize().then(r => console.log('Banco de Dados iniciado'));
+});

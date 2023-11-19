@@ -30,7 +30,7 @@ export function NavbarSec(){
           <a href="/secretaria/aluno" className="py-2 pl-3 pr-4 transition ease-in duration-100 hover:-translate-y-1  text-gray-900 rounded  flex flex-row gap-1 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"><UserSquare2Icon /> Aluno</a>
         </li>
         <li>
-          <a href="/secretaria/config" className="py-2 pl-3 pr-4 transition mr-12 ease-in duration-100 hover:-translate-y-1 text-gray-900 rounded ml-20 flex flex-row gap-1 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"><SettingsIcon /></a>
+          <a href="/" className="py-2 pl-3 pr-4 text-gray-900 mr-12 rounded ml-20 flex flex-row gap-1 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-red-500 md:dark:hover:text-gray-50 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"><LogOutIcon /></a>
         </li>
       </ul>
     </div>
