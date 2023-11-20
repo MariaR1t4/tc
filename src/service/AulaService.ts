@@ -44,7 +44,10 @@ export default class AulaService{
             description: res.descricao,
             nomeProfessor: res.professor_disciplina.id_professor.nome,
             nomeDisciplina: res.professor_disciplina.id_disciplina.descricao,
-            nomeAula: res.professor_disciplina.id_turma.descricao,
+            nomeTurma: res.professor_disciplina.id_turma.curso,
+            id_turma: res.professor_disciplina.id_turma,
+            id_professor: res.professor_disciplina.id_professor,
+            id_disciplina: res.professor_disciplina.id_disciplina
         }));
         
         

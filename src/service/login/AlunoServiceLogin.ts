@@ -40,7 +40,7 @@ class AlunoServiceLogin {
         await AlunoRepository.save(newAluno);
     }*/
 
-    async signUpAlunosInBatch(req: Request){
+    /*async signUpAlunosInBatch(req: Request){
         const file = req.file;
         const Alunos : Aluno[] = [];
         

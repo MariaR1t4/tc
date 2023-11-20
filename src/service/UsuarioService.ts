@@ -3,8 +3,10 @@ import * as jwt from "jsonwebtoken";
 import csvParser from "csv-parser";
 import { Request, Response } from "express";
 
-import Usuario from "../../models/entities/Usuario";
-import UsuarioRepository from "../../models/entities/repositories/UsuarioRepository";
+
+import Usuario from "../models/entities/Usuario";
+import UsuarioRepository from "../models/entities/repositories/UsuarioRepository";
+import { parse } from "url";
 
 class UsuarioService {
   private constructor() {}
@@ -59,9 +61,22 @@ class UsuarioService {
           usuario.push(this.getUserfromData(data.email, data.tipo))
           )
           .on("end", () => {
-            console.log(usuario);
-            UsuarioRepository.insert(usuario);
-        })
+            
+            try{
+              for(const row of usuario){
+                  let email:string | undefined;
+                  if('email' in row){
+                    email = row['email']
+                  }
+                  
+                  }
+                  
+                  UsuarioRepository.save(usuario);
+              }
+            
+              finally{
+
+              }})
     }
   }
 }

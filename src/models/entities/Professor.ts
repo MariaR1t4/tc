@@ -12,6 +12,7 @@ import {
 } from "typeorm";
 import { v4 } from "uuid";
 import Usuario from "./Usuario";
+import { type } from "os";
 v4();
 
 @Entity()

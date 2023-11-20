@@ -1,6 +1,7 @@
 
 import { Request, Response } from "express";
-import UsuarioService from "../service/login/UsuarioService";
+import UsuarioService from "../service/UsuarioService";
+
 
 export default class UsuarioController {
     private static instance: UsuarioController;
@@ -53,7 +54,6 @@ export default class UsuarioController {
     public async cadastroBatch(req: Request,res:Response){
       console.log(req.file);
       await UsuarioService.getInstance().signUpInBatch(req);
-      res.json('usuario');
     }
 }
 

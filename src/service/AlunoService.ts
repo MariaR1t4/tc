@@ -1,10 +1,25 @@
+import csv from "csv-parser";
+import fs from 'fs';
+import {Request} from 'express';
 import Aluno from "../models/entities/Aluno";
 import AlunoRepository from "../models/entities/repositories/AlunoRepository";
+import Usuario from "../models/entities/Usuario";
+import csvParser from "csv-parser";
 
 export default class AlunoService{
     private constructor(){
 
     }
+
+    getAlunoFromData(rm: number,  nome:string, telefone:string, usuario:Usuario) : Aluno{
+        const newAluno = new Aluno();
+        newAluno.rm = rm;
+        newAluno.nome = nome;
+        newAluno.telefone = telefone;
+        newAluno.usuario = usuario;
+        return newAluno;
+    }
+
     criaAluno(aluno: Aluno[]) {
         throw new Error('Aluno não foi criado');
     }
@@ -39,5 +54,21 @@ export default class AlunoService{
         }
         Promise.resolve();
     }
+
+    async cadastraBatchAluno(req: Request) {
+        const file = req.file;
+        const aluno: Aluno[] = [];
+        if (file != null) {
+          fs.createReadStream(file.path)
+            .pipe(csvParser({separator : ';'}))
+            .on("data", (data) =>
+              aluno.push(this.getAlunoFromData(data.rm, data.nome, data.telefone, data.usuario))
+              )
+              .on("end", () => {
+                console.log(aluno)
+                AlunoRepository.save(aluno);
+            })
+        }
+      }
     
 }

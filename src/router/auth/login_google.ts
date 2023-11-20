@@ -45,11 +45,14 @@ google_login.post('/login',async (req, res) => {
     const jwtToken = jwt.sign({ email: foundUser?.email, tipo: foundUser?.tipo }, 'sua_senha', { expiresIn: 300 })
     const type = foundUser?.tipo
     
-    if(type == 'Professor'|| type == 'professor'){
-        const =; 
-        const foundProf = await ProfessorRepository.
+    /*if(type == 'Professor'|| type == 'professor'){
+        const foundUser = UsuarioRepository.findOneBy({email})
+        const string = foundUser.toString();
+        const usuario = string.email;
+        const foundProf = await ProfessorRepository.findOneBy({usuario})
+        const nomeprof = foundProf?.nome
         res.json({ token: jwtToken, tipo: type, nome: nomeprof})
-    } else 
+    } else*/
 
     res.json({token: jwtToken, tipo: type})
 

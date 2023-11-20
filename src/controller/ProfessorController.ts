@@ -1,7 +1,6 @@
 import ProfessorService from "../service/ProfessorService";
 
 import { Request, Response } from "express";
-import ProfessorServiceLogin from "../service/login/ProfessorServiceLogin";
 
 export default class ProfessorController {
   private static instance: ProfessorController;
@@ -27,8 +26,6 @@ export default class ProfessorController {
   }
 
   public async listProfessor(req: Request, res: Response) {
-    
-
     try {
       const professorService = ProfessorService.getInstance();
       res.json(await professorService.listProfessor());
@@ -74,7 +71,7 @@ export default class ProfessorController {
 
   public async singUpBatchProfessor(req: Request, res: Response){
     console.log(req.file);
-    await new ProfessorServiceLogin().signUpProfessorInBatch(req);
-    res.json('ok')
+    await ProfessorService.getInstance().cadastraBatchProfessor(req);
+    
   }
 }

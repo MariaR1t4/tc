@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 
 import AlunoService from "../service/AlunoService";
 import AlunoServiceLogin from "../service/login/AlunoServiceLogin";
+import { createReadStream } from "fs";
+import csvParser from "csv-parser";
 
 export default class AlunoController {
   private static instance: AlunoController;
@@ -75,7 +77,8 @@ export default class AlunoController {
 
   public async singUpBatchAluno(req: Request, res: Response){
     console.log(req.file);
-    await new AlunoServiceLogin().signUpAlunosInBatch(req);
-    res.json('ok')
+    await AlunoService.getInstance().cadastraBatchAluno(req);
+    res.json('bora lá')
   }
-}
+
+  }
