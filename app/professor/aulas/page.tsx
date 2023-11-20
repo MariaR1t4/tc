@@ -15,27 +15,27 @@ type Aulas = {
 };
 
 type Professor = {
-    id: number;
-    name: string;
+    id_professor: string;
+    nome: string;
   };
   
   type Materias = {
-    id: number;
+    id_disciplina: string;
     name: string;
-    teacherId: number;
+    id_professor: string;
   };
   
   const professores: Professor[] = [
-    { id: 1, name: 'Adileine' },
-    { id: 2, name: 'Fillipe' },
-    { id: 3, name: 'Robson' },
+    { id_professor: 'c743b662-c046-4c29-91f3-73241007a417', nome: 'Adileine' },
+    { id_professor: '3abbd7e5-1a73-4b63-95cc-0671cf30850e', nome: 'Fillipe' },
+    { id_professor: 'ccf94a30-3da8-4f6d-81a4-598faf72ba8e', nome: 'Robson' },
   ];
   
   const materias: Materias[] = [
-    { id: 1, name: 'Banco de Dados', teacherId: 1 },
-    { id: 2, name: 'Projetos', teacherId: 1 },
-    { id: 3, name: 'LPIII', teacherId: 2 },
-    { id: 4, name: 'Segurança', teacherId: 3 },
+    { id_disciplina: '7268a143-0e7f-46e0-b722-937912189ae6', name: 'Banco de Dados', id_professor: 'c743b662-c046-4c29-91f3-73241007a417' },
+    { id_disciplina: '6f883323-f23f-4dcd-b8ce-cd00a8ec805c', name: 'Projetos',id_professor: 'c743b662-c046-4c29-91f3-73241007a417'},
+    { id_disciplina: '23cccc7d-3406-42a8-807e-cf42992a525d', name: 'LPIII',id_professor: '3abbd7e5-1a73-4b63-95cc-0671cf30850e'},
+    { id_disciplina: '6f883323-f23f-4dcd-b8ce-cd00a8ec805c', name: 'Segurança', id_professor: 'ccf94a30-3da8-4f6d-81a4-598faf72ba8e' },
   ];
   
 
@@ -58,7 +58,6 @@ export default function RegistroAula() {
     try {
       console.log(form);
       const res = await api.post(`${API_URL}/professor/aula/cria-aula`, form);
-      console.log();
       console.log(res.data);
       setTimeout(() => {
         setLoading(false);
