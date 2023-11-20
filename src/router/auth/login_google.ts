@@ -4,6 +4,10 @@ import jwt from 'jsonwebtoken';
 import UsuarioRepository from "../../models/entities/repositories/UsuarioRepository";
 import Usuario from "../../models/entities/Usuario";
 import { token } from "morgan";
+import ProfessorRepository from "../../models/entities/repositories/ProfessorRepository";
+import { string } from "zod";
+import { equal } from "assert";
+import { Equal } from "typeorm";
 
 const google_login = Router();
 const client = new OAuth2Client();
@@ -36,10 +40,20 @@ google_login.post('/login',async (req, res) => {
         
         await UsuarioRepository.save(foundUser);
     }
+
     // 300s => 5 minutos . voce pode colocar mais tempo se quiser
     const jwtToken = jwt.sign({ email: foundUser?.email, tipo: foundUser?.tipo }, 'sua_senha', { expiresIn: 300 })
     const type = foundUser?.tipo
-    res.json({ token: jwtToken, tipo: type})
+    
+    if(type == 'Professor'|| type == 'professor'){
+        const =; 
+        const foundProf = await ProfessorRepository.
+        res.json({ token: jwtToken, tipo: type, nome: nomeprof})
+    } else 
+
+    res.json({token: jwtToken, tipo: type})
+
+    
     })
 
     

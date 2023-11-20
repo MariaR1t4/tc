@@ -29,6 +29,9 @@ export default class FrequenciaService {
       if (buscar_aula == null || numero == null) {
         return "nao encontrado";
       } else 
+      setTimeout(()=>
+        (`${buscar_aula}` ), 5*60*1000
+      )
       NewFrequencia.id_aula = buscar_aula.id_aula;
       NewFrequencia.rm = numero;
       NewFrequencia.data_frequencia = data_frequencia;

@@ -56,7 +56,7 @@ export default class ProfessorController {
       await professorService.deleteProfessor(id_professor);
       res.json("Professor deletado");
     } catch (err) {
-      return res.json(400).send({ erro: "Não foi possivel criar professor" });
+      return res.json(400).send({ erro: "Não foi possivel deletar professor" });
     }
   }
 

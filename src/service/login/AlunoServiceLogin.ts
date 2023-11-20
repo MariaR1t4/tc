@@ -8,26 +8,22 @@ import Base64 from 'crypto-js/enc-base64';
 import * as jwt from 'jsonwebtoken';
 import csvParser from "csv-parser";
 
-
 import Aluno from "../../models/entities/Aluno";
 import AlunoRepository from "../../models/entities/repositories/AlunoRepository";
-import { hide } from "../../auth/constants";
 import logger from "../../configs/logger"
+import Usuario from "../../models/entities/Usuario";
 class AlunoServiceLogin {
 
-    getAlunoFromData(rm: number, senha: string, telefone:string, nome:string, email:string) : Aluno{
+    getAlunoFromData(rm: number,  nome:string, telefone:string, email:Usuario) : Aluno{
         const newAluno = new Aluno();
         newAluno.rm = rm;
-        const hashDigest = sha256(senha);
-        logger.debug("HashAntes: ", hashDigest)
-        const privateKey = "FIEC2023"
-        const hmacDigest = Base64.stringify(hmacSHA512(hashDigest, privateKey ))
-        logger.debug("HashDepos: ",hashDigest)
+        newAluno.nome = nome;
+        newAluno.usuario = email;
         newAluno.telefone = telefone;
         return newAluno;
     }
 
-    async loginAluno(rm: number, senha: string) : Promise<string>{
+    /*async loginAluno(rm: number, senha: string) : Promise<string>{
         const hashDigest = sha256(senha);
         logger.debug("HashAntes: ", hashDigest)
         const privateKey = "FIEC2023"
@@ -37,29 +33,32 @@ class AlunoServiceLogin {
         const token = jwt.sign({rm: foundAluno?.rm}, 'sua_senha', {expiresIn: 300});
         return token;}
         throw new Error("Aluno not found");
-    }
+    }*/
 
-    async signUpAluno( rm: number, senha: string, telefone:string, nome:string, email:string){
+    /*async signUpAluno( rm: number, senha: string, telefone:string, nome:string, email:string){
         const newAluno = this.getAlunoFromData(rm, senha,telefone,nome, email);
         await AlunoRepository.save(newAluno);
-    }
+    }*/
 
     async signUpAlunosInBatch(req: Request){
         const file = req.file;
         const Alunos : Aluno[] = [];
-        if(file != null) {
-            fs.createReadStream(file.path)
-                .pipe(csvParser())
-                .on('data', (data) => Alunos.push(this.getAlunoFromData(data.rm, data.senha, data.telefone, data.nome, data.email)))
-                .on('end', () => {
-                    console.log(Alunos);
-                    AlunoRepository.insert(Alunos);
-                    
-            });
-        }
+        
+        if (file !== null) {
+            try {
+              const parsedData = await parseCsv(fs.createReadStream(file.path));
+              parsedData.forEach((data) => Alunos.push(this.getAlunoFromData(data.rm, data.nome, data.usuario, data.telefone)));
+              console.log(Alunos);
+              await AlunoRepository.insert(Alunos);
+            } catch (error) {
+              console.error('Erro ao analisar o CSV:', error);
+            }
+          }
+                
+
     }
 
-    async updateAlunoImage(req: Request){
+    /*async updateAlunoImage(req: Request){
         const file = req.file;
         const {rm} = (req as any).authAluno;
         const foundAluno = await AlunoRepository.findOneBy({rm});
@@ -70,7 +69,7 @@ class AlunoServiceLogin {
             await image.write('uploads/' + file.originalname);
             await AlunoRepository.save(foundAluno);
         }
-    }
+    }*/
 }
 
 export default AlunoServiceLogin;

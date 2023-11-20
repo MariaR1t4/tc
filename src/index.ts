@@ -13,9 +13,7 @@ import frequenciaRouter from "./router/FrequenciaRouter";
 import aulaRouter from "./router/AulaRouter";
 import google_login from "./router/auth/login_google";
 import fire from "./router/auth/firebase";
-import { validatorAluno, validatorProfessor, validatorSecretaria } from "./auth/validator";
 import { alunoAtuh, professorauth, secretariaauth } from "./auth/auth";
-import cookieParser from "cookie-parser";
 
 
 const app = express();
@@ -23,14 +21,32 @@ const port = 38000;
 
 app.use(express.json());
 app.use(cors());
-app.use(cookieParser());
 //app.use(express.static('front'));
 
 app.use(morgan('combined'));
 
 //app.use('/app', express.static(path.join(__dirname, 'src')))
 
-app.use('/api/v1/secretaria/aluno', secretariaauth,alunoRouter  );
+app.use('/api/v1/secretaria/aluno',alunoRouter  );
+
+app.use('/api/v1/aluno/frequencia', frequenciaRouter );
+
+app.use('/api/v1/professor/aula',aulaRouter );
+
+app.use('/api/v1/secretaria/disciplina',disciplinaRouter  );
+
+app.use('/api/v1/frequencia',frequenciaRouter );
+
+app.use('/api/v1/secretaria/prof-disciplina', professorDisciplinaRouter );
+
+app.use('/api/v1/secretaria/professor',professorRouter );
+
+app.use('/api/v1/secretaria/turma',turmaRouter )
+
+app.use('/api/v1/secretaria/usuario' ,usuarioRouter)
+
+
+/*app.use('/api/v1/secretaria/aluno', secretariaauth,alunoRouter  );
 
 app.use('/api/v1/aluno/frequencia', alunoAtuh, frequenciaRouter );
 
@@ -46,7 +62,7 @@ app.use('/api/v1/secretaria/professor', secretariaauth,professorRouter );
 
 app.use('/api/v1/secretaria/turma', secretariaauth,turmaRouter )
 
-app.use('/api/v1/secretaria/usuario',secretariaauth ,usuarioRouter)
+app.use('/api/v1/secretaria/usuario',secretariaauth ,usuarioRouter)*/
 
 app.use('/api/v1', google_login)
 
