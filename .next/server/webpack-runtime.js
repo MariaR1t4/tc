@@ -169,17 +169,8 @@
 /******/ 		__webpack_require__.f.require = (chunkId, promises) => {
 /******/ 			// "1" is the signal for "already loaded"
 /******/ 			if(!installedChunks[chunkId]) {
-<<<<<<< HEAD
-/******/ 				if("webpack-runtime" != chunkId) {
-=======
-<<<<<<< HEAD
 /******/ 				if(6658 != chunkId) {
 /******/ 					installChunk(require("./chunks/" + __webpack_require__.u(chunkId)));
-=======
-/******/ 				if("app/page" == chunkId) {
->>>>>>> 3772983bb3b37f15d015cfbb432b3c1373a35cf4
-/******/ 					installChunk(require("./" + __webpack_require__.u(chunkId)));
->>>>>>> f3fe6402911bb1d16908356a7c3f0beeb9e3ee99
 /******/ 				} else installedChunks[chunkId] = 1;
 /******/ 			}
 /******/ 		};
