@@ -73,7 +73,7 @@ export default function RegistroAula() {
             console.log('A requisição foi enviada');
             return config;
           });*/
-  const [selectedTeacher, setSelectedTeacher] = useState<number | null>(null);
+  const [selectedTeacher, setSelectedTeacher] = useState<string | null>(null);
   const [selectedSubject, setSelectedSubject] = useState<number | null>(null);
   const [description, setDescription] = useState("");
 
@@ -108,7 +108,7 @@ export default function RegistroAula() {
             className="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-white rounded-3xl pl-8 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             id="teacher"
             value={selectedTeacher || ""}
-            onChange={(e) => setSelectedTeacher(Number(e.target.value) || null)}
+            onChange={(e) => setSelectedTeacher(String(e.target.value) || null)}
           >
             <option
               value=""
@@ -117,8 +117,8 @@ export default function RegistroAula() {
               Selecione um professor
             </option>
             {professores.map((teacher) => (
-              <option key={teacher.id} value={teacher.id}>
-                {teacher.name}
+              <option key={teacher.id_professor} value={teacher.id_professor}>
+                {teacher.nome}
               </option>
             ))}
           </select>
@@ -137,10 +137,10 @@ export default function RegistroAula() {
             {materias
               .filter(
                 (subject) =>
-                  !selectedTeacher || subject.teacherId === selectedTeacher
+                  !selectedTeacher || subject.id_professor === selectedTeacher
               )
               .map((subject) => (
-                <option key={subject.id} value={subject.id}>
+                <option key={subject.id_disciplina} value={subject.id_disciplina}>
                   {subject.name}
                 </option>
               ))}

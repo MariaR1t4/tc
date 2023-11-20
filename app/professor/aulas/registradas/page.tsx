@@ -26,10 +26,10 @@ export default function Aula() {
     return config;
   });*/}
   useEffect(()=>{
-    api.get( `${API_URL}/professor/aula/lista-aula/`)
+    api.get( `${API_URL}/professor/aula/lista-aula`)
 
     .then(response => {
-      setAula (response.data);
+      setAula(response.data);
       console.log(response.data);
     })
   },[])
@@ -49,10 +49,10 @@ export default function Aula() {
 
               <div className="px-6 py-4  ">
                 <div className="font-bold text-xl mb-2">Id Aula:{Aula.id_aula}</div>
-                <p className='text-lg'>Professor: {Aula.id_professor}
+                <p className='text-lg'>Professor: {Aula.id_professor.id_professor}
                 </p>
-                <p className='text-lg'>Turma: {Aula.id_turma}</p>
-                <p className='text-lg'>Disciplina: {Aula.id_disciplina}</p>
+                <p className='text-lg'>Turma: {Aula.id_turma.nome}</p>
+                <p className='text-lg'>Disciplina: {Aula.id_disciplina.descricao}</p>
                 <p className='text-lg'>Descrição: {Aula.descricao}</p>
             <div className='flex justify-center '>
               
