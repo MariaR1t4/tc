@@ -57,7 +57,7 @@ export default function AlunodoAluno() {
                 <h2 className='text-lg'>Email: {Aluno.email}</h2>
                 <h2 className='text-lg'>Telefone: {Aluno.telefone}</h2>
                 <div className='flex justify-center '>
-      <a href="/secretaria/aluno/editar/id={Aluno.rm}"><button className=' mr-32 bg-green-700 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white' id='editarAluno'>Editar Aluno</button></a>
+      <a href="/secretaria/aluno/editar/id={Aluno.rm}"><button className=' mr-32 bg-green-700 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white' onClick={() => localStorage.setItem("rm", Aluno.rm)} id='editarAluno'>Editar Aluno</button></a>
       <button className=' bg-blue-700 w-28 h-10  text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1' id='verAluno'>Ver Aluno</button>
       </div>
       </div>
