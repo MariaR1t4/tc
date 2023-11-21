@@ -9,12 +9,13 @@ import api from '@/shared/utils/my-axios'
 
 
 type Aulas = {
-  map(arg0: (Aluno: any) => React.JSX.Element): React.ReactNode
-    id_aula: string,
-    id_professor: string,
-    id_turma: string,
-    id_disciplina: string,
-    descricao: string
+  map(arg0: (Aula: any) => React.JSX.Element): React.ReactNode
+  id: string,
+  nomeProfessor: string,
+  nomeDisciplina: string,
+  nomeTurma: string,
+  professor_disciplina:string,
+  description: string
   }
 export default function Aula() {
   const {id_aula} = useParams();
@@ -26,10 +27,10 @@ export default function Aula() {
     return config;
   });*/}
   useEffect(()=>{
-    api.get( `${API_URL}/professor/aula/lista-aula/`)
+    api.get( `${API_URL}/professor/aula/lista-aula`)
 
     .then(response => {
-      setAula (response.data);
+      setAula(response.data);
       console.log(response.data);
     })
   },[])
@@ -48,17 +49,17 @@ export default function Aula() {
 
 
               <div className="px-6 py-4  ">
-                <div className="font-bold text-xl mb-2">Id Aula:{Aula.id_aula}</div>
-                <p className='text-lg'>Professor: {Aula.id_professor}
+              <div className="font-bold text-xl mb-2">Id Aula:{Aula.id}</div>
+                <p className='text-lg'>Professor: {Aula.nomeProfessor}
                 </p>
-                <p className='text-lg'>Turma: {Aula.id_turma}</p>
-                <p className='text-lg'>Disciplina: {Aula.id_disciplina}</p>
-                <p className='text-lg'>Descrição: {Aula.descricao}</p>
+                <p className='text-lg'>Turma: {Aula.nomeTurma}</p>
+                <p className='text-lg'>Disciplina: {Aula.nomeTurma}</p>
+                <p className='text-lg'>Descrição: {Aula.description}</p>
             <div className='flex justify-center '>
               
             <a href={`/secretaria/turmas/editar?id_turma=${id_aula}`}>
-<button className=' mr-32 bg-green-700 mt-4 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white'  id='editarTurma'>Editar Turma</button></a>
-      <button className=' bg-blue-700 w-28 h-10 float-right mt-4 text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1'   id='verTurma'>Ver Turma</button>
+<button className='mr-32 bg-green-700 mt-4 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white' id='editarTurma'>Alterar Aula</button></a>
+      <button className='bg-blue-700 w-28 h-10 float-right mt-4 text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1' id='verTurma'>Ver Turma</button>
       </div>
               </div>
 

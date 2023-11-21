@@ -15,27 +15,27 @@ type Aulas = {
 };
 
 type Professor = {
-    id: number;
-    name: string;
+    id_professor: string;
+    nome: string;
   };
   
   type Materias = {
-    id: number;
+    id_disciplina: string;
     name: string;
-    teacherId: number;
+    id_professor: string;
   };
   
   const professores: Professor[] = [
-    { id: 1, name: 'Adileine' },
-    { id: 2, name: 'Fillipe' },
-    { id: 3, name: 'Robson' },
+    { id_professor: 'c743b662-c046-4c29-91f3-73241007a417', nome: 'Adileine' },
+    { id_professor: '3abbd7e5-1a73-4b63-95cc-0671cf30850e', nome: 'Fillipe' },
+    { id_professor: 'ccf94a30-3da8-4f6d-81a4-598faf72ba8e', nome: 'Robson' },
   ];
   
   const materias: Materias[] = [
-    { id: 1, name: 'Banco de Dados', teacherId: 1 },
-    { id: 2, name: 'Projetos', teacherId: 1 },
-    { id: 3, name: 'LPIII', teacherId: 2 },
-    { id: 4, name: 'Segurança', teacherId: 3 },
+    { id_disciplina: '7268a143-0e7f-46e0-b722-937912189ae6', name: 'Banco de Dados', id_professor: 'c743b662-c046-4c29-91f3-73241007a417' },
+    { id_disciplina: '6f883323-f23f-4dcd-b8ce-cd00a8ec805c', name: 'Projetos',id_professor: 'c743b662-c046-4c29-91f3-73241007a417'},
+    { id_disciplina: '23cccc7d-3406-42a8-807e-cf42992a525d', name: 'LPIII',id_professor: '3abbd7e5-1a73-4b63-95cc-0671cf30850e'},
+    { id_disciplina: '6f883323-f23f-4dcd-b8ce-cd00a8ec805c', name: 'Segurança', id_professor: 'ccf94a30-3da8-4f6d-81a4-598faf72ba8e' },
   ];
   
 
@@ -58,7 +58,6 @@ export default function RegistroAula() {
     try {
       console.log(form);
       const res = await api.post(`${API_URL}/professor/aula/cria-aula`, form);
-      console.log();
       console.log(res.data);
       setTimeout(() => {
         setLoading(false);
@@ -74,7 +73,7 @@ export default function RegistroAula() {
             console.log('A requisição foi enviada');
             return config;
           });*/
-  const [selectedTeacher, setSelectedTeacher] = useState<number | null>(null);
+  const [selectedTeacher, setSelectedTeacher] = useState<string | null>(null);
   const [selectedSubject, setSelectedSubject] = useState<number | null>(null);
   const [description, setDescription] = useState("");
 
@@ -91,8 +90,8 @@ export default function RegistroAula() {
           <div className="relative z-0 w-full mb-6 group">
             <input
               type="text"
-              name="nome"
-              id="nome"
+              name="descricao"
+              id="descricao"
               className="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-white rounded-3xl pl-8 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               onChange={atualizaForm}
@@ -102,14 +101,14 @@ export default function RegistroAula() {
               htmlFor="nome"
               className="peer-focus:font-medium pl-8 absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-9 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9"
             >
-              Nome:
+              Descrição da aula:
             </label>
           </div>
           <select
             className="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-white rounded-3xl pl-8 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             id="teacher"
             value={selectedTeacher || ""}
-            onChange={(e) => setSelectedTeacher(Number(e.target.value) || null)}
+            onChange={(e) => setSelectedTeacher(String(e.target.value) || null)}
           >
             <option
               value=""
@@ -118,8 +117,8 @@ export default function RegistroAula() {
               Selecione um professor
             </option>
             {professores.map((teacher) => (
-              <option key={teacher.id} value={teacher.id}>
-                {teacher.name}
+              <option key={teacher.id_professor} value={teacher.id_professor}>
+                {teacher.nome}
               </option>
             ))}
           </select>
@@ -138,15 +137,31 @@ export default function RegistroAula() {
             {materias
               .filter(
                 (subject) =>
-                  !selectedTeacher || subject.teacherId === selectedTeacher
+                  !selectedTeacher || subject.id_professor === selectedTeacher
               )
               .map((subject) => (
-                <option key={subject.id} value={subject.id}>
+                <option key={subject.id_disciplina} value={subject.id_disciplina}>
                   {subject.name}
                 </option>
               ))}
           </select>
-
+          <div className="relative z-0 w-full mb-6 group">
+            <input
+              type="text"
+              name="id_turma"
+              id="id_turma"
+              className="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-white rounded-3xl pl-8 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+              onChange={atualizaForm}
+              required
+            />
+            <label
+              htmlFor="turma"
+              className="peer-focus:font-medium pl-8 absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-9 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9"
+            >
+              Selecine uma turma:
+            </label>
+          </div>
           <button
             type="submit"
             className="text-white  hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-lg w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-700  dark:focus:ring-green-800"

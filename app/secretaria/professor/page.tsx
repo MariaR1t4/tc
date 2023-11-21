@@ -11,7 +11,7 @@ import { Router, useRouter } from 'next/router'
 type Professor = {
   map(arg0: (Professor: any) => React.JSX.Element): React.ReactNode
   id_professor : string,
-  name : string,
+  nome : string,
   email: string,
   telefone:string,
 }
@@ -35,6 +35,13 @@ type Professor = {
   },[])
   // faz uma requisição GET
 ;
+useEffect(()=>{
+ api.delete(`${API_URL}/secretaria/professor/delete-professor/:id_professor`)
+ .then(response=>{
+  setProfesor(response.data);
+  console.log(response.data)
+ })
+ })
   
   
 return (
@@ -54,13 +61,13 @@ return (
 
             <div className="px-6 py-4  ">
               <div className="font-bold text-xl mb-2">Id:{Professor.id_professor}</div>
-              <p className='text-lg'>Professor: {Professor.name}
+              <p className='text-lg'>Professor: {Professor.nome}
               </p>
               <p className='text-lg'>Email: {Professor.email}</p>
               <p className='text-lg'>Tel: {Professor.telefone}</p>
               <div className='flex justify-center '>
     <a href="{`/secretaria/professor/editar/${Professor.id_professor}`}"><button className=' mr-32 bg-green-700 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white' id='editarProfessor' onClick={()=>{}}>Editar Professor</button></a>
-    <button className=' bg-blue-700 w-28 h-10  text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1' id='verProfessor'>Ver Professor</button>
+    <button className=' bg-blue-700 w-28 h-10  text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1' id='excluirProfessor'>Excluir Professor</button>
     </div>
             </div>
 
@@ -69,16 +76,8 @@ return (
           </div>
             </>
         ))}
-      
-    
-    
-   
-  
     </main>
-  
 </>
-   
-
 )
 }
 /*<table className='border-2 m-auto mt-32 w-1/2 h-auto border-black border-collapse text-center text-2xl' >

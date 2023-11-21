@@ -97,9 +97,7 @@ const Login = () => {
           
       </div>
   </div>
-  <ul className=" float-right mt-56 mr-64">
-    <li>Quem somos?</li>
-  </ul>
+
   </section>
   </main>
   </>
