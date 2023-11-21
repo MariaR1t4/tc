@@ -145,23 +145,7 @@ export default function RegistroAula() {
                 </option>
               ))}
           </select>
-          <div className="relative z-0 w-full mb-6 group">
-            <input
-              type="text"
-              name="id_turma"
-              id="id_turma"
-              className="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-white rounded-3xl pl-8 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
-              onChange={atualizaForm}
-              required
-            />
-            <label
-              htmlFor="turma"
-              className="peer-focus:font-medium pl-8 absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transhtmlForm -translate-y-9 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-95 peer-focus:-translate-y-9"
-            >
-              Selecine uma turma:
-            </label>
-          </div>
+
           <button
             type="submit"
             className="text-white  hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-lg w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-700  dark:focus:ring-green-800"
