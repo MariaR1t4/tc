@@ -9,12 +9,13 @@ import api from '@/shared/utils/my-axios'
 
 
 type Aulas = {
-  map(arg0: (Aluno: any) => React.JSX.Element): React.ReactNode
-    id_aula: string,
-    id_professor: string,
-    id_turma: string,
-    id_disciplina: string,
-    descricao: string
+  map(arg0: (Aula: any) => React.JSX.Element): React.ReactNode
+    id: string,
+    nomeProfessor: string,
+    nomeDisciplina: string,
+    nomeTurma: string,
+    professor_disciplina:string,
+    description: string
   }
 export default function Aula() {
   const {id_aula} = useParams();
@@ -48,12 +49,12 @@ export default function Aula() {
 
 
               <div className="px-6 py-4  ">
-                <div className="font-bold text-xl mb-2">Id Aula:{Aula.id_aula}</div>
-                <p className='text-lg'>Professor: {Aula.id_professor.id_professor}
+                <div className="font-bold text-xl mb-2">Id Aula:{Aula.id}</div>
+                <p className='text-lg'>Professor: {Aula.nomeProfessor}
                 </p>
-                <p className='text-lg'>Turma: {Aula.id_turma.nome}</p>
-                <p className='text-lg'>Disciplina: {Aula.id_disciplina.descricao}</p>
-                <p className='text-lg'>Descrição: {Aula.descricao}</p>
+                <p className='text-lg'>Turma: {Aula.nomeTurma}</p>
+                <p className='text-lg'>Disciplina: {Aula.nomeTurma}</p>
+                <p className='text-lg'>Descrição: {Aula.description}</p>
             <div className='flex justify-center '>
               
             <a href={`/secretaria/turmas/editar?id_turma=${id_aula}`}>
