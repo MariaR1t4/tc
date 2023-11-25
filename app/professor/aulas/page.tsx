@@ -1,5 +1,6 @@
 "use client";
 import { NavbarProf } from "@/app/components/navbarprof";
+import BasicCard from "@/app/components/successcard";
 import { API_URL } from "@/shared/constants/api";
 import api from "@/shared/utils/my-axios";
 import { useRouter } from "next/router";
@@ -15,29 +16,29 @@ type Aulas = {
 };
 
 type Professor = {
-    id_professor: string;
-    nome: string;
-  };
-  
-  type Materias = {
-    id_disciplina: string;
-    name: string;
-    id_professor: string;
-  };
-  
-  const professores: Professor[] = [
-    { id_professor: 'c743b662-c046-4c29-91f3-73241007a417', nome: 'Adileine' },
-    { id_professor: '3abbd7e5-1a73-4b63-95cc-0671cf30850e', nome: 'Fillipe' },
-    { id_professor: 'ccf94a30-3da8-4f6d-81a4-598faf72ba8e', nome: 'Robson' },
-  ];
-  
-  const materias: Materias[] = [
-    { id_disciplina: '7268a143-0e7f-46e0-b722-937912189ae6', name: 'Banco de Dados', id_professor: 'c743b662-c046-4c29-91f3-73241007a417' },
-    { id_disciplina: '6f883323-f23f-4dcd-b8ce-cd00a8ec805c', name: 'Projetos',id_professor: 'c743b662-c046-4c29-91f3-73241007a417'},
-    { id_disciplina: '23cccc7d-3406-42a8-807e-cf42992a525d', name: 'LPIII',id_professor: '3abbd7e5-1a73-4b63-95cc-0671cf30850e'},
-    { id_disciplina: '6f883323-f23f-4dcd-b8ce-cd00a8ec805c', name: 'Segurança', id_professor: 'ccf94a30-3da8-4f6d-81a4-598faf72ba8e' },
-  ];
-  
+  id_professor: string;
+  nome: string;
+};
+
+type Materias = {
+  id_disciplina: string;
+  name: string;
+  id_professor: string;
+};
+
+const professores: Professor[] = [
+  { id_professor: 'c743b662-c046-4c29-91f3-73241007a417', nome: 'Adileine' },
+  { id_professor: '3abbd7e5-1a73-4b63-95cc-0671cf30850e', nome: 'Fillipe' },
+  { id_professor: 'ccf94a30-3da8-4f6d-81a4-598faf72ba8e', nome: 'Robson' },
+];
+
+const materias: Materias[] = [
+  { id_disciplina: '7268a143-0e7f-46e0-b722-937912189ae6', name: 'Banco de Dados', id_professor: 'c743b662-c046-4c29-91f3-73241007a417' },
+  { id_disciplina: '6f883323-f23f-4dcd-b8ce-cd00a8ec805c', name: 'Projetos', id_professor: 'c743b662-c046-4c29-91f3-73241007a417' },
+  { id_disciplina: '23cccc7d-3406-42a8-807e-cf42992a525d', name: 'LPIII', id_professor: '3abbd7e5-1a73-4b63-95cc-0671cf30850e' },
+  { id_disciplina: '6f883323-f23f-4dcd-b8ce-cd00a8ec805c', name: 'Segurança', id_professor: 'ccf94a30-3da8-4f6d-81a4-598faf72ba8e' },
+];
+
 
 export default function RegistroAula() {
   const [form, setForm] = React.useState({
@@ -88,11 +89,7 @@ export default function RegistroAula() {
           onSubmit={enviarParaoBd}
         >
           <div className="relative z-0 w-full mb-6 group">
-            <input
-              type="text"
-              name="descricao"
-              id="descricao"
-              className="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-white rounded-3xl pl-8 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            <input type="text" name="descricao" id="descricao" className="block py-2.5 px-0 w-full text-lg text-gray-900 bg-transparent border-2 border-white rounded-3xl pl-8 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               onChange={atualizaForm}
               required
