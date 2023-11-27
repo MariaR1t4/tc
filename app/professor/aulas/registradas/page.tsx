@@ -47,7 +47,8 @@ export default function Aula() {
               <div className="max-w-sm rounded overflow-hidden shadow-lg inline-block ml-12 ">
 
 
-              <div className="px-6 py-4  ">
+              <div className="px-6 py-4  " key={Aula.id}>
+                
                 <div className="font-bold text-xl mb-2">Id Aula:{Aula.id}</div>
                 <p className='text-lg'>Professor: {Aula.description}
                 </p>
@@ -56,8 +57,9 @@ export default function Aula() {
                 <p className='text-lg'>Descrição: {Aula.nomeAula}</p>
             <div className='flex justify-center '>
               
-<button className=' mr-32 bg-green-700 mt-4 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white'  id='editarTurma'>Editar Turma</button>
-      <button className=' bg-blue-700 w-28 h-10 float-right mt-4 text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1'   id='verTurma'>Ver Turma</button>
+<button className=' mr-32 bg-green-700 mt-4 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white'  id='editarAula'>Editar Aula</button>
+<a href={`/professor/aulas/exibindo-token/${Aula.id}`}>
+<button className=' bg-blue-700 w-28 h-10 float-right mt-4 text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1'   id='exibirToken'>Exibir Token</button></a>
       </div>
               </div>
 
