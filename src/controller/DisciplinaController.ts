@@ -34,6 +34,11 @@ export default class DisciplinaController {
         const id_disciplina = req.params.id_disciplina;
         res.json(await disciplinaService.findDisciplina(id_disciplina));
     }
+    public async findDisciplinaByProfessor(req:Request, res: Response){
+        const disciplinaService = DisciplinaService.getInstance()
+        const id_professor = req.params.id_professor;
+        res.json(await disciplinaService.findDisciplinaByProfessor(id_professor))
+    }
 
     public async deleteDisciplina(req: Request,res:Response){
         const disciplinaService = DisciplinaService.getInstance();

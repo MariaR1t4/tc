@@ -1,3 +1,4 @@
+import { createQueryBuilder } from "typeorm";
 import ProfessorDisciplina from "../models/entities/ProfessorDisciplina";
 import ProfessorDisciplinaRepository from "../models/entities/repositories/ProfessorDisciplinaRepository";
 
@@ -24,6 +25,9 @@ export default class ProfessorDisciplinaService{
     }
     public async findProfessorDisciplina(professor_disciplina:string) : Promise<ProfessorDisciplina | null> {
         return await ProfessorDisciplinaRepository.findOneBy({professor_disciplina}); 
+    }
+    public async findDisciplinaByProfessor(id_professor: string): Promise<ProfessorDisciplina | null>{
+        
     }
     public async deleteProfessorDisciplina(professor_disciplina:string):Promise<void>{
       await ProfessorDisciplinaRepository.delete(professor_disciplina);

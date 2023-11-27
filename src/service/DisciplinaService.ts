@@ -1,3 +1,4 @@
+import { createQueryBuilder } from "typeorm";
 import Disciplina from "../models/entities/Disciplina";
 import DisciplinaRepository from "../models/entities/repositories/DisciplinaRepository";
 

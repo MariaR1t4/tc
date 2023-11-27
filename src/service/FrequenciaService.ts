@@ -3,6 +3,7 @@ import Frequencia from "../models/entities/Frequencia";
 import AulaRepository from "../models/entities/repositories/AulaRepository";
 import FrequenciaRepository from "../models/entities/repositories/FrequenciaRepository";
 import AulaService from "./AulaService";
+import { date } from "zod";
 
 export default class FrequenciaService {
   private constructor() {}
@@ -18,9 +19,11 @@ export default class FrequenciaService {
   }
   public async saveFrequencia(token_aluno: string, numero: number) {
     try {
-      let data = new Date();
-      let presenca: number = 0;
-      var data_frequencia = `${data}`;
+      var date = new Date()
+      var year = date.getFullYear().toString()
+      var month = (date.getMonth() + 1).toString() 
+      var day = date.getDate().toString()
+      var data_frequencia = `${day}-${month}-${year}`
       const buscar_aula = await AulaRepository.findOneBy({
         id_aula: token_aluno,
       });
@@ -48,7 +51,9 @@ export default class FrequenciaService {
     return await FrequenciaRepository.find();
   }
   public async findFrequenciaByRm(rm: number) {
-    if (rm) {
+    if (!rm) {
+      console.log("erro");
+    } else {
       const res = await FrequenciaRepository.find();
       
      const mapRes = res.map((res) => ({
@@ -58,8 +63,6 @@ export default class FrequenciaService {
       
       console.log(mapRes.length);
       return mapRes;
-    } else {
-      console.log("erro");
     }
   }
   public async somaFrequencia(mapRes:any, rm:number){
