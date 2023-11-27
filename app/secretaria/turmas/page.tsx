@@ -61,7 +61,7 @@ export default function Turma() {
           <p className='text-lg'>Descrição: {Turma.descricao}</p>
           <div className='flex justify-center '>
             <a href={`/secretaria/turmas/editar?id_turma=${Turma.id_turma}`}>
-              <button className='mr-32 bg-green-700 mt-4 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white' id='editarTurma'>Editar Turma</button>
+              <button className='mr-32 bg-green-700 mt-4 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white' onClick={() => localStorage.setItem("idTurma", Turma.id_turma)} id='editarTurma'>Editar Turma</button>
             </a>
             <button className='bg-blue-700 w-28 h-10 float-right mt-4 text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1' onClick={() => handleUpdatePost(Turma.id_turma)} id='verTurma'>Excluir Turma</button>
           </div>

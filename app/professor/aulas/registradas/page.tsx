@@ -6,6 +6,7 @@ import { useParams } from 'next/navigation'
 import { NavbarSec } from '@/app/components/navbarsec'
 import { API_URL } from '@/shared/constants/api'
 import api from '@/shared/utils/my-axios'
+import ModalAula from '@/app/components/modalAula'
 
 
 type Aulas = {
@@ -17,34 +18,44 @@ type Aulas = {
     nomeAula:string
   }
 export default function Aula() {
-  const {id_aula} = useParams();
-  const [aula, setAula] = React.useState<Aulas|null>(null);
 
- {/* api.interceptors.request.use(config => {
+  const verAulas = async (aula:any) => {
+    console.log(aula)
+    setselectedAula(aula)
+    setModal(true);
+  } 
+  const { id_aula } = useParams();
+  const [aula, setAula] = React.useState<Aulas | null>(null);
+  const [modal, setModal] = React.useState(false)
+  const [selectedAula, setselectedAula] = React.useState<Aulas | null>(null)
+
+
+  {/* api.interceptors.request.use(config => {
     // loga(log) uma mensagem antes da requisição HTTP ser enviada
     console.log('A requisição foi enviada');
     return config;
   });*/}
-  useEffect(()=>{
-    api.get( `${API_URL}/professor/aula/lista-aula/`)
+  useEffect(() => {
+    api.get(`${API_URL}/professor/aula/lista-aula`)
 
-    .then(response => {
-      setAula (response.data);
-      console.log(response.data);
-    })
-  },[])
-  
+      .then(response => {
+        setAula(response.data);
+        console.log(response.data);
+      })
+  }, [])
+
   return (
     <>
-                <title>Professor</title>
- <NavbarSec />      
- <main className='w-full flex-col justify-center h-full'>
- 
+      <title>Professor</title>
+      <NavbarSec />
+      <main className='w-full flex-col justify-center h-full'>
+      { modal && <ModalAula aula={selectedAula} cancelScreen={()=>setModal(false)}/> }
+
         <h1 className=" text-center drop-shadow-xl text-gray-700 font-bold mt-20 mb-16 text-4xl">Aulas Registradas</h1>
-  
-          {aula && aula.map(Aula => (
-              <><div className='ml-32 mt-5 mb-6 justify-center inline-block'>
-              <div className="max-w-sm rounded overflow-hidden shadow-lg inline-block ml-12 ">
+
+        {aula && aula.map(Aula => (
+          <><div className='ml-32 mt-5 mb-6 justify-center inline-block'>
+            <div className="max-w-sm rounded overflow-hidden shadow-lg inline-block ml-12 ">
 
 
               <div className="px-6 py-4  " key={Aula.id}>
@@ -63,29 +74,28 @@ export default function Aula() {
       </div>
               </div>
 
-      
+
             </div>
-            </div>
-              </>
-          ))}
-        
-      
-      
-     
-    
+          </div>
+          </>
+        ))}
+
+
+
+
       </main>
-    
-  </>
-     
+
+    </>
+
 
   )
 }
 
-  /*<tr className=' border hover:bg-blue-200  border-black'>
-                <td className=' border  border-black'>{Turma.id_turma}</td>
-                <td className=' border border-black'>{Turma.curso}</td>
-                <td className=' border border-black'>{Turma.periodo}</td>
-                <td className=' border border-black'>{Turma.modulo}</td>
-                <td className=' border border-black'>{Turma.descricao}</td>
+/*<tr className=' border hover:bg-blue-200  border-black'>
+              <td className=' border  border-black'>{Turma.id_turma}</td>
+              <td className=' border border-black'>{Turma.curso}</td>
+              <td className=' border border-black'>{Turma.periodo}</td>
+              <td className=' border border-black'>{Turma.modulo}</td>
+              <td className=' border border-black'>{Turma.descricao}</td>
 
-              </tr>*/
+            </tr>*/

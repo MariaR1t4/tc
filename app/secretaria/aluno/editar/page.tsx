@@ -13,7 +13,8 @@ export default function AlunoEditar() {
     email: "",
     telefone: "",
   });
-  const {rm} = useParams();/*
+  const rm = localStorage.getItem("rm");
+  /*
   useEffect(() => {
     axios
       .get(`${API_URL}/secretaria/aluno/encontra-aluno/:${rm}`)

@@ -4,6 +4,9 @@ import { useRouter } from "next/router";
 import React, { FormEvent } from "react";
 import { API_URL } from "@/shared/constants/api";
 import api from "@/shared/utils/my-axios";
+import MyBackdrop from "@/app/components/backdrop";
+import MyFade from "@/app/components/my-fade";
+import { ClipLoader } from "react-spinners";
 
 
 export default function ProfCadastro(){

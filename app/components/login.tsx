@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { API_URL } from '@/shared/constants/api';
 import api from '@/shared/utils/my-axios';
 import { useRouter } from 'next/navigation';
+import { setCookie } from 'cookies-next';
 
 const Login = () => {
   const [willLogin, setWillLogin] = useState(true); 
@@ -23,7 +24,9 @@ const Login = () => {
       console.log(response);
       const tokenId = response.credential;
       const clientId = response.clientId;
-      const fcmToken = localStorage.getItem('fcmToken');
+      const fcmToken = localStorage.getItem('fcmToken');   
+      
+      
 
       await api.post(`${API_URL}/login`, { token: tokenId, fcmToken });
 

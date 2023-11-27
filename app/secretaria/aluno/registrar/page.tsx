@@ -17,7 +17,7 @@ export default function AlunoCadastro(){
     email:string,
     telefone:string 
   }
-  const [form, setForm] = React.useState({name:'', telefone:'', email:''});
+  const [form, setForm] = React.useState({nome:'', telefone:'', email:''});
   const [loading, setLoading] = React.useState(false);
   const [ok, setOk] = React.useState(false);
   const [showFeed, setShowFeed] = React.useState(false);
