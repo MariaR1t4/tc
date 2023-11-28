@@ -69,7 +69,7 @@ export default function Aula() {
             <div className='flex justify-center '>
               
 <button className=' mr-32 bg-green-700 mt-4 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white'  id='editarAula'>Editar Aula</button>
-<a href={`/professor/aulas/exibindo-token/${Aula.id}`}>
+<a href={`/professor/aulas/${Aula.id}`}>
 <button className=' bg-blue-700 w-28 h-10 float-right mt-4 text-white hover:bg-blue-800 rounded-md transition ease-in duration-100 hover:-translate-y-1'   id='exibirToken'>Exibir Token</button></a>
       </div>
               </div>

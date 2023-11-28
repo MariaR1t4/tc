@@ -6,7 +6,8 @@ import { useParams } from 'next/navigation'
 import { NavbarSec } from '@/app/components/navbarsec'
 import { API_URL } from '@/shared/constants/api'
 import api from '@/shared/utils/my-axios'
-
+import circlesvg from '../[id]/circle.svg'
+import Image from 'next/image'
 
 type Aulas = {
   map(arg0: (Aluno: any) => React.JSX.Element): React.ReactNode
@@ -17,7 +18,7 @@ type Aulas = {
     nomeAula:string
   }
 export default function Aula() {
-  const {id_aula} = useParams();
+  const {id} = useParams();
   const [aula, setAula] = React.useState<Aulas|null>(null);
 
  {/* api.interceptors.request.use(config => {
@@ -26,51 +27,34 @@ export default function Aula() {
     return config;
   });*/}
   useEffect(()=>{
-    api.get( `${API_URL}/professor/aula/encontra-aula/:id_aula`)
+    api.get( `${API_URL}/professor/aula/encontra-aula/${id}`)
 
     .then(response => {
       setAula (response.data);
       console.log(response.data);
     })
   },[])
-  
+ 
   return (
     <>
                 <title>Professor</title>
- <NavbarSec />      
+ <NavbarSec />    
+ <></>  
  <main className='w-full flex-col justify-center h-full'>
- 
-        <h1 className=" text-center drop-shadow-xl text-gray-700 font-bold mt-20 mb-16 text-4xl">Aulas Registradas</h1>
-  
-          {aula && aula.map(Aula => (
-              <><div className='ml-32 mt-5 mb-6 justify-center inline-block'>
-              <div className="max-w-sm rounded overflow-hidden shadow-lg inline-block ml-12 ">
-
-
-              <div className="px-6 py-4  ">
-                <h1 className="font-bold text-xl mb-2">Id Aula:{Aula.id}</h1>
-            
-            <div className='flex justify-center '>
-              
-       <a href="/professor"> <button className=' mr-32 bg-green-700 mt-4 w-28 h-10 hover:bg-green-800 rounded-md transition ease-in duration-100 hover:-translate-y-1 text-base text-white' id='exibeToken'>Voltar</button></a>
-      </div>
-              </div>
-
       
-            </div>
-            </div>
-              </>
-          ))}
         
-      
-      
+          {aula && (
+              <div >
+                 <Image className="ml-auto mr-auto w-1/2 animate-spin"  alt="" src={circlesvg} />
+                <h1 className="font-bold text-8xl text-center absolute top-1/2 -ml-48 left-2/4">{id}</h1>
+                
+      <div className='flex justify-center '>
+       </div>
+              </div>
      
-    
+          )}
       </main>
-    
   </>
-     
-
   )
 }
 
